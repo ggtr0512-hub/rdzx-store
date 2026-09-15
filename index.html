@@ -1667,6 +1667,49 @@ if("serviceWorker" in navigator){
   setInterval(aplicarDescricoes,1200);
 })();
 </script>
+
+<script id="rdzx-limpar-descricoes-discord">
+(function(){
+  const nomesDiscord=[
+    "Conta com Nitro",
+    "Nitro Link",
+    "Ativação Nitro",
+    "Membros Discord",
+    "Conta Virgem",
+    "Impulsos",
+    "Checker Nitro Link",
+    "Discord Premium"
+  ];
+
+  function limpar(){
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+      const info=card.querySelector(".info");
+
+      if(!titulo || !info || !nomesDiscord.includes(titulo.textContent.trim())){
+        return;
+      }
+
+      info.querySelectorAll(".rdzx-product-description,.rdzx-modal-description").forEach(function(item){
+        item.remove();
+      });
+
+      const textos=info.querySelectorAll(".muted");
+
+      for(let i=1;i<textos.length;i++){
+        textos[i].remove();
+      }
+    });
+  }
+
+  limpar();
+
+  new MutationObserver(limpar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
 </body></html>
 <style>
 #rdzx-sound-button{
