@@ -1710,6 +1710,69 @@ if("serviceWorker" in navigator){
   });
 })();
 </script>
+
+<style id="rdzx-remover-discord-completo">
+#rdzx-section-discord,
+.rdzx-discord-card{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-discord-completo-script">
+(function(){
+  const nomes=[
+    "Conta com Nitro",
+    "Nitro Link",
+    "Ativação Nitro",
+    "Membros Discord",
+    "Conta Virgem",
+    "Impulsos",
+    "Checker Nitro Link",
+    "Discord Premium"
+  ];
+
+  function remover(){
+    if(typeof products!=="undefined"){
+      for(let i=products.length-1;i>=0;i--){
+        if(
+          nomes.includes(products[i].name) ||
+          products[i].cat==="DISCORD"
+        ){
+          products.splice(i,1);
+        }
+      }
+    }
+
+    document.querySelectorAll("#rdzx-section-discord").forEach(function(item){
+      item.remove();
+    });
+
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+      if(titulo && nomes.includes(titulo.textContent.trim())){
+        card.remove();
+      }
+    });
+
+    document.querySelectorAll("#cat option").forEach(function(option){
+      if(option.value==="DISCORD"){
+        option.remove();
+      }
+    });
+
+    if(typeof render==="function"){
+      render();
+    }
+  }
+
+  remover();
+
+  new MutationObserver(remover).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
 </body></html>
 <style>
 #rdzx-sound-button{
