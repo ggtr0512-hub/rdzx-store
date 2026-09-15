@@ -286,9 +286,70 @@ button:hover{
   color:#bbb;
 }
 </style>
+
+<style id="sustos-imprevisiveis-css">
+#susto-overlay{
+  position:fixed;
+  z-index:5000;
+  inset:0;
+  display:none;
+  pointer-events:none;
+  background:#000;
+}
+#susto-sombra{
+  position:fixed;
+  z-index:4999;
+  inset:0;
+  display:none;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% 52%,transparent 0 18%,#000d 55%),
+    linear-gradient(90deg,transparent,#17050caa,transparent);
+}
+.susto-glitch{
+  animation:sustoGlitch .38s steps(2);
+}
+.susto-pisca{
+  animation:sustoPisca .5s steps(2);
+}
+.susto-tremor{
+  animation:sustoTremor .38s ease-in-out;
+}
+.susto-porco{
+  animation:sustoPorco .65s ease-out!important;
+}
+@keyframes sustoGlitch{
+  0%{filter:none}
+  20%{filter:contrast(2) hue-rotate(25deg);transform:translateX(-8px)}
+  45%{filter:brightness(3);transform:translateX(8px)}
+  70%{filter:contrast(1.8);transform:translateX(-4px)}
+  100%{filter:none;transform:none}
+}
+@keyframes sustoPisca{
+  0%,100%{opacity:0}
+  18%,33%{opacity:.9}
+  48%{opacity:0}
+  64%{opacity:.65}
+}
+@keyframes sustoTremor{
+  20%{transform:translate(-8px,3px)}
+  40%{transform:translate(8px,-3px)}
+  60%{transform:translate(-5px,2px)}
+  80%{transform:translate(5px,-2px)}
+}
+@keyframes sustoPorco{
+  0%{transform:translate(-50%,-50%) translateZ(100px) scale(.2);opacity:0}
+  35%{transform:translate(-50%,-50%) translateZ(260px) scale(1.55);opacity:1}
+  70%{transform:translate(-50%,-50%) translateZ(210px) scale(1.25);opacity:1}
+  100%{transform:translate(-50%,-50%) translateZ(100px) scale(1);opacity:0}
+}
+</style>
 </head>
 
 <body>
+<div id="susto-overlay"></div>
+<div id="susto-sombra"></div>
+
 <div id="cena">
 <div id="aviso-idade-terror" class="aviso-terror-fundo">
   <div class="aviso-terror-card">
@@ -384,6 +445,154 @@ function aceitarAviso(comSom){
 function sairAviso(){
   window.location.href="../index.html";
 }
+</script>
+
+<script id="sustos-imprevisiveis-js">
+var sustoAtivo=false;
+var sustoUltimo="";
+var sustoTimer=null;
+
+function iniciarSustos(){
+  if(sustoAtivo)return;
+  sustoAtivo=true;
+  agendarSusto();
+}
+
+function agendarSusto(){
+  if(!sustoAtivo)return;
+
+  var intervalo=4200+Math.random()*10500;
+
+  sustoTimer=setTimeout(function(){
+    executarSusto();
+    agendarSusto();
+  },intervalo);
+}
+
+function somSusto(tipo){
+  if(!somPermitido)return;
+
+  var AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+
+  window.audioHorror=window.audioHorror||new AC();
+
+  if(window.audioHorror.state==="suspended"){
+    window.audioHorror.resume();
+  }
+
+  var frequencia=tipo==="intenso"?75:tipo==="medio"?130:210;
+  var oscilador=window.audioHorror.createOscillator();
+  var ganho=window.audioHorror.createGain();
+
+  oscilador.type=tipo==="intenso"?"sawtooth":"sine";
+  oscilador.frequency.value=frequencia;
+  ganho.gain.setValueAtTime(.001,window.audioHorror.currentTime);
+  ganho.gain.linearRampToValueAtTime(.09,window.audioHorror.currentTime+.04);
+  ganho.gain.exponentialRampToValueAtTime(.001,window.audioHorror.currentTime+.45);
+
+  oscilador.connect(ganho);
+  ganho.connect(window.audioHorror.destination);
+  oscilador.start();
+  oscilador.stop(window.audioHorror.currentTime+.5);
+}
+
+function executarSusto(){
+  var eventos=["leve","medio","intenso","falso"];
+  var evento;
+
+  do{
+    evento=eventos[Math.floor(Math.random()*eventos.length)];
+  }while(evento===sustoUltimo && eventos.length>1);
+
+  sustoUltimo=evento;
+
+  if(evento==="falso"){
+    sustoFalso();
+    return;
+  }
+
+  var cena=document.getElementById("cena");
+  var porco=document.querySelector(".porco");
+  var overlay=document.getElementById("susto-overlay");
+  var sombra=document.getElementById("susto-sombra");
+
+  if(evento==="leve"){
+    sombra.style.display="block";
+    sombra.classList.add("susto-glitch");
+    somSusto("leve");
+
+    setTimeout(function(){
+      sombra.style.display="none";
+      sombra.classList.remove("susto-glitch");
+    },600);
+
+    return;
+  }
+
+  if(evento==="medio"){
+    overlay.style.display="block";
+    overlay.style.background="#7e142055";
+    overlay.classList.add("susto-pisca");
+    cena.classList.add("susto-tremor");
+    somSusto("medio");
+
+    setTimeout(function(){
+      overlay.style.display="none";
+      overlay.classList.remove("susto-pisca");
+      cena.classList.remove("susto-tremor");
+    },700);
+
+    return;
+  }
+
+  if(evento==="intenso"){
+    overlay.style.display="block";
+    overlay.style.background="#8e142255";
+    overlay.classList.add("susto-pisca");
+    porco.classList.add("susto-porco");
+    cena.classList.add("susto-tremor");
+    somSusto("intenso");
+
+    setTimeout(function(){
+      overlay.style.display="none";
+      overlay.classList.remove("susto-pisca");
+      porco.classList.remove("susto-porco");
+      cena.classList.remove("susto-tremor");
+    },850);
+  }
+}
+
+function sustoFalso(){
+  var cena=document.getElementById("cena");
+  var sombra=document.getElementById("susto-sombra");
+
+  sombra.style.display="block";
+  sombra.style.opacity=".35";
+  sombra.classList.add("susto-pisca");
+
+  setTimeout(function(){
+    sombra.style.opacity="0";
+  },900);
+
+  setTimeout(function(){
+    sombra.style.display="none";
+    sombra.style.opacity="";
+    sombra.classList.remove("susto-pisca");
+  },1500);
+}
+
+var entrarOriginal=window.entrar;
+window.entrar=function(){
+  if(entrarOriginal)entrarOriginal();
+  setTimeout(iniciarSustos,900);
+};
+
+var aceitarAvisoOriginal=window.aceitarAviso;
+window.aceitarAviso=function(comSom){
+  if(aceitarAvisoOriginal)aceitarAvisoOriginal(comSom);
+  setTimeout(iniciarSustos,900);
+};
 </script>
 </body>
 </html>
