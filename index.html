@@ -1049,12 +1049,32 @@ header,
   }
 }
 </style>
+
+<style id="rdzx-site-estatico">
+*,
+*::before,
+*::after{
+  animation:none!important;
+  transition:none!important;
+  scroll-behavior:auto!important;
+}
+html,body{
+  background:#07030f!important;
+  background-image:none!important;
+}
+body::before,
+body::after{
+  display:none!important;
+}
+#rdzx-bg-video,
+#rdzx-sound-button{
+  display:none!important;
+}
+</style>
 </head>
 <body>
 
-<video id="rdzx-bg-video" autoplay muted loop playsinline preload="metadata">
-  <source src="imagens/fundo-rdzx.mp4" type="video/mp4">
-</video>
+
 
 <header><div class="wrap nav"><div class="logo">RDZX <span>STORE ⚡</span></div><nav><a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#produtos">Produtos</a><a href="#faq">FAQ</a></nav><div class="actions"><button class="icon" onclick="openCart()">🛒<span class="count" id="count">0</span></button></div></div></header>
 <main id="inicio"><div class="wrap hero"><h1>Seu mundo digital.<br><span class="gradient">Em um só lugar.</span></h1><p>Assinaturas, jogos, Discord, editores e serviços digitais em uma experiência rápida, moderna e responsiva.</p><div class="heroBtns"><a class="btn" href="#produtos">Ver produtos</a><button class="btn alt" onclick="sendWhats('Olá! Vim pelo site da RDZX STORE e gostaria de tirar uma dúvida.')">💬 Falar no WhatsApp</button></div></div>
@@ -1215,7 +1235,7 @@ function applyReveal(){document.querySelectorAll('section,.head,.card,.catCard,.
 const oldRender=render;render=function(){oldRender();applyReveal()};
 applyReveal();
 </script>
-<button id="rdzx-sound-button" type="button" aria-label="Ativar som">🔇</button>
+
 <script>
 (function(){
   const video = document.getElementById("rdzx-bg-video");
