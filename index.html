@@ -4127,3 +4127,40 @@ section{
   });
 })();
 </script>
+
+<script id="rdzx-restaurar-capas-assinaturas">
+setTimeout(function(){
+  if(typeof products==="undefined") return;
+
+  const capas={
+    "Netflix":"imagens/assinaturas/netflix.jpg",
+    "Prime Video":"imagens/assinaturas/prime-video.jpg",
+    "Disney+":"imagens/assinaturas/disney-plus.jpg",
+    "HBO Max":"imagens/assinaturas/hbo-max.jpg",
+    "YouTube Premium":"imagens/assinaturas/youtube-premium.jpg",
+    "Viki Rakuten":"imagens/assinaturas/viki.jpg",
+    "Apple TV":"imagens/assinaturas/apple-tv.jpg",
+    "TNT Sports":"imagens/assinaturas/tnt-sports.jpg",
+    "Privacy":"imagens/assinaturas/privacy.jpg",
+    "Deezer":"imagens/assinaturas/deezer.jpg",
+    "Grobo Play":"imagens/assinaturas/grobo-play.jpg",
+    "Globoplay":"imagens/assinaturas/globoplay.jpg",
+    "Google Veo 3":"imagens/assinaturas/google-veo.jpg",
+    "ChatGPT":"imagens/assinaturas/chatgpt.jpg",
+    "CapCut Pro":"imagens/assinaturas/capcut.jpg",
+    "Crunchyroll":"imagens/assinaturas/crunchyroll.jpg",
+    "Spotify Premium":"imagens/assinaturas/spotify.jpg",
+    "IPTV":"imagens/assinaturas/iptv.jpg"
+  };
+
+  products.forEach(function(produto){
+    if(capas[produto.name]){
+      produto.img=capas[produto.name];
+    }
+  });
+
+  if(typeof render==="function"){
+    render();
+  }
+},4500);
+</script>
