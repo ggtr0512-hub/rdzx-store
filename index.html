@@ -1655,6 +1655,78 @@ if("serviceWorker" in navigator){
   setTimeout(aplicarDescricoes,1200);
 })();
 </script>
+
+<script id="rdzx-categorias-estaveis">
+setTimeout(function(){
+  if(typeof products==="undefined") return;
+
+  const area=document.getElementById("categories");
+  const select=document.getElementById("cat");
+  const produtos=document.getElementById("produtos");
+
+  if(!area) return;
+
+  const categorias=[...new Set(products.map(function(p){return p.cat}))];
+
+  const icones={
+    "ASSINATURAS":"💎",
+    "DISCORD":"💬",
+    "STEAM / JOGOS":"🎮",
+    "JOGOS":"🕹️",
+    "EDITORES":"🎨",
+    "ENGAJAMENTOS":"📸",
+    "CRIE SUA EMPRESA":"🚀",
+    "OUTROS":"📦"
+  };
+
+  area.className="rdzx-category-tabs";
+  area.innerHTML="";
+
+  function criarBotao(nome,icone,quantidade,valor){
+    const botao=document.createElement("button");
+    botao.className="rdzx-category-tab";
+    botao.innerHTML=icone+"<br>"+nome+"<small>"+quantidade+" produto(s)</small>";
+
+    botao.onclick=function(){
+      if(select) select.value=valor;
+
+      document.querySelectorAll(".rdzx-category-tab").forEach(function(item){
+        item.classList.remove("active");
+      });
+
+      botao.classList.add("active");
+
+      if(typeof render==="function") render();
+
+      if(produtos){
+        produtos.scrollIntoView({behavior:"smooth",block:"start"});
+      }
+    };
+
+    area.appendChild(botao);
+  }
+
+  criarBotao(
+    "Todos os produtos",
+    "✨",
+    products.length,
+    ""
+  );
+
+  categorias.forEach(function(categoria){
+    criarBotao(
+      categoria,
+      icones[categoria]||"📂",
+      products.filter(function(p){return p.cat===categoria}).length,
+      categoria
+    );
+  });
+
+  const primeiro=area.querySelector(".rdzx-category-tab");
+  if(primeiro) primeiro.classList.add("active");
+
+},3500);
+</script>
 </body></html>
 <style>
 #rdzx-sound-button{
