@@ -135,5 +135,79 @@ function copiar(numero){
   });
 })();
 </script>
+
+<style id="rdzx-controles-video-premium">
+.rdzx-controles-video{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:18px auto 8px;
+}
+.rdzx-controle-video{
+  border:1px solid #ffffff44;
+  border-radius:15px;
+  padding:13px 18px;
+  color:#fff;
+  background:linear-gradient(110deg,#713cff,#c13cff,#477dff);
+  background-size:200% 100%;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 0 18px #9b5cff88,0 8px 25px #0008;
+  transition:.25s;
+}
+.rdzx-controle-video:hover{
+  transform:translateY(-3px) scale(1.03);
+  background-position:100% 0;
+  box-shadow:0 0 30px #e64cffcc,0 12px 30px #000a;
+}
+#rdzx-som-premium{
+  animation:rdzxBrilhoSom 1.7s ease-in-out infinite alternate;
+}
+@keyframes rdzxBrilhoSom{
+  from{
+    box-shadow:0 0 12px #55d9ff99,0 0 28px #9b5cff66,0 8px 25px #0008;
+  }
+  to{
+    box-shadow:0 0 22px #55d9ff,0 0 48px #e64cffcc,0 8px 30px #000a;
+  }
+}
+</style>
+
+<script id="rdzx-controles-video-premium-script">
+(function(){
+  var video2=document.getElementById("video");
+  if(!video2)return;
+
+  var area=document.createElement("div");
+  area.className="rdzx-controles-video";
+
+  var som=document.createElement("button");
+  som.id="rdzx-som-premium";
+  som.className="rdzx-controle-video";
+  som.textContent="🔊 Ativar som";
+
+  var replay=document.createElement("button");
+  replay.className="rdzx-controle-video";
+  replay.textContent="↻ Assistir novamente";
+
+  som.onclick=function(){
+    video2.muted=false;
+    video2.volume=1;
+    video2.play().catch(function(){});
+    som.textContent="🔇 Desativar som";
+  };
+
+  replay.onclick=function(){
+    video2.style.display="block";
+    video2.currentTime=0;
+    video2.play().catch(function(){});
+  };
+
+  area.appendChild(som);
+  area.appendChild(replay);
+  video2.insertAdjacentElement("afterend",area);
+})();
+</script>
 </body>
 </html>
