@@ -269,3 +269,41 @@ setTimeout(function(){
 </script>
 </body>
 </html>
+
+<style>
+#rdzx-pausar-video{
+  animation:brilhoPausa 1.8s ease-in-out infinite alternate;
+}
+@keyframes brilhoPausa{
+  from{box-shadow:0 0 12px #9b5cff88,0 8px 25px #0008}
+  to{box-shadow:0 0 30px #55d9ffcc,0 8px 30px #000a}
+}
+</style>
+
+<script id="rdzx-pausar-video-final">
+setTimeout(function(){
+  var video=document.getElementById("video");
+  var area=document.querySelector(".rdzx-controles-video");
+
+  if(!video || !area || document.getElementById("rdzx-pausar-video")){
+    return;
+  }
+
+  var botao=document.createElement("button");
+  botao.id="rdzx-pausar-video";
+  botao.className="rdzx-controle-video";
+  botao.textContent="⏸ Pausar vídeo";
+
+  botao.onclick=function(){
+    if(video.paused){
+      video.play().catch(function(){});
+      botao.textContent="⏸ Pausar vídeo";
+    }else{
+      video.pause();
+      botao.textContent="▶ Continuar vídeo";
+    }
+  };
+
+  area.appendChild(botao);
+},500);
+</script>
