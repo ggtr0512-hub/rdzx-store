@@ -300,6 +300,68 @@ body.claro .categoria{
   border-color:#d9c8e5;
 }
 </style>
+
+<style id="rdzx-confianca">
+.rdzx-confianca{
+  width:min(1100px,calc(100% - 32px));
+  margin:0 auto 28px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.rdzx-confianca div,
+.rdzx-como-funciona{
+  border:1px solid #ffffff1c;
+  border-radius:17px;
+  padding:18px;
+  background:linear-gradient(145deg,#1b1029,#10091a);
+  box-shadow:0 10px 25px #0005;
+}
+.rdzx-confianca b{
+  display:block;
+  margin-bottom:7px;
+  color:#dfc4ff;
+}
+.rdzx-confianca span{
+  color:#b9a9c5;
+  font-size:13px;
+  line-height:1.5;
+}
+.rdzx-como-funciona{
+  width:min(1100px,calc(100% - 32px));
+  margin:0 auto 30px;
+  text-align:center;
+}
+.rdzx-como-funciona h2{
+  margin:0 0 8px;
+  color:#d9baff;
+}
+.rdzx-como-funciona p{
+  max-width:700px;
+  margin:auto;
+  color:#b9a9c5;
+  line-height:1.6;
+}
+body.claro .rdzx-confianca div,
+body.claro .rdzx-como-funciona{
+  background:#fff;
+  border-color:#ddd2e7;
+  box-shadow:0 8px 22px #38204b18;
+}
+body.claro .rdzx-confianca b,
+body.claro .rdzx-como-funciona h2{
+  color:#5c2592;
+}
+body.claro .rdzx-confianca span,
+body.claro .rdzx-como-funciona p{
+  color:#665870;
+}
+@media(max-width:700px){
+  .rdzx-confianca{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -309,6 +371,26 @@ body.claro .categoria{
   <div class="logo">RDZX STORE ⚡</div>
   <h1>Assinaturas digitais</h1>
   <p>Escolha sua assinatura e fale diretamente com a RDZX STORE pelo WhatsApp.</p>
+
+<section class="rdzx-confianca">
+  <div>
+    <b>💎 Produtos digitais</b>
+    <span>Catálogo organizado de assinaturas</span>
+  </div>
+  <div>
+    <b>💰 Preço transparente</b>
+    <span>O valor aparece antes do pedido</span>
+  </div>
+  <div>
+    <b>💬 Atendimento direto</b>
+    <span>Finalize tudo pelo WhatsApp</span>
+  </div>
+</section>
+
+<section class="rdzx-como-funciona">
+  <h2>Como funciona</h2>
+  <p>Escolha uma assinatura, confira o preço e toque em comprar. O WhatsApp abrirá com o produto e o valor já preenchidos para facilitar seu atendimento.</p>
+</section>
 </header>
 
 <main>
