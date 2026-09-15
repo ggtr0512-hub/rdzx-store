@@ -180,8 +180,8 @@ button:hover{
   </div>
 
   <div class="contatos">
-    <button onclick="copiar('5594991588787')">💬 WhatsApp</button>
-    <button onclick="copiar('5594984438697')">🛟 Suporte</button>
+    <button onclick="abrirWhatsApp()">💬 WhatsApp</button>
+    <button onclick="abrirTelegram()">🛟 Suporte</button>
   </div>
 
   <div class="numero">
@@ -233,6 +233,22 @@ repetir.onclick=function(){
 function copiar(numero){
   navigator.clipboard.writeText(numero);
   alert("Contato copiado.");
+}
+</script>
+
+<script id="rdzx-contatos-diretos">
+function abrirWhatsApp(){
+  var mensagem=encodeURIComponent(
+    "Olá! Entrei na RDZX STORE e gostaria de comprar ou tirar uma dúvida."
+  );
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+mensagem;
+}
+
+function abrirTelegram(){
+  window.location.href=
+    "tg://resolve?phone=5594984438697";
 }
 </script>
 </body>
