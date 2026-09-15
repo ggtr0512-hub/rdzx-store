@@ -1773,6 +1773,48 @@ if("serviceWorker" in navigator){
   });
 })();
 </script>
+
+<script id="rdzx-remover-botao-discord">
+(function(){
+  function limpar(){
+    document.querySelectorAll(".rdzx-category-tab").forEach(function(botao){
+      const texto=botao.textContent.toLowerCase();
+
+      if(
+        texto.includes("discord") ||
+        texto.includes("nitro")
+      ){
+        botao.remove();
+      }
+    });
+
+    document.querySelectorAll("#rdzx-section-discord").forEach(function(item){
+      item.remove();
+    });
+
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+
+      if(
+        titulo &&
+        (
+          titulo.textContent.toLowerCase().includes("discord") ||
+          titulo.textContent.toLowerCase().includes("nitro")
+        )
+      ){
+        card.remove();
+      }
+    });
+  }
+
+  limpar();
+
+  new MutationObserver(limpar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
 </body></html>
 <style>
 #rdzx-sound-button{
