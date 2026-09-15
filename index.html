@@ -989,17 +989,7 @@ footer{
   <h2>📂 Categorias</h2>
   <div class="rdzx-menu-botoes"></div>
 </section>
-<section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div><div class="grid rdzx-category-tabs" id="categories">
-<button class="rdzx-category-tab active" onclick="document.getElementById('cat').value='';render()">✨<br>Todos os produtos<small>Ver tudo</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='ASSINATURAS';render()">💎<br>Assinaturas<small>Produtos digitais</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='CRIE SUA EMPRESA';render()">🚀<br>Crie sua empresa<small>Soluções para seu projeto</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='DISCORD';render()">💬<br>Discord / Nitro<small>Produtos para Discord</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='ENGAJAMENTOS';render()">📸<br>Engajamentos<small>Redes sociais</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='STEAM / JOGOS';render()">🎮<br>Steam / Jogos<small>Jogos digitais</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='JOGOS';render()">🕹️<br>Jogos<small>Mais opções</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='EDITORES';render()">🎨<br>Editores<small>Imagem e vídeo</small></button>
-<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='OUTROS';render()">📦<br>Outros<small>Mais produtos</small></button>
-</div></div></section>
+<section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div><div class="grid" id="categories"></div></div></section>
 <section id="produtos"><div class="wrap"><div class="head"><h2>Produtos</h2><small id="resultCount"></small></div><div class="search"><input id="search" placeholder="🔍 Buscar produto..." oninput="render()"></div><div class="filters"><select id="cat" onchange="render()"><option value="">Todas as categorias</option></select><select id="sort" onchange="render()"><option value="default">Mais relevantes</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select><select id="availability" onchange="render()"><option value="">Todos os produtos</option><option value="available">Disponíveis</option><option value="sold">Esgotados</option></select></div><div class="grid" id="products"></div></div></section>
 <section id="faq"><div class="wrap faq"><div class="head"><h2>FAQ</h2></div><details><summary>Como faço um pedido?</summary><p>Adicione os produtos ao carrinho, confira o total e toque em “Finalizar pelo WhatsApp”. A mensagem será preparada automaticamente.</p></details><details><summary>Produtos “Consultar” podem ser comprados?</summary><p>Sim. O WhatsApp abrirá com o produto selecionado para você consultar disponibilidade e valor.</p></details><details><summary>O carrinho fica salvo?</summary><p>Sim. Os itens ficam salvos no armazenamento local do navegador até você remover ou finalizar o pedido.</p></details></div></section>
 <section><div class="wrap"><div class="contact feature"><h2>Fale com a RDZX STORE ⚡</h2><p>Tem alguma dúvida ou quer consultar um produto?</p><button class="btn" onclick="sendWhats('Olá! Vim pelo site da RDZX STORE e gostaria de tirar uma dúvida.')">Abrir WhatsApp</button></div></div></section></main>
@@ -1129,11 +1119,7 @@ function sendWhats(msg){location.href='https://wa.me/'+WPP+'?text='+encodeURICom
 function checkout(){if(!cart.length)return;let total=0;let lines=cart.map(i=>{let p=products.find(x=>x.id===i.id);if(p.price)total+=p.price*i.qty;return `• ${p.name}\n  Preço: ${money(p.price)}\n  Quantidade: ${i.qty}`}).join('\n');sendWhats(`Olá! Vim pela RDZX STORE.\n\nQuero fazer este pedido:\n${lines}\n\nTotal: ${money(total)}\n\nAguardo as informações para finalizar.`)}
 function view(id){let p=products.find(x=>x.id===id);document.getElementById('modalContent').innerHTML=`<div class="modalPic">${p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:p.emoji}</div><div class="muted">${p.cat}</div><h2>${esc(p.name)}</h2><p class="muted">${p.sold?'Produto esgotado no momento.':p.price==null?'Consulte disponibilidade e valor diretamente pelo WhatsApp.':'Produto digital. Após adicionar ao carrinho, finalize pelo WhatsApp.'}</p><div class="price">${p.prefix?p.prefix+' ':''}${money(p.price)}</div><button class="btn" style="width:100%" ${p.sold?'disabled':''} onclick="add(${p.id});closeModal()">🛒 Adicionar ao carrinho</button>`;document.getElementById('modal').classList.add('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
-function card(p){
-const descricoes={"Hogwarts Legacy": "Aventura mágica com exploração, feitiços e batalhas.", "Elden Ring": "Mundo sombrio cheio de chefes, mistérios e batalhas épicas.", "Elden Ring Nightreign": "Novos desafios intensos no universo de Elden Ring.", "LEGO Batman: Legacy of the Dark Knight Deluxe Edition": "Aventura do Batman com conteúdo Deluxe e muita ação.", "Baldur’s Gate III": "RPG épico com escolhas profundas e história envolvente.", "Resident Evil Requiem": "Terror, sobrevivência e suspense.", "The Last of Us Part I": "Jornada emocionante de sobrevivência.", "The Last of Us Part II": "História intensa de sobrevivência e vingança.", "Crimson Desert": "Ação, exploração e combates em mundo aberto.", "PRAGMATA": "Experiência futurista de ação e ficção científica.", "Site de Vendas Personalizado": "Site moderno para divulgar e vender seus produtos.", "Criação de Servidor": "Criação e configuração de servidor para seu projeto.", "Netflix": "Filmes, séries e produções exclusivas.", "Prime Video": "Filmes, séries e conteúdos exclusivos.", "Disney+": "Conteúdos da Disney, Pixar, Marvel e Star Wars.", "HBO Max": "Filmes, séries e produções exclusivas.", "YouTube Premium": "Vídeos sem anúncios e reprodução em segundo plano.", "Conta com Nitro": "Conta Discord com benefícios Nitro.", "Nitro Link": "Ativação de benefícios Nitro por link.", "Ativação Nitro": "Ativação de Nitro para sua conta Discord.", "Membros Discord": "Serviço para aumentar a presença do servidor.", "Conta Virgem": "Conta nova pronta para utilização.", "Impulsos": "Impulsos para destacar seu servidor.", "Instagram": "Serviço digital para melhorar sua presença no Instagram.", "Editores de Imagem": "Ferramentas para criar e melhorar imagens.", "Editores de Vídeo": "Recursos para produzir vídeos com qualidade.", "Minecraft Original Java + Bedrock": "Experiência completa de Minecraft.", "Xbox Game Pass": "Catálogo de jogos para aproveitar no Xbox.", "Hytale": "Aventura com exploração, construção e desafios.", "ExitLag": "Solução para melhorar a conexão nos jogos.", "GeForce NOW": "Jogos compatíveis por streaming.", "Keys Steam Aleatórias": "Chaves aleatórias para descobrir novos jogos.", "Robux Taxado": "Créditos Robux conforme a opção escolhida.", "Robux Gamepass": "Benefícios e conteúdos dentro do Roblox.", "PlayStation": "Produtos digitais para jogadores PlayStation.", "Curso Game Developer Noneclass": "Curso de desenvolvimento de jogos.", "Checker Nitro Link": "Ferramenta para verificar links Nitro.", "Geradores": "Ferramentas digitais para gerar conteúdos.", "Créditos Lovable": "Créditos para usar recursos da plataforma Lovable.", "Emails": "E-mails digitais conforme a necessidade.", "Viki Rakuten": "Filmes, séries e conteúdos asiáticos.", "Apple TV": "Conteúdos exclusivos da Apple TV.", "TNT Sports": "Conteúdos esportivos e transmissões ao vivo.", "Privacy": "Serviço digital de privacidade.", "Deezer": "Músicas e playlists para ouvir online.", "Grobo Play": "Filmes, séries e conteúdos de entretenimento.", "Google Veo 3": "Ferramenta para criação de vídeos.", "ChatGPT": "Assistente inteligente para criação e produtividade.", "CapCut Pro": "Recursos profissionais para edição de vídeos.", "Crunchyroll": "Animes e conteúdos exclusivos.", "Spotify Premium": "Músicas sem anúncios.", "IPTV": "Acesso a conteúdos digitais."};
-const descricao=descricoes[p.name]||"Produto digital da RDZX STORE.";
-return `<article class="card"><div class="pic">\({p.sold?'<span class="badge sold">ESGOTADO</span>':''}\){p.img?`<img src="\({p.img}" alt="\){esc(p.name)}">`:p.emoji}</div><div class="info"><h3>\({esc(p.name)}</h3><div class="muted">\){p.cat}</div><div class="rdzx-product-description">\({esc(descricao)}</div><div class="price">\){p.prefix?p.prefix+' ':''}\({money(p.price)}</div><button class="btn" onclick="view(\){p.id})">${p.sold?'Ver detalhes':'Ver produto'}</button></div></article>`;
-}
+function card(p){return `<article class="card"><div class="pic">${p.sold?'<span class="badge sold">ESGOTADO</span>':''}${p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:p.emoji}</div><div class="info"><h3>${esc(p.name)}</h3><div class="muted">${p.cat}</div><div class="price">${p.prefix?p.prefix+' ':''}${money(p.price)}</div><button class="btn" onclick="view(${p.id})">${p.sold?'Ver detalhes':'Ver produto'}</button></div></article>`}
 function render(){let q=document.getElementById('search').value.toLowerCase(),cat=document.getElementById('cat').value,availability=document.getElementById('availability').value;let a=products.filter(p=>(!q||(p.name+' '+p.cat).toLowerCase().includes(q))&&(!cat||p.cat===cat)&&(!availability||(availability==='sold'?p.sold:!p.sold)));let s=document.getElementById('sort').value;if(s==='low')a.sort((x,y)=>(x.price??999999)-(y.price??999999));if(s==='high')a.sort((x,y)=>(y.price??-1)-(x.price??-1));document.getElementById('products').innerHTML=a.length?a.map(card).join(''):'<div class="empty">Nenhum produto encontrado.</div>';document.getElementById('resultCount').textContent=a.length+' produto(s)'}
 function setup(){let cats=[...new Set(products.map(p=>p.cat))];document.getElementById('cat').innerHTML='<option value="">Todas as categorias</option>'+cats.map(c=>`<option>${c}</option>`).join('');document.getElementById('categories').innerHTML=cats.map(c=>`<button class="catCard" onclick="document.getElementById('cat').value='${c}';document.getElementById('produtos').scrollIntoView();render()">📂<strong>${c}</strong><span class="muted">${products.filter(p=>p.cat===c).length} produto(s)</span></button>`).join('');render();updateCart()}
 setup();
@@ -1662,11 +1648,9 @@ if("serviceWorker" in navigator){
   aplicarDescricoes();
   setTimeout(aplicarDescricoes,500);
   setTimeout(aplicarDescricoes,1500);
-  setTimeout(aplicarDescricoes,1200);
+  setInterval(aplicarDescricoes,1200);
 })();
 </script>
-
-
 </body></html>
 <style>
 #rdzx-sound-button{
@@ -1701,7 +1685,7 @@ if("serviceWorker" in navigator){
     b.style.setProperty("border-radius","14px","important");
   }
   fixarBotao();
-  setTimeout(fixarBotao,500);
+  setInterval(fixarBotao,500);
 })();
 </script>
 
@@ -1796,7 +1780,7 @@ if("serviceWorker" in navigator){
   }
 
   ativarAnimacao();
-  setTimeout(ativarAnimacao,500);
+  setInterval(ativarAnimacao,500);
 })();
 </script>
 
@@ -1816,7 +1800,7 @@ if("serviceWorker" in navigator){
   }
 
   ativarVibracao();
-  setTimeout(ativarVibracao,500);
+  setInterval(ativarVibracao,500);
 })();
 </script>
 
@@ -2092,7 +2076,7 @@ if("serviceWorker" in navigator){
   }
 
   atualizar();
-  setTimeout(atualizar,700);
+  setInterval(atualizar,700);
 })();
 </script>
 
@@ -2284,7 +2268,7 @@ if("serviceWorker" in navigator){
   }
 
   iniciar();
-  setTimeout(iniciar,700);
+  setInterval(iniciar,700);
 })();
 </script>
 
@@ -2326,7 +2310,7 @@ section{
   }
 
   acelerar();
-  setTimeout(acelerar,500);
+  setInterval(acelerar,500);
 })();
 </script>
 
@@ -2341,7 +2325,117 @@ section{
 }
 </style>
 
+<script id="rdzx-product-descriptions-script">
+(function(){
+  const descricoes={
+    "Hogwarts Legacy":"Viva uma aventura mágica em Hogwarts com exploração, feitiços e batalhas.",
+    "Elden Ring":"Explore um mundo sombrio e desafiador cheio de chefes, mistérios e batalhas épicas.",
+    "Elden Ring Nightreign":"Uma experiência intensa no universo de Elden Ring com novos desafios e perigos.",
+    "LEGO Batman: Legacy of the Dark Knight Deluxe Edition":"Aventura do Batman com conteúdo Deluxe e muita ação em uma Gotham cheia de desafios.",
+    "Baldur’s Gate III":"RPG épico com escolhas profundas, personagens marcantes e uma história envolvente.",
+    "Resident Evil Requiem":"Terror, sobrevivência e suspense em uma experiência assustadora da franquia Resident Evil.",
+    "The Last of Us Part I":"Uma jornada emocionante de sobrevivência, drama e conexão em um mundo devastado.",
+    "The Last of Us Part II":"Uma história intensa de sobrevivência, vingança e escolhas difíceis.",
+    "Crimson Desert":"Aventura de ação em um mundo aberto com combates, exploração e paisagens impressionantes.",
+    "PRAGMATA":"Experiência futurista de ação e ficção científica com uma atmosfera misteriosa.",
+    "Site de Vendas Personalizado":"Criação de um site moderno e personalizado para divulgar e vender seus produtos.",
+    "Criação de Servidor":"Configuração e criação de servidor conforme a necessidade do seu projeto.",
+    "Tudo em Um!":"Pacote completo com soluções digitais reunidas em uma única opção.",
+    "Netflix":"Assinatura para acessar filmes, séries e produções exclusivas da Netflix.",
+    "Prime Video":"Acesso a filmes, séries e conteúdos exclusivos do Prime Video.",
+    "Disney+":"Conteúdos da Disney, Pixar, Marvel, Star Wars e National Geographic.",
+    "HBO Max":"Filmes, séries e produções exclusivas em um só lugar.",
+    "YouTube Premium":"Experiência sem anúncios, reprodução em segundo plano e benefícios Premium.",
+    "Conta com Nitro":"Conta Discord com benefícios Nitro para melhorar sua experiência.",
+    "Nitro Link":"Opção prática para ativação de benefícios Nitro por link.",
+    "Ativação Nitro":"Ativação de Nitro para sua conta Discord.",
+    "Membros Discord":"Aumente a presença e o movimento do seu servidor Discord.",
+    "Conta Virgem":"Conta nova pronta para utilização conforme a disponibilidade.",
+    "Impulsos":"Impulsos para ajudar a destacar e fortalecer seu servidor Discord.",
+    "Instagram":"Serviço digital para melhorar a presença e o engajamento no Instagram.",
+    "Editores de Imagem":"Ferramentas e editores para criar e melhorar imagens digitais.",
+    "Editores de Vídeo":"Recursos e editores para produzir vídeos com mais qualidade.",
+    "Minecraft Original Java + Bedrock":"Acesso à experiência completa de Minecraft nas versões Java e Bedrock.",
+    "Xbox Game Pass":"Catálogo de jogos para aproveitar diferentes experiências no Xbox.",
+    "Hytale":"Aventura com exploração, construção e desafios em um universo único.",
+    "ExitLag":"Solução voltada para melhorar a conexão e reduzir problemas de rota nos jogos.",
+    "GeForce NOW":"Jogue títulos compatíveis por streaming em diferentes dispositivos.",
+    "Keys Steam Aleatórias":"Chaves aleatórias para descobrir novos jogos na plataforma Steam.",
+    "Robux Taxado":"Créditos Robux com valor informado conforme a opção escolhida.",
+    "Robux Gamepass":"Opção para adquirir benefícios e conteúdos dentro de experiências Roblox.",
+    "PlayStation":"Produtos e serviços digitais para jogadores da plataforma PlayStation.",
+    "Curso Game Developer Noneclass":"Curso para aprender conceitos e práticas do desenvolvimento de jogos.",
+    "Checker Nitro Link":"Ferramenta para verificar informações relacionadas a links Nitro.",
+    "Geradores":"Ferramentas digitais para gerar conteúdos conforme a opção escolhida.",
+    "Créditos Lovable":"Créditos para utilizar recursos e funcionalidades da plataforma Lovable.",
+    "Emails":"E-mails digitais para utilização conforme a necessidade do cliente."
+  };
 
+  function escapar(texto){
+    return texto.replace(/[&<>"']/g,function(letra){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[letra];
+    });
+  }
+
+  function colocarDescricoes(){
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+      const info=card.querySelector(".info");
+      if(!titulo || !info || info.querySelector(".rdzx-product-description"))return;
+
+      const descricao=descricoes[titulo.textContent.trim()];
+      if(!descricao)return;
+
+      const elemento=document.createElement("div");
+      elemento.className="rdzx-product-description";
+      elemento.innerHTML=escapar(descricao);
+
+      const preco=info.querySelector(".price");
+      if(preco) info.insertBefore(elemento,preco);
+      else info.appendChild(elemento);
+    });
+  }
+
+  function melhorarModal(){
+    if(typeof view!=="function" || view.__rdzxDescricao)return;
+
+    const viewOriginal=view;
+
+    function viewComDescricao(id){
+      viewOriginal(id);
+
+      setTimeout(function(){
+        const modal=document.getElementById("modalContent");
+        const titulo=modal && modal.querySelector("h2");
+        if(!modal || !titulo)return;
+
+        const descricao=descricoes[titulo.textContent.trim()];
+        if(!descricao || modal.querySelector(".rdzx-modal-description"))return;
+
+        const texto=document.createElement("p");
+        texto.className="rdzx-modal-description";
+        texto.style.cssText="color:#aca2c3;line-height:1.7;font-size:14px";
+        texto.textContent=descricao;
+
+        const preco=modal.querySelector(".price");
+        if(preco) modal.insertBefore(texto,preco);
+        else modal.appendChild(texto);
+      },80);
+    }
+
+    viewComDescricao.__rdzxDescricao=true;
+    view=viewComDescricao;
+  }
+
+  function atualizar(){
+    colocarDescricoes();
+    melhorarModal();
+  }
+
+  atualizar();
+  setInterval(atualizar,600);
+})();
+</script>
 
 
 <script id="rdzx-new-subscriptions">
@@ -2687,7 +2781,28 @@ section{
 </script>
 
 
+<script id="rdzx-iniciar-assinaturas">
+(function(){
+  function iniciarAssinaturas(){
+    const select=document.getElementById("cat");
 
+    if(!select || typeof render!=="function")return;
+
+    select.value="ASSINATURAS";
+    render();
+
+    document.querySelectorAll(".rdzx-category-tab").forEach(function(botao){
+      botao.classList.remove("active");
+
+      if(botao.textContent.includes("ASSINATURAS")){
+        botao.classList.add("active");
+      }
+    });
+  }
+
+  setTimeout(iniciarAssinaturas,900);
+})();
+</script>
 
 
 <script id="rdzx-remover-tudo-em-um">
@@ -2976,7 +3091,7 @@ section{
     criarSecao();
   },1000);
 
-  setTimeout(criarSecao,1500);
+  setInterval(criarSecao,1500);
 })();
 </script>
 
@@ -3062,7 +3177,7 @@ section{
   }
 
   melhorarFavoritos();
-  setTimeout(melhorarFavoritos,700);
+  setInterval(melhorarFavoritos,700);
 })();
 </script>
 
@@ -3289,7 +3404,7 @@ section{
   }
 
   setTimeout(criarEngajamentos,1200);
-  setTimeout(criarEngajamentos,1800);
+  setInterval(criarEngajamentos,1800);
 })();
 </script>
 
@@ -3367,12 +3482,23 @@ section{
   }
 
   setTimeout(organizarInstagram,1200);
-  setTimeout(organizarInstagram,1800);
+  setInterval(organizarInstagram,1800);
 })();
 </script>
 
 
-
+<style id="rdzx-remover-grade-misturada">
+#products{
+  display:none!important;
+}
+#produtos>.wrap>.head{
+  display:none!important;
+}
+#produtos>.wrap>.search,
+#produtos>.wrap>.filters{
+  display:none!important;
+}
+</style>
 
 <script id="rdzx-engajamento-instagram-unico">
 (function(){
@@ -3395,7 +3521,7 @@ section{
   }
 
   garantirInstagramUnico();
-  setTimeout(garantirInstagramUnico,1000);
+  setInterval(garantirInstagramUnico,1000);
 })();
 </script>
 
@@ -3431,7 +3557,7 @@ section{
     observador.observe(outros,{childList:true,subtree:true});
   }
 
-  setTimeout(removerInstagramDosOutros,300);
+  setInterval(removerInstagramDosOutros,300);
 })();
 </script>
 
@@ -3491,7 +3617,7 @@ section{
     observador.observe(secao,{childList:true,subtree:true});
   }
 
-  setTimeout(transformarOutrosEmEngajamentos,500);
+  setInterval(transformarOutrosEmEngajamentos,500);
 })();
 </script>
 
@@ -3648,7 +3774,7 @@ section{
     }
   });
 
-  setTimeout(atualizarTotal,800);
+  setInterval(atualizarTotal,800);
 })();
 </script>
 
