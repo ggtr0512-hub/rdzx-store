@@ -1166,7 +1166,7 @@ function comprarProduto(botao){
     {nome:"Cupom Especial",icone:"⚡",peso:1,raro:true},
     {nome:"Cupom VIP",icone:"👑",peso:1,raro:true},
     {nome:"Caixa Misteriosa",icone:"🎁",peso:1,raro:true},
-    {nome:"Cupom 5% OFF",icone:"🎟️",peso:1,raro:true},
+    {nome:"Cupom 6% OFF",icone:"🎟️",peso:1,raro:true},
     {nome:"Caixa Surpresa GRÁTIS",icone:"🎁🔥",peso:1,raro:true},
     {nome:"Não foi dessa vez!",icone:"😭",peso:15},
     {nome:"Não foi dessa vez!",icone:"😭",peso:15},
@@ -1240,8 +1240,16 @@ function comprarProduto(botao){
     return premios.length-1;
   }
 
-  function gerarCodigo(){
-    return "RDZX-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  function gerarCodigo(nome){
+    if(nome==="Cupom 10% OFF"){
+      return "RDZX10";
+    }
+
+    if(nome==="Cupom 6% OFF"){
+      return "RDZX6";
+    }
+
+    return "";
   }
 
   function confetes(){
@@ -1273,7 +1281,7 @@ function comprarProduto(botao){
       texto.textContent="Você pode girar novamente em outra oportunidade.";
       codigo.style.display="none";
     }else if(premio.nome.indexOf("Cupom")>=0){
-      var cupom=gerarCodigo();
+      var cupom=gerarCodigo(premio.nome);
       texto.textContent="Seu cupom foi gerado. Use este código no atendimento:";
       codigo.textContent=cupom;
       codigo.style.display="block";
