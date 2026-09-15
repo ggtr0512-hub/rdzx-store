@@ -573,6 +573,145 @@ body.claro .produto img{
   .roleta-titulo h2{font-size:19px}
 }
 </style>
+
+<style id="rdzx-roleta-destaque">
+.rdzx-roleta-area{
+  width:min(1120px,calc(100% - 32px));
+  min-height:430px;
+  margin:30px auto 38px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(300px,40%);
+  grid-template-rows:auto 1fr auto;
+  column-gap:35px;
+  align-items:center;
+  padding:34px 38px;
+  text-align:left;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 45%,#a738ff38,transparent 31%),
+    radial-gradient(circle at 18% 20%,#477dff18,transparent 30%),
+    linear-gradient(135deg,#1b0d2bdf,#0d0715f2);
+  border:1px solid #b477ff66;
+  border-radius:28px;
+  box-shadow:0 0 35px #713cff35,0 22px 55px #0009;
+  position:relative;
+}
+.rdzx-roleta-area::before,
+.rdzx-roleta-area::after{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:#bf5cff22;
+  filter:blur(25px);
+  pointer-events:none;
+}
+.rdzx-roleta-area::before{top:-25px;left:28%}
+.rdzx-roleta-area::after{right:2%;bottom:-25px;background:#4d8dff22}
+
+.rdzx-roleta-area .roleta-titulo{
+  grid-column:1;
+  grid-row:1;
+  justify-content:flex-start;
+  margin:0 0 12px;
+  position:relative;
+  z-index:1;
+}
+.rdzx-roleta-area .roleta-copy{
+  grid-column:1;
+  grid-row:2;
+  position:relative;
+  z-index:1;
+}
+.roleta-copy h2{
+  margin:8px 0 12px;
+  color:#f0d6ff;
+  font-size:clamp(26px,4vw,42px);
+  line-height:1.08;
+}
+.roleta-copy p{
+  max-width:480px;
+  color:#cbbbd7;
+  font-size:16px;
+  line-height:1.65;
+}
+.roleta-copy ul{
+  padding:0;
+  margin:20px 0 0;
+  list-style:none;
+  color:#d9c8e5;
+  line-height:2;
+}
+.roleta-selo{
+  display:inline-block;
+  padding:7px 12px;
+  color:#ffe49a;
+  border:1px solid #ffd65c66;
+  border-radius:999px;
+  background:#ffd65c12;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.rdzx-roleta-area .roleta-palco{
+  grid-column:2;
+  grid-row:1 / span 3;
+  justify-self:center;
+  width:min(360px,100%);
+}
+.rdzx-roleta-area #rdzx-girar-roleta{
+  grid-column:2;
+  grid-row:3;
+  justify-self:center;
+  margin-top:12px;
+}
+.rdzx-roleta-area .roleta-aviso{
+  grid-column:1;
+  grid-row:3;
+  margin:15px 0 0;
+}
+@media(max-width:760px){
+  .rdzx-roleta-area{
+    display:flex;
+    flex-direction:column;
+    width:calc(100% - 24px);
+    min-height:0;
+    padding:27px 16px;
+    text-align:center;
+  }
+  .rdzx-roleta-area .roleta-titulo{
+    justify-content:center;
+    order:1;
+  }
+  .rdzx-roleta-area .roleta-copy{
+    order:2;
+  }
+  .roleta-copy p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .roleta-copy ul{
+    text-align:left;
+    width:max-content;
+    max-width:100%;
+    margin:16px auto;
+  }
+  .rdzx-roleta-area .roleta-palco{
+    order:3;
+    width:min(340px,92vw);
+    margin:10px auto 0;
+  }
+  .rdzx-roleta-area #rdzx-girar-roleta{
+    order:4;
+    margin-top:20px;
+  }
+  .rdzx-roleta-area .roleta-aviso{
+    order:5;
+    margin-top:13px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -586,7 +725,39 @@ body.claro .produto img{
 
 
 
-</header>
+</header><section id="rdzx-roleta-store" class="rdzx-roleta-area">
+  <div class="roleta-titulo">
+    <span>🎡</span>
+    <div>
+      <h2>ROLETA RDZX STORE</h2>
+      <p>Gire gratuitamente e descubra sua sorte.</p>
+    </div>
+  </div>
+
+  <div class="roleta-copy">
+    <span class="roleta-selo">🎁 CHANCE GRATUITA</span>
+    <h2>Ganhe uma chance especial</h2>
+    <p>Gire a Roleta RDZX STORE e descubra se você ganhou um brinde ou cupom exclusivo.</p>
+    <ul>
+      <li>🎡 Giro gratuito</li>
+      <li>🎁 Prêmios surpresa</li>
+      <li>💎 Cupons especiais</li>
+    </ul>
+  </div>
+
+  <div class="roleta-palco">
+    <div class="roleta-ponteiro">▼</div>
+    <canvas id="rdzx-roleta-canvas" width="360" height="360"></canvas>
+  </div>
+
+  <button id="rdzx-girar-roleta" class="botao-roleta">
+    🎡 GIRAR AGORA
+  </button>
+
+  <small class="roleta-aviso">
+    Cada giro é gratuito. Prêmios sujeitos à disponibilidade.
+  </small>
+</section>
 
 <main>
   <div class="categoria">
@@ -773,28 +944,7 @@ body.claro .produto img{
 
 
 
-<section id="rdzx-roleta-store" class="rdzx-roleta-area">
-  <div class="roleta-titulo">
-    <span>🎡</span>
-    <div>
-      <h2>ROLETA RDZX STORE</h2>
-      <p>Gire gratuitamente e descubra sua sorte.</p>
-    </div>
-  </div>
 
-  <div class="roleta-palco">
-    <div class="roleta-ponteiro">▼</div>
-    <canvas id="rdzx-roleta-canvas" width="360" height="360"></canvas>
-  </div>
-
-  <button id="rdzx-girar-roleta" class="botao-roleta">
-    🎡 GIRAR GRATUITAMENTE
-  </button>
-
-  <small class="roleta-aviso">
-    Cada giro é gratuito. Prêmios sujeitos à disponibilidade.
-  </small>
-</section>
 
 <div id="rdzx-modal-premio" class="roleta-modal-fundo">
   <div class="roleta-modal">
