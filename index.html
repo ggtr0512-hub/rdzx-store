@@ -494,7 +494,7 @@ body.claro .produto img{
   box-shadow:0 0 45px #b51e3d66,0 25px 70px #000;
 }
 .horror-painel:before{
-  content:"///  ERROR  //  OBSERVER  ///";
+  content:"///  ERRO  //  OBSERVADOR  ///";
   display:block;
   color:#8d3444;
   font:11px monospace;
@@ -670,7 +670,7 @@ body.claro .produto img{
       <h1>VOCÊ TEM CERTEZA<br>QUE QUER CONTINUAR?</h1>
       <p class="horror-sub">Terror • Mistério • Suspense • Sobrevivência</p>
       <button class="horror-btn" onclick="iniciarHorror()">🩸 ENTRAR</button>
-      <button id="horror-som" class="horror-som" onclick="alternarSomHorror()">🔇 SOM OFF</button>
+      <button id="horror-som" class="horror-som" onclick="alternarSomHorror()">🔇 SOM DESLIGADO</button>
     </div>
 
     <div id="horror-jogo">
@@ -679,7 +679,7 @@ body.claro .produto img{
         <span id="horror-dificuldade">🟢 SOBREVIVENTE</span>
       </div>
 
-      <div class="horror-xp">⚡ XP: <b id="horror-xp">0</b> · COMBO: <b id="horror-combo">0</b></div>
+      <div class="horror-xp">⚡ XP: <b id="horror-xp">0</b> · SEQUÊNCIA: <b id="horror-combo">0</b></div>
 
       <div id="horror-evento"></div>
       <h2 id="horror-pergunta"></h2>
@@ -1031,7 +1031,7 @@ function fecharHorrorCore(){
 }
 function alternarSomHorror(){
   horrorSom=!horrorSom;
-  document.getElementById("horror-som").textContent=horrorSom?"🔊 SOM ON":"🔇 SOM OFF";
+  document.getElementById("horror-som").textContent=horrorSom?"🔊 SOM LIGADO":"🔇 SOM DESLIGADO";
   beepHorror(horrorSom?600:160,.12);
 }
 function beepHorror(freq,dur){
