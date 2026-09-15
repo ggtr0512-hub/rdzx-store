@@ -278,5 +278,21 @@ function comprar(mensagem){
   window.location.href="whatsapp://send?phone=5594991588787&text="+encodeURIComponent(mensagem);
 }
 </script>
+
+<script id="rdzx-precos-originais">
+(function(){
+  var precos={"Tudo em Um!": 18.9, "Netflix": 9.9, "Prime Video": 6.99, "Disney+": 9.99, "HBO Max": 8.49, "YouTube Premium": 7.99};
+
+  document.querySelectorAll(".produto").forEach(function(card){
+    var titulo=card.querySelector("h3");
+    var valor=card.querySelector("strong");
+
+    if(titulo && valor && precos[titulo.textContent.trim()] !== undefined){
+      valor.textContent="R$ "+precos[titulo.textContent.trim()]
+        .toFixed(2).replace(".",",");
+    }
+  });
+})();
+</script>
 </body>
 </html>
