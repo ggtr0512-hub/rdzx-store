@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RDZX STORE ⚡ — Em manutenção</title>
+<title>RDZX STORE ⚡ — Manutenção</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   min-height:100vh;
@@ -13,297 +15,225 @@ body{
   place-items:center;
   padding:20px;
   color:#fff;
-  font-family:system-ui,sans-serif;
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
   background:
     radial-gradient(circle at 50% 0%,#7c3cff55,transparent 60%),
+    radial-gradient(circle at 0% 100%,#e64cff22,transparent 55%),
     #07030f;
 }
+
 main{
-  width:min(720px,100%);
+  width:min(760px,100%);
   text-align:center;
 }
-h1{
-  margin:20px 0 10px;
-  font-size:clamp(28px,7vw,54px);
+
+.logo{
+  margin-bottom:20px;
+  color:#c9a7ff;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:2px;
 }
+
+h1{
+  margin:22px 0 10px;
+  font-size:clamp(30px,8vw,58px);
+  line-height:1;
+  text-shadow:0 0 28px #9b5cff99;
+}
+
 p{
   color:#c9bdd8;
   line-height:1.7;
+  font-size:15px;
 }
-video,#foto-final{
+
+.video-box{
+  overflow:hidden;
+  border:1px solid #ffffff22;
+  border-radius:22px;
+  background:#09050f;
+  box-shadow:0 0 45px #7c3cff55,0 20px 60px #000b;
+}
+
+video,
+#foto-final{
   display:block;
   width:100%;
-  max-height:70vh;
+  max-height:68vh;
   object-fit:contain;
-  border-radius:20px;
-  border:1px solid #ffffff22;
-  box-shadow:0 0 35px #7c3cff55;
 }
-#foto-final{display:none}
+
+#foto-final{
+  display:none;
+}
+
+.controles{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:18px 0;
+}
+
+button{
+  border:1px solid #ffffff33;
+  border-radius:14px;
+  padding:13px 17px;
+  color:#fff;
+  background:linear-gradient(110deg,#713cff,#c13cff,#477dff);
+  background-size:200% 100%;
+  font-weight:900;
+  box-shadow:0 0 20px #9b5cff66;
+  transition:.25s;
+}
+
+button:hover{
+  transform:translateY(-3px);
+  background-position:100% 0;
+  box-shadow:0 0 35px #e64cffbb;
+}
+
+#som{
+  animation:brilho 1.7s ease-in-out infinite alternate;
+}
+
+@keyframes brilho{
+  from{box-shadow:0 0 12px #55d9ff99,0 0 25px #9b5cff66}
+  to{box-shadow:0 0 25px #55d9ff,0 0 48px #e64cffcc}
+}
+
+.aviso{
+  margin:20px auto;
+  padding:16px;
+  border:1px solid #ffffff18;
+  border-radius:16px;
+  color:#d7cbe5;
+  background:#ffffff09;
+  line-height:1.6;
+}
+
 .contatos{
   display:flex;
-  gap:12px;
   justify-content:center;
+  gap:12px;
   flex-wrap:wrap;
-  margin-top:25px;
+  margin-top:22px;
 }
-button{
-  border:0;
-  border-radius:14px;
-  padding:14px 18px;
-  color:#fff;
-  background:linear-gradient(110deg,#713cff,#c13cff);
-  font-weight:900;
+
+.contatos button{
+  min-width:180px;
 }
+
 .numero{
-  margin-top:18px;
-  color:#c9bdd8;
-  font-size:14px;
+  margin-top:17px;
+  color:#aFA2c2;
+  font-size:13px;
+  line-height:1.8;
+}
+
+@media(max-width:600px){
+  body{padding:14px}
+  .controles,.contatos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  button{
+    width:100%;
+    padding:13px 8px;
+    font-size:12px;
+  }
+  .contatos button{
+    min-width:0;
+  }
 }
 </style>
 </head>
+
 <body>
 <main>
-  <video id="video" autoplay muted playsinline preload="metadata">
-    <source src="videos/6762.mp4" type="video/mp4">
-  </video>
+  <div class="logo">RDZX STORE ⚡</div>
 
-  <img id="foto-final" src="imagens/manutencao.jpg" alt="RDZX STORE em manutenção">
+  <div class="video-box">
+    <video id="video" autoplay muted playsinline preload="metadata">
+      <source src="videos/6762.mp4" type="video/mp4">
+    </video>
 
-  <h1>RDZX STORE ⚡</h1>
+    <img id="foto-final" src="imagens/manutencao.jpg" alt="RDZX STORE em manutenção">
+  </div>
+
+  <div class="controles">
+    <button id="som">🔊 Ativar som</button>
+    <button id="pausar">⏸ Pausar vídeo</button>
+    <button id="repetir">↻ Assistir novamente</button>
+  </div>
+
+  <h1>Estamos preparando novidades</h1>
+
   <p>
-    Estamos fazendo uma atualização no site.<br>
-    Para comprar ou tirar dúvidas, fale conosco pelos canais abaixo.
+    A RDZX STORE está passando por uma atualização.
+    Em breve voltaremos com uma experiência ainda melhor.
   </p>
 
+  <div class="aviso">
+    Para comprar ou tirar dúvidas, entre em contato pelos canais abaixo.
+  </div>
+
   <div class="contatos">
-    <button onclick="copiar('+554991588787')">Copiar WhatsApp</button>
-    <button onclick="copiar('5594984438697')">Copiar Telegram</button>
+    <button onclick="copiar('5594991588787')">💬 WhatsApp</button>
+    <button onclick="copiar('5594984438697')">🛟 Suporte</button>
   </div>
 
   <div class="numero">
-    WhatsApp: +55 49 9158-8787<br>
-    Telegram: 5594984438697
+    Toque em um botão para copiar o contato.
   </div>
 </main>
 
 <script>
-const video=document.getElementById("video");
-const foto=document.getElementById("foto-final");
+var video=document.getElementById("video");
+var foto=document.getElementById("foto-final");
+var som=document.getElementById("som");
+var pausar=document.getElementById("pausar");
+var repetir=document.getElementById("repetir");
 
 video.addEventListener("ended",function(){
   video.style.display="none";
   foto.style.display="block";
 });
 
+som.onclick=function(){
+  video.muted=!video.muted;
+
+  if(video.muted){
+    som.textContent="🔊 Ativar som";
+  }else{
+    som.textContent="🔇 Desativar som";
+    video.play().catch(function(){});
+  }
+};
+
+pausar.onclick=function(){
+  if(video.paused){
+    video.play().catch(function(){});
+    pausar.textContent="⏸ Pausar vídeo";
+  }else{
+    video.pause();
+    pausar.textContent="▶ Continuar vídeo";
+  }
+};
+
+repetir.onclick=function(){
+  foto.style.display="none";
+  video.style.display="block";
+  video.currentTime=0;
+  video.play().catch(function(){});
+  pausar.textContent="⏸ Pausar vídeo";
+};
+
 function copiar(numero){
   navigator.clipboard.writeText(numero);
-  alert("Número copiado. Abra o WhatsApp ou Telegram para falar conosco.");
+  alert("Contato copiado.");
 }
-</script>
-
-<style id="rdzx-audio-controle">
-#rdzx-ativar-audio{
-  margin:18px auto;
-  padding:14px 20px;
-  border:0;
-  border-radius:14px;
-  color:#fff;
-  background:linear-gradient(110deg,#713cff,#c13cff);
-  font-weight:900;
-  box-shadow:0 0 25px #9b5cff66;
-}
-</style>
-
-<script id="rdzx-audio-controle-script">
-(function(){
-  var videoAtual=document.getElementById("video");
-  if(!videoAtual)return;
-
-  var botao=document.createElement("button");
-  botao.id="rdzx-ativar-audio";
-  botao.textContent="🔊 Ativar áudio do vídeo";
-
-  var videoElemento=videoAtual;
-  videoElemento.insertAdjacentElement("afterend",botao);
-
-  botao.addEventListener("click",function(){
-    videoElemento.muted=false;
-    videoElemento.volume=1;
-    videoElemento.play();
-    botao.remove();
-  });
-})();
-</script>
-
-<style id="rdzx-controles-video-premium">
-.rdzx-controles-video{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:18px auto 8px;
-}
-.rdzx-controle-video{
-  border:1px solid #ffffff44;
-  border-radius:15px;
-  padding:13px 18px;
-  color:#fff;
-  background:linear-gradient(110deg,#713cff,#c13cff,#477dff);
-  background-size:200% 100%;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 0 18px #9b5cff88,0 8px 25px #0008;
-  transition:.25s;
-}
-.rdzx-controle-video:hover{
-  transform:translateY(-3px) scale(1.03);
-  background-position:100% 0;
-  box-shadow:0 0 30px #e64cffcc,0 12px 30px #000a;
-}
-#rdzx-som-premium{
-  animation:rdzxBrilhoSom 1.7s ease-in-out infinite alternate;
-}
-@keyframes rdzxBrilhoSom{
-  from{
-    box-shadow:0 0 12px #55d9ff99,0 0 28px #9b5cff66,0 8px 25px #0008;
-  }
-  to{
-    box-shadow:0 0 22px #55d9ff,0 0 48px #e64cffcc,0 8px 30px #000a;
-  }
-}
-</style>
-
-<script id="rdzx-controles-video-premium-script">
-(function(){
-  var video2=document.getElementById("video");
-  if(!video2)return;
-
-  var area=document.createElement("div");
-  area.className="rdzx-controles-video";
-
-  var som=document.createElement("button");
-  som.id="rdzx-som-premium";
-  som.className="rdzx-controle-video";
-  som.textContent="🔊 Ativar som";
-
-  var replay=document.createElement("button");
-  replay.className="rdzx-controle-video";
-  replay.textContent="↻ Assistir novamente";
-
-  som.onclick=function(){
-    video2.muted=false;
-    video2.volume=1;
-    video2.play().catch(function(){});
-    som.textContent="🔇 Desativar som";
-  };
-
-  replay.onclick=function(){
-    video2.style.display="block";
-    video2.currentTime=0;
-    video2.play().catch(function(){});
-  };
-
-  area.appendChild(som);
-  area.appendChild(replay);
-  video2.insertAdjacentElement("afterend",area);
-})();
-</script>
-
-<style id="rdzx-pausar-video">
-#rdzx-pausar-video{
-  animation:rdzxPulsarPausa 2s ease-in-out infinite alternate;
-}
-@keyframes rdzxPulsarPausa{
-  from{box-shadow:0 0 12px #9b5cff88,0 8px 25px #0008}
-  to{box-shadow:0 0 28px #55d9ffbb,0 8px 30px #000a}
-}
-.rdzx-status-site{
-  margin:18px auto 0;
-  max-width:600px;
-  padding:14px 18px;
-  border:1px solid #ffffff18;
-  border-radius:16px;
-  color:#d6c9e5;
-  background:#ffffff08;
-  line-height:1.6;
-  font-size:14px;
-}
-</style>
-
-<script id="rdzx-pausar-video-script">
-setTimeout(function(){
-  var video3=document.getElementById("video");
-  var area=document.querySelector(".rdzx-controles-video");
-
-  if(!video3 || !area || document.getElementById("rdzx-pausar-video")){
-    return;
-  }
-
-  var pausar=document.createElement("button");
-  pausar.id="rdzx-pausar-video";
-  pausar.className="rdzx-controle-video";
-  pausar.textContent="⏸ Pausar vídeo";
-
-  pausar.onclick=function(){
-    if(video3.paused){
-      video3.play().catch(function(){});
-      pausar.textContent="⏸ Pausar vídeo";
-    }else{
-      video3.pause();
-      pausar.textContent="▶ Continuar vídeo";
-    }
-  };
-
-  area.appendChild(pausar);
-
-  var status=document.createElement("div");
-  status.className="rdzx-status-site";
-  status.innerHTML="✨ Estamos preparando novidades para deixar a RDZX STORE ainda melhor.<br>Enquanto isso, você pode falar conosco pelos canais de atendimento abaixo.";
-  var titulo=document.querySelector("h1");
-
-  if(titulo){
-    titulo.insertAdjacentElement("afterend",status);
-  }
-},300);
 </script>
 </body>
 </html>
-
-<style>
-#rdzx-pausar-video{
-  animation:brilhoPausa 1.8s ease-in-out infinite alternate;
-}
-@keyframes brilhoPausa{
-  from{box-shadow:0 0 12px #9b5cff88,0 8px 25px #0008}
-  to{box-shadow:0 0 30px #55d9ffcc,0 8px 30px #000a}
-}
-</style>
-
-<script id="rdzx-pausar-video-final">
-setTimeout(function(){
-  var video=document.getElementById("video");
-  var area=document.querySelector(".rdzx-controles-video");
-
-  if(!video || !area || document.getElementById("rdzx-pausar-video")){
-    return;
-  }
-
-  var botao=document.createElement("button");
-  botao.id="rdzx-pausar-video";
-  botao.className="rdzx-controle-video";
-  botao.textContent="⏸ Pausar vídeo";
-
-  botao.onclick=function(){
-    if(video.paused){
-      video.play().catch(function(){});
-      botao.textContent="⏸ Pausar vídeo";
-    }else{
-      video.pause();
-      botao.textContent="▶ Continuar vídeo";
-    }
-  };
-
-  area.appendChild(botao);
-},500);
-</script>
