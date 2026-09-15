@@ -328,6 +328,92 @@ body.claro .precos-promocionais strong{
   color:#168238!important;
 }
 </style>
+
+<style id="rdzx-recursos-importantes">
+.rdzx-ferramentas{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  width:min(1100px,calc(100% - 32px));
+  margin:0 auto 22px;
+}
+.rdzx-ferramentas input,
+.rdzx-ferramentas select{
+  flex:1;
+  min-width:220px;
+  padding:13px 14px;
+  border:1px solid #ffffff22;
+  border-radius:12px;
+  color:#fff;
+  background:#160d22;
+  outline:none;
+}
+.rdzx-informacoes{
+  width:min(1100px,calc(100% - 32px));
+  margin:35px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.rdzx-info-box{
+  padding:18px;
+  border:1px solid #ffffff1c;
+  border-radius:16px;
+  background:#120b1d;
+}
+.rdzx-info-box h2{
+  margin-top:0;
+  color:#d6b4ff;
+  font-size:18px;
+}
+.rdzx-info-box p{
+  color:#bcaec7;
+  line-height:1.55;
+  font-size:14px;
+}
+.rdzx-info-box button{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+.rdzx-info-box details{
+  padding:10px 0;
+  border-top:1px solid #ffffff14;
+  color:#cfc0d9;
+  font-size:14px;
+}
+.rdzx-info-box summary{
+  cursor:pointer;
+  color:#fff;
+  font-weight:bold;
+}
+body.claro .rdzx-ferramentas input,
+body.claro .rdzx-ferramentas select,
+body.claro .rdzx-info-box{
+  color:#291b32;
+  background:#fff;
+  border-color:#ddd2e7;
+}
+body.claro .rdzx-info-box h2{
+  color:#5d2693;
+}
+body.claro .rdzx-info-box p,
+body.claro .rdzx-info-box details{
+  color:#665870;
+}
+body.claro .rdzx-info-box summary{
+  color:#291b32;
+}
+@media(max-width:700px){
+  .rdzx-informacoes{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -349,7 +435,18 @@ body.claro .precos-promocionais strong{
     <span>Confira os produtos disponíveis abaixo.</span>
   </div>
 
-  <section class="grid">
+  
+<section class="rdzx-ferramentas">
+  <input id="rdzx-busca" type="search" placeholder="🔍 Buscar assinatura...">
+
+  <select id="rdzx-filtro-preco">
+    <option value="">Todos os preços</option>
+    <option value="10">Até R$ 10</option>
+    <option value="20">Até R$ 20</option>
+    <option value="50">Até R$ 50</option>
+  </select>
+</section>
+<section class="grid">
     
 <article class="produto">
   <img src="imagens/assinaturas/viki.jpg" alt="Viki Rakuten" loading="lazy">
@@ -484,6 +581,35 @@ body.claro .precos-promocionais strong{
 </article>
 
   </section>
+
+<section class="rdzx-informacoes">
+  <div class="rdzx-info-box">
+    <h2>Como comprar</h2>
+    <p>Escolha o produto, confira o preço e toque em comprar. O WhatsApp abrirá com o nome e o valor do produto preenchidos.</p>
+  </div>
+
+  <div class="rdzx-info-box">
+    <h2>Precisa de ajuda?</h2>
+    <p>Fale diretamente com o suporte da RDZX STORE.</p>
+    <button type="button" onclick="abrirSuporte()">💬 Falar com o suporte</button>
+  </div>
+
+  <div class="rdzx-info-box">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>O preço mostrado é o valor do produto?</summary>
+      <p>Sim. O preço atual aparece destacado no card.</p>
+    </details>
+    <details>
+      <summary>Como finalizo a compra?</summary>
+      <p>Toque em comprar e envie a mensagem pronta pelo WhatsApp.</p>
+    </details>
+    <details>
+      <summary>Posso tirar dúvidas antes?</summary>
+      <p>Sim. Use o botão de suporte para falar diretamente com a RDZX STORE.</p>
+    </details>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -533,9 +659,66 @@ function comprar(mensagem){
 </script>
 
 <script id="rdzx-compra-com-preco">
+function comprarProdutoOriginal(botao){
+  var produto=botao.getAttribute("data-produto");
+  var preco=botao.getAttribute("data-preco");
+
+  var mensagem=
+    "Olá! Tenho interesse em comprar "+produto+
+    " na RDZX STORE.\n\n"+
+    "Produto: "+produto+"\n"+
+    "Preço: "+preco+"\n\n"+
+    "Gostaria de finalizar a compra.";
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+
+    encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-recursos-importantes-script">
+(function(){
+  var busca=document.getElementById("rdzx-busca");
+  var filtro=document.getElementById("rdzx-filtro-preco");
+
+  function filtrar(){
+    var termo=busca.value.toLowerCase().trim();
+    var limite=filtro.value?Number(filtro.value):Infinity;
+
+    document.querySelectorAll(".produto").forEach(function(card){
+      var nome=(card.querySelector("h3")?.textContent||"").toLowerCase();
+      var valorTexto=(card.querySelector(".precos-promocionais strong")?.textContent||"");
+      var valor=Number(valorTexto.replace(/[^0-9,]/g,"").replace(",","."));
+
+      var apareceNome=!termo || nome.includes(termo);
+      var aparecePreco=!filtro.value || (!isNaN(valor) && valor<=limite);
+
+      card.style.display=(apareceNome && aparecePreco)?"":"none";
+    });
+  }
+
+  busca.addEventListener("input",filtrar);
+  filtro.addEventListener("change",filtrar);
+
+  window.abrirSuporte=function(){
+    var mensagem=encodeURIComponent(
+      "Olá! Entrei na RDZX STORE e gostaria de tirar uma dúvida."
+    );
+
+    window.location.href=
+      "whatsapp://send?phone=5594991588787&text="+mensagem;
+  };
+})();
+</script>
+
+<script id="rdzx-confirmacao-compra">
 function comprarProduto(botao){
   var produto=botao.getAttribute("data-produto");
   var preco=botao.getAttribute("data-preco");
+
+  if(!confirm("Comprar "+produto+" por "+preco+"?")){
+    return;
+  }
 
   var mensagem=
     "Olá! Tenho interesse em comprar "+produto+
