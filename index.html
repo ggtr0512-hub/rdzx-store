@@ -1271,6 +1271,106 @@ footer{
   }
 }
 </style>
+
+<style id="rdzx-destaques-visuais-css">
+.rdzx-faixa-destaque{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  width:min(1100px,calc(100% - 32px));
+  margin:30px auto 22px;
+  padding:22px 24px;
+  border:1px solid #8e203377;
+  border-radius:20px;
+  background:
+    linear-gradient(110deg,#230c14e8,#0b090ced),
+    radial-gradient(circle at right,#a7193233,transparent 45%);
+  box-shadow:0 15px 40px #0009,0 0 25px #a7193222;
+}
+.faixa-simbolo{
+  display:grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  flex:none;
+  border:1px solid #ef233c88;
+  border-radius:50%;
+  color:#ff5268;
+  background:#ef233c18;
+  font-size:25px;
+  box-shadow:0 0 20px #ef233c66;
+}
+.rdzx-faixa-destaque small,
+.rdzx-suporte-final small{
+  color:#a95b68;
+  font:10px monospace;
+  letter-spacing:2px;
+}
+.rdzx-faixa-destaque h2,
+.rdzx-suporte-final h2{
+  margin:7px 0;
+  color:#f5e5e9;
+}
+.rdzx-faixa-destaque p,
+.rdzx-suporte-final p{
+  margin:0;
+  color:#bbaab0;
+  font-size:13px;
+}
+.faixa-status{
+  margin-left:auto;
+  color:#75e6a0;
+  font:11px monospace;
+  white-space:nowrap;
+}
+.rdzx-selo-produto{
+  position:absolute;
+  z-index:4;
+  top:12px;
+  left:12px;
+  padding:6px 9px;
+  border:1px solid #ff526899;
+  border-radius:999px;
+  color:#ffd9df;
+  background:#641526dd;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+.rdzx-suporte-final{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  width:min(1100px,calc(100% - 32px));
+  margin:40px auto 25px;
+  padding:24px;
+  border:1px solid #ffffff18;
+  border-radius:20px;
+  background:linear-gradient(120deg,#130b10,#0b0a0d);
+  box-shadow:0 14px 35px #0008;
+}
+.rdzx-suporte-final button{
+  min-width:190px;
+}
+@media(max-width:650px){
+  .rdzx-faixa-destaque{
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+  .faixa-status{
+    width:100%;
+    margin-left:70px;
+  }
+  .rdzx-suporte-final{
+    display:block;
+  }
+  .rdzx-suporte-final button{
+    width:100%;
+    margin-top:17px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -1338,6 +1438,16 @@ footer{
   </div>
 
   
+
+<section id="rdzx-destaques-visuais" class="rdzx-faixa-destaque">
+  <div class="faixa-simbolo">☠</div>
+  <div>
+    <small>CATÁLOGO RDZX // ACESSO DIGITAL</small>
+    <h2>Encontre sua próxima assinatura</h2>
+    <p>Escolha seu serviço, confira o valor e fale diretamente com a RDZX STORE.</p>
+  </div>
+  <div class="faixa-status">● SISTEMA ONLINE</div>
+</section>
 <section class="rdzx-ferramentas">
   <input id="rdzx-busca" type="search" placeholder="🔍 Buscar assinatura...">
 
@@ -1517,6 +1627,15 @@ footer{
 
 </main>
 
+
+<section class="rdzx-suporte-final">
+  <div>
+    <small>PRECISA DE AJUDA?</small>
+    <h2>Fale com a RDZX STORE</h2>
+    <p>Tire dúvidas sobre produtos, valores e disponibilidade.</p>
+  </div>
+  <button type="button" onclick="abrirSuporte()">💬 Falar com suporte</button>
+</section>
 <footer>
   RDZX STORE ⚡ — Atendimento direto pelo WhatsApp
 </footer>
@@ -1969,6 +2088,33 @@ function finalizarHorror(){
   document.querySelectorAll(".produto,.categoria").forEach(function(el){
     el.classList.add("rdzx-entrada-item");
     observador.observe(el);
+  });
+})();
+</script>
+
+<script id="rdzx-destaques-visuais-js">
+(function(){
+  var produtos=document.querySelectorAll(".produto");
+
+  var selos={
+    "Netflix":"MAIS PROCURADO",
+    "Spotify Premium":"POPULAR",
+    "ChatGPT":"DESTAQUE",
+    "CapCut Pro":"POPULAR",
+    "Prime Video":"OFERTA"
+  };
+
+  produtos.forEach(function(card){
+    var titulo=card.querySelector("h3");
+    if(!titulo)return;
+
+    var nome=titulo.textContent.trim();
+    if(!selos[nome])return;
+
+    var selo=document.createElement("span");
+    selo.className="rdzx-selo-produto";
+    selo.textContent=selos[nome];
+    card.appendChild(selo);
   });
 })();
 </script>
