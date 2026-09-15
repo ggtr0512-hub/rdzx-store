@@ -233,22 +233,927 @@ window.addEventListener("load",function(){
   b.style.setProperty("border-radius","14px","important");
 });
 </script>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#7c3cff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style id="rdzx-menu-tudo-style">
+#rdzx-menu-tudo{
+  max-width:1180px;
+  margin:28px auto;
+  padding:0 18px;
+}
+#rdzx-menu-tudo h2{
+  margin:0 0 16px;
+  color:#fff;
+  font-size:27px;
+}
+.rdzx-menu-botoes{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:11px;
+}
+.rdzx-menu-botao{
+  min-height:72px;
+  padding:14px;
+  border:1px solid #ffffff1f;
+  border-radius:17px;
+  color:#fff;
+  background:linear-gradient(145deg,#ffffff12,#ffffff05);
+  text-align:left;
+  font-weight:900;
+  transition:.25s;
+}
+.rdzx-menu-botao:hover,
+.rdzx-menu-botao.ativo{
+  transform:translateY(-3px);
+  border-color:#b477ff;
+  background:linear-gradient(145deg,#7c3cff66,#ffffff0d);
+  box-shadow:0 0 25px #9b5cff55;
+}
+.rdzx-menu-botao small{
+  display:block;
+  margin-top:6px;
+  color:#c7bada;
+  font-weight:500;
+}
+@media(max-width:700px){
+  #rdzx-menu-tudo{
+    padding:0 12px;
+  }
+  .rdzx-menu-botoes{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+}
+</style>
+
+<style id="rdzx-esconder-categorias-antigas">
+#categorias{
+  display:none!important;
+}
+</style>
+
+<style id="rdzx-visual-premium-final">
+:root{
+  --bg:#05030a;
+  --panel:#10091c;
+  --panel2:#180d29;
+  --line:#39205c;
+  --text:#fff;
+  --muted:#b8aaca;
+  --accent:#9b5cff;
+  --pink:#e64cff;
+  --cyan:#55d9ff;
+}
+body{
+  color:var(--text)!important;
+  background:
+    radial-gradient(700px 400px at 90% 0%,#7c3cff2b,transparent 70%),
+    radial-gradient(600px 400px at 0% 45%,#e64cff14,transparent 70%),
+    var(--bg)!important;
+}
+header{
+  background:rgba(7,3,15,.78)!important;
+  border-bottom:1px solid #ffffff18!important;
+  box-shadow:0 10px 35px #0008!important;
+  backdrop-filter:blur(22px)!important;
+}
+.logo{
+  text-shadow:0 0 18px #9b5cff88!important;
+}
+.logo span{
+  background:linear-gradient(90deg,#9b5cff,#e64cff,#55d9ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero{
+  min-height:520px!important;
+  padding-top:85px!important;
+  padding-bottom:65px!important;
+}
+.hero h1{
+  text-shadow:0 12px 45px #000!important;
+}
+.hero p{
+  color:#c9bdd8!important;
+}
+section{
+  padding-top:42px!important;
+  padding-bottom:42px!important;
+}
+.card,
+.feature,
+.catCard,
+.rdzx-menu-botao{
+  border:1px solid #ffffff18!important;
+  background:linear-gradient(145deg,rgba(27,14,45,.92),rgba(10,6,18,.94))!important;
+  box-shadow:0 18px 45px #0008,inset 0 1px #ffffff0b!important;
+  backdrop-filter:blur(16px)!important;
+}
+.card:hover,
+.feature:hover,
+.catCard:hover,
+.rdzx-menu-botao:hover,
+.rdzx-menu-botao.ativo{
+  transform:translateY(-6px)!important;
+  border-color:#a968ff99!important;
+  box-shadow:0 24px 55px #000b,0 0 28px #9b5cff3b!important;
+}
+.pic{
+  background:
+    radial-gradient(circle at center,#5b2aa644,transparent 65%),
+    #09050f!important;
+  border-bottom:1px solid #ffffff0d!important;
+}
+.pic img{
+  object-fit:contain!important;
+  padding:7px!important;
+  border-radius:14px!important;
+}
+.info h3{
+  color:#fff!important;
+  font-weight:900!important;
+  text-shadow:0 2px 8px #000!important;
+}
+.info .muted,
+.rdzx-product-description{
+  color:#c8bdd5!important;
+}
+.price{
+  color:#fff!important;
+  font-size:21px!important;
+  text-shadow:0 2px 10px #000!important;
+}
+.btn{
+  border:1px solid #ffffff22!important;
+  background:linear-gradient(110deg,#713cff,#bd3cff,#477dff)!important;
+  background-size:200% 100%!important;
+  box-shadow:0 10px 25px #7c3cff44!important;
+  transition:.25s!important;
+}
+.btn:hover{
+  transform:translateY(-3px)!important;
+  background-position:100% 0!important;
+  box-shadow:0 15px 35px #9b5cff77!important;
+}
+.search input,
+.filters select{
+  color:#fff!important;
+  background:#ffffff0b!important;
+  border:1px solid #ffffff1c!important;
+  box-shadow:inset 0 1px #ffffff0b!important;
+}
+.search input:focus,
+.filters select:focus{
+  border-color:#a968ff!important;
+  box-shadow:0 0 0 4px #9b5cff1c,0 0 25px #9b5cff44!important;
+}
+.rdzx-products-section{
+  border-top:1px solid #ffffff15!important;
+  padding-top:30px!important;
+}
+.rdzx-products-section h2,
+#rdzx-menu-tudo h2{
+  color:#fff!important;
+  text-shadow:0 0 18px #9b5cff66!important;
+}
+footer{
+  background:linear-gradient(180deg,transparent,#10071b)!important;
+  border-top:1px solid #ffffff18!important;
+}
+@media(max-width:700px){
+  .hero{
+    min-height:auto!important;
+    padding-top:68px!important;
+    padding-bottom:48px!important;
+  }
+  .hero h1{
+    font-size:clamp(40px,11vw,58px)!important;
+  }
+  .card{
+    border-radius:16px!important;
+  }
+  .pic{
+    height:165px!important;
+  }
+}
+</style>
+
+<style id="rdzx-descricoes-categorias">
+.rdzx-category-description{
+  max-width:680px;
+  margin:-8px 0 22px;
+  color:#c9bdd8;
+  font-size:14px;
+  line-height:1.7;
+}
+.rdzx-category-description strong{
+  color:#fff;
+}
+.rdzx-menu-description{
+  margin:-8px 0 20px;
+  color:#c9bdd8;
+  font-size:14px;
+  line-height:1.7;
+}
+</style>
+
+<script id="rdzx-descricoes-categorias-script">
+(function(){
+  const descricoes={
+    "rdzx-section-assinaturas":"Entretenimento, produtividade e serviços digitais para deixar sua experiência ainda melhor.",
+    "rdzx-section-empresa":"Soluções práticas para criar, divulgar e fazer seu projeto crescer no mundo digital.",
+    "rdzx-section-discord":"Recursos e produtos para melhorar seu servidor e aproveitar ainda mais o Discord.",
+    "rdzx-section-engajamentos":"Serviços digitais para fortalecer sua presença e destacar sua marca nas redes sociais.",
+    "rdzx-section-outros":"Uma seleção de produtos digitais para completar sua experiência na RDZX STORE."
+  };
+
+  function aplicar(){
+    Object.keys(descricoes).forEach(function(id){
+      const secao=document.getElementById(id);
+      if(!secao)return;
+
+      let texto=secao.querySelector(".rdzx-category-description");
+
+      if(!texto){
+        texto=document.createElement("p");
+        texto.className="rdzx-category-description";
+
+        const titulo=secao.querySelector("h2");
+
+        if(titulo){
+          titulo.insertAdjacentElement("afterend",texto);
+        }else{
+          secao.prepend(texto);
+        }
+      }
+
+      texto.innerHTML="<strong>"+descricoes[id]+"</strong>";
+    });
+
+    const menu=document.getElementById("rdzx-menu-tudo");
+
+    if(menu && !menu.querySelector(".rdzx-menu-description")){
+      const descricao=document.createElement("p");
+      descricao.className="rdzx-menu-description";
+      descricao.textContent="Explore todas as áreas da RDZX STORE e encontre o produto ideal para você.";
+      const titulo=menu.querySelector("h2");
+
+      if(titulo){
+        titulo.insertAdjacentElement("afterend",descricao);
+      }
+    }
+  }
+
+  aplicar();
+  setTimeout(aplicar,500);
+  setTimeout(aplicar,1500);
+})();
+</script>
+
+<style id="rdzx-visual-v2">
+*{
+  scrollbar-width:thin;
+  scrollbar-color:#9b5cff #08040f;
+}
+::-webkit-scrollbar{
+  width:8px;
+}
+::-webkit-scrollbar-track{
+  background:#08040f;
+}
+::-webkit-scrollbar-thumb{
+  border-radius:20px;
+  background:linear-gradient(#7c3cff,#e64cff);
+}
+body{
+  letter-spacing:.1px!important;
+}
+header{
+  border-bottom:1px solid rgba(255,255,255,.12)!important;
+  box-shadow:0 8px 35px rgba(0,0,0,.6)!important;
+}
+.logo{
+  filter:drop-shadow(0 0 12px rgba(155,92,255,.55));
+}
+.hero{
+  position:relative;
+}
+.hero h1{
+  text-shadow:0 8px 35px rgba(0,0,0,.85);
+}
+.hero p{
+  max-width:720px!important;
+  color:#d0c3df!important;
+}
+section{
+  position:relative;
+}
+section:before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:10%;
+  right:10%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#9b5cff55,transparent);
+  opacity:.5;
+}
+.card,
+.feature,
+.catCard,
+.rdzx-menu-botao{
+  border-radius:22px!important;
+  overflow:hidden;
+  background:
+    linear-gradient(145deg,rgba(32,17,53,.94),rgba(10,6,18,.96))!important;
+  border:1px solid rgba(255,255,255,.13)!important;
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.55),
+    inset 0 1px rgba(255,255,255,.08)!important;
+}
+.card{
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease!important;
+}
+.card:hover{
+  transform:translateY(-7px)!important;
+  border-color:#b477ff!important;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.75),
+    0 0 30px rgba(155,92,255,.35)!important;
+}
+.pic{
+  min-height:175px!important;
+  background:
+    radial-gradient(circle at center,#7c3cff35,transparent 68%),
+    #09050f!important;
+}
+.pic img{
+  padding:9px!important;
+  object-fit:contain!important;
+  transition:transform .35s ease,filter .35s ease!important;
+}
+.card:hover .pic img{
+  transform:scale(1.06)!important;
+  filter:brightness(1.12) saturate(1.1)!important;
+}
+.info{
+  padding:17px!important;
+}
+.info h3{
+  font-size:16px!important;
+  line-height:1.3!important;
+  color:#fff!important;
+  text-shadow:0 2px 9px #000!important;
+}
+.price{
+  margin:14px 0!important;
+  color:#fff!important;
+  font-size:22px!important;
+  text-shadow:0 0 14px #9b5cff99!important;
+}
+.btn{
+  border-radius:14px!important;
+  font-weight:900!important;
+  letter-spacing:.1px;
+}
+.btn:hover{
+  filter:brightness(1.15)!important;
+}
+.rdzx-menu-botao{
+  min-height:88px!important;
+  padding:17px!important;
+}
+.rdzx-menu-botao small{
+  color:#c8bdd8!important;
+}
+.rdzx-menu-botao.ativo{
+  border-color:#c18aff!important;
+  background:
+    linear-gradient(145deg,#7c3cff66,#e64cff22)!important;
+  box-shadow:
+    0 0 0 3px #9b5cff18,
+    0 0 32px #9b5cff55!important;
+}
+.rdzx-product-description,
+.rdzx-desc-produto{
+  color:#c8bdd8!important;
+  line-height:1.55!important;
+}
+footer{
+  margin-top:40px!important;
+  padding:40px 0!important;
+  background:linear-gradient(180deg,transparent,#10071d)!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
+}
+@media(max-width:700px){
+  .card{
+    border-radius:17px!important;
+  }
+  .pic{
+    min-height:155px!important;
+  }
+  .info{
+    padding:13px!important;
+  }
+  .info h3{
+    font-size:14px!important;
+  }
+  .price{
+    font-size:19px!important;
+  }
+}
+</style>
+
+<style id="rdzx-visual-v3">
+body{
+  background-size:140% 140%!important;
+  animation:rdzxBackgroundMove 18s ease-in-out infinite alternate!important;
+}
+@keyframes rdzxBackgroundMove{
+  0%{background-position:0% 0%}
+  50%{background-position:100% 35%}
+  100%{background-position:35% 100%}
+}
+header{
+  animation:rdzxHeaderGlow 4s ease-in-out infinite alternate!important;
+}
+@keyframes rdzxHeaderGlow{
+  from{box-shadow:0 8px 30px #0008}
+  to{box-shadow:0 8px 35px #7c3cff33}
+}
+.card,
+.feature,
+.catCard,
+.rdzx-menu-botao{
+  position:relative!important;
+  isolation:isolate!important;
+}
+.card::before,
+.feature::before,
+.catCard::before,
+.rdzx-menu-botao::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  z-index:-1;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    #9b5cff66,
+    #55d9ff44,
+    transparent
+  );
+  background-size:250% 250%;
+  opacity:0;
+  transition:opacity .3s ease;
+  animation:rdzxBorderFlow 5s linear infinite;
+}
+.card:hover::before,
+.feature:hover::before,
+.catCard:hover::before,
+.rdzx-menu-botao:hover::before,
+.rdzx-menu-botao.ativo::before{
+  opacity:1;
+}
+@keyframes rdzxBorderFlow{
+  0%{background-position:0% 50%}
+  100%{background-position:250% 50%}
+}
+.card .btn{
+  position:relative;
+  overflow:hidden;
+}
+.card .btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:100%;
+  transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,#ffffff55,transparent);
+  transition:left .6s ease;
+}
+.card:hover .btn::after{
+  left:140%;
+}
+.rdzx-category-description,
+.rdzx-menu-description{
+  max-width:720px!important;
+  color:#d4c7e3!important;
+  font-size:15px!important;
+  line-height:1.7!important;
+  text-shadow:0 2px 8px #000!important;
+}
+.sectionHead h2,
+.rdzx-products-section h2,
+#rdzx-menu-tudo h2{
+  letter-spacing:-.8px!important;
+  text-shadow:0 0 22px #9b5cff66!important;
+}
+.badge,
+.rdzx-new-badge{
+  animation:rdzxBadgePulse 2.4s ease-in-out infinite!important;
+}
+@keyframes rdzxBadgePulse{
+  50%{
+    transform:scale(1.05);
+    box-shadow:0 0 18px #e64cff88;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body,header,.card::before,.feature::before,
+  .catCard::before,.rdzx-menu-botao::before,
+  .badge,.rdzx-new-badge{
+    animation:none!important;
+  }
+}
+</style>
+
+<style id="rdzx-design-completo">
+:root{
+  --rdzx-purple:#955cff;
+  --rdzx-pink:#e94cff;
+  --rdzx-blue:#55d9ff;
+  --rdzx-dark:#07030f;
+  --rdzx-card:rgba(19,10,33,.92);
+}
+body{
+  color:#fff!important;
+  background:
+    radial-gradient(800px 500px at 90% 0%,#762fff30,transparent 70%),
+    radial-gradient(700px 500px at 0% 50%,#e64cff18,transparent 70%),
+    var(--rdzx-dark)!important;
+}
+header{
+  height:76px!important;
+  background:rgba(7,3,15,.82)!important;
+  border-bottom:1px solid #ffffff18!important;
+  box-shadow:0 8px 35px #0009!important;
+  backdrop-filter:blur(22px)!important;
+}
+.logo{
+  font-size:24px!important;
+  letter-spacing:-1px!important;
+  text-shadow:0 0 20px #9b5cff88!important;
+}
+.hero{
+  min-height:560px!important;
+  padding:90px 0 70px!important;
+}
+.hero h1{
+  max-width:900px!important;
+  font-size:clamp(44px,8vw,88px)!important;
+  line-height:.94!important;
+  letter-spacing:-4px!important;
+  text-shadow:0 15px 50px #000!important;
+}
+.hero p{
+  max-width:700px!important;
+  color:#d1c5df!important;
+  font-size:17px!important;
+  line-height:1.75!important;
+}
+section{
+  padding:55px 0!important;
+}
+section h2,
+.sectionHead h2{
+  color:#fff!important;
+  font-weight:950!important;
+  letter-spacing:-1px!important;
+  text-shadow:0 0 22px #9b5cff66!important;
+}
+.card,
+.feature,
+.catCard,
+.rdzx-menu-botao,
+.rdzx-products-section{
+  border:1px solid #ffffff18!important;
+  border-radius:22px!important;
+  background:
+    linear-gradient(145deg,rgba(31,16,52,.94),rgba(9,5,17,.96))!important;
+  box-shadow:
+    0 20px 55px #0008,
+    inset 0 1px #ffffff0c!important;
+  backdrop-filter:blur(18px)!important;
+}
+.card{
+  overflow:hidden!important;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease!important;
+}
+.card:hover{
+  transform:translateY(-8px)!important;
+  border-color:#b477ff!important;
+  box-shadow:
+    0 28px 65px #000b,
+    0 0 32px #9b5cff44!important;
+}
+.pic{
+  height:190px!important;
+  background:
+    radial-gradient(circle,#6d35a844,transparent 65%),
+    #09050f!important;
+  border-bottom:1px solid #ffffff12!important;
+}
+.pic img{
+  width:100%!important;
+  height:100%!important;
+  padding:10px!important;
+  object-fit:contain!important;
+  transition:transform .35s ease,filter .35s ease!important;
+}
+.card:hover .pic img{
+  transform:scale(1.06)!important;
+  filter:brightness(1.12)!important;
+}
+.info{
+  padding:18px!important;
+}
+.info h3{
+  min-height:40px!important;
+  color:#fff!important;
+  font-size:16px!important;
+  line-height:1.35!important;
+  text-shadow:0 2px 8px #000!important;
+}
+.info .muted,
+.rdzx-product-description,
+.rdzx-desc-produto{
+  color:#c8bdd8!important;
+  line-height:1.55!important;
+}
+.price{
+  color:#fff!important;
+  font-size:22px!important;
+  font-weight:950!important;
+  text-shadow:0 0 16px #9b5cff88!important;
+}
+.btn{
+  border-radius:14px!important;
+  border:1px solid #ffffff22!important;
+  background:linear-gradient(110deg,#713cff,#c13cff,#477dff)!important;
+  background-size:200% 100%!important;
+  box-shadow:0 12px 30px #7c3cff44!important;
+  font-weight:900!important;
+  transition:transform .22s ease,background-position .4s ease,box-shadow .22s ease!important;
+}
+.btn:hover{
+  transform:translateY(-3px)!important;
+  background-position:100% 0!important;
+  box-shadow:0 18px 40px #9b5cff77!important;
+}
+.rdzx-menu-botoes{
+  gap:13px!important;
+}
+.rdzx-menu-botao{
+  min-height:92px!important;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease!important;
+}
+.rdzx-menu-botao:hover,
+.rdzx-menu-botao.ativo{
+  transform:translateY(-5px)!important;
+  border-color:#b477ff!important;
+  box-shadow:0 0 30px #9b5cff55!important;
+}
+.search input,
+.filters select{
+  min-height:48px!important;
+  border-radius:14px!important;
+  border:1px solid #ffffff1c!important;
+  color:#fff!important;
+  background:#ffffff0b!important;
+}
+.search input:focus,
+.filters select:focus{
+  border-color:#a968ff!important;
+  box-shadow:0 0 0 4px #9b5cff22,0 0 25px #9b5cff55!important;
+}
+footer{
+  margin-top:50px!important;
+  padding:45px 0!important;
+  border-top:1px solid #ffffff18!important;
+  background:linear-gradient(180deg,transparent,#12071e)!important;
+}
+@media(max-width:700px){
+  .hero{
+    min-height:auto!important;
+    padding:70px 0 50px!important;
+  }
+  .hero h1{
+    font-size:clamp(40px,11vw,60px)!important;
+    letter-spacing:-3px!important;
+  }
+  .hero p{
+    font-size:15px!important;
+  }
+  section{
+    padding:38px 0!important;
+  }
+  .pic{
+    height:170px!important;
+  }
+  .info{
+    padding:13px!important;
+  }
+  .info h3{
+    font-size:14px!important;
+  }
+  .price{
+    font-size:19px!important;
+  }
+}
+</style>
+
+<style id="rdzx-discord-sem-descricoes">
+#rdzx-section-discord .rdzx-product-description,
+#rdzx-section-discord .rdzx-modal-description{
+  display:none!important;
+}
+</style>
+
+<style id="rdzx-discord-sem-qualquer-descricao">
+.rdzx-discord-card .rdzx-product-description,
+.rdzx-discord-card .rdzx-modal-description,
+#rdzx-section-discord .rdzx-product-description,
+#rdzx-section-discord .rdzx-modal-description{
+  display:none!important;
+}
+</style>
+
+<style id="rdzx-site-leve">
+/* Redução de peso visual */
+body:before,
+body:after,
+header,
+.card:before,
+.feature:before,
+.catCard:before,
+.rdzx-menu-botao:before{
+  animation:none!important;
+}
+
+.card,
+.feature,
+.catCard,
+.rdzx-menu-botao{
+  transition:transform .15s ease,box-shadow .15s ease!important;
+}
+
+@media(max-width:700px){
+  /* Desliga o vídeo pesado no celular */
+  #rdzx-bg-video{
+    display:none!important;
+  }
+
+  body{
+    background:
+      radial-gradient(600px 350px at 90% 0%,#762fff2b,transparent 70%),
+      #07030f!important;
+  }
+
+  .card:hover,
+  .feature:hover,
+  .catCard:hover,
+  .rdzx-menu-botao:hover{
+    transform:none!important;
+  }
+}
+</style>
 </head>
 <body>
 
-<video id="rdzx-bg-video" autoplay muted loop playsinline preload="auto">
+<video id="rdzx-bg-video" autoplay muted loop playsinline preload="metadata">
   <source src="imagens/fundo-rdzx.mp4" type="video/mp4">
 </video>
 
 <header><div class="wrap nav"><div class="logo">RDZX <span>STORE ⚡</span></div><nav><a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#produtos">Produtos</a><a href="#faq">FAQ</a></nav><div class="actions"><button class="icon" onclick="openCart()">🛒<span class="count" id="count">0</span></button></div></div></header>
 <main id="inicio"><div class="wrap hero"><h1>Seu mundo digital.<br><span class="gradient">Em um só lugar.</span></h1><p>Assinaturas, jogos, Discord, editores e serviços digitais em uma experiência rápida, moderna e responsiva.</p><div class="heroBtns"><a class="btn" href="#produtos">Ver produtos</a><button class="btn alt" onclick="sendWhats('Olá! Vim pelo site da RDZX STORE e gostaria de tirar uma dúvida.')">💬 Falar no WhatsApp</button></div></div>
 <section><div class="wrap features"><div class="feature">⚡<b>Compra rápida</b><span class="muted">Escolha e envie seu pedido em poucos toques.</span></div><div class="feature">🔒<b>Atendimento direto</b><span class="muted">Finalize tudo pelo WhatsApp da loja.</span></div><div class="feature">📱<b>Feito para celular</b><span class="muted">Experiência otimizada para Android.</span></div><div class="feature">💎<b>Catálogo digital</b><span class="muted">Jogos, assinaturas e serviços.</span></div></div></section>
+
+<section id="rdzx-menu-tudo">
+  <h2>📂 Categorias</h2>
+  <div class="rdzx-menu-botoes"></div>
+</section>
 <section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div><div class="grid" id="categories"></div></div></section>
 <section id="produtos"><div class="wrap"><div class="head"><h2>Produtos</h2><small id="resultCount"></small></div><div class="search"><input id="search" placeholder="🔍 Buscar produto..." oninput="render()"></div><div class="filters"><select id="cat" onchange="render()"><option value="">Todas as categorias</option></select><select id="sort" onchange="render()"><option value="default">Mais relevantes</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select><select id="availability" onchange="render()"><option value="">Todos os produtos</option><option value="available">Disponíveis</option><option value="sold">Esgotados</option></select></div><div class="grid" id="products"></div></div></section>
 <section id="faq"><div class="wrap faq"><div class="head"><h2>FAQ</h2></div><details><summary>Como faço um pedido?</summary><p>Adicione os produtos ao carrinho, confira o total e toque em “Finalizar pelo WhatsApp”. A mensagem será preparada automaticamente.</p></details><details><summary>Produtos “Consultar” podem ser comprados?</summary><p>Sim. O WhatsApp abrirá com o produto selecionado para você consultar disponibilidade e valor.</p></details><details><summary>O carrinho fica salvo?</summary><p>Sim. Os itens ficam salvos no armazenamento local do navegador até você remover ou finalizar o pedido.</p></details></div></section>
 <section><div class="wrap"><div class="contact feature"><h2>Fale com a RDZX STORE ⚡</h2><p>Tem alguma dúvida ou quer consultar um produto?</p><button class="btn" onclick="sendWhats('Olá! Vim pelo site da RDZX STORE e gostaria de tirar uma dúvida.')">Abrir WhatsApp</button></div></div></section></main>
+
+<style id="rdzx-suporte-style">
+#rdzx-suporte{
+  max-width:1000px;
+  margin:45px auto 35px;
+  padding:28px 20px;
+  border:1px solid #a968ff55;
+  border-radius:24px;
+  background:linear-gradient(135deg,#7c3cff22,#e64cff10,#55d9ff0d);
+  box-shadow:0 0 35px #9b5cff22;
+  text-align:center;
+}
+#rdzx-suporte h2{
+  margin:0 0 10px;
+  color:#fff;
+}
+#rdzx-suporte p{
+  color:#c4b8d4;
+  line-height:1.6;
+}
+.rdzx-suporte-botoes{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.rdzx-suporte-botoes button{
+  border:0;
+  border-radius:13px;
+  padding:13px 18px;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(110deg,#7c3cff,#c13cff);
+  box-shadow:0 0 22px #9b5cff44;
+}
+.rdzx-suporte-botoes button.secundario{
+  background:#ffffff12;
+  border:1px solid #ffffff22;
+}
+</style>
+
+<section id="rdzx-suporte">
+  <h2>🛠️ Precisa de ajuda?</h2>
+  <p>
+    Encontrou algum bug, produto com informação errada ou problema no site?
+    Fale diretamente com a RDZX STORE.
+  </p>
+
+  <div class="rdzx-suporte-botoes">
+    <button onclick="sendWhats('Olá! Encontrei um bug no site da RDZX STORE.\\n\\nProduto ou área: \\nProblema encontrado: \\n\\nEstou enviando esta mensagem pelo suporte da loja.')">
+      🐞 Relatar bug
+    </button>
+
+    <button class="secundario" onclick="sendWhats('Olá! Vim pelo suporte da RDZX STORE e preciso de ajuda.')">
+      💬 Falar com suporte
+    </button>
+  </div>
+</section>
+
+<style id="rdzx-cupom-visivel">
+#rdzx-cupom-visivel{
+  margin:28px auto;
+  max-width:900px;
+  padding:22px;
+  border:1px solid #b46cff88;
+  border-radius:20px;
+  text-align:center;
+  color:#fff;
+  background:linear-gradient(135deg,#7c3cff33,#e64cff18);
+  box-shadow:0 0 30px #9b5cff33;
+}
+#rdzx-cupom-visivel strong{
+  display:block;
+  font-size:22px;
+}
+#rdzx-cupom-visivel code{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 16px;
+  border-radius:10px;
+  color:#fff;
+  background:#0008;
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+</style>
+
+<section id="rdzx-cupom-visivel">
+  <strong>🎟️ Cupom de desconto</strong>
+  <span>Use este código e ganhe 10% de desconto:</span>
+  <code>RDZX10</code>
+</section>
 <footer><div class="wrap foot"><b>RDZX STORE ⚡</b><span>Assinaturas, jogos e serviços digitais.</span><span>© 2026 RDZX STORE</span></div></footer>
-<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()"><aside class="cart"><div class="cartHead"><h2>Seu carrinho</h2><button class="close" onclick="closeCart()">✕</button></div><div id="cartItems"></div><div class="cartTotal"><span>Total</span><span id="total">R$ 0,00</span></div><button class="btn" style="width:100%" id="checkout" onclick="checkout()">Finalizar pelo WhatsApp</button><button class="btn alt" style="width:100%;margin-top:9px" onclick="clearCart()">Limpar carrinho</button></aside></div>
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()"><aside class="cart"><div class="cartHead"><h2>Seu carrinho</h2><button class="close" onclick="closeCart()">✕</button></div><div id="cartItems"></div><div class="cartTotal"><span>Total</span><span id="total">R$ 0,00</span></div><button class="btn" style="width:100%" id="checkout" onclick="checkout()">Finalizar pelo WhatsApp</button><button class="btn alt" style="width:100%;margin-top:9px" onclick="clearCart()">Limpar carrinho</button>
+<div id="rdzx-coupon-box" style="margin:15px 0;padding:14px;border:1px solid #ffffff18;border-radius:14px;background:#ffffff08">
+  <b>🎟️ Cupom de desconto</b>
+  <div style="display:flex;gap:8px;margin-top:10px">
+    <input id="rdzx-coupon-input" placeholder="Digite seu cupom" style="flex:1;min-width:0;padding:11px;border-radius:10px;border:1px solid #ffffff22;background:#ffffff0d;color:#fff">
+    <button id="rdzx-coupon-apply" class="btn" type="button">Aplicar</button>
+  </div>
+  <small id="rdzx-coupon-message" style="display:block;margin-top:8px;color:#aca2c3"></small>
+</div>
+</aside></div>
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="modalbox"><button class="close" style="float:right" onclick="closeModal()">✕</button><div id="modalContent"></div></div></div><div class="toast" id="toast"></div>
 <script>
 const WPP='5594991588787';
@@ -270,7 +1175,7 @@ function sendWhats(msg){location.href='https://wa.me/'+WPP+'?text='+encodeURICom
 function checkout(){if(!cart.length)return;let total=0;let lines=cart.map(i=>{let p=products.find(x=>x.id===i.id);if(p.price)total+=p.price*i.qty;return `• ${p.name}\n  Preço: ${money(p.price)}\n  Quantidade: ${i.qty}`}).join('\n');sendWhats(`Olá! Vim pela RDZX STORE.\n\nQuero fazer este pedido:\n${lines}\n\nTotal: ${money(total)}\n\nAguardo as informações para finalizar.`)}
 function view(id){let p=products.find(x=>x.id===id);document.getElementById('modalContent').innerHTML=`<div class="modalPic">${p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:p.emoji}</div><div class="muted">${p.cat}</div><h2>${esc(p.name)}</h2><p class="muted">${p.sold?'Produto esgotado no momento.':p.price==null?'Consulte disponibilidade e valor diretamente pelo WhatsApp.':'Produto digital. Após adicionar ao carrinho, finalize pelo WhatsApp.'}</p><div class="price">${p.prefix?p.prefix+' ':''}${money(p.price)}</div><button class="btn" style="width:100%" ${p.sold?'disabled':''} onclick="add(${p.id});closeModal()">🛒 Adicionar ao carrinho</button>`;document.getElementById('modal').classList.add('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
-function card(p){return `<article class="card"><div class="pic">${p.sold?'<span class="badge sold">ESGOTADO</span>':''}${p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:p.emoji}</div><div class="info"><h3>${esc(p.name)}</h3><div class="muted">${p.cat}</div><div class="price">${p.prefix?p.prefix+' ':''}${money(p.price)}</div><button class="btn" onclick="view(${p.id})">${p.sold?'Ver detalhes':'Ver produto'}</button></div></article>`}
+function card(p){return `<article class="card${p.cat==="DISCORD"?" rdzx-discord-card":""}"><div class="pic">${p.sold?'<span class="badge sold">ESGOTADO</span>':''}${p.img?`<img src="${p.img}" alt="${esc(p.name)}">`:p.emoji}</div><div class="info"><h3>${esc(p.name)}</h3><div class="muted">${p.cat}</div><div class="price">${p.prefix?p.prefix+' ':''}${money(p.price)}</div><button class="btn" onclick="view(${p.id})">${p.sold?'Ver detalhes':'Ver produto'}</button></div></article>`}
 function render(){let q=document.getElementById('search').value.toLowerCase(),cat=document.getElementById('cat').value,availability=document.getElementById('availability').value;let a=products.filter(p=>(!q||(p.name+' '+p.cat).toLowerCase().includes(q))&&(!cat||p.cat===cat)&&(!availability||(availability==='sold'?p.sold:!p.sold)));let s=document.getElementById('sort').value;if(s==='low')a.sort((x,y)=>(x.price??999999)-(y.price??999999));if(s==='high')a.sort((x,y)=>(y.price??-1)-(x.price??-1));document.getElementById('products').innerHTML=a.length?a.map(card).join(''):'<div class="empty">Nenhum produto encontrado.</div>';document.getElementById('resultCount').textContent=a.length+' produto(s)'}
 function setup(){let cats=[...new Set(products.map(p=>p.cat))];document.getElementById('cat').innerHTML='<option value="">Todas as categorias</option>'+cats.map(c=>`<option>${c}</option>`).join('');document.getElementById('categories').innerHTML=cats.map(c=>`<button class="catCard" onclick="document.getElementById('cat').value='${c}';document.getElementById('produtos').scrollIntoView();render()">📂<strong>${c}</strong><span class="muted">${products.filter(p=>p.cat===c).length} produto(s)</span></button>`).join('');render();updateCart()}
 setup();
@@ -366,6 +1271,590 @@ window.addEventListener("load", function(){
 });
 </script>
 
+
+<style id="rdzx-categorias-visiveis">
+#rdzx-categorias-visiveis{
+  display:block!important;
+  width:100%!important;
+  margin:45px 0!important;
+  padding:25px 0!important;
+}
+#rdzx-categorias-visiveis h2{
+  color:#fff;
+  font-size:28px;
+  margin:0 0 20px;
+}
+.rdzx-categorias-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:13px;
+}
+.rdzx-categoria-botao{
+  min-height:90px;
+  padding:16px;
+  border:1px solid #ffffff22;
+  border-radius:18px;
+  color:#fff;
+  background:linear-gradient(145deg,#ffffff12,#ffffff05);
+  text-align:left;
+  font-weight:900;
+  transition:.25s;
+}
+.rdzx-categoria-botao:hover,
+.rdzx-categoria-botao:active{
+  transform:translateY(-4px);
+  border-color:#a968ff;
+  box-shadow:0 0 25px #9b5cff55;
+}
+.rdzx-categoria-botao small{
+  display:block;
+  margin-top:8px;
+  color:#bdb1cf;
+  font-weight:500;
+}
+@media(max-width:700px){
+  .rdzx-categorias-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+}
+</style>
+
+<script id="rdzx-categorias-visiveis-script">
+window.addEventListener("load",function(){
+  if(document.getElementById("rdzx-categorias-visiveis"))return;
+  if(typeof products==="undefined")return;
+
+  const secao=document.createElement("section");
+  secao.id="rdzx-categorias-visiveis";
+  secao.innerHTML="<h2>📂 Categorias</h2><div class='rdzx-categorias-grid'></div>";
+
+  const grid=secao.querySelector(".rdzx-categorias-grid");
+  const categorias=[...new Set(products.map(function(p){return p.cat}))];
+
+  const icones={
+    "ASSINATURAS":"💎",
+    "DISCORD":"💬",
+    "CRIE SUA EMPRESA":"🚀",
+    "ENGAJAMENTOS":"📸",
+    "STEAM / JOGOS":"🎮",
+    "JOGOS":"🕹️",
+    "EDITORES":"🎨",
+    "OUTROS":"📦"
+  };
+
+  categorias.forEach(function(categoria){
+    const botao=document.createElement("button");
+    botao.className="rdzx-categoria-botao";
+    botao.innerHTML=(icones[categoria]||"📂")+" "+categoria+"<small>"+products.filter(function(p){return p.cat===categoria}).length+" produto(s)</small>";
+
+    botao.onclick=function(){
+      const select=document.getElementById("cat");
+
+      if(select){
+        select.value=categoria;
+      }
+
+      if(typeof render==="function"){
+        render();
+      }
+
+      const produtos=document.getElementById("produtos");
+
+      if(produtos){
+        produtos.scrollIntoView({behavior:"smooth",block:"start"});
+      }
+    };
+
+    grid.appendChild(botao);
+  });
+
+  const footer=document.querySelector("footer");
+
+  if(footer){
+    footer.parentNode.insertBefore(secao,footer);
+  }else{
+    document.body.appendChild(secao);
+  }
+});
+</script>
+
+<script id="rdzx-pwa-register">
+if("serviceWorker" in navigator){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("./sw.js").catch(function(){});
+  });
+}
+</script>
+
+<script id="rdzx-real-coupon">
+(function(){
+  const CUPOM="RDZX10";
+  const DESCONTO=10;
+  let cupomAtivo=localStorage.getItem("rdzx_coupon")||"";
+
+  function valorCarrinho(){
+    let total=0;
+
+    cart.forEach(function(item){
+      const produto=products.find(function(p){return p.id===item.id});
+      if(produto && produto.price){
+        total+=produto.price*item.qty;
+      }
+    });
+
+    return total;
+  }
+
+  function atualizarCupom(){
+    const totalBase=valorCarrinho();
+    const desconto=cupomAtivo===CUPOM ? totalBase*(DESCONTO/100) : 0;
+    const totalFinal=totalBase-desconto;
+    const total=document.getElementById("total");
+    const mensagem=document.getElementById("rdzx-coupon-message");
+
+    if(total){
+      total.innerHTML=desconto>0
+        ? "<span style='text-decoration:line-through;color:#aaa;font-size:13px'>R\( "+totalBase.toFixed(2).replace(".",",")+"</span> R\) "+totalFinal.toFixed(2).replace(".",",")
+        : "R$ "+totalFinal.toFixed(2).replace(".",",");
+    }
+
+    if(mensagem){
+      mensagem.textContent=desconto>0
+        ? "Cupom aplicado: -"+DESCONTO+"% de desconto"
+        : "";
+      mensagem.style.color="#25d366";
+    }
+  }
+
+  function aplicarCupom(){
+    const input=document.getElementById("rdzx-coupon-input");
+    const mensagem=document.getElementById("rdzx-coupon-message");
+
+    if(!input || !mensagem)return;
+
+    const codigo=input.value.trim().toUpperCase();
+
+    if(codigo===CUPOM){
+      cupomAtivo=CUPOM;
+      localStorage.setItem("rdzx_coupon",CUPOM);
+      mensagem.textContent="Cupom aplicado com sucesso!";
+      mensagem.style.color="#25d366";
+      atualizarCupom();
+
+      if(typeof toast==="function")toast("Desconto de 10% aplicado");
+    }else{
+      cupomAtivo="";
+      localStorage.removeItem("rdzx_coupon");
+      mensagem.textContent="Cupom inválido";
+      mensagem.style.color="#ff6b8a";
+      atualizarCupom();
+    }
+  }
+
+  function prepararCupom(){
+    const cart=document.querySelector(".cart");
+    const checkout=document.getElementById("checkout");
+
+    if(!cart || !checkout)return;
+
+    if(!document.getElementById("rdzx-coupon-box")){
+      const caixa=document.createElement("div");
+      caixa.innerHTML=`<div id="rdzx-coupon-box" style="margin:15px 0;padding:14px;border:1px solid #ffffff18;border-radius:14px;background:#ffffff08">
+<b>🎟️ Cupom de desconto</b>
+<div style="display:flex;gap:8px;margin-top:10px">
+<input id="rdzx-coupon-input" placeholder="Digite seu cupom" style="flex:1;min-width:0;padding:11px;border-radius:10px;border:1px solid #ffffff22;background:#ffffff0d;color:#fff">
+<button id="rdzx-coupon-apply" class="btn" type="button">Aplicar</button>
+</div>
+<small id="rdzx-coupon-message" style="display:block;margin-top:8px;color:#aca2c3"></small>
+</div>`;
+      checkout.parentNode.insertBefore(caixa.firstElementChild,checkout);
+    }
+
+    const botao=document.getElementById("rdzx-coupon-apply");
+
+    if(botao && !botao.dataset.ativo){
+      botao.dataset.ativo="true";
+      botao.addEventListener("click",aplicarCupom);
+    }
+
+    atualizarCupom();
+  }
+
+  const atualizarOriginal=updateCart;
+
+  updateCart=function(){
+    atualizarOriginal();
+    setTimeout(prepararCupom,20);
+  };
+
+  const checkoutOriginal=checkout;
+
+  checkout=function(){
+    if(!cart.length)return;
+
+    const base=valorCarrinho();
+    const desconto=cupomAtivo===CUPOM ? base*(DESCONTO/100) : 0;
+    const final=base-desconto;
+
+    const linhas=cart.map(function(item){
+      const produto=products.find(function(p){return p.id===item.id});
+      return "• "+produto.name+"\\n  Preço: "+(produto.price==null?"Consultar":"R$ "+produto.price.toFixed(2).replace(".",","))+"\\n  Quantidade: "+item.qty;
+    }).join("\\n");
+
+    const mensagem="Olá! Vim pela RDZX STORE.\\n\\nPedido:\\n"+linhas+
+      "\\n\\nSubtotal: R$ "+base.toFixed(2).replace(".",",")+
+      (desconto>0?"\\nCupom: RDZX10 (-10%)\\nDesconto: R$ "+desconto.toFixed(2).replace(".",","):"")+
+      "\\nTotal final: R$ "+final.toFixed(2).replace(".",",")+
+      "\\n\\nAguardo as informações para finalizar.";
+
+    sendWhats(mensagem);
+  };
+
+  setTimeout(function(){
+    updateCart();
+  },500);
+})();
+</script>
+
+<script id="rdzx-menu-tudo-script">
+(function(){
+  if(window.rdzxMenuTudoAtivo)return;
+  window.rdzxMenuTudoAtivo=true;
+
+  function iniciar(){
+    const menu=document.getElementById("rdzx-menu-tudo");
+    const botoes=menu && menu.querySelector(".rdzx-menu-botoes");
+    const select=document.getElementById("cat");
+
+    if(!menu || !botoes || !select || typeof products==="undefined")return;
+
+    const categorias=[...new Set(products.map(function(p){return p.cat}))];
+
+    const icones={
+      "ASSINATURAS":"💎",
+      "CRIE SUA EMPRESA":"🚀",
+      "DISCORD":"💬",
+      "ENGAJAMENTOS":"📸",
+      "STEAM / JOGOS":"🎮",
+      "JOGOS":"🕹️",
+      "EDITORES":"🎨",
+      "OUTROS":"📦"
+    };
+
+    function escolher(categoria,botao){
+      select.value=categoria;
+
+      document.querySelectorAll(".rdzx-menu-botao").forEach(function(item){
+        item.classList.remove("ativo");
+      });
+
+      botao.classList.add("ativo");
+
+      if(typeof render==="function"){
+        render();
+      }
+
+      const produtos=document.getElementById("produtos");
+
+      if(produtos){
+        setTimeout(function(){
+          produtos.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+        },100);
+      }
+    }
+
+    botoes.innerHTML="";
+
+    const tudo=document.createElement("button");
+    tudo.className="rdzx-menu-botao ativo";
+    tudo.innerHTML="✨ Tudo<small>Ver todas as categorias</small>";
+    tudo.onclick=function(){
+      escolher("",tudo);
+    };
+    botoes.appendChild(tudo);
+
+    categorias.forEach(function(categoria){
+      const botao=document.createElement("button");
+      const quantidade=products.filter(function(p){
+        return p.cat===categoria;
+      }).length;
+
+      botao.className="rdzx-menu-botao";
+      botao.innerHTML=(icones[categoria]||"📂")+" "+categoria+"<small>"+quantidade+" produto(s)</small>";
+
+      botao.onclick=function(){
+        escolher(categoria,botao);
+      };
+
+      botoes.appendChild(botao);
+    });
+
+    select.value="";
+    if(typeof render==="function"){
+      render();
+    }
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",iniciar);
+  }else{
+    iniciar();
+  }
+})();
+</script>
+
+<style id="rdzx-descricoes-todos-produtos">
+.rdzx-desc-produto{
+  min-height:40px;
+  margin:7px 0;
+  color:#c8bdd5;
+  font-size:12px;
+  line-height:1.5;
+}
+</style>
+
+<script id="rdzx-descricoes-todos-produtos-script">
+(function(){
+  const descricoes={
+    "Hogwarts Legacy":"Aventura mágica em Hogwarts com exploração, feitiços e batalhas.",
+    "Elden Ring":"Mundo sombrio cheio de mistérios, chefes e batalhas épicas.",
+    "Elden Ring Nightreign":"Desafios intensos e perigosos no universo de Elden Ring.",
+    "LEGO Batman: Legacy of the Dark Knight Deluxe Edition":"Aventura do Batman com ação, Gotham e conteúdo Deluxe.",
+    "Baldur’s Gate III":"RPG com escolhas profundas, personagens marcantes e história envolvente.",
+    "Resident Evil Requiem":"Terror e sobrevivência em uma experiência assustadora.",
+    "The Last of Us Part I":"Jornada emocionante de sobrevivência em um mundo devastado.",
+    "The Last of Us Part II":"História intensa de sobrevivência, vingança e escolhas difíceis.",
+    "Crimson Desert":"Aventura de ação em mundo aberto com combates e exploração.",
+    "PRAGMATA":"Experiência futurista de ação e ficção científica.",
+    "Site de Vendas Personalizado":"Site moderno e personalizado para divulgar e vender seus produtos.",
+    "Criação de Servidor":"Criação e configuração de servidor para seu projeto.",
+    "Netflix":"Filmes, séries e produções exclusivas da Netflix.",
+    "Prime Video":"Filmes, séries e conteúdos exclusivos do Prime Video.",
+    "Disney+":"Conteúdos da Disney, Pixar, Marvel, Star Wars e National Geographic.",
+    "HBO Max":"Filmes, séries e produções exclusivas em um só lugar.",
+    "YouTube Premium":"Vídeos sem anúncios, reprodução em segundo plano e benefícios Premium.",
+    "Viki Rakuten":"Séries e conteúdos asiáticos com opções de entretenimento internacional.",
+    "Apple TV":"Filmes, séries e produções exclusivas da Apple TV.",
+    "TNT Sports":"Conteúdos esportivos e transmissões para acompanhar seus campeonatos.",
+    "Privacy":"Serviço digital voltado para privacidade e proteção online.",
+    "Globoplay":"Novelas, séries, programas e conteúdos exclusivos do Globoplay.",
+    "Deezer":"Músicas, playlists e conteúdos de áudio para ouvir onde quiser.",
+    "ChatGPT":"Ferramenta de inteligência artificial para produtividade e criação.",
+    "CapCut Pro":"Recursos avançados para edição de vídeos e criação de conteúdo.",
+    "Crunchyroll":"Animes, episódios e conteúdos exclusivos para fãs de animação japonesa.",
+    "Spotify Premium":"Músicas, playlists e reprodução sem anúncios.",
+    "IPTV":"Acesso a conteúdos de televisão conforme a disponibilidade do serviço.",
+    "Google Veo 3":"Ferramenta de inteligência artificial para criação de vídeos.",
+    "Conta com Nitro":"Conta Discord com benefícios e recursos Nitro.",
+    "Nitro Link":"Ativação de benefícios Nitro por link.",
+    "Ativação Nitro":"Ativação de Nitro para sua conta Discord.",
+    "Membros Discord":"Serviço para aumentar a presença e o movimento do seu servidor.",
+    "Conta Virgem":"Conta nova pronta para utilização conforme disponibilidade.",
+    "Impulsos":"Impulsos para ajudar a destacar seu servidor Discord.",
+    "Checker Nitro Link":"Ferramenta para verificar informações de links Nitro.",
+    "Discord Premium":"Produto digital com recursos Premium para Discord.",
+    "Instagram":"Serviço digital para melhorar presença e engajamento no Instagram.",
+    "Editores de Imagem":"Ferramentas para criar, editar e melhorar imagens.",
+    "Editores de Vídeo":"Recursos para editar vídeos com mais qualidade.",
+    "Minecraft Original Java + Bedrock":"Experiência completa de Minecraft nas versões Java e Bedrock.",
+    "Xbox Game Pass":"Catálogo de jogos para aproveitar diferentes experiências.",
+    "Hytale":"Aventura com exploração, construção e desafios.",
+    "ExitLag":"Solução para melhorar conexão e reduzir problemas de rota.",
+    "GeForce NOW":"Jogos compatíveis por streaming em diferentes dispositivos.",
+    "Keys Steam Aleatórias":"Chaves aleatórias para descobrir novos jogos na Steam.",
+    "Robux Taxado":"Créditos Robux conforme a opção escolhida.",
+    "Robux Gamepass":"Benefícios e conteúdos para experiências Roblox.",
+    "PlayStation":"Produtos e serviços digitais para jogadores PlayStation.",
+    "Curso Game Developer Noneclass":"Curso com conceitos e práticas de desenvolvimento de jogos.",
+    "Geradores":"Ferramentas digitais para gerar conteúdos conforme a opção escolhida.",
+    "Créditos Lovable":"Créditos para utilizar recursos da plataforma Lovable.",
+    "Emails":"E-mails digitais para utilização conforme a necessidade."
+  };
+
+  function aplicarDescricoes(){
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+      const info=card.querySelector(".info");
+
+      if(!titulo || !info)return;
+
+      const nome=titulo.textContent.trim();
+      const descricao=descricoes[nome];
+
+      if(!descricao || info.querySelector(".rdzx-desc-produto"))return;
+
+      const texto=document.createElement("div");
+      texto.className="rdzx-desc-produto";
+      texto.textContent=descricao;
+
+      const preco=info.querySelector(".price");
+
+      if(preco){
+        info.insertBefore(texto,preco);
+      }else{
+        info.appendChild(texto);
+      }
+    });
+  }
+
+  aplicarDescricoes();
+  setTimeout(aplicarDescricoes,500);
+  setTimeout(aplicarDescricoes,1500);
+  setInterval(aplicarDescricoes,1200);
+})();
+</script>
+
+<script id="rdzx-limpar-descricoes-discord">
+(function(){
+  const nomesDiscord=[
+    "Conta com Nitro",
+    "Nitro Link",
+    "Ativação Nitro",
+    "Membros Discord",
+    "Conta Virgem",
+    "Impulsos",
+    "Checker Nitro Link",
+    "Discord Premium"
+  ];
+
+  function limpar(){
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+      const info=card.querySelector(".info");
+
+      if(!titulo || !info || !nomesDiscord.includes(titulo.textContent.trim())){
+        return;
+      }
+
+      info.querySelectorAll(".rdzx-product-description,.rdzx-modal-description").forEach(function(item){
+        item.remove();
+      });
+
+      const textos=info.querySelectorAll(".muted");
+
+      for(let i=1;i<textos.length;i++){
+        textos[i].remove();
+      }
+    });
+  }
+
+  limpar();
+
+  new MutationObserver(limpar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
+<style id="rdzx-remover-discord-completo">
+#rdzx-section-discord,
+.rdzx-discord-card{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-discord-completo-script">
+(function(){
+  const nomes=[
+    "Conta com Nitro",
+    "Nitro Link",
+    "Ativação Nitro",
+    "Membros Discord",
+    "Conta Virgem",
+    "Impulsos",
+    "Checker Nitro Link",
+    "Discord Premium"
+  ];
+
+  function remover(){
+    if(typeof products!=="undefined"){
+      for(let i=products.length-1;i>=0;i--){
+        if(
+          nomes.includes(products[i].name) ||
+          products[i].cat==="DISCORD"
+        ){
+          products.splice(i,1);
+        }
+      }
+    }
+
+    document.querySelectorAll("#rdzx-section-discord").forEach(function(item){
+      item.remove();
+    });
+
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+      if(titulo && nomes.includes(titulo.textContent.trim())){
+        card.remove();
+      }
+    });
+
+    document.querySelectorAll("#cat option").forEach(function(option){
+      if(option.value==="DISCORD"){
+        option.remove();
+      }
+    });
+
+    if(typeof render==="function"){
+      render();
+    }
+  }
+
+  remover();
+
+  new MutationObserver(remover).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
+<script id="rdzx-remover-botao-discord">
+(function(){
+  function limpar(){
+    document.querySelectorAll(".rdzx-category-tab").forEach(function(botao){
+      const texto=botao.textContent.toLowerCase();
+
+      if(
+        texto.includes("discord") ||
+        texto.includes("nitro")
+      ){
+        botao.remove();
+      }
+    });
+
+    document.querySelectorAll("#rdzx-section-discord").forEach(function(item){
+      item.remove();
+    });
+
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector(".info h3");
+
+      if(
+        titulo &&
+        (
+          titulo.textContent.toLowerCase().includes("discord") ||
+          titulo.textContent.toLowerCase().includes("nitro")
+        )
+      ){
+        card.remove();
+      }
+    });
+  }
+
+  limpar();
+
+  new MutationObserver(limpar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
 </body></html>
 <style>
 #rdzx-sound-button{
@@ -2336,3 +3825,382 @@ section{
 })();
 </script>
 
+
+<style id="rdzx-cupom-campo">
+#rdzx-cupom-visivel{
+  display:none!important;
+}
+#rdzx-cupom-campo{
+  max-width:900px;
+  margin:28px auto;
+  padding:20px;
+  border:1px solid #a968ff66;
+  border-radius:20px;
+  background:linear-gradient(135deg,#7c3cff22,#e64cff12);
+  box-shadow:0 0 30px #9b5cff33;
+}
+#rdzx-cupom-campo h3{
+  margin:0 0 12px;
+  color:#fff;
+}
+#rdzx-cupom-linha{
+  display:flex;
+  gap:8px;
+}
+#rdzx-cupom-input{
+  flex:1;
+  min-width:0;
+  padding:13px;
+  border:1px solid #ffffff22;
+  border-radius:12px;
+  color:#fff;
+  background:#0005;
+  outline:none;
+}
+#rdzx-cupom-aplicar{
+  padding:0 16px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  background:linear-gradient(110deg,#7c3cff,#c13cff);
+  font-weight:900;
+}
+#rdzx-cupom-retorno{
+  display:block;
+  margin-top:10px;
+  color:#aca2c3;
+}
+@media(max-width:500px){
+  #rdzx-cupom-linha{
+    flex-direction:column;
+  }
+  #rdzx-cupom-aplicar{
+    min-height:44px;
+  }
+}
+</style>
+
+<script id="rdzx-cupom-campo-script">
+(function(){
+  const CODIGO="RDZX10";
+  const DESCONTO=2;
+  let aplicado=false;
+
+  function criarCampo(){
+    if(document.getElementById("rdzx-cupom-campo"))return;
+
+    const bloco=document.createElement("section");
+    bloco.id="rdzx-cupom-campo";
+    bloco.innerHTML=
+      "<h3>🎟️ Tem um cupom?</h3>"+
+      "<div id='rdzx-cupom-linha'>"+
+      "<input id='rdzx-cupom-input' placeholder='Digite seu cupom'>"+
+      "<button id='rdzx-cupom-aplicar' type='button'>Aplicar</button>"+
+      "</div>"+
+      "<small id='rdzx-cupom-retorno'></small>";
+
+    const footer=document.querySelector("footer");
+
+    if(footer){
+      footer.parentNode.insertBefore(bloco,footer);
+    }else{
+      document.body.appendChild(bloco);
+    }
+
+    document.getElementById("rdzx-cupom-aplicar").onclick=validarCupom;
+  }
+
+  function valorTotal(){
+    let total=0;
+
+    if(typeof cart==="undefined" || typeof products==="undefined"){
+      return 0;
+    }
+
+    cart.forEach(function(item){
+      const produto=products.find(function(p){return p.id===item.id});
+
+      if(produto && produto.price){
+        total+=produto.price*item.qty;
+      }
+    });
+
+    return total;
+  }
+
+  function atualizarTotal(){
+    if(!aplicado)return;
+
+    const total=document.getElementById("total");
+    if(!total)return;
+
+    const valor=Math.max(0,valorTotal()-DESCONTO);
+    total.textContent="R$ "+valor.toFixed(2).replace(".",",");
+  }
+
+  function validarCupom(){
+    const input=document.getElementById("rdzx-cupom-input");
+    const retorno=document.getElementById("rdzx-cupom-retorno");
+
+    if(!input || !retorno)return;
+
+    if(input.value.trim().toUpperCase()===CODIGO){
+      aplicado=true;
+      localStorage.setItem("rdzx_cupom_valido","true");
+      retorno.textContent="Cupom aplicado! R$ 2,00 de desconto.";
+      retorno.style.color="#25d366";
+      atualizarTotal();
+
+      if(typeof toast==="function"){
+        toast("Cupom aplicado com sucesso");
+      }
+    }else{
+      aplicado=false;
+      localStorage.removeItem("rdzx_cupom_valido");
+      retorno.textContent="Esse não é o cupom.";
+      retorno.style.color="#ff6b8a";
+    }
+  }
+
+  window.addEventListener("load",function(){
+    criarCampo();
+
+    if(localStorage.getItem("rdzx_cupom_valido")==="true"){
+      aplicado=true;
+      const retorno=document.getElementById("rdzx-cupom-retorno");
+
+      if(retorno){
+        retorno.textContent="Cupom aplicado! R$ 2,00 de desconto.";
+        retorno.style.color="#25d366";
+      }
+
+      atualizarTotal();
+    }
+  });
+
+  setInterval(atualizarTotal,800);
+})();
+</script>
+
+
+<script id="rdzx-cupom-forcar-exibicao">
+(function(){
+  function mostrarCupom(){
+    if(document.getElementById("rdzx-cupom-campo"))return;
+
+    const bloco=document.createElement("section");
+
+    bloco.id="rdzx-cupom-campo";
+    bloco.style.cssText=
+      "display:block!important;max-width:900px;margin:28px auto;padding:20px;border:1px solid #a968ff;border-radius:20px;background:linear-gradient(135deg,#7c3cff33,#e64cff18);box-shadow:0 0 30px #9b5cff55;color:white;";
+
+    bloco.innerHTML=
+      "<h3 style='margin:0 0 12px;color:white'>🎟️ Tem um cupom?</h3>"+
+      "<div style='display:flex;gap:8px'>"+
+      "<input id='rdzx-cupom-input-novo' placeholder='Digite seu cupom' style='flex:1;padding:13px;border-radius:12px;border:1px solid #ffffff33;background:#0008;color:white'>"+
+      "<button id='rdzx-cupom-aplicar-novo' type='button' style='padding:0 16px;border:0;border-radius:12px;color:white;background:linear-gradient(110deg,#7c3cff,#c13cff);font-weight:900'>Aplicar</button>"+
+      "</div>"+
+      "<small id='rdzx-cupom-retorno-novo' style='display:block;margin-top:10px'></small>";
+
+    const footer=document.querySelector("footer");
+
+    if(footer){
+      footer.parentNode.insertBefore(bloco,footer);
+    }else{
+      document.body.appendChild(bloco);
+    }
+
+    document.getElementById("rdzx-cupom-aplicar-novo").onclick=function(){
+      const input=document.getElementById("rdzx-cupom-input-novo");
+      const retorno=document.getElementById("rdzx-cupom-retorno-novo");
+
+      if(input.value.trim().toUpperCase()==="RDZX10"){
+        retorno.textContent="Cupom aplicado! R$ 2,00 de desconto.";
+        retorno.style.color="#25d366";
+        localStorage.setItem("rdzx_cupom_valido","true");
+      }else{
+        retorno.textContent="Esse não é o cupom.";
+        retorno.style.color="#ff6b8a";
+        localStorage.removeItem("rdzx_cupom_valido");
+      }
+    };
+  }
+
+  mostrarCupom();
+  setTimeout(mostrarCupom,500);
+  setTimeout(mostrarCupom,1500);
+})();
+</script>
+
+
+<script id="rdzx-reaplicar-precos">
+(function(){
+  const precos={
+    "Viki":12,
+    "Viki Rakuten":12,
+    "Apple TV":10.90,
+    "TNT Sports":11.50,
+    "Privacy":9,
+    "Grobo Play":11,
+    "Globoplay":11,
+    "Deezer":9,
+    "ChatGPT":36,
+    "CapCut":22,
+    "CapCut Pro":22,
+    "Crunchyroll":8,
+    "Spotify Premium":8,
+    "IPTV":12,
+    "Google Veo 3":45,
+    "Discord Premium":8
+  };
+
+  products.forEach(function(produto){
+    if(produto.name==="Grobo Play"){
+      produto.name="Globoplay";
+    }
+
+    if(precos[produto.name]!==undefined){
+      produto.price=precos[produto.name];
+      produto.prefix="";
+    }
+  });
+
+  for(let i=products.length-1;i>=0;i--){
+    if(
+      products[i].name.toLowerCase().includes("gemini") &&
+      !products[i].img
+    ){
+      products.splice(i,1);
+    }
+  }
+
+  if(typeof setup==="function"){
+    setup();
+  }else if(typeof render==="function"){
+    render();
+  }
+})();
+</script>
+
+
+<style id="rdzx-fim-discord">
+#rdzx-section-discord{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-fim-discord-script">
+(function(){
+  const nomes=[
+    "Conta com Nitro",
+    "Nitro Link",
+    "Ativação Nitro",
+    "Membros Discord",
+    "Conta Virgem",
+    "Impulsos",
+    "Checker Nitro Link",
+    "Discord Premium"
+  ];
+
+  function limparDiscord(){
+    document.querySelectorAll("*").forEach(function(elemento){
+      const texto=(elemento.textContent||"").trim().toLowerCase();
+
+      if(
+        elemento.classList &&
+        (
+          elemento.classList.contains("rdzx-category-tab") ||
+          elemento.classList.contains("rdzx-menu-botao")
+        ) &&
+        (
+          texto.includes("discord") ||
+          texto.includes("nitro")
+        )
+      ){
+        elemento.remove();
+      }
+    });
+
+    document.querySelectorAll("#rdzx-section-discord").forEach(function(secao){
+      secao.remove();
+    });
+
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector("h3");
+
+      if(
+        titulo &&
+        nomes.some(function(nome){
+          return titulo.textContent.trim()===nome;
+        })
+      ){
+        card.remove();
+      }
+    });
+
+    if(typeof products!=="undefined"){
+      for(let i=products.length-1;i>=0;i--){
+        if(
+          products[i].cat==="DISCORD" ||
+          nomes.includes(products[i].name)
+        ){
+          products.splice(i,1);
+        }
+      }
+    }
+
+    document.querySelectorAll("#cat option").forEach(function(opcao){
+      if(
+        opcao.value==="DISCORD" ||
+        opcao.textContent.toLowerCase().includes("discord")
+      ){
+        opcao.remove();
+      }
+    });
+  }
+
+  limparDiscord();
+
+  new MutationObserver(limparDiscord).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
+<script id="rdzx-restaurar-capas-assinaturas">
+setTimeout(function(){
+  if(typeof products==="undefined") return;
+
+  const capas={
+    "Netflix":"imagens/assinaturas/netflix.jpg",
+    "Prime Video":"imagens/assinaturas/prime-video.jpg",
+    "Disney+":"imagens/assinaturas/disney-plus.jpg",
+    "HBO Max":"imagens/assinaturas/hbo-max.jpg",
+    "YouTube Premium":"imagens/assinaturas/youtube-premium.jpg",
+    "Viki Rakuten":"imagens/assinaturas/viki.jpg",
+    "Apple TV":"imagens/assinaturas/apple-tv.jpg",
+    "TNT Sports":"imagens/assinaturas/tnt-sports.jpg",
+    "Privacy":"imagens/assinaturas/privacy.jpg",
+    "Deezer":"imagens/assinaturas/deezer.jpg",
+    "Grobo Play":"imagens/assinaturas/grobo-play.jpg",
+    "Globoplay":"imagens/assinaturas/globoplay.jpg",
+    "Google Veo 3":"imagens/assinaturas/google-veo.jpg",
+    "ChatGPT":"imagens/assinaturas/chatgpt.jpg",
+    "CapCut Pro":"imagens/assinaturas/capcut.jpg",
+    "Crunchyroll":"imagens/assinaturas/crunchyroll.jpg",
+    "Spotify Premium":"imagens/assinaturas/spotify.jpg",
+    "IPTV":"imagens/assinaturas/iptv.jpg"
+  };
+
+  products.forEach(function(produto){
+    if(capas[produto.name]){
+      produto.img=capas[produto.name];
+    }
+  });
+
+  if(typeof render==="function"){
+    render();
+  }
+},4500);
+</script>
