@@ -780,6 +780,36 @@ body.claro .produto img{
   .rdzx-roleta-area::after{font-size:17px;letter-spacing:14px}
 }
 </style>
+
+<style id="rdzx-campo-cupom-corrigido">
+.checkout-cupom-linha{
+  display:flex!important;
+  width:100%!important;
+  gap:8px!important;
+  align-items:stretch!important;
+}
+.checkout-cupom-linha input{
+  display:block!important;
+  flex:1 1 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  height:46px!important;
+}
+.checkout-cupom-linha button{
+  flex:0 0 105px!important;
+  width:105px!important;
+  height:46px!important;
+  padding:0 8px!important;
+  white-space:nowrap!important;
+}
+@media(max-width:420px){
+  .checkout-cupom-linha button{
+    flex-basis:88px!important;
+    width:88px!important;
+    font-size:12px!important;
+  }
+}
+</style>
 </head>
 
 <body>
