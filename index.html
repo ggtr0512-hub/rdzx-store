@@ -712,6 +712,74 @@ body.claro .produto img{
   }
 }
 </style>
+
+<style id="rdzx-roleta-interativa">
+.rdzx-roleta-area{
+  isolation:isolate;
+}
+.rdzx-roleta-area::after{
+  content:"✦  ✧  ✦  ✧  ✦";
+  position:absolute;
+  inset:12% 5% auto;
+  color:#d99cff88;
+  font-size:22px;
+  letter-spacing:28px;
+  pointer-events:none;
+  z-index:0;
+}
+.rdzx-roleta-area.roleta-visivel{
+  animation:entradaRoleta .8s ease-out both;
+}
+@keyframes entradaRoleta{
+  from{opacity:0;transform:translateY(24px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.roleta-palco{
+  position:relative;
+  z-index:1;
+}
+#rdzx-roleta-canvas{
+  filter:drop-shadow(0 0 18px #bd5cff88);
+}
+.botao-som-roleta{
+  display:block;
+  margin:12px auto 0;
+  padding:9px 15px;
+  border:1px solid #ffffff33;
+  border-radius:999px;
+  color:#eadbff;
+  background:#ffffff0d;
+  font-size:13px;
+  cursor:pointer;
+}
+.roleta-girando #rdzx-roleta-canvas{
+  filter:drop-shadow(0 0 28px #ffcf5c) drop-shadow(0 0 18px #b33cff);
+}
+.roleta-perdeu{
+  animation:balancoRoleta .55s ease-in-out;
+}
+@keyframes balancoRoleta{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-9px) rotate(-1deg)}
+  75%{transform:translateX(9px) rotate(1deg)}
+}
+.roleta-ganhou .roleta-modal{
+  box-shadow:0 0 35px #ffcf5c,0 0 90px #b33cffcc,0 20px 60px #000;
+}
+.copiar-cupom{
+  margin:5px 0 12px;
+  padding:10px 14px;
+  border:1px solid #ffdb62;
+  border-radius:10px;
+  color:#211500;
+  background:#ffdb62;
+  font-weight:900;
+  cursor:pointer;
+}
+@media(max-width:760px){
+  .rdzx-roleta-area::after{font-size:17px;letter-spacing:14px}
+}
+</style>
 </head>
 
 <body>
@@ -1253,6 +1321,210 @@ function comprarProduto(botao){
   };
 
   desenhar();
+})();
+</script>
+
+<script id="rdzx-roleta-interativa">
+(function(){
+  var area=document.getElementById("rdzx-roleta-store");
+  var botao=document.getElementById("rdzx-girar-roleta");
+  var canvas=document.getElementById("rdzx-roleta-canvas");
+  var modal=document.getElementById("rdzx-modal-premio");
+  var titulo=document.getElementById("rdzx-titulo-premio");
+  var texto=document.getElementById("rdzx-texto-premio");
+  var codigo=document.getElementById("rdzx-codigo-premio");
+
+  if(!area || !botao || !canvas || !modal)return;
+
+  var somLigado=false;
+  var audio=null;
+  var giroComecou=0;
+  var temporizadores=[];
+
+  var somBotao=document.createElement("button");
+  somBotao.id="rdzx-som-toggle";
+  somBotao.className="botao-som-roleta";
+  somBotao.type="button";
+  somBotao.textContent="🔇 Som: OFF";
+  botao.insertAdjacentElement("afterend",somBotao);
+
+  function iniciarAudio(){
+    if(!audio){
+      var AudioContext=window.AudioContext||window.webkitAudioContext;
+      if(!AudioContext)return;
+      audio=new AudioContext();
+    }
+    if(audio.state==="suspended")audio.resume();
+  }
+
+  function tom(frequencia,duracao,tipo,volume){
+    if(!somLigado)return;
+    iniciarAudio();
+    if(!audio)return;
+
+    var oscilador=audio.createOscillator();
+    var ganho=audio.createGain();
+
+    oscilador.type=tipo||"sine";
+    oscilador.frequency.value=frequencia;
+    ganho.gain.setValueAtTime(volume||.035,audio.currentTime);
+    ganho.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duracao);
+
+    oscilador.connect(ganho);
+    ganho.connect(audio.destination);
+    oscilador.start();
+    oscilador.stop(audio.currentTime+duracao);
+  }
+
+  function somClique(){
+    tom(180+Math.random()*80,.045,"square",.025);
+  }
+
+  function somVitoria(){
+    if(!somLigado)return;
+    [523,659,784,1046].forEach(function(n,i){
+      setTimeout(function(){tom(n,.22,"sine",.055)},i*110);
+    });
+  }
+
+  function somDerrota(){
+    if(!somLigado)return;
+    tom(220,.25,"sawtooth",.045);
+    setTimeout(function(){tom(145,.35,"sawtooth",.04)},180);
+  }
+
+  somBotao.onclick=function(){
+    somLigado=!somLigado;
+
+    if(somLigado){
+      iniciarAudio();
+      somBotao.textContent="🔊 Som: ON";
+      tom(660,.12,"sine",.04);
+    }else{
+      somBotao.textContent="🔇 Som: OFF";
+    }
+  };
+
+  function cliquesDuranteGiro(){
+    var inicio=Date.now();
+    var duracao=5500;
+
+    function proximo(){
+      if(!somLigado)return;
+
+      var passado=Date.now()-inicio;
+      if(passado>=duracao)return;
+
+      var progresso=passado/duracao;
+      var intervalo=55+(progresso*progresso*300);
+
+      somClique();
+
+      var id=setTimeout(proximo,intervalo);
+      temporizadores.push(id);
+    }
+
+    proximo();
+  }
+
+  function confetesNegativos(){
+    for(var i=0;i<12;i++){
+      var part=document.createElement("span");
+      part.textContent=["💧","😭","·"][i%3];
+      part.style.position="fixed";
+      part.style.left=(35+Math.random()*30)+"vw";
+      part.style.top="38vh";
+      part.style.zIndex="1002";
+      part.style.fontSize="18px";
+      part.style.transition="top 1.4s ease-in,opacity 1.4s ease-in";
+      document.body.appendChild(part);
+
+      setTimeout(function(el){
+        el.style.top="75vh";
+        el.style.opacity="0";
+      },30,part);
+
+      setTimeout(function(el){el.remove()},1600,part);
+    }
+  }
+
+  function prepararResultado(){
+    setTimeout(function(){
+      var resultado=(titulo.textContent||"").trim();
+
+      area.classList.remove("roleta-perdeu","roleta-ganhou");
+
+      if(
+        resultado==="Não foi dessa vez!" ||
+        resultado==="Tente novamente"
+      ){
+        area.classList.add("roleta-perdeu");
+        somDerrota();
+        confetesNegativos();
+
+        if(resultado==="Não foi dessa vez!"){
+          texto.textContent="KKKK quase! 😭 A sorte tirou férias hoje.";
+        }else{
+          texto.textContent="Hoje não foi, hein... tenta novamente depois 😂";
+        }
+      }else{
+        area.classList.add("roleta-ganhou");
+        somVitoria();
+        titulo.textContent="🔥 VOCÊ DEU SORTE!";
+        texto.textContent="Prêmio conquistado: "+resultado;
+
+        if(codigo && codigo.textContent.trim()){
+          var copiar=document.getElementById("rdzx-copiar-cupom");
+
+          if(!copiar){
+            copiar=document.createElement("button");
+            copiar.id="rdzx-copiar-cupom";
+            copiar.className="copiar-cupom";
+            copiar.textContent="📋 COPIAR CUPOM";
+            codigo.insertAdjacentElement("afterend",copiar);
+
+            copiar.onclick=function(){
+              navigator.clipboard.writeText(codigo.textContent.trim());
+              copiar.textContent="✅ CUPOM COPIADO";
+            };
+          }
+        }
+      }
+    },5900);
+  }
+
+  botao.addEventListener("click",function(){
+    if(botao.disabled)return;
+
+    area.classList.add("roleta-girando");
+    giroComecou=Date.now();
+
+    if(somLigado){
+      iniciarAudio();
+      cliquesDuranteGiro();
+    }
+
+    prepararResultado();
+
+    setTimeout(function(){
+      area.classList.remove("roleta-girando");
+    },5900);
+  });
+
+  if("IntersectionObserver" in window){
+    var observador=new IntersectionObserver(function(lista){
+      lista.forEach(function(item){
+        if(item.isIntersecting){
+          area.classList.add("roleta-visivel");
+          observador.disconnect();
+        }
+      });
+    },{threshold:.2});
+
+    observador.observe(area);
+  }else{
+    area.classList.add("roleta-visivel");
+  }
 })();
 </script>
 </body>
