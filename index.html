@@ -989,7 +989,17 @@ footer{
   <h2>📂 Categorias</h2>
   <div class="rdzx-menu-botoes"></div>
 </section>
-<section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div><div class="grid" id="categories"></div></div></section>
+<section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div><div class="grid rdzx-category-tabs" id="categories">
+<button class="rdzx-category-tab active" onclick="document.getElementById('cat').value='';render()">✨<br>Todos os produtos<small>Ver tudo</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='ASSINATURAS';render()">💎<br>Assinaturas<small>Produtos digitais</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='CRIE SUA EMPRESA';render()">🚀<br>Crie sua empresa<small>Soluções para seu projeto</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='DISCORD';render()">💬<br>Discord / Nitro<small>Produtos para Discord</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='ENGAJAMENTOS';render()">📸<br>Engajamentos<small>Redes sociais</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='STEAM / JOGOS';render()">🎮<br>Steam / Jogos<small>Jogos digitais</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='JOGOS';render()">🕹️<br>Jogos<small>Mais opções</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='EDITORES';render()">🎨<br>Editores<small>Imagem e vídeo</small></button>
+<button class="rdzx-category-tab" onclick="document.getElementById('cat').value='OUTROS';render()">📦<br>Outros<small>Mais produtos</small></button>
+</div></div></section>
 <section id="produtos"><div class="wrap"><div class="head"><h2>Produtos</h2><small id="resultCount"></small></div><div class="search"><input id="search" placeholder="🔍 Buscar produto..." oninput="render()"></div><div class="filters"><select id="cat" onchange="render()"><option value="">Todas as categorias</option></select><select id="sort" onchange="render()"><option value="default">Mais relevantes</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select><select id="availability" onchange="render()"><option value="">Todos os produtos</option><option value="available">Disponíveis</option><option value="sold">Esgotados</option></select></div><div class="grid" id="products"></div></div></section>
 <section id="faq"><div class="wrap faq"><div class="head"><h2>FAQ</h2></div><details><summary>Como faço um pedido?</summary><p>Adicione os produtos ao carrinho, confira o total e toque em “Finalizar pelo WhatsApp”. A mensagem será preparada automaticamente.</p></details><details><summary>Produtos “Consultar” podem ser comprados?</summary><p>Sim. O WhatsApp abrirá com o produto selecionado para você consultar disponibilidade e valor.</p></details><details><summary>O carrinho fica salvo?</summary><p>Sim. Os itens ficam salvos no armazenamento local do navegador até você remover ou finalizar o pedido.</p></details></div></section>
 <section><div class="wrap"><div class="contact feature"><h2>Fale com a RDZX STORE ⚡</h2><p>Tem alguma dúvida ou quer consultar um produto?</p><button class="btn" onclick="sendWhats('Olá! Vim pelo site da RDZX STORE e gostaria de tirar uma dúvida.')">Abrir WhatsApp</button></div></div></section></main>
@@ -1656,77 +1666,7 @@ if("serviceWorker" in navigator){
 })();
 </script>
 
-<script id="rdzx-categorias-estaveis">
-setTimeout(function(){
-  if(typeof products==="undefined") return;
 
-  const area=document.getElementById("categories");
-  const select=document.getElementById("cat");
-  const produtos=document.getElementById("produtos");
-
-  if(!area) return;
-
-  const categorias=[...new Set(products.map(function(p){return p.cat}))];
-
-  const icones={
-    "ASSINATURAS":"💎",
-    "DISCORD":"💬",
-    "STEAM / JOGOS":"🎮",
-    "JOGOS":"🕹️",
-    "EDITORES":"🎨",
-    "ENGAJAMENTOS":"📸",
-    "CRIE SUA EMPRESA":"🚀",
-    "OUTROS":"📦"
-  };
-
-  area.className="rdzx-category-tabs";
-  area.innerHTML="";
-
-  function criarBotao(nome,icone,quantidade,valor){
-    const botao=document.createElement("button");
-    botao.className="rdzx-category-tab";
-    botao.innerHTML=icone+"<br>"+nome+"<small>"+quantidade+" produto(s)</small>";
-
-    botao.onclick=function(){
-      if(select) select.value=valor;
-
-      document.querySelectorAll(".rdzx-category-tab").forEach(function(item){
-        item.classList.remove("active");
-      });
-
-      botao.classList.add("active");
-
-      if(typeof render==="function") render();
-
-      if(produtos){
-        produtos.scrollIntoView({behavior:"smooth",block:"start"});
-      }
-    };
-
-    area.appendChild(botao);
-  }
-
-  criarBotao(
-    "Todos os produtos",
-    "✨",
-    products.length,
-    ""
-  );
-
-  categorias.forEach(function(categoria){
-    criarBotao(
-      categoria,
-      icones[categoria]||"📂",
-      products.filter(function(p){return p.cat===categoria}).length,
-      categoria
-    );
-  });
-
-  const primeiro=area.querySelector(".rdzx-category-tab");
-  if(primeiro) primeiro.classList.add("active");
-
-},3500);
-</script>
 </body></html>
 <style>
 #rdzx-sound-button{
