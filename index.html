@@ -897,6 +897,77 @@ button:active,
   }
 }
 </style>
+
+<style id="rdzx-terror-visual-extra">
+.categoria{
+  position:relative;
+  overflow:hidden;
+}
+.categoria::before{
+  content:"☠  ARQUIVO SOMBRIO  //  ASSINATURAS";
+  display:block;
+  margin-bottom:10px;
+  color:#8e5260;
+  font:10px monospace;
+  letter-spacing:2px;
+  opacity:.8;
+}
+.categoria::after{
+  content:"👁";
+  position:absolute;
+  right:18px;
+  top:13px;
+  color:#ef233c44;
+  font-size:25px;
+  text-shadow:0 0 15px #ef233c;
+  animation:olhoOculto 5s ease-in-out infinite;
+}
+@keyframes olhoOculto{
+  0%,70%,100%{opacity:.08;transform:scale(.8)}
+  78%,88%{opacity:.7;transform:scale(1)}
+}
+.titulo-terror-glitch{
+  animation:glitchTitulo .25s steps(2);
+}
+@keyframes glitchTitulo{
+  20%{transform:translateX(-3px);text-shadow:3px 0 #ef233c}
+  40%{transform:translateX(3px);text-shadow:-3px 0 #6d5cff}
+  70%{transform:translateX(-1px)}
+}
+.gota-terror{
+  position:fixed;
+  z-index:0;
+  top:-8px;
+  width:3px;
+  height:var(--altura);
+  pointer-events:none;
+  border-radius:0 0 5px 5px;
+  background:linear-gradient(#8e172c,#ef233c66);
+  box-shadow:0 0 8px #a7193277;
+  animation:gotaCaindo var(--tempo) ease-in forwards;
+}
+@keyframes gotaCaindo{
+  from{transform:scaleY(.2);opacity:0}
+  18%{opacity:.75}
+  85%{opacity:.5}
+  to{transform:scaleY(1);opacity:0}
+}
+.sombra-passando{
+  position:fixed;
+  z-index:0;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,#000b,transparent);
+  transform:translateX(-120%);
+  animation:sombraPassa 1.2s ease-in-out forwards;
+}
+@keyframes sombraPassa{
+  to{transform:translateX(120%)}
+}
+@media(max-width:700px){
+  .categoria::after{right:12px;font-size:20px}
+}
+</style>
 </head>
 
 <body>
@@ -1504,6 +1575,60 @@ function finalizarHorror(){
     el.style.transition="opacity .5s ease,transform .5s ease";
     observador.observe(el);
   });
+})();
+</script>
+
+<script id="rdzx-terror-visual-extra-js">
+(function(){
+  var reduzido=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var celular=window.matchMedia("(max-width:700px)").matches;
+
+  if(reduzido)return;
+
+  function gota(){
+    var el=document.createElement("i");
+    el.className="gota-terror";
+    el.style.left=(Math.random()*100)+"vw";
+    el.style.setProperty("--altura",(10+Math.random()*35)+"px");
+    el.style.setProperty("--tempo",(3+Math.random()*5)+"s");
+    document.body.appendChild(el);
+    setTimeout(function(){el.remove()},9000);
+  }
+
+  function sombra(){
+    var el=document.createElement("div");
+    el.className="sombra-passando";
+    document.body.appendChild(el);
+    setTimeout(function(){el.remove()},1400);
+  }
+
+  function glitch(){
+    var titulos=document.querySelectorAll("h1,h2,.logo");
+    if(!titulos.length)return;
+
+    var alvo=titulos[Math.floor(Math.random()*titulos.length)];
+    alvo.classList.add("titulo-terror-glitch");
+
+    setTimeout(function(){
+      alvo.classList.remove("titulo-terror-glitch");
+    },300);
+  }
+
+  for(var i=0;i<(celular?3:6);i++){
+    setTimeout(gota,Math.random()*5000);
+  }
+
+  setInterval(function(){
+    gota();
+  },celular?9000:6000);
+
+  setInterval(function(){
+    if(Math.random()<.65)sombra();
+  },celular?15000:10000);
+
+  setInterval(function(){
+    glitch();
+  },11000+Math.random()*7000);
 })();
 </script>
 </body>
