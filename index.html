@@ -1371,9 +1371,72 @@ footer{
   }
 }
 </style>
+
+<style id="rdzx-tema-real">
+#rdzx-tema-real{
+  position:fixed;
+  z-index:100;
+  top:14px;
+  right:14px;
+  padding:10px 13px;
+  border:1px solid #ffffff33;
+  border-radius:12px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+  cursor:pointer;
+}
+body.claro{
+  color:#24172d!important;
+  background:#f4f0f7!important;
+}
+body.claro header{
+  color:#24172d!important;
+  background:linear-gradient(180deg,#fff,#f4f0f7)!important;
+}
+body.claro header h1,
+body.claro h1,
+body.claro h2,
+body.claro h3{
+  color:#24172d!important;
+  text-shadow:none!important;
+}
+body.claro header p,
+body.claro p,
+body.claro .produto-descricao-terror{
+  color:#65586b!important;
+}
+body.claro .produto,
+body.claro .categoria,
+body.claro .rdzx-faixa-destaque,
+body.claro .rdzx-suporte-final,
+body.claro .rdzx-info-box{
+  color:#24172d!important;
+  border-color:#d7c9df!important;
+  background:#fff!important;
+  box-shadow:0 10px 25px #39204418!important;
+}
+body.claro .produto strong,
+body.claro .precos-promocionais strong{
+  color:#6428a8!important;
+  text-shadow:none!important;
+}
+body.claro .produto-descricao-terror{
+  border-left-color:#7836a8!important;
+}
+body.claro footer{
+  color:#65586b!important;
+  background:#eee9f1!important;
+}
+#botao-tema{
+  display:none!important;
+}
+</style>
 </head>
 
 <body>
+<button id="rdzx-tema-real" type="button">☀️ Modo claro</button>
+
 <button id="botao-tema" type="button">☀️ Modo claro</button>
 
 <header>
@@ -2116,6 +2179,32 @@ function finalizarHorror(){
     selo.textContent=selos[nome];
     card.appendChild(selo);
   });
+})();
+</script>
+
+<script id="rdzx-tema-real-js">
+(function(){
+  var botao=document.getElementById("rdzx-tema-real");
+  var tema=localStorage.getItem("rdzx-tema-real");
+
+  function atualizar(){
+    var claro=document.body.classList.contains("claro");
+    botao.textContent=claro?"🌙 Modo escuro":"☀️ Modo claro";
+  }
+
+  if(tema==="claro"){
+    document.body.classList.add("claro");
+  }
+
+  atualizar();
+
+  botao.onclick=function(){
+    document.body.classList.toggle("claro");
+
+    var claro=document.body.classList.contains("claro");
+    localStorage.setItem("rdzx-tema-real",claro?"claro":"escuro");
+    atualizar();
+  };
 })();
 </script>
 </body>
