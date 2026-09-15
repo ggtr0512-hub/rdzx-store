@@ -596,6 +596,47 @@ body.claro .produto img{
   .horror-topo{font-size:10px}
 }
 </style>
+
+<style id="rdzx-horror-animacoes">
+#horror-pergunta,
+#horror-opcoes{
+  animation:horrorEntrada .42s ease-out both;
+}
+@keyframes horrorEntrada{
+  from{opacity:0;transform:translateY(12px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.horror-opcao{
+  transition:background .2s,border-color .2s,transform .2s;
+}
+.horror-opcao:hover{
+  transform:translateX(4px);
+  border-color:#ef233c;
+  background:#ef233c18;
+}
+.horror-glitch{
+  animation:horrorGlitch .3s steps(2);
+}
+@keyframes horrorGlitch{
+  20%{transform:translateX(-5px);text-shadow:4px 0 #ef233c}
+  40%{transform:translateX(5px);text-shadow:-4px 0 #7d5cff}
+  60%{transform:translateX(-3px)}
+}
+.horror-zoadinha{
+  margin:8px 0;
+  color:#d7a7b0;
+  font-size:13px;
+  font-style:italic;
+}
+.horror-particula{
+  position:fixed;
+  z-index:4000;
+  pointer-events:none;
+  color:#ef233c;
+  font-size:18px;
+  transition:transform 1s ease-out,opacity 1s ease-out;
+}
+</style>
 </head>
 
 <body>
@@ -1018,7 +1059,7 @@ function mostrarHorrorPergunta(){
   horrorTravado=false;
   document.getElementById("horror-numero").textContent="☠️ PERGUNTA "+(horrorAtual+1)+"/10";
   document.getElementById("horror-dificuldade").textContent=x.d;
-  document.getElementById("horror-pontos").textContent=horrorPontos;
+  document.getElementById("horror-xp").textContent=horrorPontos;
   document.getElementById("horror-combo").textContent=horrorCombo;
   document.getElementById("horror-pergunta").textContent=x.q;
   document.getElementById("horror-evento").textContent=Math.random()<.18?"⚠️ O CORE ESTÁ OBSERVANDO":"";
@@ -1076,6 +1117,92 @@ function finalizarHorror(){
     texto.textContent="O Core ainda está observando. Tente novamente.";
   }
 }
+</script>
+
+<script id="rdzx-horror-animacoes-js">
+(function(){
+  var pergunta=document.getElementById("horror-pergunta");
+  var feedback=document.getElementById("horror-feedback");
+  var painel=document.querySelector(".horror-painel");
+
+  if(!pergunta || !feedback)return;
+
+  var observador=new MutationObserver(function(){
+    pergunta.classList.remove("horror-glitch");
+    void pergunta.offsetWidth;
+    pergunta.classList.add("horror-glitch");
+  });
+
+  observador.observe(pergunta,{childList:true});
+
+  var antigoFeedback=Object.getOwnPropertyDescriptor(
+    Element.prototype,"textContent"
+  );
+
+  function particulas(){
+    for(var i=0;i<8;i++){
+      var p=document.createElement("span");
+      p.className="horror-particula";
+      p.textContent=["✦","·","◆"][i%3];
+      p.style.left=(35+Math.random()*30)+"vw";
+      p.style.top=(35+Math.random()*25)+"vh";
+      document.body.appendChild(p);
+
+      setTimeout(function(el){
+        el.style.transform="translate("+
+          ((Math.random()-.5)*180)+"px,"+
+          ((Math.random()-.5)*180)+"px)";
+        el.style.opacity="0";
+      },20,p);
+
+      setTimeout(function(el){el.remove()},1100,p);
+    }
+  }
+
+  window.horrorZoar=function(acertou){
+    var frasesCertas=[
+      "🔥 Até o monstro ficou preocupado kkk",
+      "👁️ O Core não esperava por essa.",
+      "⚡ Essa foi limpa demais, mano.",
+      "🧠 O terror tentou, mas falhou."
+    ];
+
+    var frasesErradas=[
+      "💀 O Core te viu chegando e fechou a porta kkk",
+      "😭 Quase, mano. A sombra te enganou.",
+      "👻 Até o fantasma sabia essa.",
+      "🔪 O susto foi maior que a resposta."
+    ];
+
+    var lista=acertou?frasesCertas:frasesErradas;
+    var frase=lista[Math.floor(Math.random()*lista.length)];
+
+    var extra=document.getElementById("horror-zoadinha");
+    if(!extra){
+      extra=document.createElement("div");
+      extra.id="horror-zoadinha";
+      extra.className="horror-zoadinha";
+      feedback.insertAdjacentElement("afterend",extra);
+    }
+
+    extra.textContent=frase;
+    particulas();
+
+    if(!acertou && painel){
+      painel.classList.remove("horror-tremor");
+      void painel.offsetWidth;
+      painel.classList.add("horror-tremor");
+    }
+  };
+
+  var observadorFeedback=new MutationObserver(function(){
+    var texto=feedback.textContent||"";
+    if(!texto)return;
+    window.horrorZoar(texto.indexOf("SOBREVIVEU")>=0);
+  });
+
+  observadorFeedback.observe(feedback,{childList:true,characterData:true,subtree:true});
+})();
 </script>
 </body>
 </html>
