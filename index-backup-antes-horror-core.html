@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RDZX STORE ⚡ — Assinaturas</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  color:#fff;
+  background:#09050f;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+  padding:34px 18px;
+  text-align:center;
+  border-bottom:1px solid #ffffff18;
+}
+
+.logo{
+  color:#caa8ff;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+h1{
+  margin:18px 0 8px;
+  font-size:clamp(30px,7vw,52px);
+}
+
+header p{
+  margin:0 auto;
+  max-width:580px;
+  color:#bfb2ce;
+  line-height:1.6;
+}
+
+main{
+  width:min(1100px,100%);
+  margin:auto;
+  padding:24px 16px 50px;
+}
+
+.categoria{
+  margin-bottom:24px;
+  padding:16px 18px;
+  border:1px solid #ffffff1c;
+  border-radius:15px;
+  background:#ffffff08;
+  color:#d8c8e8;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.produto{
+  overflow:hidden;
+  border:1px solid #ffffff18;
+  border-radius:18px;
+  background:#120b1d;
+}
+
+.produto img{
+  display:block;
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#1b1028;
+}
+
+.produto-info{
+  padding:14px;
+}
+
+.produto h3{
+  min-height:42px;
+  margin:0 0 12px;
+  font-size:16px;
+}
+
+.produto strong{
+  display:block;
+  margin-bottom:13px;
+  color:#cba7ff;
+  font-size:18px;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:11px;
+  padding:12px 8px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+
+footer{
+  padding:25px 16px;
+  text-align:center;
+  color:#91859d;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .produto h3{font-size:14px}
+  .produto-info{padding:10px}
+  button{font-size:12px}
+}
+</style>
+
+<style id="rdzx-tema">
+#botao-tema{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:20;
+  width:auto;
+  padding:10px 13px;
+  border:1px solid #ffffff33;
+  border-radius:12px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+body.claro{
+  color:#21182b;
+  background:#f4f1f8;
+}
+
+body.claro header{
+  border-color:#d9d0e2;
+}
+
+body.claro header p,
+body.claro .categoria,
+body.claro footer{
+  color:#5d5268;
+}
+
+body.claro .categoria{
+  border-color:#d9d0e2;
+  background:#ffffff;
+}
+
+body.claro .produto{
+  border-color:#ddd4e5;
+  background:#ffffff;
+  box-shadow:0 5px 18px #25133218;
+}
+
+body.claro .produto strong{
+  color:#6428c7;
+}
+
+body.claro #botao-tema{
+  color:#21182b;
+  background:#f0c928;
+  border-color:#c49d00;
+}
+</style>
+
+<style id="rdzx-visual-premium">
+body{
+  background:
+    radial-gradient(circle at 50% -10%,#713cff28,transparent 42%),
+    #09050f;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+
+header{
+  padding:52px 18px 42px;
+  background:
+    linear-gradient(180deg,#160b27aa,transparent),
+    radial-gradient(circle at center,#713cff20,transparent 62%);
+}
+
+.logo{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid #a875ff55;
+  border-radius:999px;
+  color:#d5baff;
+  background:#ffffff08;
+  letter-spacing:2px;
+}
+
+h1{
+  margin-top:24px;
+  font-weight:900;
+  letter-spacing:-1px;
+  color:#fff;
+}
+
+header p{
+  max-width:620px;
+  margin:14px auto 0;
+  color:#cfc1dc;
+}
+
+main{
+  padding-top:30px;
+}
+
+.categoria{
+  border:1px solid #a875ff44;
+  background:linear-gradient(120deg,#713cff1c,#ffffff06);
+  box-shadow:0 12px 35px #0005;
+}
+
+.categoria strong{
+  color:#dfc7ff;
+  font-size:17px;
+}
+
+.grid{
+  gap:18px;
+}
+
+.produto{
+  border:1px solid #ffffff20;
+  background:linear-gradient(160deg,#1b1029,#0f0918);
+  box-shadow:0 12px 30px #0008;
+}
+
+.produto img{
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#211432;
+}
+
+.produto-info{
+  padding:16px;
+}
+
+.produto h3{
+  color:#fff;
+  font-size:16px;
+  line-height:1.35;
+}
+
+.produto strong{
+  color:#d3aaff;
+  font-size:19px;
+}
+
+.produto button{
+  border:1px solid #c39aff66;
+  background:linear-gradient(120deg,#713cff,#a52dff);
+  box-shadow:0 8px 18px #713cff44;
+  font-size:13px;
+}
+
+footer{
+  margin-top:20px;
+  border-top:1px solid #ffffff12;
+}
+
+body.claro{
+  background:#f3eff8;
+}
+
+body.claro header{
+  background:linear-gradient(180deg,#ffffff,#f3eff8);
+}
+
+body.claro h1{
+  color:#24162f;
+}
+
+body.claro .logo{
+  color:#5a269b;
+  border-color:#a47bd1;
+  background:#ffffff;
+}
+
+body.claro .produto{
+  background:#fff;
+  border-color:#ddd2e7;
+  box-shadow:0 10px 25px #38204b18;
+}
+
+body.claro .produto h3{
+  color:#26182f;
+}
+
+body.claro .categoria{
+  background:#fff;
+  border-color:#d9c8e5;
+}
+</style>
+
+
+
+<style id="rdzx-precos-promocionais">
+.precos-promocionais{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:13px;
+}
+.precos-promocionais del{
+  color:#91859d;
+  font-size:13px;
+  font-weight:normal;
+}
+.precos-promocionais strong{
+  margin:0!important;
+  color:#baffc8!important;
+  font-size:20px!important;
+}
+body.claro .precos-promocionais del{
+  color:#887d91;
+}
+body.claro .precos-promocionais strong{
+  color:#168238!important;
+}
+</style>
+
+<style id="rdzx-recursos-importantes">
+.rdzx-ferramentas{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  width:min(1100px,calc(100% - 32px));
+  margin:0 auto 22px;
+}
+.rdzx-ferramentas input,
+.rdzx-ferramentas select{
+  flex:1;
+  min-width:220px;
+  padding:13px 14px;
+  border:1px solid #ffffff22;
+  border-radius:12px;
+  color:#fff;
+  background:#160d22;
+  outline:none;
+}
+.rdzx-informacoes{
+  width:min(1100px,calc(100% - 32px));
+  margin:35px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.rdzx-info-box{
+  padding:18px;
+  border:1px solid #ffffff1c;
+  border-radius:16px;
+  background:#120b1d;
+}
+.rdzx-info-box h2{
+  margin-top:0;
+  color:#d6b4ff;
+  font-size:18px;
+}
+.rdzx-info-box p{
+  color:#bcaec7;
+  line-height:1.55;
+  font-size:14px;
+}
+.rdzx-info-box button{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+.rdzx-info-box details{
+  padding:10px 0;
+  border-top:1px solid #ffffff14;
+  color:#cfc0d9;
+  font-size:14px;
+}
+.rdzx-info-box summary{
+  cursor:pointer;
+  color:#fff;
+  font-weight:bold;
+}
+body.claro .rdzx-ferramentas input,
+body.claro .rdzx-ferramentas select,
+body.claro .rdzx-info-box{
+  color:#291b32;
+  background:#fff;
+  border-color:#ddd2e7;
+}
+body.claro .rdzx-info-box h2{
+  color:#5d2693;
+}
+body.claro .rdzx-info-box p,
+body.claro .rdzx-info-box details{
+  color:#665870;
+}
+body.claro .rdzx-info-box summary{
+  color:#291b32;
+}
+@media(max-width:700px){
+  .rdzx-informacoes{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+<style id="rdzx-fotos-inteiras">
+.produto img{
+  display:block!important;
+  width:100%!important;
+  height:230px!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:8px;
+  background:#171020!important;
+}
+body.claro .produto img{
+  background:#f3eff8!important;
+}
+@media(max-width:700px){
+  .produto img{
+    height:180px!important;
+  }
+}
+</style>
+
+<style id="rdzx-core-visual-css">
+.core-mini{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  width:min(650px,calc(100% - 32px));
+  margin:24px auto;
+  padding:15px 18px;
+  overflow:hidden;
+  border:1px solid #713cff88;
+  border-radius:18px;
+  background:linear-gradient(120deg,#170b28,#0b1023);
+  box-shadow:0 0 25px #713cff44;
+}
+.core-mini:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent,#ffffff12,transparent);
+  transform:translateX(-100%);
+  animation:coreLuz 4s infinite;
+}
+@keyframes coreLuz{
+  0%,55%{transform:translateX(-100%)}
+  80%,100%{transform:translateX(100%)}
+}
+.core-mini-nucleo{
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  flex:none;
+  border:1px solid #9f6cff;
+  border-radius:50%;
+  color:#e7caff;
+  background:#713cff33;
+  font-size:25px;
+  box-shadow:0 0 22px #8b5cff;
+  animation:corePulso 2s infinite alternate;
+}
+@keyframes corePulso{
+  to{transform:scale(1.08) rotate(12deg);box-shadow:0 0 38px #55bfff}
+}
+.core-mini-texto{
+  flex:1;
+  text-align:left;
+}
+.core-mini-texto b{
+  display:block;
+  color:#e4c8ff;
+}
+.core-mini-texto span{
+  color:#ad9cbd;
+  font-size:12px;
+}
+.core-mini button,
+#core-som{
+  position:relative;
+  z-index:1;
+  padding:10px 13px;
+  border:1px solid #a875ff88;
+  border-radius:10px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+.core-fundo{
+  position:fixed;
+  z-index:2000;
+  inset:0;
+  display:none;
+  place-items:center;
+  padding:16px;
+  background:#030107e8;
+}
+.core-painel{
+  position:relative;
+  width:min(560px,100%);
+  min-height:430px;
+  padding:30px 22px;
+  overflow:hidden;
+  text-align:center;
+  border:1px solid #9d67ff;
+  border-radius:25px;
+  background:
+    radial-gradient(circle at 50% 20%,#713cff44,transparent 40%),
+    #0d0718;
+  box-shadow:0 0 45px #713cffaa,0 25px 70px #000;
+}
+.core-painel:before{
+  content:"✦  ·  ✧  ·  ✦  ·  ✧";
+  position:absolute;
+  inset:18px;
+  color:#b86cff55;
+  font-size:25px;
+  letter-spacing:20px;
+  pointer-events:none;
+}
+.core-fechar{
+  position:absolute;
+  z-index:2;
+  top:8px;
+  right:13px;
+  border:0;
+  color:#fff;
+  background:transparent;
+  font-size:28px;
+}
+.core-logo{
+  position:relative;
+  color:#dab9ff;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+#core-status{
+  position:relative;
+  margin:30px 0 10px;
+  color:#7ce9ff;
+  font-family:monospace;
+}
+#core-barra{
+  position:relative;
+  height:8px;
+  overflow:hidden;
+  border-radius:10px;
+  background:#ffffff18;
+}
+#core-barra i{
+  display:block;
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,#713cff,#55d9ff);
+  transition:width .4s;
+}
+#core-conteudo{
+  display:none;
+  position:relative;
+}
+.core-nucleo-grande{
+  margin-top:24px;
+  color:#dcaaff;
+  font-size:58px;
+  text-shadow:0 0 30px #a44cff;
+  animation:corePulso 1.4s infinite alternate;
+}
+#core-conteudo h2{
+  color:#e6caff;
+}
+#core-mensagem{
+  color:#c5b4d2;
+}
+.core-xp{
+  margin:15px auto;
+  color:#7ce9ff;
+}
+.core-opcoes{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:18px 0;
+}
+.core-opcoes button,
+.core-alvo{
+  min-width:55px;
+  min-height:48px;
+  padding:10px;
+  border:1px solid #9b6cff;
+  border-radius:12px;
+  color:#fff;
+  background:#ffffff12;
+  font-size:20px;
+}
+.core-alvo{
+  position:relative;
+  margin:20px auto;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#ff4cbd;
+  box-shadow:0 0 25px #ff4cbd;
+}
+.core-resultado{
+  margin:16px 0;
+  color:#ffe18a;
+  font-size:20px;
+  font-weight:bold;
+}
+@media(max-width:600px){
+  .core-mini{flex-wrap:wrap}
+  .core-mini-texto{min-width:180px}
+  .core-mini button{width:100%}
+}
+</style>
+</head>
+
+<body>
+<button id="botao-tema" type="button">☀️ Modo claro</button>
+
+<header>
+  <div class="logo">RDZX STORE ⚡</div>
+  <h1>Assinaturas digitais</h1>
+  <p>Escolha sua assinatura e fale diretamente com a RDZX STORE pelo WhatsApp.</p>
+
+
+
+
+
+<section id="rdzx-core-visual" class="core-mini">
+  <div class="core-mini-nucleo">⚡</div>
+  <div class="core-mini-texto">
+    <b>⚡ RDZX CORE</b>
+    <span>Existe alguma coisa escondida aqui...</span>
+  </div>
+  <button onclick="abrirCore()">ATIVAR CORE</button>
+</section>
+
+<div id="core-tela" class="core-fundo">
+  <div class="core-painel">
+    <button class="core-fechar" onclick="fecharCore()">×</button>
+
+    <div class="core-logo">⚡ RDZX CORE</div>
+    <div id="core-status">INITIALIZING...</div>
+    <div id="core-barra"><i></i></div>
+
+    <div id="core-conteudo">
+      <div class="core-nucleo-grande">⚡</div>
+      <h2>CORE ONLINE</h2>
+      <p id="core-mensagem">Vamos ver se você consegue.</p>
+      <div class="core-xp">⚡ CORE XP: <b id="core-pontos">0</b></div>
+      <div id="core-desafio"></div>
+      <button id="core-som" onclick="alternarSomCore()">🔇 SOM OFF</button>
+    </div>
+  </div>
+</div>
+</header>
+
+<main>
+  <div class="categoria">
+    <strong>💎 Categoria: Assinaturas</strong><br>
+    <span>Confira os produtos disponíveis abaixo.</span>
+  </div>
+
+  
+<section class="rdzx-ferramentas">
+  <input id="rdzx-busca" type="search" placeholder="🔍 Buscar assinatura...">
+
+  <select id="rdzx-filtro-preco">
+    <option value="">Todos os preços</option>
+    <option value="10">Até R$ 10</option>
+    <option value="20">Até R$ 20</option>
+    <option value="50">Até R$ 50</option>
+  </select>
+</section>
+<section class="grid">
+    
+<article class="produto">
+  <img src="imagens/assinaturas/viki.jpg" alt="Viki Rakuten">
+  <div class="produto-info">
+    <h3>Viki Rakuten</h3>
+    <div class="precos-promocionais"><del>R$ 39,90</del><strong>R$ 12,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Viki Rakuten" data-preco="R$ 12,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/apple-tv.jpg" alt="Apple TV">
+  <div class="produto-info">
+    <h3>Apple TV</h3>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 10,90</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Apple TV" data-preco="R$ 10,90">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/tnt-sports.jpg" alt="TNT Sports">
+  <div class="produto-info">
+    <h3>TNT Sports</h3>
+    <div class="precos-promocionais"><del>R$ 34,90</del><strong>R$ 11,50</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="TNT Sports" data-preco="R$ 11,50">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/privacy.jpg" alt="Privacy">
+  <div class="produto-info">
+    <h3>Privacy</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Privacy" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/deezer.jpg" alt="Deezer">
+  <div class="produto-info">
+    <h3>Deezer</h3>
+    <div class="precos-promocionais"><del>R$ 19,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Deezer" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/grobo-play.jpg" alt="Grobo Play">
+  <div class="produto-info">
+    <h3>Grobo Play</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Grobo Play" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/google-veo.jpg" alt="Google Veo 3">
+  <div class="produto-info">
+    <h3>Google Veo 3</h3>
+    <div class="precos-promocionais"><del>R$ 99,90</del><strong>R$ 45,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Google Veo 3" data-preco="R$ 45,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/chatgpt.jpg" alt="ChatGPT">
+  <div class="produto-info">
+    <h3>ChatGPT</h3>
+    <div class="precos-promocionais"><del>R$ 79,90</del><strong>R$ 36,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="ChatGPT" data-preco="R$ 36,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/capcut.jpg" alt="CapCut Pro">
+  <div class="produto-info">
+    <h3>CapCut Pro</h3>
+    <div class="precos-promocionais"><del>R$ 49,90</del><strong>R$ 22,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="CapCut Pro" data-preco="R$ 22,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/crunchyroll.jpg" alt="Crunchyroll">
+  <div class="produto-info">
+    <h3>Crunchyroll</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Crunchyroll" data-preco="R$ 8,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/spotify.jpg" alt="Spotify Premium">
+  <div class="produto-info">
+    <h3>Spotify Premium</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Spotify Premium" data-preco="R$ 8,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/iptv.jpg" alt="IPTV">
+  <div class="produto-info">
+    <h3>IPTV</h3>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 12,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="IPTV" data-preco="R$ 12,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+  </section>
+
+<section class="rdzx-informacoes">
+  <div class="rdzx-info-box">
+    <h2>Como comprar</h2>
+    <p>Escolha o produto, confira o preço e toque em comprar. O WhatsApp abrirá com o nome e o valor do produto preenchidos.</p>
+  </div>
+
+  <div class="rdzx-info-box">
+    <h2>Precisa de ajuda?</h2>
+    <p>Fale diretamente com o suporte da RDZX STORE.</p>
+    <button type="button" onclick="abrirSuporte()">💬 Falar com o suporte</button>
+  </div>
+
+  <div class="rdzx-info-box">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>O preço mostrado é o valor do produto?</summary>
+      <p>Sim. O preço atual aparece destacado no card.</p>
+    </details>
+    <details>
+      <summary>Como finalizo a compra?</summary>
+      <p>Toque em comprar e envie a mensagem pronta pelo WhatsApp.</p>
+    </details>
+    <details>
+      <summary>Posso tirar dúvidas antes?</summary>
+      <p>Sim. Use o botão de suporte para falar diretamente com a RDZX STORE.</p>
+    </details>
+  </div>
+</section>
+
+
+
+</main>
+
+<footer>
+  RDZX STORE ⚡ — Atendimento direto pelo WhatsApp
+</footer>
+
+<script>
+function comprar(mensagem){
+  window.location.href="whatsapp://send?phone=5594991588787&text="+encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-precos-originais">
+(function(){
+  var precos={"Tudo em Um!": 18.9, "Netflix": 9.9, "Prime Video": 6.99, "Disney+": 9.99, "HBO Max": 8.49, "YouTube Premium": 7.99};
+
+  document.querySelectorAll(".produto").forEach(function(card){
+    var titulo=card.querySelector("h3");
+    var valor=card.querySelector("strong");
+
+    if(titulo && valor && precos[titulo.textContent.trim()] !== undefined){
+      valor.textContent="R$ "+precos[titulo.textContent.trim()]
+        .toFixed(2).replace(".",",");
+    }
+  });
+})();
+</script>
+
+<script id="rdzx-tema-script">
+(function(){
+  var botao=document.getElementById("botao-tema");
+  var salvo=localStorage.getItem("rdzx-tema");
+
+  if(salvo==="claro"){
+    document.body.classList.add("claro");
+    botao.textContent="🌙 Modo escuro";
+  }
+
+  botao.onclick=function(){
+    document.body.classList.toggle("claro");
+
+    var claro=document.body.classList.contains("claro");
+    localStorage.setItem("rdzx-tema",claro?"claro":"escuro");
+    botao.textContent=claro?"🌙 Modo escuro":"☀️ Modo claro";
+  };
+})();
+</script>
+
+<script id="rdzx-compra-com-preco">
+function comprarProdutoOriginal(botao){
+  var produto=botao.getAttribute("data-produto");
+  var preco=botao.getAttribute("data-preco");
+
+  var mensagem=
+    "Olá! Tenho interesse em comprar "+produto+
+    " na RDZX STORE.\n\n"+
+    "Produto: "+produto+"\n"+
+    "Preço: "+preco+"\n\n"+
+    "Gostaria de finalizar a compra.";
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+
+    encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-recursos-importantes-script">
+(function(){
+  var busca=document.getElementById("rdzx-busca");
+  var filtro=document.getElementById("rdzx-filtro-preco");
+
+  function filtrar(){
+    var termo=busca.value.toLowerCase().trim();
+    var limite=filtro.value?Number(filtro.value):Infinity;
+
+    document.querySelectorAll(".produto").forEach(function(card){
+      var nome=(card.querySelector("h3")?.textContent||"").toLowerCase();
+      var valorTexto=(card.querySelector(".precos-promocionais strong")?.textContent||"");
+      var valor=Number(valorTexto.replace(/[^0-9,]/g,"").replace(",","."));
+
+      var apareceNome=!termo || nome.includes(termo);
+      var aparecePreco=!filtro.value || (!isNaN(valor) && valor<=limite);
+
+      card.style.display=(apareceNome && aparecePreco)?"":"none";
+    });
+  }
+
+  busca.addEventListener("input",filtrar);
+  filtro.addEventListener("change",filtrar);
+
+  window.abrirSuporte=function(){
+    var mensagem=encodeURIComponent(
+      "Olá! Entrei na RDZX STORE e gostaria de tirar uma dúvida."
+    );
+
+    window.location.href=
+      "whatsapp://send?phone=5594991588787&text="+mensagem;
+  };
+})();
+</script>
+
+<script id="rdzx-confirmacao-compra">
+function comprarProduto(botao){
+  var produto=botao.getAttribute("data-produto");
+  var preco=botao.getAttribute("data-preco");
+
+  if(!confirm("Comprar "+produto+" por "+preco+"?")){
+    return;
+  }
+
+  var mensagem=
+    "Olá! Tenho interesse em comprar "+produto+
+    " na RDZX STORE.\n\n"+
+    "Produto: "+produto+"\n"+
+    "Preço: "+preco+"\n\n"+
+    "Gostaria de finalizar a compra.";
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+
+    encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-core-visual-js">
+var corePontos=0;
+var coreSom=false;
+var coreAudio=null;
+var coreTimers=[];
+
+function coreBeep(freq,duracao){
+  if(!coreSom)return;
+  var AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  coreAudio=coreAudio||new AC();
+  if(coreAudio.state==="suspended")coreAudio.resume();
+
+  var o=coreAudio.createOscillator();
+  var g=coreAudio.createGain();
+  o.frequency.value=freq;
+  g.gain.setValueAtTime(.04,coreAudio.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,coreAudio.currentTime+duracao);
+  o.connect(g);g.connect(coreAudio.destination);
+  o.start();o.stop(coreAudio.currentTime+duracao);
+}
+
+function abrirCore(){
+  var tela=document.getElementById("core-tela");
+  var barra=document.querySelector("#core-barra i");
+  var status=document.getElementById("core-status");
+  var conteudo=document.getElementById("core-conteudo");
+
+  tela.style.display="grid";
+  conteudo.style.display="none";
+  barra.style.width="0%";
+
+  var passos=[17,42,76,100];
+  passos.forEach(function(valor,i){
+    coreTimers.push(setTimeout(function(){
+      barra.style.width=valor+"%";
+      status.textContent=valor===100?"⚡ CORE ONLINE":"INITIALIZING... "+valor+"%";
+      coreBeep(300+valor*3,.08);
+    },i*420));
+  });
+
+  coreTimers.push(setTimeout(function(){
+    conteudo.style.display="block";
+    novoDesafio();
+  },1900));
+}
+
+function fecharCore(){
+  coreTimers.forEach(clearTimeout);
+  document.getElementById("core-tela").style.display="none";
+}
+
+function alternarSomCore(){
+  coreSom=!coreSom;
+  document.getElementById("core-som").textContent=
+    coreSom?"🔊 SOM ON":"🔇 SOM OFF";
+  if(coreSom)coreBeep(700,.12);
+}
+
+function mensagemCore(){
+  var mensagens=[
+    "👀 Você realmente encontrou isso?",
+    "⚡ Energia detectada.",
+    "🧠 Vamos ver se você consegue.",
+    "💀 O Core não perdoa erros.",
+    "🔥 Essa foi boa."
+  ];
+  return mensagens[Math.floor(Math.random()*mensagens.length)];
+}
+
+function atualizarXP(valor){
+  corePontos+=valor;
+  document.getElementById("core-pontos").textContent=corePontos;
+}
+
+function resultadoCore(acertou){
+  var area=document.getElementById("core-desafio");
+  area.innerHTML=acertou?
+    '<div class="core-resultado">🔥 ACERTOU! +100 XP</div><button onclick="novoDesafio()">Próximo desafio</button>':
+    '<div class="core-resultado">💀 QUASE! O CORE TE ENGANOU.</div><button onclick="novoDesafio()">Tentar outro</button>';
+
+  if(acertou){
+    atualizarXP(100);
+    coreBeep(800,.12);
+    setTimeout(function(){coreBeep(1100,.18)},120);
+  }else{
+    coreBeep(170,.3);
+  }
+}
+
+function desafioDiferente(){
+  var simbolos=["◆","◆","◆","◇","◆","◆","◆"];
+  var diferente=Math.floor(Math.random()*simbolos.length);
+  simbolos[diferente]="◇";
+
+  document.getElementById("core-desafio").innerHTML=
+    "<p>Encontre o símbolo diferente:</p>"+
+    '<div class="core-opcoes">'+
+    simbolos.map(function(x,i){
+      return '<button onclick="resultadoCore('+(i===diferente)+')">'+x+"</button>";
+    }).join("")+
+    "</div>";
+}
+
+function desafioSequencia(){
+  var opcoes=["⚡","◆","🔷","◇"];
+  document.getElementById("core-desafio").innerHTML=
+    "<p>Qual símbolo completa a sequência?<br>⚡ → ◆ → 🔷 → ?</p>"+
+    '<div class="core-opcoes">'+
+    opcoes.map(function(x){
+      return '<button onclick="resultadoCore('+(x==="◇")+')">'+x+"</button>";
+    }).join("")+
+    "</div>";
+}
+
+function desafioAlvo(){
+  document.getElementById("core-desafio").innerHTML=
+    "<p>Toque no alvo antes que ele desapareça!</p>"+
+    '<button class="core-alvo" id="core-alvo" onclick="resultadoCore(true)">⚡</button>';
+
+  var alvo=document.getElementById("core-alvo");
+  alvo.style.marginLeft=(20+Math.random()*60)+"%";
+
+  coreTimers.push(setTimeout(function(){
+    if(document.getElementById("core-alvo")){
+      resultadoCore(false);
+    }
+  },1900));
+}
+
+function novoDesafio(){
+  document.getElementById("core-mensagem").textContent=mensagemCore();
+  var tipo=Math.floor(Math.random()*3);
+
+  if(tipo===0)desafioDiferente();
+  if(tipo===1)desafioSequencia();
+  if(tipo===2)desafioAlvo();
+}
+</script>
+</body>
+</html>

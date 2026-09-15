@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RDZX STORE ⚡ — Assinaturas</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  color:#fff;
+  background:#09050f;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+  padding:34px 18px;
+  text-align:center;
+  border-bottom:1px solid #ffffff18;
+}
+
+.logo{
+  color:#caa8ff;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+h1{
+  margin:18px 0 8px;
+  font-size:clamp(30px,7vw,52px);
+}
+
+header p{
+  margin:0 auto;
+  max-width:580px;
+  color:#bfb2ce;
+  line-height:1.6;
+}
+
+main{
+  width:min(1100px,100%);
+  margin:auto;
+  padding:24px 16px 50px;
+}
+
+.categoria{
+  margin-bottom:24px;
+  padding:16px 18px;
+  border:1px solid #ffffff1c;
+  border-radius:15px;
+  background:#ffffff08;
+  color:#d8c8e8;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.produto{
+  overflow:hidden;
+  border:1px solid #ffffff18;
+  border-radius:18px;
+  background:#120b1d;
+}
+
+.produto img{
+  display:block;
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#1b1028;
+}
+
+.produto-info{
+  padding:14px;
+}
+
+.produto h3{
+  min-height:42px;
+  margin:0 0 12px;
+  font-size:16px;
+}
+
+.produto strong{
+  display:block;
+  margin-bottom:13px;
+  color:#cba7ff;
+  font-size:18px;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:11px;
+  padding:12px 8px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+
+footer{
+  padding:25px 16px;
+  text-align:center;
+  color:#91859d;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .produto h3{font-size:14px}
+  .produto-info{padding:10px}
+  button{font-size:12px}
+}
+</style>
+
+<style id="rdzx-tema">
+#botao-tema{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:20;
+  width:auto;
+  padding:10px 13px;
+  border:1px solid #ffffff33;
+  border-radius:12px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+body.claro{
+  color:#21182b;
+  background:#f4f1f8;
+}
+
+body.claro header{
+  border-color:#d9d0e2;
+}
+
+body.claro header p,
+body.claro .categoria,
+body.claro footer{
+  color:#5d5268;
+}
+
+body.claro .categoria{
+  border-color:#d9d0e2;
+  background:#ffffff;
+}
+
+body.claro .produto{
+  border-color:#ddd4e5;
+  background:#ffffff;
+  box-shadow:0 5px 18px #25133218;
+}
+
+body.claro .produto strong{
+  color:#6428c7;
+}
+
+body.claro #botao-tema{
+  color:#21182b;
+  background:#f0c928;
+  border-color:#c49d00;
+}
+</style>
+
+<style id="rdzx-visual-premium">
+body{
+  background:
+    radial-gradient(circle at 50% -10%,#713cff28,transparent 42%),
+    #09050f;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+
+header{
+  padding:52px 18px 42px;
+  background:
+    linear-gradient(180deg,#160b27aa,transparent),
+    radial-gradient(circle at center,#713cff20,transparent 62%);
+}
+
+.logo{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid #a875ff55;
+  border-radius:999px;
+  color:#d5baff;
+  background:#ffffff08;
+  letter-spacing:2px;
+}
+
+h1{
+  margin-top:24px;
+  font-weight:900;
+  letter-spacing:-1px;
+  color:#fff;
+}
+
+header p{
+  max-width:620px;
+  margin:14px auto 0;
+  color:#cfc1dc;
+}
+
+main{
+  padding-top:30px;
+}
+
+.categoria{
+  border:1px solid #a875ff44;
+  background:linear-gradient(120deg,#713cff1c,#ffffff06);
+  box-shadow:0 12px 35px #0005;
+}
+
+.categoria strong{
+  color:#dfc7ff;
+  font-size:17px;
+}
+
+.grid{
+  gap:18px;
+}
+
+.produto{
+  border:1px solid #ffffff20;
+  background:linear-gradient(160deg,#1b1029,#0f0918);
+  box-shadow:0 12px 30px #0008;
+}
+
+.produto img{
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#211432;
+}
+
+.produto-info{
+  padding:16px;
+}
+
+.produto h3{
+  color:#fff;
+  font-size:16px;
+  line-height:1.35;
+}
+
+.produto strong{
+  color:#d3aaff;
+  font-size:19px;
+}
+
+.produto button{
+  border:1px solid #c39aff66;
+  background:linear-gradient(120deg,#713cff,#a52dff);
+  box-shadow:0 8px 18px #713cff44;
+  font-size:13px;
+}
+
+footer{
+  margin-top:20px;
+  border-top:1px solid #ffffff12;
+}
+
+body.claro{
+  background:#f3eff8;
+}
+
+body.claro header{
+  background:linear-gradient(180deg,#ffffff,#f3eff8);
+}
+
+body.claro h1{
+  color:#24162f;
+}
+
+body.claro .logo{
+  color:#5a269b;
+  border-color:#a47bd1;
+  background:#ffffff;
+}
+
+body.claro .produto{
+  background:#fff;
+  border-color:#ddd2e7;
+  box-shadow:0 10px 25px #38204b18;
+}
+
+body.claro .produto h3{
+  color:#26182f;
+}
+
+body.claro .categoria{
+  background:#fff;
+  border-color:#d9c8e5;
+}
+</style>
+
+
+
+<style id="rdzx-precos-promocionais">
+.precos-promocionais{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:13px;
+}
+.precos-promocionais del{
+  color:#91859d;
+  font-size:13px;
+  font-weight:normal;
+}
+.precos-promocionais strong{
+  margin:0!important;
+  color:#baffc8!important;
+  font-size:20px!important;
+}
+body.claro .precos-promocionais del{
+  color:#887d91;
+}
+body.claro .precos-promocionais strong{
+  color:#168238!important;
+}
+</style>
+
+<style id="rdzx-recursos-importantes">
+.rdzx-ferramentas{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  width:min(1100px,calc(100% - 32px));
+  margin:0 auto 22px;
+}
+.rdzx-ferramentas input,
+.rdzx-ferramentas select{
+  flex:1;
+  min-width:220px;
+  padding:13px 14px;
+  border:1px solid #ffffff22;
+  border-radius:12px;
+  color:#fff;
+  background:#160d22;
+  outline:none;
+}
+.rdzx-informacoes{
+  width:min(1100px,calc(100% - 32px));
+  margin:35px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.rdzx-info-box{
+  padding:18px;
+  border:1px solid #ffffff1c;
+  border-radius:16px;
+  background:#120b1d;
+}
+.rdzx-info-box h2{
+  margin-top:0;
+  color:#d6b4ff;
+  font-size:18px;
+}
+.rdzx-info-box p{
+  color:#bcaec7;
+  line-height:1.55;
+  font-size:14px;
+}
+.rdzx-info-box button{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+.rdzx-info-box details{
+  padding:10px 0;
+  border-top:1px solid #ffffff14;
+  color:#cfc0d9;
+  font-size:14px;
+}
+.rdzx-info-box summary{
+  cursor:pointer;
+  color:#fff;
+  font-weight:bold;
+}
+body.claro .rdzx-ferramentas input,
+body.claro .rdzx-ferramentas select,
+body.claro .rdzx-info-box{
+  color:#291b32;
+  background:#fff;
+  border-color:#ddd2e7;
+}
+body.claro .rdzx-info-box h2{
+  color:#5d2693;
+}
+body.claro .rdzx-info-box p,
+body.claro .rdzx-info-box details{
+  color:#665870;
+}
+body.claro .rdzx-info-box summary{
+  color:#291b32;
+}
+@media(max-width:700px){
+  .rdzx-informacoes{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+<style id="rdzx-fotos-inteiras">
+.produto img{
+  display:block!important;
+  width:100%!important;
+  height:230px!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:8px;
+  background:#171020!important;
+}
+body.claro .produto img{
+  background:#f3eff8!important;
+}
+@media(max-width:700px){
+  .produto img{
+    height:180px!important;
+  }
+}
+</style>
+
+<style id="rdzx-roleta-css">
+.rdzx-roleta-area{
+  width:min(720px,calc(100% - 32px));
+  margin:42px auto;
+  padding:28px 18px;
+  text-align:center;
+  border:1px solid #a875ff55;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 50% 35%,#713cff28,transparent 48%),
+    #11091c;
+  box-shadow:0 0 45px #713cff33,0 18px 45px #0008;
+}
+.roleta-titulo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:22px;
+}
+.roleta-titulo>span{
+  font-size:32px;
+}
+.roleta-titulo h2{
+  margin:0;
+  color:#e3c8ff;
+  letter-spacing:1px;
+}
+.roleta-titulo p{
+  margin:5px 0 0;
+  color:#b9a7c5;
+  font-size:14px;
+}
+.roleta-palco{
+  position:relative;
+  width:min(360px,90vw);
+  margin:auto;
+  padding:12px;
+  border-radius:50%;
+  background:radial-gradient(circle,#25103b,#09050f 68%);
+  box-shadow:0 0 25px #a738ff66,0 0 60px #713cff44;
+}
+#rdzx-roleta-canvas{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:50%;
+  transform:rotate(0deg);
+  transition:transform 5.5s cubic-bezier(.12,.72,.12,1);
+}
+.roleta-ponteiro{
+  position:absolute;
+  z-index:3;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#ffdf61;
+  font-size:34px;
+  text-shadow:0 0 15px #ff8c00;
+}
+.botao-roleta{
+  margin-top:24px;
+  padding:14px 22px;
+  border:1px solid #d7b5ff88;
+  border-radius:13px;
+  color:#fff;
+  background:linear-gradient(110deg,#713cff,#c02dff,#477dff);
+  background-size:200% 100%;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 0 22px #a738ff88;
+}
+.botao-roleta:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+.roleta-aviso{
+  display:block;
+  margin-top:13px;
+  color:#9f8eaa;
+}
+.roleta-modal-fundo{
+  position:fixed;
+  z-index:999;
+  inset:0;
+  display:none;
+  place-items:center;
+  padding:20px;
+  background:#050208cc;
+}
+.roleta-modal{
+  position:relative;
+  width:min(420px,100%);
+  padding:30px 22px;
+  text-align:center;
+  border:1px solid #d29cff88;
+  border-radius:22px;
+  background:linear-gradient(145deg,#241039,#0d0714);
+  box-shadow:0 0 45px #c02dffaa,0 20px 60px #000;
+}
+.fechar-premio{
+  position:absolute;
+  top:9px;
+  right:13px;
+  border:0;
+  color:#fff;
+  background:transparent;
+  font-size:27px;
+  cursor:pointer;
+}
+.icone-premio{
+  font-size:55px;
+  filter:drop-shadow(0 0 15px #ffb52e);
+}
+.roleta-modal h2{
+  color:#f0d7ff;
+}
+.roleta-modal p{
+  color:#d1c1dc;
+  line-height:1.5;
+}
+.codigo-premio{
+  display:none;
+  margin:16px 0;
+  padding:13px;
+  border:1px dashed #ffdb62;
+  border-radius:10px;
+  color:#ffe88e;
+  background:#ffcf2412;
+  font-weight:900;
+  letter-spacing:1px;
+}
+@media(max-width:600px){
+  .rdzx-roleta-area{padding:23px 12px}
+  .roleta-titulo h2{font-size:19px}
+}
+</style>
+</head>
+
+<body>
+<button id="botao-tema" type="button">☀️ Modo claro</button>
+
+<header>
+  <div class="logo">RDZX STORE ⚡</div>
+  <h1>Assinaturas digitais</h1>
+  <p>Escolha sua assinatura e fale diretamente com a RDZX STORE pelo WhatsApp.</p>
+
+
+
+
+</header>
+
+<main>
+  <div class="categoria">
+    <strong>💎 Categoria: Assinaturas</strong><br>
+    <span>Confira os produtos disponíveis abaixo.</span>
+  </div>
+
+  
+<section class="rdzx-ferramentas">
+  <input id="rdzx-busca" type="search" placeholder="🔍 Buscar assinatura...">
+
+  <select id="rdzx-filtro-preco">
+    <option value="">Todos os preços</option>
+    <option value="10">Até R$ 10</option>
+    <option value="20">Até R$ 20</option>
+    <option value="50">Até R$ 50</option>
+  </select>
+</section>
+<section class="grid">
+    
+<article class="produto">
+  <img src="imagens/assinaturas/viki.jpg" alt="Viki Rakuten">
+  <div class="produto-info">
+    <h3>Viki Rakuten</h3>
+    <div class="precos-promocionais"><del>R$ 39,90</del><strong>R$ 12,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Viki Rakuten" data-preco="R$ 12,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/apple-tv.jpg" alt="Apple TV">
+  <div class="produto-info">
+    <h3>Apple TV</h3>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 10,90</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Apple TV" data-preco="R$ 10,90">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/tnt-sports.jpg" alt="TNT Sports">
+  <div class="produto-info">
+    <h3>TNT Sports</h3>
+    <div class="precos-promocionais"><del>R$ 34,90</del><strong>R$ 11,50</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="TNT Sports" data-preco="R$ 11,50">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/privacy.jpg" alt="Privacy">
+  <div class="produto-info">
+    <h3>Privacy</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Privacy" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/deezer.jpg" alt="Deezer">
+  <div class="produto-info">
+    <h3>Deezer</h3>
+    <div class="precos-promocionais"><del>R$ 19,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Deezer" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/grobo-play.jpg" alt="Grobo Play">
+  <div class="produto-info">
+    <h3>Grobo Play</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Grobo Play" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/google-veo.jpg" alt="Google Veo 3">
+  <div class="produto-info">
+    <h3>Google Veo 3</h3>
+    <div class="precos-promocionais"><del>R$ 99,90</del><strong>R$ 45,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Google Veo 3" data-preco="R$ 45,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/chatgpt.jpg" alt="ChatGPT">
+  <div class="produto-info">
+    <h3>ChatGPT</h3>
+    <div class="precos-promocionais"><del>R$ 79,90</del><strong>R$ 36,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="ChatGPT" data-preco="R$ 36,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/capcut.jpg" alt="CapCut Pro">
+  <div class="produto-info">
+    <h3>CapCut Pro</h3>
+    <div class="precos-promocionais"><del>R$ 49,90</del><strong>R$ 22,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="CapCut Pro" data-preco="R$ 22,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/crunchyroll.jpg" alt="Crunchyroll">
+  <div class="produto-info">
+    <h3>Crunchyroll</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Crunchyroll" data-preco="R$ 8,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/spotify.jpg" alt="Spotify Premium">
+  <div class="produto-info">
+    <h3>Spotify Premium</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Spotify Premium" data-preco="R$ 8,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/iptv.jpg" alt="IPTV">
+  <div class="produto-info">
+    <h3>IPTV</h3>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 12,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="IPTV" data-preco="R$ 12,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+  </section>
+
+<section class="rdzx-informacoes">
+  <div class="rdzx-info-box">
+    <h2>Como comprar</h2>
+    <p>Escolha o produto, confira o preço e toque em comprar. O WhatsApp abrirá com o nome e o valor do produto preenchidos.</p>
+  </div>
+
+  <div class="rdzx-info-box">
+    <h2>Precisa de ajuda?</h2>
+    <p>Fale diretamente com o suporte da RDZX STORE.</p>
+    <button type="button" onclick="abrirSuporte()">💬 Falar com o suporte</button>
+  </div>
+
+  <div class="rdzx-info-box">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>O preço mostrado é o valor do produto?</summary>
+      <p>Sim. O preço atual aparece destacado no card.</p>
+    </details>
+    <details>
+      <summary>Como finalizo a compra?</summary>
+      <p>Toque em comprar e envie a mensagem pronta pelo WhatsApp.</p>
+    </details>
+    <details>
+      <summary>Posso tirar dúvidas antes?</summary>
+      <p>Sim. Use o botão de suporte para falar diretamente com a RDZX STORE.</p>
+    </details>
+  </div>
+</section>
+
+
+
+
+<section id="rdzx-roleta-store" class="rdzx-roleta-area">
+  <div class="roleta-titulo">
+    <span>🎡</span>
+    <div>
+      <h2>ROLETA RDZX STORE</h2>
+      <p>Gire gratuitamente e descubra sua sorte.</p>
+    </div>
+  </div>
+
+  <div class="roleta-palco">
+    <div class="roleta-ponteiro">▼</div>
+    <canvas id="rdzx-roleta-canvas" width="360" height="360"></canvas>
+  </div>
+
+  <button id="rdzx-girar-roleta" class="botao-roleta">
+    🎡 GIRAR GRATUITAMENTE
+  </button>
+
+  <small class="roleta-aviso">
+    Cada giro é gratuito. Prêmios sujeitos à disponibilidade.
+  </small>
+</section>
+
+<div id="rdzx-modal-premio" class="roleta-modal-fundo">
+  <div class="roleta-modal">
+    <button id="rdzx-fechar-premio" class="fechar-premio">×</button>
+    <div id="rdzx-icone-premio" class="icone-premio">🎁</div>
+    <h2 id="rdzx-titulo-premio">Parabéns!</h2>
+    <p id="rdzx-texto-premio"></p>
+    <div id="rdzx-codigo-premio" class="codigo-premio"></div>
+    <button id="rdzx-fechar-premio-2" class="botao-roleta">Continuar</button>
+  </div>
+</div>
+</main>
+
+<footer>
+  RDZX STORE ⚡ — Atendimento direto pelo WhatsApp
+</footer>
+
+<script>
+function comprar(mensagem){
+  window.location.href="whatsapp://send?phone=5594991588787&text="+encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-precos-originais">
+(function(){
+  var precos={"Tudo em Um!": 18.9, "Netflix": 9.9, "Prime Video": 6.99, "Disney+": 9.99, "HBO Max": 8.49, "YouTube Premium": 7.99};
+
+  document.querySelectorAll(".produto").forEach(function(card){
+    var titulo=card.querySelector("h3");
+    var valor=card.querySelector("strong");
+
+    if(titulo && valor && precos[titulo.textContent.trim()] !== undefined){
+      valor.textContent="R$ "+precos[titulo.textContent.trim()]
+        .toFixed(2).replace(".",",");
+    }
+  });
+})();
+</script>
+
+<script id="rdzx-tema-script">
+(function(){
+  var botao=document.getElementById("botao-tema");
+  var salvo=localStorage.getItem("rdzx-tema");
+
+  if(salvo==="claro"){
+    document.body.classList.add("claro");
+    botao.textContent="🌙 Modo escuro";
+  }
+
+  botao.onclick=function(){
+    document.body.classList.toggle("claro");
+
+    var claro=document.body.classList.contains("claro");
+    localStorage.setItem("rdzx-tema",claro?"claro":"escuro");
+    botao.textContent=claro?"🌙 Modo escuro":"☀️ Modo claro";
+  };
+})();
+</script>
+
+<script id="rdzx-compra-com-preco">
+function comprarProdutoOriginal(botao){
+  var produto=botao.getAttribute("data-produto");
+  var preco=botao.getAttribute("data-preco");
+
+  var mensagem=
+    "Olá! Tenho interesse em comprar "+produto+
+    " na RDZX STORE.\n\n"+
+    "Produto: "+produto+"\n"+
+    "Preço: "+preco+"\n\n"+
+    "Gostaria de finalizar a compra.";
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+
+    encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-recursos-importantes-script">
+(function(){
+  var busca=document.getElementById("rdzx-busca");
+  var filtro=document.getElementById("rdzx-filtro-preco");
+
+  function filtrar(){
+    var termo=busca.value.toLowerCase().trim();
+    var limite=filtro.value?Number(filtro.value):Infinity;
+
+    document.querySelectorAll(".produto").forEach(function(card){
+      var nome=(card.querySelector("h3")?.textContent||"").toLowerCase();
+      var valorTexto=(card.querySelector(".precos-promocionais strong")?.textContent||"");
+      var valor=Number(valorTexto.replace(/[^0-9,]/g,"").replace(",","."));
+
+      var apareceNome=!termo || nome.includes(termo);
+      var aparecePreco=!filtro.value || (!isNaN(valor) && valor<=limite);
+
+      card.style.display=(apareceNome && aparecePreco)?"":"none";
+    });
+  }
+
+  busca.addEventListener("input",filtrar);
+  filtro.addEventListener("change",filtrar);
+
+  window.abrirSuporte=function(){
+    var mensagem=encodeURIComponent(
+      "Olá! Entrei na RDZX STORE e gostaria de tirar uma dúvida."
+    );
+
+    window.location.href=
+      "whatsapp://send?phone=5594991588787&text="+mensagem;
+  };
+})();
+</script>
+
+<script id="rdzx-confirmacao-compra">
+function comprarProduto(botao){
+  var produto=botao.getAttribute("data-produto");
+  var preco=botao.getAttribute("data-preco");
+
+  if(!confirm("Comprar "+produto+" por "+preco+"?")){
+    return;
+  }
+
+  var mensagem=
+    "Olá! Tenho interesse em comprar "+produto+
+    " na RDZX STORE.\n\n"+
+    "Produto: "+produto+"\n"+
+    "Preço: "+preco+"\n\n"+
+    "Gostaria de finalizar a compra.";
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+
+    encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-roleta-js">
+(function(){
+  var canvas=document.getElementById("rdzx-roleta-canvas");
+  var botao=document.getElementById("rdzx-girar-roleta");
+  var modal=document.getElementById("rdzx-modal-premio");
+  var fechar=document.getElementById("rdzx-fechar-premio");
+  var fechar2=document.getElementById("rdzx-fechar-premio-2");
+  var titulo=document.getElementById("rdzx-titulo-premio");
+  var texto=document.getElementById("rdzx-texto-premio");
+  var icone=document.getElementById("rdzx-icone-premio");
+  var codigo=document.getElementById("rdzx-codigo-premio");
+  var ctx=canvas.getContext("2d");
+
+  var premios=[
+    {nome:"Brinde Surpresa",icone:"🎁",peso:1,raro:true},
+    {nome:"Cupom 10% OFF",icone:"💎",peso:1,raro:true},
+    {nome:"Cupom Especial",icone:"⚡",peso:1,raro:true},
+    {nome:"Cupom VIP",icone:"👑",peso:1,raro:true},
+    {nome:"Caixa Misteriosa",icone:"🎁",peso:1,raro:true},
+    {nome:"Cupom 5% OFF",icone:"🎟️",peso:1,raro:true},
+    {nome:"Caixa Surpresa GRÁTIS",icone:"🎁🔥",peso:1,raro:true},
+    {nome:"Não foi dessa vez!",icone:"😭",peso:15},
+    {nome:"Não foi dessa vez!",icone:"😭",peso:15},
+    {nome:"Não foi dessa vez!",icone:"😭",peso:15},
+    {nome:"Tente novamente",icone:"🔄",peso:15},
+    {nome:"Não foi dessa vez!",icone:"😭",peso:15},
+    {nome:"Não foi dessa vez!",icone:"😭",peso:15},
+    {nome:"Não foi dessa vez!",icone:"😭",peso:15}
+  ];
+
+  var cores=["#7d3cff","#b62cff","#3b82f6","#8b5cf6","#ec4899","#6d28d9","#a855f7","#24152f","#32183e","#24152f","#32183e","#24152f","#32183e","#24152f"];
+  var atual=0;
+  var girando=false;
+  var totalPeso=premios.reduce(function(s,p){return s+p.peso},0);
+
+  function desenhar(){
+    var centro=180;
+    var raio=166;
+    var fatia=(Math.PI*2)/premios.length;
+
+    ctx.clearRect(0,0,360,360);
+
+    premios.forEach(function(p,i){
+      var inicio=-Math.PI/2+i*fatia;
+      var fim=inicio+fatia;
+
+      ctx.beginPath();
+      ctx.moveTo(centro,centro);
+      ctx.arc(centro,centro,raio,inicio,fim);
+      ctx.closePath();
+      ctx.fillStyle=cores[i];
+      ctx.fill();
+      ctx.strokeStyle="#ffffff33";
+      ctx.lineWidth=2;
+      ctx.stroke();
+
+      ctx.save();
+      ctx.translate(centro,centro);
+      ctx.rotate(inicio+fatia/2);
+      ctx.textAlign="right";
+      ctx.fillStyle="#fff";
+      ctx.font="bold 14px Arial";
+      var texto=p.nome.length>18?p.nome.slice(0,17)+"…":p.nome;
+      ctx.fillText(texto,raio-12,5);
+      ctx.restore();
+    });
+
+    ctx.beginPath();
+    ctx.arc(centro,centro,34,0,Math.PI*2);
+    ctx.fillStyle="#10071a";
+    ctx.fill();
+    ctx.strokeStyle="#e3b7ff";
+    ctx.lineWidth=3;
+    ctx.stroke();
+
+    ctx.fillStyle="#fff";
+    ctx.font="bold 13px Arial";
+    ctx.textAlign="center";
+    ctx.fillText("RDZX",centro,5);
+  }
+
+  function sortear(){
+    var alvo=Math.random()*totalPeso;
+    var acumulado=0;
+
+    for(var i=0;i<premios.length;i++){
+      acumulado+=premios[i].peso;
+      if(alvo<acumulado)return i;
+    }
+
+    return premios.length-1;
+  }
+
+  function gerarCodigo(){
+    return "RDZX-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  }
+
+  function confetes(){
+    for(var i=0;i<28;i++){
+      var c=document.createElement("span");
+      c.textContent=["🎉","✨","💜","⭐"][i%4];
+      c.style.position="fixed";
+      c.style.left=(Math.random()*100)+"vw";
+      c.style.top="-20px";
+      c.style.zIndex="1001";
+      c.style.fontSize=(14+Math.random()*15)+"px";
+      c.style.transition="top 1.5s ease-out,transform 1.5s ease-out";
+      document.body.appendChild(c);
+
+      setTimeout(function(el){
+        el.style.top="105vh";
+        el.style.transform="rotate(540deg)";
+      },20,c);
+
+      setTimeout(function(el){el.remove()},1700,c);
+    }
+  }
+
+  function mostrarResultado(premio){
+    icone.textContent=premio.icone;
+    titulo.textContent=premio.nome;
+
+    if(premio.nome==="Não foi dessa vez!" || premio.nome==="Tente novamente"){
+      texto.textContent="Você pode girar novamente em outra oportunidade.";
+      codigo.style.display="none";
+    }else if(premio.nome.indexOf("Cupom")>=0){
+      var cupom=gerarCodigo();
+      texto.textContent="Seu cupom foi gerado. Use este código no atendimento:";
+      codigo.textContent=cupom;
+      codigo.style.display="block";
+      confetes();
+    }else{
+      texto.textContent="Parabéns! Entre em contato pelo WhatsApp para resgatar seu prêmio.";
+      codigo.style.display="none";
+      confetes();
+    }
+
+    modal.style.display="grid";
+  }
+
+  botao.onclick=function(){
+    if(girando)return;
+
+    girando=true;
+    botao.disabled=true;
+    botao.textContent="🎡 GIRANDO...";
+
+    var indice=sortear();
+    var fatia=(Math.PI*2)/premios.length;
+    var voltas=6+Math.floor(Math.random()*3);
+    var destino=voltas*Math.PI*2-(indice*fatia+fatia/2);
+
+    atual+=destino;
+    canvas.style.transform="rotate("+atual+"rad)";
+
+    setTimeout(function(){
+      mostrarResultado(premios[indice]);
+      girando=false;
+      botao.disabled=false;
+      botao.textContent="🎡 GIRAR GRATUITAMENTE";
+    },5700);
+  };
+
+  function fecharModal(){
+    modal.style.display="none";
+  }
+
+  fechar.onclick=fecharModal;
+  fechar2.onclick=fecharModal;
+  modal.onclick=function(e){
+    if(e.target===modal)fecharModal();
+  };
+
+  desenhar();
+})();
+</script>
+</body>
+</html>

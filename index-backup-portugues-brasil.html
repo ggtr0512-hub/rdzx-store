@@ -494,7 +494,7 @@ body.claro .produto img{
   box-shadow:0 0 45px #b51e3d66,0 25px 70px #000;
 }
 .horror-painel:before{
-  content:"///  ERRO  //  OBSERVADOR  ///";
+  content:"///  ERROR  //  OBSERVER  ///";
   display:block;
   color:#8d3444;
   font:11px monospace;
@@ -670,7 +670,7 @@ body.claro .produto img{
       <h1>VOCÊ TEM CERTEZA<br>QUE QUER CONTINUAR?</h1>
       <p class="horror-sub">Terror • Mistério • Suspense • Sobrevivência</p>
       <button class="horror-btn" onclick="iniciarHorror()">🩸 ENTRAR</button>
-      <button id="horror-som" class="horror-som" onclick="alternarSomHorror()">🔇 SOM DESLIGADO</button>
+      <button id="horror-som" class="horror-som" onclick="alternarSomHorror()">🔇 SOM OFF</button>
     </div>
 
     <div id="horror-jogo">
@@ -679,7 +679,7 @@ body.claro .produto img{
         <span id="horror-dificuldade">🟢 SOBREVIVENTE</span>
       </div>
 
-      <div class="horror-xp">⚡ XP: <b id="horror-xp">0</b> · SEQUÊNCIA: <b id="horror-combo">0</b></div>
+      <div class="horror-xp">⚡ XP: <b id="horror-xp">0</b> · COMBO: <b id="horror-combo">0</b></div>
 
       <div id="horror-evento"></div>
       <h2 id="horror-pergunta"></h2>
@@ -1031,7 +1031,7 @@ function fecharHorrorCore(){
 }
 function alternarSomHorror(){
   horrorSom=!horrorSom;
-  document.getElementById("horror-som").textContent=horrorSom?"🔊 SOM LIGADO":"🔇 SOM DESLIGADO";
+  document.getElementById("horror-som").textContent=horrorSom?"🔊 SOM ON":"🔇 SOM OFF";
   beepHorror(horrorSom?600:160,.12);
 }
 function beepHorror(freq,dur){
@@ -1206,178 +1206,3 @@ function finalizarHorror(){
 </script>
 </body>
 </html>
-
-<script id="rdzx-horror-portugues-facil">
-horrorQuestoes=[
-  {
-    q:"Quem é o personagem principal de Round 6?",
-    o:["Seong Gi-hun","Tony Stark","Harry Potter","Rick Grimes"],
-    c:0,
-    d:"🟢 FÁCIL"
-  },
-  {
-    q:"Qual série apresenta o personagem Vecna?",
-    o:["Stranger Things","Round 6","Wandinha","The Walking Dead"],
-    c:0,
-    d:"🟢 FÁCIL"
-  },
-  {
-    q:"Qual personagem usa uma máscara branca na franquia Pânico?",
-    o:["Ghostface","Freddy Krueger","Jason Voorhees","Michael Myers"],
-    c:0,
-    d:"🟢 FÁCIL"
-  },
-  {
-    q:"Qual criatura aparece em Stranger Things?",
-    o:["Demogorgon","Dragão de Komodo","Lobisomem","Múmia"],
-    c:0,
-    d:"🟢 FÁCIL"
-  },
-  {
-    q:"Round 6 é conhecido principalmente por envolver o quê?",
-    o:["Jogos perigosos","Corridas de carros","Viagens espaciais","Futebol"],
-    c:0,
-    d:"🟢 FÁCIL"
-  },
-  {
-    q:"Em The Walking Dead, qual é a principal ameaça?",
-    o:["Zumbis","Vampiros","Robôs","Dinossauros"],
-    c:0,
-    d:"🟡 MÉDIO"
-  },
-  {
-    q:"Qual personagem é conhecido como Jogador 067 em Round 6?",
-    o:["Kang Sae-byeok","Seong Gi-hun","Cho Sang-woo","Ali"],
-    c:0,
-    d:"🟡 MÉDIO"
-  },
-  {
-    q:"Em qual lugar acontece grande parte de Five Nights at Freddy's?",
-    o:["Uma pizzaria","Um hospital","Uma escola","Um navio"],
-    c:0,
-    d:"🟡 MÉDIO"
-  },
-  {
-    q:"Qual filme de terror é baseado no hotel Overlook?",
-    o:["O Iluminado","Pânico","A Freira","Invocação do Mal"],
-    c:0,
-    d:"🔴 DIFÍCIL"
-  },
-  {
-    q:"Quem é revelado como o Front Man em Round 6?",
-    o:["Hwang In-ho","Seong Gi-hun","Ali","Oh Il-nam"],
-    c:0,
-    d:"🔴 DIFÍCIL"
-  }
-];
-
-function mostrarHorrorPergunta(){
-  var x=horrorQuestoes[horrorAtual];
-  horrorTravado=false;
-
-  document.getElementById("horror-numero").textContent=
-    "👁️ PERGUNTA "+(horrorAtual+1)+" DE 10";
-
-  document.getElementById("horror-dificuldade").textContent=x.d;
-  document.getElementById("horror-xp").textContent=horrorPontos;
-  document.getElementById("horror-combo").textContent=horrorCombo;
-  document.getElementById("horror-pergunta").textContent=x.q;
-  document.getElementById("horror-evento").textContent=
-    Math.random()<.18 ? "👁️ VOCÊ SENTIU ISSO?" : "";
-  document.getElementById("horror-feedback").textContent="";
-
-  document.getElementById("horror-opcoes").innerHTML=
-    '<p style="color:#cdbdc4">Escolha uma resposta:</p>'+
-    x.o.map(function(v,i){
-      return '<button class="horror-opcao" onclick="responderHorror('+i+')">'+
-        String.fromCharCode(65+i)+") "+v+
-        "</button>";
-    }).join("");
-}
-
-function responderHorror(i){
-  if(horrorTravado)return;
-  horrorTravado=true;
-
-  var x=horrorQuestoes[horrorAtual];
-  var botoes=document.querySelectorAll(".horror-opcao");
-
-  botoes.forEach(function(b){b.disabled=true});
-  botoes[x.c].classList.add("horror-certa");
-
-  if(i===x.c){
-    horrorPontos+=100;
-    horrorCombo++;
-
-    var certas=[
-      "✅ ACERTOU! 🔥 Boa!",
-      "✅ ACERTOU! 👁️ Você conhece esse universo.",
-      "✅ ACERTOU! 🕯️ Essa você sabia!",
-      "✅ ACERTOU! 😈 Mandou bem!"
-    ];
-
-    document.getElementById("horror-feedback").textContent=
-      certas[Math.floor(Math.random()*certas.length)];
-
-    beepHorror(800,.12);
-  }else{
-    horrorCombo=0;
-    botoes[i].classList.add("horror-errada");
-
-    var erradas=[
-      "❌ ERROU! 👻 Quase!",
-      "❌ ERROU! 💀 Essa pegou você!",
-      "❌ ERROU! 😈 Na próxima você consegue."
-    ];
-
-    document.getElementById("horror-feedback").innerHTML=
-      erradas[Math.floor(Math.random()*erradas.length)]+"<br>"+
-      "A resposta correta era: <b>"+x.o[x.c]+"</b>";
-
-    document.querySelector(".horror-painel").classList.add("horror-tremor");
-    setTimeout(function(){
-      document.querySelector(".horror-painel").classList.remove("horror-tremor");
-    },400);
-
-    beepHorror(120,.3);
-  }
-
-  document.getElementById("horror-xp").textContent=horrorPontos;
-  document.getElementById("horror-combo").textContent=horrorCombo;
-
-  setTimeout(function(){
-    horrorAtual++;
-
-    if(horrorAtual>=horrorQuestoes.length){
-      finalizarHorror();
-    }else{
-      mostrarHorrorPergunta();
-    }
-  },1800);
-}
-
-function finalizarHorror(){
-  document.getElementById("horror-jogo").style.display="none";
-  document.getElementById("horror-final").style.display="block";
-
-  var acertos=horrorPontos/100;
-  var titulo=document.getElementById("horror-final-titulo");
-  var texto=document.getElementById("horror-final-texto");
-
-  titulo.textContent="🏆 RESULTADO DO DESAFIO";
-  texto.textContent="Você acertou "+acertos+" de 10 perguntas!";
-
-  if(acertos<=3){
-    texto.textContent+=" 💀 Você não sobreviveu dessa vez!";
-  }else if(acertos<=6){
-    texto.textContent+=" 👁️ Você quase conseguiu!";
-  }else if(acertos<=8){
-    texto.textContent+=" 🔥 Muito bem! Você conhece bastante de terror!";
-  }else if(acertos===9){
-    texto.textContent+=" 😈 Quase perfeito!";
-  }else{
-    titulo.textContent="👑 PERFEITO!";
-    texto.textContent="Você acertou 10 de 10. Você sobreviveu ao desafio!";
-  }
-}
-</script>

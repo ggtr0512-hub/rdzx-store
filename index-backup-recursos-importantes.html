@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RDZX STORE ⚡ — Assinaturas</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  color:#fff;
+  background:#09050f;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+header{
+  padding:34px 18px;
+  text-align:center;
+  border-bottom:1px solid #ffffff18;
+}
+
+.logo{
+  color:#caa8ff;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+h1{
+  margin:18px 0 8px;
+  font-size:clamp(30px,7vw,52px);
+}
+
+header p{
+  margin:0 auto;
+  max-width:580px;
+  color:#bfb2ce;
+  line-height:1.6;
+}
+
+main{
+  width:min(1100px,100%);
+  margin:auto;
+  padding:24px 16px 50px;
+}
+
+.categoria{
+  margin-bottom:24px;
+  padding:16px 18px;
+  border:1px solid #ffffff1c;
+  border-radius:15px;
+  background:#ffffff08;
+  color:#d8c8e8;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.produto{
+  overflow:hidden;
+  border:1px solid #ffffff18;
+  border-radius:18px;
+  background:#120b1d;
+}
+
+.produto img{
+  display:block;
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#1b1028;
+}
+
+.produto-info{
+  padding:14px;
+}
+
+.produto h3{
+  min-height:42px;
+  margin:0 0 12px;
+  font-size:16px;
+}
+
+.produto strong{
+  display:block;
+  margin-bottom:13px;
+  color:#cba7ff;
+  font-size:18px;
+}
+
+button{
+  width:100%;
+  border:0;
+  border-radius:11px;
+  padding:12px 8px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+
+footer{
+  padding:25px 16px;
+  text-align:center;
+  color:#91859d;
+  font-size:13px;
+}
+
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .produto h3{font-size:14px}
+  .produto-info{padding:10px}
+  button{font-size:12px}
+}
+</style>
+
+<style id="rdzx-tema">
+#botao-tema{
+  position:fixed;
+  top:14px;
+  right:14px;
+  z-index:20;
+  width:auto;
+  padding:10px 13px;
+  border:1px solid #ffffff33;
+  border-radius:12px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+body.claro{
+  color:#21182b;
+  background:#f4f1f8;
+}
+
+body.claro header{
+  border-color:#d9d0e2;
+}
+
+body.claro header p,
+body.claro .categoria,
+body.claro footer{
+  color:#5d5268;
+}
+
+body.claro .categoria{
+  border-color:#d9d0e2;
+  background:#ffffff;
+}
+
+body.claro .produto{
+  border-color:#ddd4e5;
+  background:#ffffff;
+  box-shadow:0 5px 18px #25133218;
+}
+
+body.claro .produto strong{
+  color:#6428c7;
+}
+
+body.claro #botao-tema{
+  color:#21182b;
+  background:#f0c928;
+  border-color:#c49d00;
+}
+</style>
+
+<style id="rdzx-visual-premium">
+body{
+  background:
+    radial-gradient(circle at 50% -10%,#713cff28,transparent 42%),
+    #09050f;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+
+header{
+  padding:52px 18px 42px;
+  background:
+    linear-gradient(180deg,#160b27aa,transparent),
+    radial-gradient(circle at center,#713cff20,transparent 62%);
+}
+
+.logo{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid #a875ff55;
+  border-radius:999px;
+  color:#d5baff;
+  background:#ffffff08;
+  letter-spacing:2px;
+}
+
+h1{
+  margin-top:24px;
+  font-weight:900;
+  letter-spacing:-1px;
+  color:#fff;
+}
+
+header p{
+  max-width:620px;
+  margin:14px auto 0;
+  color:#cfc1dc;
+}
+
+main{
+  padding-top:30px;
+}
+
+.categoria{
+  border:1px solid #a875ff44;
+  background:linear-gradient(120deg,#713cff1c,#ffffff06);
+  box-shadow:0 12px 35px #0005;
+}
+
+.categoria strong{
+  color:#dfc7ff;
+  font-size:17px;
+}
+
+.grid{
+  gap:18px;
+}
+
+.produto{
+  border:1px solid #ffffff20;
+  background:linear-gradient(160deg,#1b1029,#0f0918);
+  box-shadow:0 12px 30px #0008;
+}
+
+.produto img{
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#211432;
+}
+
+.produto-info{
+  padding:16px;
+}
+
+.produto h3{
+  color:#fff;
+  font-size:16px;
+  line-height:1.35;
+}
+
+.produto strong{
+  color:#d3aaff;
+  font-size:19px;
+}
+
+.produto button{
+  border:1px solid #c39aff66;
+  background:linear-gradient(120deg,#713cff,#a52dff);
+  box-shadow:0 8px 18px #713cff44;
+  font-size:13px;
+}
+
+footer{
+  margin-top:20px;
+  border-top:1px solid #ffffff12;
+}
+
+body.claro{
+  background:#f3eff8;
+}
+
+body.claro header{
+  background:linear-gradient(180deg,#ffffff,#f3eff8);
+}
+
+body.claro h1{
+  color:#24162f;
+}
+
+body.claro .logo{
+  color:#5a269b;
+  border-color:#a47bd1;
+  background:#ffffff;
+}
+
+body.claro .produto{
+  background:#fff;
+  border-color:#ddd2e7;
+  box-shadow:0 10px 25px #38204b18;
+}
+
+body.claro .produto h3{
+  color:#26182f;
+}
+
+body.claro .categoria{
+  background:#fff;
+  border-color:#d9c8e5;
+}
+</style>
+
+
+
+<style id="rdzx-precos-promocionais">
+.precos-promocionais{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:13px;
+}
+.precos-promocionais del{
+  color:#91859d;
+  font-size:13px;
+  font-weight:normal;
+}
+.precos-promocionais strong{
+  margin:0!important;
+  color:#baffc8!important;
+  font-size:20px!important;
+}
+body.claro .precos-promocionais del{
+  color:#887d91;
+}
+body.claro .precos-promocionais strong{
+  color:#168238!important;
+}
+</style>
+</head>
+
+<body>
+<button id="botao-tema" type="button">☀️ Modo claro</button>
+
+<header>
+  <div class="logo">RDZX STORE ⚡</div>
+  <h1>Assinaturas digitais</h1>
+  <p>Escolha sua assinatura e fale diretamente com a RDZX STORE pelo WhatsApp.</p>
+
+
+
+
+</header>
+
+<main>
+  <div class="categoria">
+    <strong>💎 Categoria: Assinaturas</strong><br>
+    <span>Confira os produtos disponíveis abaixo.</span>
+  </div>
+
+  <section class="grid">
+    
+<article class="produto">
+  <img src="imagens/assinaturas/viki.jpg" alt="Viki Rakuten" loading="lazy">
+  <div class="produto-info">
+    <h3>Viki Rakuten</h3>
+    <div class="precos-promocionais"><del>R$ 39,90</del><strong>R$ 12,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Viki Rakuten" data-preco="R$ 12,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/apple-tv.jpg" alt="Apple TV" loading="lazy">
+  <div class="produto-info">
+    <h3>Apple TV</h3>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 10,90</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Apple TV" data-preco="R$ 10,90">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/tnt-sports.jpg" alt="TNT Sports" loading="lazy">
+  <div class="produto-info">
+    <h3>TNT Sports</h3>
+    <div class="precos-promocionais"><del>R$ 34,90</del><strong>R$ 11,50</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="TNT Sports" data-preco="R$ 11,50">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/privacy.jpg" alt="Privacy" loading="lazy">
+  <div class="produto-info">
+    <h3>Privacy</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Privacy" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/deezer.jpg" alt="Deezer" loading="lazy">
+  <div class="produto-info">
+    <h3>Deezer</h3>
+    <div class="precos-promocionais"><del>R$ 19,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Deezer" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/grobo-play.jpg" alt="Grobo Play" loading="lazy">
+  <div class="produto-info">
+    <h3>Grobo Play</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Grobo Play" data-preco="R$ 9,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/google-veo.jpg" alt="Google Veo 3" loading="lazy">
+  <div class="produto-info">
+    <h3>Google Veo 3</h3>
+    <div class="precos-promocionais"><del>R$ 99,90</del><strong>R$ 45,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Google Veo 3" data-preco="R$ 45,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/chatgpt.jpg" alt="ChatGPT" loading="lazy">
+  <div class="produto-info">
+    <h3>ChatGPT</h3>
+    <div class="precos-promocionais"><del>R$ 79,90</del><strong>R$ 36,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="ChatGPT" data-preco="R$ 36,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/capcut.jpg" alt="CapCut Pro" loading="lazy">
+  <div class="produto-info">
+    <h3>CapCut Pro</h3>
+    <div class="precos-promocionais"><del>R$ 49,90</del><strong>R$ 22,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="CapCut Pro" data-preco="R$ 22,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/crunchyroll.jpg" alt="Crunchyroll" loading="lazy">
+  <div class="produto-info">
+    <h3>Crunchyroll</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Crunchyroll" data-preco="R$ 8,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/spotify.jpg" alt="Spotify Premium" loading="lazy">
+  <div class="produto-info">
+    <h3>Spotify Premium</h3>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="Spotify Premium" data-preco="R$ 8,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+<article class="produto">
+  <img src="imagens/assinaturas/iptv.jpg" alt="IPTV" loading="lazy">
+  <div class="produto-info">
+    <h3>IPTV</h3>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 12,00</strong></div>
+    <button onclick="comprarProduto(this)" data-produto="IPTV" data-preco="R$ 12,00">
+      Comprar pelo WhatsApp
+    </button>
+  </div>
+</article>
+
+  </section>
+</main>
+
+<footer>
+  RDZX STORE ⚡ — Atendimento direto pelo WhatsApp
+</footer>
+
+<script>
+function comprar(mensagem){
+  window.location.href="whatsapp://send?phone=5594991588787&text="+encodeURIComponent(mensagem);
+}
+</script>
+
+<script id="rdzx-precos-originais">
+(function(){
+  var precos={"Tudo em Um!": 18.9, "Netflix": 9.9, "Prime Video": 6.99, "Disney+": 9.99, "HBO Max": 8.49, "YouTube Premium": 7.99};
+
+  document.querySelectorAll(".produto").forEach(function(card){
+    var titulo=card.querySelector("h3");
+    var valor=card.querySelector("strong");
+
+    if(titulo && valor && precos[titulo.textContent.trim()] !== undefined){
+      valor.textContent="R$ "+precos[titulo.textContent.trim()]
+        .toFixed(2).replace(".",",");
+    }
+  });
+})();
+</script>
+
+<script id="rdzx-tema-script">
+(function(){
+  var botao=document.getElementById("botao-tema");
+  var salvo=localStorage.getItem("rdzx-tema");
+
+  if(salvo==="claro"){
+    document.body.classList.add("claro");
+    botao.textContent="🌙 Modo escuro";
+  }
+
+  botao.onclick=function(){
+    document.body.classList.toggle("claro");
+
+    var claro=document.body.classList.contains("claro");
+    localStorage.setItem("rdzx-tema",claro?"claro":"escuro");
+    botao.textContent=claro?"🌙 Modo escuro":"☀️ Modo claro";
+  };
+})();
+</script>
+
+<script id="rdzx-compra-com-preco">
+function comprarProduto(botao){
+  var produto=botao.getAttribute("data-produto");
+  var preco=botao.getAttribute("data-preco");
+
+  var mensagem=
+    "Olá! Tenho interesse em comprar "+produto+
+    " na RDZX STORE.\n\n"+
+    "Produto: "+produto+"\n"+
+    "Preço: "+preco+"\n\n"+
+    "Gostaria de finalizar a compra.";
+
+  window.location.href=
+    "whatsapp://send?phone=5594991588787&text="+
+    encodeURIComponent(mensagem);
+}
+</script>
+</body>
+</html>
