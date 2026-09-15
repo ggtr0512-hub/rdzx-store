@@ -1030,6 +1030,25 @@ header,
   }
 }
 </style>
+
+<style id="rdzx-categorias-visiveis-final">
+#categorias{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+.rdzx-categorias-fixas{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+}
+@media(max-width:700px){
+  .rdzx-categorias-fixas{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -1045,7 +1064,18 @@ header,
   <h2>📂 Categorias</h2>
   <div class="rdzx-menu-botoes"></div>
 </section>
-<section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div><div class="grid" id="categories"></div></div></section>
+<section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2><small>Encontre o que procura</small></div>
+<div class="grid rdzx-categorias-fixas" id="categories">
+<button class="catCard" onclick="document.getElementById('cat').value='';render()">✨<strong>Todos os produtos</strong><span class="muted">Ver catálogo completo</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='ASSINATURAS';render()">💎<strong>Assinaturas</strong><span class="muted">Serviços digitais</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='CRIE SUA EMPRESA';render()">🚀<strong>Crie sua empresa</strong><span class="muted">Soluções para seu projeto</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='ENGAJAMENTOS';render()">📸<strong>Engajamentos</strong><span class="muted">Redes sociais</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='STEAM / JOGOS';render()">🎮<strong>Steam / Jogos</strong><span class="muted">Jogos digitais</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='JOGOS';render()">🕹️<strong>Jogos</strong><span class="muted">Mais opções</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='EDITORES';render()">🎨<strong>Editores</strong><span class="muted">Imagem e vídeo</span></button>
+<button class="catCard" onclick="document.getElementById('cat').value='OUTROS';render()">📦<strong>Outros</strong><span class="muted">Mais produtos</span></button>
+</div>
+</div></section>
 <section id="produtos"><div class="wrap"><div class="head"><h2>Produtos</h2><small id="resultCount"></small></div><div class="search"><input id="search" placeholder="🔍 Buscar produto..." oninput="render()"></div><div class="filters"><select id="cat" onchange="render()"><option value="">Todas as categorias</option></select><select id="sort" onchange="render()"><option value="default">Mais relevantes</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select><select id="availability" onchange="render()"><option value="">Todos os produtos</option><option value="available">Disponíveis</option><option value="sold">Esgotados</option></select></div><div class="grid" id="products"></div></div></section>
 <section id="faq"><div class="wrap faq"><div class="head"><h2>FAQ</h2></div><details><summary>Como faço um pedido?</summary><p>Adicione os produtos ao carrinho, confira o total e toque em “Finalizar pelo WhatsApp”. A mensagem será preparada automaticamente.</p></details><details><summary>Produtos “Consultar” podem ser comprados?</summary><p>Sim. O WhatsApp abrirá com o produto selecionado para você consultar disponibilidade e valor.</p></details><details><summary>O carrinho fica salvo?</summary><p>Sim. Os itens ficam salvos no armazenamento local do navegador até você remover ou finalizar o pedido.</p></details></div></section>
 <section><div class="wrap"><div class="contact feature"><h2>Fale com a RDZX STORE ⚡</h2><p>Tem alguma dúvida ou quer consultar um produto?</p><button class="btn" onclick="sendWhats('Olá! Vim pelo site da RDZX STORE e gostaria de tirar uma dúvida.')">Abrir WhatsApp</button></div></div></section></main>
