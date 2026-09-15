@@ -1527,5 +1527,308 @@ function comprarProduto(botao){
   }
 })();
 </script>
+
+<div id="rdzx-checkout-cupons" class="checkout-fundo">
+  <div class="checkout-card">
+    <button class="checkout-fechar" onclick="fecharCheckout()">×</button>
+
+    <img id="checkout-imagem" class="checkout-imagem" src="" alt="Produto">
+
+    <h2 id="checkout-produto">Produto</h2>
+
+    <div class="checkout-linha">
+      <span>Preço original:</span>
+      <strong id="checkout-preco-original">R$ 0,00</strong>
+    </div>
+
+    <label for="checkout-quantidade">Quantidade</label>
+    <input id="checkout-quantidade" type="number" min="1" value="1">
+
+    <label for="checkout-cupom">🎟️ Cupom</label>
+    <div class="checkout-cupom-linha">
+      <input id="checkout-cupom" placeholder="Digite seu cupom">
+      <button onclick="aplicarCupom()">Aplicar</button>
+    </div>
+
+    <div id="checkout-feedback" class="checkout-feedback"></div>
+
+    <div class="checkout-linha">
+      <span>Desconto:</span>
+      <strong id="checkout-desconto">R$ 0,00</strong>
+    </div>
+
+    <div class="checkout-total">
+      <span>Total:</span>
+      <strong id="checkout-total">R$ 0,00</strong>
+    </div>
+
+    <button class="checkout-whatsapp" onclick="finalizarCheckout()">
+      📲 Comprar pelo WhatsApp
+    </button>
+  </div>
+</div>
+
+<style id="rdzx-checkout-cupons-css">
+.checkout-fundo{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  place-items:center;
+  padding:16px;
+  background:#050208dd;
+}
+.checkout-card{
+  position:relative;
+  width:min(460px,100%);
+  max-height:92vh;
+  overflow:auto;
+  padding:24px;
+  border:1px solid #b477ff77;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(145deg,#241039,#0d0714);
+  box-shadow:0 0 40px #713cff88,0 20px 60px #000;
+}
+.checkout-fechar{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  color:#fff;
+  background:transparent;
+  font-size:28px;
+  cursor:pointer;
+}
+.checkout-imagem{
+  display:block;
+  width:130px;
+  height:130px;
+  margin:0 auto 15px;
+  object-fit:contain;
+  border-radius:14px;
+  background:#171020;
+}
+.checkout-card h2{
+  margin:8px 0 18px;
+  text-align:center;
+  color:#e3c8ff;
+}
+.checkout-linha,
+.checkout-total{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  color:#cdbed7;
+}
+.checkout-linha strong{
+  color:#fff;
+}
+.checkout-card label{
+  display:block;
+  margin:12px 0 6px;
+  color:#d9c6e7;
+  font-size:13px;
+  font-weight:bold;
+}
+.checkout-card input{
+  width:100%;
+  padding:12px;
+  border:1px solid #ffffff2b;
+  border-radius:10px;
+  color:#fff;
+  background:#180d25;
+  outline:none;
+}
+.checkout-cupom-linha{
+  display:flex;
+  gap:8px;
+}
+.checkout-cupom-linha input{
+  min-width:0;
+  flex:1;
+}
+.checkout-cupom-linha button{
+  padding:0 13px;
+  border:0;
+  border-radius:10px;
+  color:#fff;
+  background:#713cff;
+  font-weight:bold;
+}
+.checkout-feedback{
+  min-height:20px;
+  margin-top:8px;
+  color:#ff9e9e;
+  font-size:13px;
+}
+.checkout-total{
+  margin-top:10px;
+  padding:16px 0;
+  border-top:1px solid #ffffff22;
+  font-size:20px;
+}
+.checkout-total strong{
+  color:#baffc8;
+}
+.checkout-whatsapp{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  background:#159447;
+  font-weight:900;
+}
+body.claro .checkout-card{
+  color:#291b32;
+  background:#fff;
+}
+body.claro .checkout-card h2{
+  color:#5d2693;
+}
+body.claro .checkout-card input{
+  color:#291b32;
+  background:#f5f1f8;
+}
+</style>
+
+<script id="rdzx-checkout-cupons-js">
+var rdzxCheckout={
+  produto:"",
+  preco:0,
+  imagem:"",
+  cupom:"",
+  descontoPercentual:0
+};
+
+var RDZX_WHATSAPP="5594991588787";
+
+function dinheiro(valor){
+  return "R$ "+valor.toFixed(2).replace(".",",");
+}
+
+function abrirCheckout(botao){
+  var card=botao.closest(".produto");
+  var nome=botao.getAttribute("data-produto")||
+    card.querySelector("h3").textContent.trim();
+  var precoTexto=botao.getAttribute("data-preco")||
+    card.querySelector(".precos-promocionais strong").textContent;
+  var preco=Number(precoTexto.replace(/[^0-9,]/g,"").replace(",","."));
+  var imagem=card.querySelector("img");
+
+  rdzxCheckout.produto=nome;
+  rdzxCheckout.preco=preco;
+  rdzxCheckout.imagem=imagem?imagem.src:"";
+  rdzxCheckout.cupom="";
+  rdzxCheckout.descontoPercentual=0;
+
+  document.getElementById("checkout-produto").textContent=nome;
+  document.getElementById("checkout-imagem").src=rdzxCheckout.imagem;
+  document.getElementById("checkout-preco-original").textContent=dinheiro(preco);
+  document.getElementById("checkout-cupom").value="";
+  document.getElementById("checkout-quantidade").value=1;
+  document.getElementById("checkout-feedback").textContent="";
+  atualizarCheckout();
+
+  document.getElementById("rdzx-checkout-cupons").style.display="grid";
+}
+
+function aplicarCupom(){
+  var campo=document.getElementById("checkout-cupom");
+  var codigo=campo.value.trim().toUpperCase();
+  var feedback=document.getElementById("checkout-feedback");
+
+  rdzxCheckout.cupom="";
+  rdzxCheckout.descontoPercentual=0;
+
+  if(!codigo){
+    feedback.textContent="Nenhum cupom aplicado.";
+    feedback.style.color="#cdbed7";
+    atualizarCheckout();
+    return;
+  }
+
+  if(codigo==="RDZX6"){
+    rdzxCheckout.cupom="RDZX6";
+    rdzxCheckout.descontoPercentual=6;
+    feedback.textContent="✅ Cupom RDZX6 aplicado: 6% OFF";
+    feedback.style.color="#baffc8";
+  }else if(codigo==="RDZX10"){
+    rdzxCheckout.cupom="RDZX10";
+    rdzxCheckout.descontoPercentual=10;
+    feedback.textContent="✅ Cupom RDZX10 aplicado: 10% OFF";
+    feedback.style.color="#baffc8";
+  }else{
+    feedback.textContent="❌ Cupom inválido ou expirado.";
+    feedback.style.color="#ff9e9e";
+  }
+
+  atualizarCheckout();
+}
+
+function atualizarCheckout(){
+  var quantidade=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+
+  document.getElementById("checkout-desconto").textContent=
+    "-"+dinheiro(desconto);
+  document.getElementById("checkout-total").textContent=
+    dinheiro(total);
+}
+
+function finalizarCheckout(){
+  var quantidade=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+
+  var mensagem=
+    "🛒 NOVO PEDIDO — RDZX STORE\\n\\n"+
+    "📦 Produto: "+rdzxCheckout.produto+"\\n"+
+    "🔢 Quantidade: "+quantidade+"\\n\\n"+
+    "💰 Preço original: "+dinheiro(original)+"\\n"+
+    "🎟️ Cupom: "+(rdzxCheckout.cupom||"Nenhum")+"\\n"+
+    "📉 Desconto: "+rdzxCheckout.descontoPercentual+"%\\n"+
+    "💵 Total: "+dinheiro(total)+"\\n\\n"+
+    "Olá! Quero comprar este produto pela RDZX STORE.";
+
+  window.location.href=
+    "whatsapp://send?phone="+RDZX_WHATSAPP+
+    "&text="+encodeURIComponent(mensagem);
+}
+
+function fecharCheckout(){
+  document.getElementById("rdzx-checkout-cupons").style.display="none";
+}
+
+document.addEventListener("input",function(e){
+  if(e.target.id==="checkout-quantidade"){
+    atualizarCheckout();
+  }
+});
+
+document.addEventListener("click",function(e){
+  var botao=e.target.closest(".produto button");
+
+  if(botao && botao.textContent.toLowerCase().includes("comprar")){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    abrirCheckout(botao);
+  }
+},true);
+</script>
 </body>
 </html>
