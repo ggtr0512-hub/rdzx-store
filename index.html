@@ -988,6 +988,133 @@ body.claro .produto-descricao-terror{
   border-left-color:#8d2940;
 }
 </style>
+
+<style id="rdzx-visual-pesado-final">
+body{
+  background:
+    radial-gradient(circle at 50% -15%,#a7193238,transparent 35%),
+    radial-gradient(circle at 0% 70%,#40152b25,transparent 30%),
+    #050507!important;
+}
+header{
+  min-height:330px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+header h1{
+  max-width:850px;
+  font-size:clamp(36px,8vw,76px)!important;
+  line-height:.98!important;
+  letter-spacing:-2px;
+  text-shadow:
+    0 0 8px #fff4,
+    0 0 25px #a71932,
+    0 0 55px #a7193277!important;
+  animation:entradaPremium .8s ease-out both;
+}
+header p{
+  max-width:650px;
+  font-size:16px!important;
+}
+@keyframes entradaPremium{
+  from{opacity:0;transform:translateY(22px);filter:blur(8px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+main{
+  width:min(1180px,100%);
+  margin:auto;
+}
+.produto{
+  transform:translateZ(0);
+  backdrop-filter:blur(8px);
+}
+.produto::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:0;
+  left:-80%;
+  width:45%;
+  height:100%;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,#fff2,transparent);
+  transform:skewX(-18deg);
+  transition:left .8s ease;
+}
+.produto:hover::after{
+  left:135%;
+}
+.produto-info{
+  position:relative;
+  z-index:3;
+}
+.produto h3{
+  letter-spacing:.2px;
+}
+.produto button{
+  min-height:44px;
+  font-size:13px;
+  letter-spacing:.3px;
+}
+.categoria{
+  box-shadow:
+    inset 0 1px #ffffff10,
+    0 14px 40px #000b,
+    0 0 25px #a7193222!important;
+}
+.rdzx-ponto-visual{
+  position:fixed;
+  z-index:0;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  pointer-events:none;
+  background:#ef526b;
+  box-shadow:0 0 12px #ef233c;
+  animation:subirPonto var(--duracao) linear infinite;
+}
+@keyframes subirPonto{
+  from{transform:translateY(110vh) translateX(0);opacity:0}
+  15%{opacity:.65}
+  85%{opacity:.2}
+  to{transform:translateY(-10vh) translateX(var(--lado));opacity:0}
+}
+.rdzx-foco-terror{
+  position:fixed;
+  z-index:0;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  pointer-events:none;
+  background:#8e203522;
+  filter:blur(40px);
+  animation:focoMover 14s ease-in-out infinite alternate;
+}
+@keyframes focoMover{
+  from{left:-5%;top:25%}
+  to{left:82%;top:65%}
+}
+@media(max-width:700px){
+  header{min-height:285px}
+  header h1{font-size:clamp(32px,10vw,50px)!important}
+  .rdzx-ponto-visual{opacity:.45}
+}
+</style>
+
+<style id="rdzx-entrada-itens">
+.rdzx-entrada-item{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .65s ease,transform .65s ease;
+}
+.rdzx-entrada-item.rdzx-apareceu{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
 </head>
 
 <body>
@@ -1649,6 +1776,44 @@ function finalizarHorror(){
   setInterval(function(){
     glitch();
   },11000+Math.random()*7000);
+})();
+</script>
+
+<script id="rdzx-visual-pesado-final-js">
+(function(){
+  var reduzido=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var celular=matchMedia("(max-width:700px)").matches;
+
+  if(reduzido)return;
+
+  var foco=document.createElement("div");
+  foco.className="rdzx-foco-terror";
+  document.body.appendChild(foco);
+
+  var quantidade=celular?7:16;
+
+  for(var i=0;i<quantidade;i++){
+    var ponto=document.createElement("i");
+    ponto.className="rdzx-ponto-visual";
+    ponto.style.left=(Math.random()*100)+"vw";
+    ponto.style.setProperty("--duracao",(9+Math.random()*15)+"s");
+    ponto.style.setProperty("--lado",((Math.random()-.5)*180)+"px");
+    ponto.style.animationDelay=(-Math.random()*18)+"s";
+    document.body.appendChild(ponto);
+  }
+
+  var observador=new IntersectionObserver(function(lista){
+    lista.forEach(function(item){
+      if(item.isIntersecting){
+        item.target.classList.add("rdzx-apareceu");
+      }
+    });
+  },{threshold:.1});
+
+  document.querySelectorAll(".produto,.categoria").forEach(function(el){
+    el.classList.add("rdzx-entrada-item");
+    observador.observe(el);
+  });
 })();
 </script>
 </body>
