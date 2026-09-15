@@ -209,5 +209,63 @@ function copiar(numero){
   video2.insertAdjacentElement("afterend",area);
 })();
 </script>
+
+<style id="rdzx-pausar-video">
+#rdzx-pausar-video{
+  animation:rdzxPulsarPausa 2s ease-in-out infinite alternate;
+}
+@keyframes rdzxPulsarPausa{
+  from{box-shadow:0 0 12px #9b5cff88,0 8px 25px #0008}
+  to{box-shadow:0 0 28px #55d9ffbb,0 8px 30px #000a}
+}
+.rdzx-status-site{
+  margin:18px auto 0;
+  max-width:600px;
+  padding:14px 18px;
+  border:1px solid #ffffff18;
+  border-radius:16px;
+  color:#d6c9e5;
+  background:#ffffff08;
+  line-height:1.6;
+  font-size:14px;
+}
+</style>
+
+<script id="rdzx-pausar-video-script">
+setTimeout(function(){
+  var video3=document.getElementById("video");
+  var area=document.querySelector(".rdzx-controles-video");
+
+  if(!video3 || !area || document.getElementById("rdzx-pausar-video")){
+    return;
+  }
+
+  var pausar=document.createElement("button");
+  pausar.id="rdzx-pausar-video";
+  pausar.className="rdzx-controle-video";
+  pausar.textContent="⏸ Pausar vídeo";
+
+  pausar.onclick=function(){
+    if(video3.paused){
+      video3.play().catch(function(){});
+      pausar.textContent="⏸ Pausar vídeo";
+    }else{
+      video3.pause();
+      pausar.textContent="▶ Continuar vídeo";
+    }
+  };
+
+  area.appendChild(pausar);
+
+  var status=document.createElement("div");
+  status.className="rdzx-status-site";
+  status.innerHTML="✨ Estamos preparando novidades para deixar a RDZX STORE ainda melhor.<br>Enquanto isso, você pode falar conosco pelos canais de atendimento abaixo.";
+  var titulo=document.querySelector("h1");
+
+  if(titulo){
+    titulo.insertAdjacentElement("afterend",status);
+  }
+},300);
+</script>
 </body>
 </html>
