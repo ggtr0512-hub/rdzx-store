@@ -990,10 +990,50 @@ footer{
   display:none!important;
 }
 </style>
+
+<style id="rdzx-site-leve">
+/* Redução de peso visual */
+body:before,
+body:after,
+header,
+.card:before,
+.feature:before,
+.catCard:before,
+.rdzx-menu-botao:before{
+  animation:none!important;
+}
+
+.card,
+.feature,
+.catCard,
+.rdzx-menu-botao{
+  transition:transform .15s ease,box-shadow .15s ease!important;
+}
+
+@media(max-width:700px){
+  /* Desliga o vídeo pesado no celular */
+  #rdzx-bg-video{
+    display:none!important;
+  }
+
+  body{
+    background:
+      radial-gradient(600px 350px at 90% 0%,#762fff2b,transparent 70%),
+      #07030f!important;
+  }
+
+  .card:hover,
+  .feature:hover,
+  .catCard:hover,
+  .rdzx-menu-botao:hover{
+    transform:none!important;
+  }
+}
+</style>
 </head>
 <body>
 
-<video id="rdzx-bg-video" autoplay muted loop playsinline preload="auto">
+<video id="rdzx-bg-video" autoplay muted loop playsinline preload="metadata">
   <source src="imagens/fundo-rdzx.mp4" type="video/mp4">
 </video>
 
