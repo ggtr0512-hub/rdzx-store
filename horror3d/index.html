@@ -231,10 +231,84 @@ button:hover{
   color:#998b91;
 }
 </style>
+
+<style id="aviso-idade-terror-css">
+.aviso-terror-fundo{
+  position:fixed;
+  z-index:9999;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:#010102f5;
+}
+.aviso-terror-card{
+  width:min(620px,100%);
+  max-height:92vh;
+  overflow:auto;
+  padding:28px 22px;
+  text-align:center;
+  color:#eee;
+  border:1px solid #ef233c99;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 50% 0,#72152855,transparent 45%),
+    #080609;
+  box-shadow:0 0 45px #ef233c55,0 25px 70px #000;
+}
+.aviso-terror-icone{
+  font-size:48px;
+  filter:drop-shadow(0 0 15px #ef233c);
+}
+.aviso-terror-card h1{
+  color:#ff5268;
+  font-size:clamp(21px,5vw,34px);
+  line-height:1.2;
+}
+.aviso-terror-card p{
+  color:#c7b9be;
+  line-height:1.6;
+  font-size:14px;
+}
+.aviso-terror-botoes{
+  display:grid;
+  gap:10px;
+  margin-top:22px;
+}
+.aviso-terror-botoes button{
+  width:100%;
+  margin:0;
+  padding:14px;
+}
+.aviso-terror-botoes .sair{
+  border-color:#ffffff33;
+  background:#ffffff0c;
+  color:#bbb;
+}
+</style>
 </head>
 
 <body>
 <div id="cena">
+<div id="aviso-idade-terror" class="aviso-terror-fundo">
+  <div class="aviso-terror-card">
+    <div class="aviso-terror-icone">⚠️</div>
+    <h1>ATENÇÃO — EXPERIÊNCIA DE TERROR</h1>
+
+    <p>Este jogo contém sustos repentinos, sons altos, efeitos de glitch, mudanças bruscas de iluminação, personagens assustadores e cenas de suspense.</p>
+
+    <p>Se você for menor de idade, estiver sozinho ou não se sentir confortável com esse tipo de conteúdo, recomendamos não continuar.</p>
+
+    <p>Esta experiência é fictícia e foi criada apenas para entretenimento.</p>
+
+    <div class="aviso-terror-botoes">
+      <button onclick="aceitarAviso(true)">👻 ENTENDI E QUERO JOGAR</button>
+      <button onclick="aceitarAviso(false)">🔇 JOGAR SEM SOM</button>
+      <button class="sair" onclick="sairAviso()">↩️ SAIR</button>
+    </div>
+  </div>
+</div>
+
   <div class="nevoa"></div>
 
   <div class="corredor">
@@ -273,7 +347,7 @@ function entrar(){
   document.getElementById("jogo").style.display="block";
 
   var AC=window.AudioContext||window.webkitAudioContext;
-  if(AC){
+  if(somPermitido && AC){
     var audio=new AC();
     var oscilador=audio.createOscillator();
     var ganho=audio.createGain();
@@ -288,6 +362,26 @@ function entrar(){
 }
 
 function voltar(){
+  window.location.href="../index.html";
+}
+</script>
+
+<script id="aviso-idade-terror-js">
+var somPermitido=false;
+
+function aceitarAviso(comSom){
+  somPermitido=comSom;
+  document.getElementById("aviso-idade-terror").style.display="none";
+
+  if(comSom){
+    document.getElementById("entrada").style.display="block";
+  }else{
+    document.getElementById("entrada").style.display="none";
+    document.getElementById("jogo").style.display="block";
+  }
+}
+
+function sairAviso(){
   window.location.href="../index.html";
 }
 </script>
