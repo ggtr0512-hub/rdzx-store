@@ -101,5 +101,39 @@ function copiar(numero){
   alert("Número copiado. Abra o WhatsApp ou Telegram para falar conosco.");
 }
 </script>
+
+<style id="rdzx-audio-controle">
+#rdzx-ativar-audio{
+  margin:18px auto;
+  padding:14px 20px;
+  border:0;
+  border-radius:14px;
+  color:#fff;
+  background:linear-gradient(110deg,#713cff,#c13cff);
+  font-weight:900;
+  box-shadow:0 0 25px #9b5cff66;
+}
+</style>
+
+<script id="rdzx-audio-controle-script">
+(function(){
+  var videoAtual=document.getElementById("video");
+  if(!videoAtual)return;
+
+  var botao=document.createElement("button");
+  botao.id="rdzx-ativar-audio";
+  botao.textContent="🔊 Ativar áudio do vídeo";
+
+  var videoElemento=videoAtual;
+  videoElemento.insertAdjacentElement("afterend",botao);
+
+  botao.addEventListener("click",function(){
+    videoElemento.muted=false;
+    videoElemento.volume=1;
+    videoElemento.play();
+    botao.remove();
+  });
+})();
+</script>
 </body>
 </html>
