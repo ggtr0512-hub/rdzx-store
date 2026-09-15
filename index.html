@@ -148,6 +148,16 @@ button:hover{
   }
 }
 </style>
+
+<style id="rdzx-fonte-contatos">
+.contatos button{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  letter-spacing:.2px;
+  font-size:14px;
+  font-weight:900;
+  text-shadow:0 1px 5px #0008;
+}
+</style>
 </head>
 
 <body>
@@ -181,7 +191,7 @@ button:hover{
 
   <div class="contatos">
     <button onclick="abrirWhatsApp()">💬 WhatsApp</button>
-    <button onclick="abrirTelegram()">🛟 Suporte</button>
+    <button onclick="abrirTelegram()">🛟 Falar com o suporte</button>
   </div>
 
   <div class="numero">
@@ -247,8 +257,12 @@ function abrirWhatsApp(){
 }
 
 function abrirTelegram(){
+  var mensagem=encodeURIComponent(
+    "Olá! Entrei na RDZX STORE e desejo comprar. Gostaria de tirar uma dúvida."
+  );
+
   window.location.href=
-    "tg://resolve?phone=5594984438697";
+    "tg://resolve?phone=5594984438697&text="+mensagem;
 }
 </script>
 </body>
