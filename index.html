@@ -301,65 +301,31 @@ body.claro .categoria{
 }
 </style>
 
-<style id="rdzx-confianca">
-.rdzx-confianca{
-  width:min(1100px,calc(100% - 32px));
-  margin:0 auto 28px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+
+
+<style id="rdzx-precos-promocionais">
+.precos-promocionais{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:13px;
 }
-.rdzx-confianca div,
-.rdzx-como-funciona{
-  border:1px solid #ffffff1c;
-  border-radius:17px;
-  padding:18px;
-  background:linear-gradient(145deg,#1b1029,#10091a);
-  box-shadow:0 10px 25px #0005;
-}
-.rdzx-confianca b{
-  display:block;
-  margin-bottom:7px;
-  color:#dfc4ff;
-}
-.rdzx-confianca span{
-  color:#b9a9c5;
+.precos-promocionais del{
+  color:#91859d;
   font-size:13px;
-  line-height:1.5;
+  font-weight:normal;
 }
-.rdzx-como-funciona{
-  width:min(1100px,calc(100% - 32px));
-  margin:0 auto 30px;
-  text-align:center;
+.precos-promocionais strong{
+  margin:0!important;
+  color:#baffc8!important;
+  font-size:20px!important;
 }
-.rdzx-como-funciona h2{
-  margin:0 0 8px;
-  color:#d9baff;
+body.claro .precos-promocionais del{
+  color:#887d91;
 }
-.rdzx-como-funciona p{
-  max-width:700px;
-  margin:auto;
-  color:#b9a9c5;
-  line-height:1.6;
-}
-body.claro .rdzx-confianca div,
-body.claro .rdzx-como-funciona{
-  background:#fff;
-  border-color:#ddd2e7;
-  box-shadow:0 8px 22px #38204b18;
-}
-body.claro .rdzx-confianca b,
-body.claro .rdzx-como-funciona h2{
-  color:#5c2592;
-}
-body.claro .rdzx-confianca span,
-body.claro .rdzx-como-funciona p{
-  color:#665870;
-}
-@media(max-width:700px){
-  .rdzx-confianca{
-    grid-template-columns:1fr;
-  }
+body.claro .precos-promocionais strong{
+  color:#168238!important;
 }
 </style>
 </head>
@@ -372,25 +338,9 @@ body.claro .rdzx-como-funciona p{
   <h1>Assinaturas digitais</h1>
   <p>Escolha sua assinatura e fale diretamente com a RDZX STORE pelo WhatsApp.</p>
 
-<section class="rdzx-confianca">
-  <div>
-    <b>💎 Produtos digitais</b>
-    <span>Catálogo organizado de assinaturas</span>
-  </div>
-  <div>
-    <b>💰 Preço transparente</b>
-    <span>O valor aparece antes do pedido</span>
-  </div>
-  <div>
-    <b>💬 Atendimento direto</b>
-    <span>Finalize tudo pelo WhatsApp</span>
-  </div>
-</section>
 
-<section class="rdzx-como-funciona">
-  <h2>Como funciona</h2>
-  <p>Escolha uma assinatura, confira o preço e toque em comprar. O WhatsApp abrirá com o produto e o valor já preenchidos para facilitar seu atendimento.</p>
-</section>
+
+
 </header>
 
 <main>
@@ -405,7 +355,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/viki.jpg" alt="Viki Rakuten" loading="lazy">
   <div class="produto-info">
     <h3>Viki Rakuten</h3>
-    <strong>R$ 12,00</strong>
+    <div class="precos-promocionais"><del>R$ 39,90</del><strong>R$ 12,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Viki Rakuten" data-preco="R$ 12,00">
       Comprar pelo WhatsApp
     </button>
@@ -416,7 +366,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/apple-tv.jpg" alt="Apple TV" loading="lazy">
   <div class="produto-info">
     <h3>Apple TV</h3>
-    <strong>R$ 10,90</strong>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 10,90</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Apple TV" data-preco="R$ 10,90">
       Comprar pelo WhatsApp
     </button>
@@ -427,7 +377,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/tnt-sports.jpg" alt="TNT Sports" loading="lazy">
   <div class="produto-info">
     <h3>TNT Sports</h3>
-    <strong>R$ 11,50</strong>
+    <div class="precos-promocionais"><del>R$ 34,90</del><strong>R$ 11,50</strong></div>
     <button onclick="comprarProduto(this)" data-produto="TNT Sports" data-preco="R$ 11,50">
       Comprar pelo WhatsApp
     </button>
@@ -438,7 +388,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/privacy.jpg" alt="Privacy" loading="lazy">
   <div class="produto-info">
     <h3>Privacy</h3>
-    <strong>R$ 9,00</strong>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Privacy" data-preco="R$ 9,00">
       Comprar pelo WhatsApp
     </button>
@@ -449,7 +399,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/deezer.jpg" alt="Deezer" loading="lazy">
   <div class="produto-info">
     <h3>Deezer</h3>
-    <strong>R$ 9,00</strong>
+    <div class="precos-promocionais"><del>R$ 19,90</del><strong>R$ 9,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Deezer" data-preco="R$ 9,00">
       Comprar pelo WhatsApp
     </button>
@@ -460,7 +410,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/grobo-play.jpg" alt="Grobo Play" loading="lazy">
   <div class="produto-info">
     <h3>Grobo Play</h3>
-    <strong>R$ 9,00</strong>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Grobo Play" data-preco="R$ 9,00">
       Comprar pelo WhatsApp
     </button>
@@ -471,7 +421,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/google-veo.jpg" alt="Google Veo 3" loading="lazy">
   <div class="produto-info">
     <h3>Google Veo 3</h3>
-    <strong>R$ 45,00</strong>
+    <div class="precos-promocionais"><del>R$ 99,90</del><strong>R$ 45,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Google Veo 3" data-preco="R$ 45,00">
       Comprar pelo WhatsApp
     </button>
@@ -482,7 +432,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/chatgpt.jpg" alt="ChatGPT" loading="lazy">
   <div class="produto-info">
     <h3>ChatGPT</h3>
-    <strong>R$ 36,00</strong>
+    <div class="precos-promocionais"><del>R$ 79,90</del><strong>R$ 36,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="ChatGPT" data-preco="R$ 36,00">
       Comprar pelo WhatsApp
     </button>
@@ -493,7 +443,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/capcut.jpg" alt="CapCut Pro" loading="lazy">
   <div class="produto-info">
     <h3>CapCut Pro</h3>
-    <strong>R$ 22,00</strong>
+    <div class="precos-promocionais"><del>R$ 49,90</del><strong>R$ 22,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="CapCut Pro" data-preco="R$ 22,00">
       Comprar pelo WhatsApp
     </button>
@@ -504,7 +454,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/crunchyroll.jpg" alt="Crunchyroll" loading="lazy">
   <div class="produto-info">
     <h3>Crunchyroll</h3>
-    <strong>R$ 8,00</strong>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Crunchyroll" data-preco="R$ 8,00">
       Comprar pelo WhatsApp
     </button>
@@ -515,7 +465,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/spotify.jpg" alt="Spotify Premium" loading="lazy">
   <div class="produto-info">
     <h3>Spotify Premium</h3>
-    <strong>R$ 8,00</strong>
+    <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Spotify Premium" data-preco="R$ 8,00">
       Comprar pelo WhatsApp
     </button>
@@ -526,7 +476,7 @@ body.claro .rdzx-como-funciona p{
   <img src="imagens/assinaturas/iptv.jpg" alt="IPTV" loading="lazy">
   <div class="produto-info">
     <h3>IPTV</h3>
-    <strong>R$ 12,00</strong>
+    <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 12,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="IPTV" data-preco="R$ 12,00">
       Comprar pelo WhatsApp
     </button>
