@@ -4042,3 +4042,88 @@ section{
 })();
 </script>
 
+
+<style id="rdzx-fim-discord">
+#rdzx-section-discord{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-fim-discord-script">
+(function(){
+  const nomes=[
+    "Conta com Nitro",
+    "Nitro Link",
+    "Ativação Nitro",
+    "Membros Discord",
+    "Conta Virgem",
+    "Impulsos",
+    "Checker Nitro Link",
+    "Discord Premium"
+  ];
+
+  function limparDiscord(){
+    document.querySelectorAll("*").forEach(function(elemento){
+      const texto=(elemento.textContent||"").trim().toLowerCase();
+
+      if(
+        elemento.classList &&
+        (
+          elemento.classList.contains("rdzx-category-tab") ||
+          elemento.classList.contains("rdzx-menu-botao")
+        ) &&
+        (
+          texto.includes("discord") ||
+          texto.includes("nitro")
+        )
+      ){
+        elemento.remove();
+      }
+    });
+
+    document.querySelectorAll("#rdzx-section-discord").forEach(function(secao){
+      secao.remove();
+    });
+
+    document.querySelectorAll(".card").forEach(function(card){
+      const titulo=card.querySelector("h3");
+
+      if(
+        titulo &&
+        nomes.some(function(nome){
+          return titulo.textContent.trim()===nome;
+        })
+      ){
+        card.remove();
+      }
+    });
+
+    if(typeof products!=="undefined"){
+      for(let i=products.length-1;i>=0;i--){
+        if(
+          products[i].cat==="DISCORD" ||
+          nomes.includes(products[i].name)
+        ){
+          products.splice(i,1);
+        }
+      }
+    }
+
+    document.querySelectorAll("#cat option").forEach(function(opcao){
+      if(
+        opcao.value==="DISCORD" ||
+        opcao.textContent.toLowerCase().includes("discord")
+      ){
+        opcao.remove();
+      }
+    });
+  }
+
+  limparDiscord();
+
+  new MutationObserver(limparDiscord).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
