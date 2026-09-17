@@ -2761,3 +2761,103 @@ hr{
   border-color:#7894a355!important;
 }
 </style>
+
+<script id="rdzx-limpeza-total-cores">
+(function(){
+
+  function neutralizar(cor){
+    var original=cor;
+
+    if(cor.length===4){
+      cor="#"+cor[1]+cor[1]+cor[2]+cor[2]+cor[3]+cor[3];
+    }
+
+    if(!/^#[0-9a-fA-F]{6}$/.test(cor))return original;
+
+    var r=parseInt(cor.slice(1,3),16);
+    var g=parseInt(cor.slice(3,5),16);
+    var b=parseInt(cor.slice(5,7),16);
+
+    if(r>g*1.18 && r>b*1.18){
+      var brilho=Math.round((r+g+b)/3);
+      var azul=Math.min(190,Math.max(105,brilho+25));
+      var cinza=Math.min(155,Math.max(65,brilho-10));
+
+      return "#"+
+        cinza.toString(16).padStart(2,"0")+
+        Math.min(185,cinza+20).toString(16).padStart(2,"0")+
+        azul.toString(16).padStart(2,"0");
+    }
+
+    return original;
+  }
+
+  function limpar(texto){
+    return texto.replace(
+      /#[0-9a-fA-F]{3,6}/g,
+      function(cor){return neutralizar(cor);}
+    );
+  }
+
+  document.querySelectorAll("style").forEach(function(style){
+    style.textContent=limpar(style.textContent);
+  });
+
+  document.querySelectorAll("[style]").forEach(function(el){
+    el.setAttribute("style",limpar(el.getAttribute("style")));
+  });
+
+})();
+</script>
+
+<style id="rdzx-sem-vermelho-absoluto">
+body,
+header,
+main,
+section,
+article,
+.produto,
+.rdzx-info-box{
+  --vermelho:#718b99!important;
+  --red:#718b99!important;
+  --danger:#718b99!important;
+  --accent:#a8d8eb!important;
+  border-color:#7894a3!important;
+}
+
+body{
+  background:#080d11!important;
+}
+
+header{
+  background:linear-gradient(145deg,#354954,#10181e)!important;
+  box-shadow:0 5px 0 #05080a,0 18px 35px #000!important;
+}
+
+.produto{
+  background:linear-gradient(145deg,#334752,#111b22 55%,#070a0d)!important;
+  box-shadow:0 4px 0 #8198a3,0 10px 0 #050709,0 22px 35px #000!important;
+}
+
+button,
+.produto button,
+.checkout-pix,
+.checkout-whatsapp{
+  background:linear-gradient(145deg,#536d7a,#17252e)!important;
+  border-color:#b4d8e6!important;
+  box-shadow:0 4px 0 #060b0f,0 9px 16px #000!important;
+}
+
+button:hover,
+.produto button:hover{
+  background:linear-gradient(145deg,#e1f8ff,#80cbe8)!important;
+}
+
+.checkout-card,
+.pix-card,
+.pix-final-card{
+  background:linear-gradient(145deg,#344954,#0b1115)!important;
+  border-color:#9ed6e9!important;
+  box-shadow:0 5px 0 #05080a,0 25px 55px #000!important;
+}
+</style>
