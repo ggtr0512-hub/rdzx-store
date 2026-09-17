@@ -2519,3 +2519,103 @@ function finalizarCheckout(){
   window.open(link,"_blank");
 }
 </script>
+
+<style id="rdzx-visual-3d-sem-vermelho">
+/* Visual 3D sem vermelho */
+:root{
+  --rdzx-3d:#111820;
+  --rdzx-3d-claro:#263441;
+  --rdzx-3d-brilho:#8ed8ff;
+  --rdzx-3d-texto:#f2f7fa;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,#26313b 0,#0b0f13 42%,#030405 100%)!important;
+  color:var(--rdzx-3d-texto)!important;
+}
+
+/* Cards com profundidade 3D */
+.produto{
+  border:1px solid #78909c!important;
+  background:linear-gradient(145deg,#27333d 0%,#111820 48%,#070a0d 100%)!important;
+  box-shadow:
+    0 3px 0 #8799a3,
+    0 8px 0 #050709,
+    0 18px 28px #000c!important;
+  transform:translateY(0);
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+
+.produto:hover{
+  transform:translateY(-7px) rotateX(2deg);
+  filter:brightness(1.12);
+  box-shadow:
+    0 4px 0 #b7d7e5,
+    0 12px 0 #050709,
+    0 25px 40px #000!important;
+}
+
+.produto::before,
+.produto::after{
+  background:transparent!important;
+  border-color:#8ed8ff33!important;
+  box-shadow:none!important;
+}
+
+.produto h3,
+.produto strong,
+.produto p{
+  color:#f2f7fa!important;
+  text-shadow:0 2px 2px #000!important;
+}
+
+/* Todos os botoes sem vermelho */
+button,
+.produto button,
+.checkout-whatsapp,
+.checkout-pix{
+  border:1px solid #a8c4d1!important;
+  color:#f5fbff!important;
+  background:linear-gradient(145deg,#405461,#17232c)!important;
+  box-shadow:
+    0 3px 0 #071016,
+    0 7px 12px #000b!important;
+  text-shadow:0 1px 2px #000!important;
+}
+
+button:hover,
+.produto button:hover,
+.checkout-whatsapp:hover,
+.checkout-pix:hover{
+  color:#061018!important;
+  background:linear-gradient(145deg,#d7f4ff,#76c9ed)!important;
+  box-shadow:
+    0 3px 0 #416879,
+    0 10px 18px #000!important;
+  transform:translateY(-2px);
+}
+
+button:active,
+.produto button:active{
+  transform:translateY(2px)!important;
+  box-shadow:0 1px 0 #071016!important;
+}
+
+/* Remove brilhos vermelhos dos modais */
+.checkout-card,
+.pix-final-card,
+.pix-card{
+  border-color:#8ed8ff99!important;
+  background:linear-gradient(145deg,#293944,#0b1014)!important;
+  box-shadow:
+    0 4px 0 #050709,
+    0 22px 55px #000!important;
+}
+
+.checkout-card h2,
+.pix-final-card h2,
+.pix-card h2{
+  color:#d8f4ff!important;
+}
+</style>
