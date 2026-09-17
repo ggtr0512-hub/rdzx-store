@@ -5727,3 +5727,100 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<style id="rdzx-tema-estavel-css">
+#rdzx-tema-estavel{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:min(300px,90%)!important;
+  min-height:42px!important;
+  margin:15px auto 0!important;
+  padding:10px 16px!important;
+  border:1px solid #d8f6ff!important;
+  border-radius:12px!important;
+  color:#f4fcff!important;
+  background:linear-gradient(145deg,#5f7d89,#1a2b34)!important;
+  box-shadow:0 3px 0 #14242c,0 8px 15px #0009!important;
+  font-weight:900!important;
+  cursor:pointer!important;
+}
+
+#rdzx-tema-estavel:active{
+  transform:translateY(2px)!important;
+}
+
+body.claro #rdzx-tema-estavel{
+  color:#17252d!important;
+  background:linear-gradient(145deg,#ffffff,#c9e1e7)!important;
+  border-color:#6f929e!important;
+}
+</style>
+
+<script id="rdzx-tema-estavel-js">
+(function(){
+
+  function iniciarTemaEstavel(){
+
+    /* Remove todos os botoes antigos de tema */
+    document.querySelectorAll("button").forEach(function(botao){
+      var texto=botao.textContent.toLowerCase();
+
+      if(
+        texto.includes("modo claro") ||
+        texto.includes("modo escuro")
+      ){
+        botao.remove();
+      }
+    });
+
+    var header=document.querySelector("header");
+
+    if(!header || document.getElementById("rdzx-tema-estavel"))return;
+
+    var botao=document.createElement("button");
+    botao.id="rdzx-tema-estavel";
+    botao.type="button";
+
+    header.appendChild(botao);
+
+    var tema=localStorage.getItem("rdzx-tema-real");
+
+    if(tema==="claro"){
+      document.body.classList.add("claro");
+    }else{
+      document.body.classList.remove("claro");
+      localStorage.setItem("rdzx-tema-real","escuro");
+    }
+
+    function atualizarTexto(){
+      botao.textContent=document.body.classList.contains("claro")
+        ?"🌙 Modo escuro"
+        :"☀️ Modo claro";
+    }
+
+    atualizarTexto();
+
+    botao.addEventListener("click",function(event){
+      event.preventDefault();
+      event.stopPropagation();
+
+      var claro=document.body.classList.toggle("claro");
+
+      localStorage.setItem(
+        "rdzx-tema-real",
+        claro?"claro":"escuro"
+      );
+
+      atualizarTexto();
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",iniciarTemaEstavel);
+  }else{
+    iniciarTemaEstavel();
+  }
+
+})();
+</script>
