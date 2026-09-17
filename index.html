@@ -2490,3 +2490,32 @@ function comprarProduto(botao){
   modal.style.display="grid";
 }
 </script>
+
+<script id="rdzx-whatsapp-final">
+function finalizarCheckout(){
+  var quantidade=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+
+  var mensagem=
+    "🛒 NOVO PEDIDO — RDZX STORE\n\n"+
+    "📦 Produto: "+rdzxCheckout.produto+"\n"+
+    "🔢 Quantidade: "+quantidade+"\n\n"+
+    "💰 Preço original: "+dinheiro(original)+"\n"+
+    "🎟️ Cupom: "+(rdzxCheckout.cupom||"Nenhum")+"\n"+
+    "📉 Desconto: "+rdzxCheckout.descontoPercentual+"%\n"+
+    "💵 Total: "+dinheiro(total)+"\n\n"+
+    "Olá! Quero comprar este produto pela RDZX STORE.";
+
+  var link=
+    "https://wa.me/5594991588787?text="+
+    encodeURIComponent(mensagem);
+
+  window.open(link,"_blank");
+}
+</script>
