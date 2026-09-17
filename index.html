@@ -1064,6 +1064,28 @@ body.claro .rdzx-entrada-status{
   }
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style id="rdzx-qrcode-pix-css">
+.pix-final-qrcode{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:230px;
+  height:230px;
+  margin:14px auto;
+  padding:10px;
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 5px 18px #000b;
+}
+
+.pix-final-qrcode img,
+.pix-final-qrcode canvas{
+  display:block;
+  width:210px!important;
+  height:210px!important;
+}
+</style>
 </head>
 
 <body>
@@ -1897,7 +1919,10 @@ function copiarPixCodigo(){
     <strong id="pix-final-valor"></strong>
 
     <label>Pix copia e cola</label>
-    <textarea id="pix-final-codigo" readonly></textarea>
+    
+<div id="pix-final-qrcode" class="pix-final-qrcode"></div>
+<textarea id="pix-final-codigo" readonly></textarea>
+
 
     <button onclick="copiarPixFinal()">📋 Copiar código Pix</button>
 
@@ -2654,6 +2679,52 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 
 });
+</script>
+
+<script id="rdzx-qrcode-pix-js">
+window.abrirPixFinal=function(){
+
+  if(!window.RDZX_PIX || !window.RDZX_PIX.chave){
+    alert("A chave Pix nao foi configurada.");
+    return;
+  }
+
+  var quantidade=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+  var codigo=gerarPixFinal(total);
+
+  document.getElementById("pix-final-produto").textContent=
+    rdzxCheckout.produto+" — Quantidade: "+quantidade;
+
+  document.getElementById("pix-final-valor").textContent=
+    dinheiro(total);
+
+  document.getElementById("pix-final-codigo").value=codigo;
+
+  var area=document.getElementById("pix-final-qrcode");
+  area.innerHTML="";
+
+  if(window.QRCode){
+    new QRCode(area,{
+      text:codigo,
+      width:210,
+      height:210,
+      colorDark:"#000000",
+      colorLight:"#ffffff",
+      correctLevel:QRCode.CorrectLevel.M
+    });
+  }else{
+    area.textContent="QR Code indisponível. Use o Pix copia e cola.";
+  }
+
+  document.getElementById("pix-final-modal").style.display="grid";
+};
 </script>
 </body>
 </html>
