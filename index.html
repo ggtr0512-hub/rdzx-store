@@ -5042,6 +5042,11 @@ document.addEventListener("click",function(event){
 
   if(!botao)return;
 
+  /* O botao de detalhes nao deve abrir o checkout */
+  if(botao.classList.contains("rdzx-ver-detalhes")){
+    return;
+  }
+
   event.preventDefault();
   event.stopImmediatePropagation();
 
