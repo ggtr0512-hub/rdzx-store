@@ -4884,3 +4884,17 @@ document.addEventListener("DOMContentLoaded",function(){
 
 })();
 </script>
+
+<style id="rdzx-remover-escolha-assinatura">
+.rdzx-catalogo-novo{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-escolha-assinatura-js">
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll(".rdzx-catalogo-novo").forEach(function(el){
+    el.remove();
+  });
+});
+</script>
