@@ -3254,3 +3254,73 @@ footer{
   }
 }
 </style>
+
+<style id="rdzx-remover-faixas-3d">
+/* Remove faixas diagonais e mascaras antigas */
+.produto::before,
+.produto::after,
+.produto-info::before,
+.produto-info::after,
+section::before,
+section::after{
+  content:none!important;
+  display:none!important;
+  opacity:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  transform:none!important;
+}
+
+/* Corrige o card e deixa o conteúdo visível */
+.produto{
+  overflow:hidden!important;
+  isolation:isolate!important;
+  transform:none!important;
+  min-height:0!important;
+}
+
+.produto img,
+.produto-info,
+.produto h3,
+.produto p,
+.produto strong,
+.produto button{
+  position:relative!important;
+  z-index:2!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* Grade estável no celular */
+.produtos,
+.catalogo,
+.grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:stretch!important;
+}
+
+.produto{
+  width:100%!important;
+  min-width:0!important;
+}
+
+@media(max-width:600px){
+  .produtos,
+  .catalogo,
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:12px!important;
+  }
+
+  .produto{
+    padding:8px!important;
+    border-radius:16px!important;
+  }
+
+  .produto-info{
+    padding:10px 5px!important;
+  }
+}
+</style>
