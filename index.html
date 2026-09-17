@@ -4416,3 +4416,51 @@ document.addEventListener("DOMContentLoaded",function(){
   if(setas[1])setas[1].setAttribute("aria-label","Próxima foto");
 });
 </script>
+
+<style id="rdzx-liberar-rolagem-fotos">
+html,
+body{
+  height:auto!important;
+  min-height:100%!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  position:static!important;
+  touch-action:pan-y pinch-zoom!important;
+}
+
+.rdzx-comunidade,
+.rdzx-carrossel-area,
+.rdzx-galeria{
+  touch-action:pan-y pinch-zoom!important;
+  overscroll-behavior:auto!important;
+}
+
+.rdzx-galeria{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
+
+/* Garante que a foto não bloqueie o gesto vertical */
+.rdzx-feedback,
+.rdzx-feedback img{
+  touch-action:pan-y pinch-zoom!important;
+}
+
+/* Remove qualquer tela ampliada presa por engano */
+#rdzx-foto-ampliada{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-liberar-rolagem-fotos-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.documentElement.style.overflowY="auto";
+  document.body.style.overflowY="auto";
+  document.body.style.position="static";
+
+  var ampliada=document.getElementById("rdzx-foto-ampliada");
+  if(ampliada)ampliada.remove();
+
+});
+</script>
