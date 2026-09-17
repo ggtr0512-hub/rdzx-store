@@ -3807,3 +3807,110 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 }
 </style>
+
+<style id="rdzx-carrossel-3d-bonito">
+.rdzx-galeria{
+  perspective:1100px!important;
+  scroll-snap-type:x mandatory!important;
+  padding:22px 8px 30px!important;
+}
+
+.rdzx-feedback{
+  opacity:.62!important;
+  transform:scale(.88) rotateY(10deg) translateZ(-25px)!important;
+  filter:brightness(.72) saturate(.8)!important;
+  transition:
+    transform .65s cubic-bezier(.2,.8,.2,1),
+    opacity .65s ease,
+    filter .65s ease,
+    box-shadow .65s ease!important;
+  scroll-snap-align:center!important;
+}
+
+.rdzx-feedback.rdzx-card-ativa{
+  opacity:1!important;
+  transform:scale(1.03) rotateY(0deg) translateZ(35px)!important;
+  filter:brightness(1.12) saturate(1.1)!important;
+  border-color:#e1f9ff!important;
+  box-shadow:
+    inset 2px 2px 6px #ffffff45,
+    inset -5px -6px 12px #000b,
+    0 4px 0 #d2f4fc,
+    0 10px 0 #4a6d79,
+    0 22px 38px #000e!important;
+}
+
+.rdzx-feedback img{
+  transition:transform .65s ease,filter .65s ease!important;
+}
+
+.rdzx-card-ativa img{
+  transform:scale(1.025)!important;
+  filter:brightness(1.08)!important;
+}
+
+.rdzx-feedback div{
+  transform:translateZ(20px)!important;
+}
+
+@media(max-width:600px){
+  .rdzx-galeria{
+    perspective:none!important;
+    padding:18px 10vw 26px!important;
+  }
+
+  .rdzx-feedback,
+  .rdzx-feedback.rdzx-card-ativa{
+    transform:none!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+
+  .rdzx-feedback.rdzx-card-ativa{
+    box-shadow:
+      inset 2px 2px 6px #ffffff45,
+      inset -5px -6px 12px #000b,
+      0 4px 0 #d2f4fc,
+      0 12px 25px #000d!important;
+  }
+}
+</style>
+
+<script id="rdzx-carrossel-destaque-3d">
+(function(){
+  var galeria=document.getElementById("rdzx-galeria");
+  if(!galeria)return;
+
+  var cards=galeria.querySelectorAll(".rdzx-feedback");
+
+  function destacar(){
+    if(!cards.length)return;
+
+    var centro=galeria.scrollLeft+(galeria.clientWidth/2);
+    var escolhido=null;
+    var distancia=Infinity;
+
+    cards.forEach(function(card){
+      var meio=card.offsetLeft+(card.offsetWidth/2);
+      var diferenca=Math.abs(centro-meio);
+
+      if(diferenca<distancia){
+        distancia=diferenca;
+        escolhido=card;
+      }
+    });
+
+    cards.forEach(function(card){
+      card.classList.toggle("rdzx-card-ativa",card===escolhido);
+    });
+  }
+
+  destacar();
+
+  galeria.addEventListener("scroll",function(){
+    window.requestAnimationFrame(destacar);
+  },{passive:true});
+
+  window.addEventListener("resize",destacar);
+})();
+</script>
