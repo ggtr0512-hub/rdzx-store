@@ -5330,3 +5330,58 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 });
 </script>
+
+<script id="rdzx-cupom-um-real">
+window.rdzxAplicarCupomFinal=function(){
+
+  var campo=document.getElementById("checkout-cupom");
+  var feedback=document.getElementById("checkout-feedback");
+  var qtdCampo=document.getElementById("checkout-quantidade");
+  var descontoEl=document.getElementById("checkout-desconto");
+  var totalEl=document.getElementById("checkout-total");
+  var checkout=window.rdzxCheckout;
+
+  if(!campo || !checkout)return;
+
+  var codigo=campo.value.trim().toUpperCase();
+  var quantidade=Math.max(
+    1,
+    Number(qtdCampo?qtdCampo.value:1)||1
+  );
+
+  var original=Number(checkout.preco)*quantidade;
+  var total;
+  var desconto;
+
+  if(codigo==="RDZX-7KQ4-M9XP"){
+    total=1;
+    desconto=Math.max(0,original-1);
+
+    checkout.cupom=codigo;
+    checkout.descontoPercentual=
+      original>0 ? ((desconto/original)*100) : 0;
+  }else{
+    total=original;
+    desconto=0;
+    checkout.cupom=codigo;
+    checkout.descontoPercentual=0;
+  }
+
+  function moeda(valor){
+    return "R$ "+Number(valor).toFixed(2).replace(".",",");
+  }
+
+  if(descontoEl)descontoEl.textContent="-"+moeda(desconto);
+  if(totalEl)totalEl.textContent=moeda(total);
+
+  if(feedback){
+    if(codigo==="RDZX-7KQ4-M9XP"){
+      feedback.textContent="Cupom aplicado.";
+      feedback.style.color="#baffc8";
+    }else{
+      feedback.textContent="Cupom inválido.";
+      feedback.style.color="#ffd0d0";
+    }
+  }
+};
+</script>
