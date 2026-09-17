@@ -2204,3 +2204,59 @@ function comprarProduto(botao){
   abrirCheckout(botao);
 }
 </script>
+
+<script id="rdzx-checkout-botao-final">
+window.rdzxCheckout=window.rdzxCheckout||{};
+
+function comprarProduto(botao){
+  var card=botao.closest(".produto");
+
+  if(!card){
+    alert("Produto nao encontrado.");
+    return;
+  }
+
+  var nome=botao.getAttribute("data-produto")||
+    card.querySelector("h3").textContent.trim();
+
+  var precoTexto=botao.getAttribute("data-preco")||"R$ 0,00";
+  var preco=Number(
+    precoTexto.replace(/[^0-9,]/g,"").replace(",",".")
+  );
+
+  var imagem=card.querySelector("img");
+
+  window.rdzxCheckout.produto=nome;
+  window.rdzxCheckout.preco=preco;
+  window.rdzxCheckout.imagem=imagem?imagem.src:"";
+  window.rdzxCheckout.cupom="";
+  window.rdzxCheckout.descontoPercentual=0;
+
+  var modal=document.getElementById("rdzx-checkout-cupons");
+
+  if(!modal){
+    alert("Checkout nao encontrado no arquivo.");
+    return;
+  }
+
+  var produto=document.getElementById("checkout-produto");
+  var foto=document.getElementById("checkout-imagem");
+  var precoOriginal=document.getElementById("checkout-preco-original");
+  var quantidade=document.getElementById("checkout-quantidade");
+  var cupom=document.getElementById("checkout-cupom");
+  var feedback=document.getElementById("checkout-feedback");
+
+  if(produto)produto.textContent=nome;
+  if(foto)foto.src=window.rdzxCheckout.imagem;
+  if(precoOriginal)precoOriginal.textContent=dinheiro(preco);
+  if(quantidade)quantidade.value=1;
+  if(cupom)cupom.value="";
+  if(feedback)feedback.textContent="";
+
+  if(typeof atualizarCheckout==="function"){
+    atualizarCheckout();
+  }
+
+  modal.style.display="grid";
+}
+</script>
