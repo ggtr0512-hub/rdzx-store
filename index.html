@@ -818,7 +818,72 @@ body.claro footer{
   overflow:hidden!important;
 }
 </style>
-<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17262e"></head>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17262e">
+<style id="rdzx-entrada-organizada">
+header{
+  min-height:0!important;
+  height:auto!important;
+  margin:14px auto 18px!important;
+  padding:24px 18px!important;
+}
+
+header h1{
+  margin:3px 0 7px!important;
+}
+
+header p{
+  margin:0 auto!important;
+  line-height:1.4!important;
+}
+
+main{
+  padding-top:0!important;
+}
+
+main h2{
+  margin-top:18px!important;
+}
+
+.rdzx-info-box{
+  margin:16px auto!important;
+  padding:16px!important;
+}
+
+.produto{
+  margin-top:0!important;
+}
+
+.rdzx-entrada-status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:12px;
+  padding:7px 12px;
+  border:1px solid #bce9f5;
+  border-radius:30px;
+  color:#d9f7ff;
+  background:#152832aa;
+  box-shadow:0 3px 8px #0006;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.rdzx-entrada-status::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#8ee8ff;
+  box-shadow:0 0 9px #8ee8ff;
+}
+
+body.claro .rdzx-entrada-status{
+  color:#19313b;
+  background:#ffffffaa;
+}
+</style>
+</head>
 
 <body>
 <button id="rdzx-tema-real" type="button">☀️ Modo claro</button>
@@ -828,7 +893,7 @@ body.claro footer{
 <header>
   <div class="logo">RDZX STORE ⚡</div>
   <h1>Assinaturas digitais</h1>
-  <p>Escolha sua assinatura e fale diretamente com a RDZX STORE pelo WhatsApp.</p>
+  <p>Assinaturas digitais</p>
 
 
 
@@ -851,7 +916,7 @@ body.claro footer{
   <div class="faixa-simbolo"></div>
   <div>
     <small>CATÁLOGO RDZX // ACESSO DIGITAL</small>
-    <h2>Encontre sua próxima assinatura</h2>
+    <h2>Catálogo de assinaturas</h2>
     <p>Escolha seu serviço, confira o valor e fale diretamente com a RDZX STORE.</p>
   </div>
   <div class="faixa-status">● LOJA ONLINE</div>
@@ -2246,6 +2311,35 @@ body.claro .produto button{
   text-shadow:none!important;
 }
 </style>
+
+<script id="rdzx-organizar-entrada">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var header=document.querySelector("header");
+
+  if(header && !header.querySelector(".rdzx-entrada-status")){
+    var status=document.createElement("span");
+    status.className="rdzx-entrada-status";
+    status.textContent="LOJA ONLINE";
+    header.appendChild(status);
+  }
+
+  /* Remove somente blocos repetidos sem produtos */
+  document.querySelectorAll("body *").forEach(function(el){
+    if(el.children.length===0 &&
+       el.textContent.trim()==="Encontre sua próxima assinatura"){
+
+      var bloco=el.closest("section")||el.parentElement;
+
+      if(bloco &&
+         !bloco.querySelector(".produto") &&
+         !bloco.querySelector("button")){
+        bloco.remove();
+      }
+    }
+  });
+});
+</script>
 </body>
 </html>
 
