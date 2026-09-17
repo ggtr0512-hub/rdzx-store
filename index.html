@@ -4262,3 +4262,90 @@ document.addEventListener("DOMContentLoaded",function(){
 
 })();
 </script>
+
+<style id="rdzx-corrigir-pulo-fotos">
+html{
+  overflow-anchor:auto!important;
+}
+
+body{
+  scroll-behavior:auto!important;
+}
+
+.rdzx-galeria{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-snap-type:x mandatory!important;
+  overscroll-behavior-x:contain!important;
+  overscroll-behavior-y:none!important;
+}
+</style>
+
+<script id="rdzx-corrigir-pulo-fotos-js">
+(function(){
+
+  /* Para o timer antigo que puxava a pagina */
+  if(window.rdzxCarrosselTimer){
+    clearInterval(window.rdzxCarrosselTimer);
+  }
+
+  var galeria=document.getElementById("rdzx-galeria");
+  if(!galeria)return;
+
+  var cards=galeria.querySelectorAll(".rdzx-feedback");
+  if(!cards.length)return;
+
+  var indice=0;
+  var pausado=false;
+
+  function moverSomenteDentroDoCarrossel(direcao){
+    var distancia=galeria.clientWidth*.82;
+
+    galeria.scrollBy({
+      left:direcao*distancia,
+      top:0,
+      behavior:"smooth"
+    });
+  }
+
+  window.rdzxMoverGaleria=function(direcao){
+    moverSomenteDentroDoCarrossel(direcao);
+  };
+
+  function passarFoto(){
+    if(pausado)return;
+
+    indice=(indice+1)%cards.length;
+
+    galeria.scrollTo({
+      left:cards[indice].offsetLeft-galeria.offsetLeft,
+      top:0,
+      behavior:"smooth"
+    });
+  }
+
+  window.rdzxCarrosselTimer=setInterval(passarFoto,6000);
+
+  galeria.addEventListener("touchstart",function(){
+    pausado=true;
+  },{passive:true});
+
+  galeria.addEventListener("touchend",function(){
+    setTimeout(function(){
+      pausado=false;
+    },3500);
+  },{passive:true});
+
+  /* Se o usuario estiver rolando a pagina, pausa o carrossel */
+  var pausaPagina;
+  window.addEventListener("scroll",function(){
+    pausado=true;
+    clearTimeout(pausaPagina);
+
+    pausaPagina=setTimeout(function(){
+      pausado=false;
+    },2500);
+  },{passive:true});
+
+})();
+</script>
