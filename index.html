@@ -6048,3 +6048,91 @@ body.claro span{
   text-shadow:none!important;
 }
 </style>
+
+<style id="rdzx-animacao-secoes-3d">
+@keyframes rdzxSecaoEntrada3D{
+  0%{
+    opacity:0;
+    transform:translateY(35px) perspective(900px) rotateX(8deg) scale(.97);
+    filter:brightness(.72);
+  }
+  65%{
+    opacity:1;
+    transform:translateY(-5px) perspective(900px) rotateX(-1deg) scale(1.01);
+    filter:brightness(1.08);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) perspective(900px) rotateX(0) scale(1);
+    filter:brightness(1);
+  }
+}
+
+.rdzx-secao-scroll-visivel{
+  animation:rdzxSecaoEntrada3D .8s cubic-bezier(.2,.8,.2,1) both!important;
+  transform-origin:center bottom!important;
+  will-change:transform,opacity!important;
+}
+
+@media(max-width:600px){
+  .rdzx-secao-scroll-visivel{
+    animation:rdzxSecaoEntrada3D .6s ease-out both!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .rdzx-secao-scroll-visivel{
+    animation:none!important;
+  }
+}
+</style>
+
+<script id="rdzx-animacao-secoes-3d-js">
+(function(){
+
+  function iniciarAnimacaoDasSecoes(){
+
+    var secoes=document.querySelectorAll(
+      "main > section, .rdzx-seguranca, #rdzx-carrossel-comunidade, .rdzx-info-box"
+    );
+
+    if(!secoes.length)return;
+
+    var observador=new IntersectionObserver(function(entradas){
+
+      entradas.forEach(function(entrada){
+
+        if(entrada.isIntersecting){
+
+          var secao=entrada.target;
+
+          secao.classList.remove("rdzx-secao-scroll-visivel");
+
+          void secao.offsetWidth;
+
+          secao.classList.add("rdzx-secao-scroll-visivel");
+
+        }else{
+          secao.classList.remove("rdzx-secao-scroll-visivel");
+        }
+
+      });
+
+    },{
+      threshold:.12,
+      rootMargin:"-20px 0px -20px 0px"
+    });
+
+    secoes.forEach(function(secao){
+      observador.observe(secao);
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",iniciarAnimacaoDasSecoes);
+  }else{
+    iniciarAnimacaoDasSecoes();
+  }
+
+})();
+</script>
