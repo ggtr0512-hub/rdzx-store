@@ -4443,3 +4443,126 @@ document.addEventListener("DOMContentLoaded",function(){
   border-radius:14px!important;
 }
 </style>
+
+<style id="rdzx-polimento-pagina-final">
+html,
+body{
+  min-height:100%!important;
+  background:#071015!important;
+}
+
+header{
+  margin:12px auto 20px!important;
+  padding:24px 18px 20px!important;
+  border-radius:26px!important;
+}
+
+header p{
+  display:none!important;
+}
+
+header h1{
+  margin:8px 0 10px!important;
+  font-size:clamp(29px,7vw,45px)!important;
+  letter-spacing:-.8px!important;
+}
+
+.rdzx-entrada-status{
+  margin-top:8px!important;
+}
+
+/* Segurança mais compacta e bonita */
+.rdzx-seguranca{
+  margin:18px auto!important;
+  padding:17px!important;
+  border-radius:22px!important;
+}
+
+.rdzx-seguranca-titulo{
+  margin-bottom:12px!important;
+}
+
+.rdzx-seguranca-titulo>span{
+  font-size:25px!important;
+}
+
+.rdzx-seguranca-itens{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:9px!important;
+}
+
+.rdzx-seguranca-itens div{
+  min-height:86px!important;
+  padding:11px!important;
+  border-radius:14px!important;
+}
+
+.rdzx-seguranca-itens b{
+  font-size:13px!important;
+}
+
+.rdzx-seguranca-itens span{
+  font-size:11px!important;
+  line-height:1.35!important;
+}
+
+.rdzx-seguranca-aviso{
+  margin-top:12px!important;
+  font-size:11px!important;
+}
+
+/* Categoria com mais destaque */
+.rdzx-avatar-categoria{
+  width:82px!important;
+  height:82px!important;
+  margin-bottom:11px!important;
+}
+
+main h2{
+  margin:22px 0 14px!important;
+}
+
+/* Evita espaço branco no fim */
+main,
+footer{
+  background:transparent!important;
+}
+
+@media(max-width:600px){
+  .rdzx-seguranca-itens{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .rdzx-seguranca-itens div{
+    min-height:96px!important;
+  }
+
+  .rdzx-seguranca-itens b{
+    font-size:12px!important;
+  }
+
+  .rdzx-seguranca-itens span{
+    font-size:10px!important;
+  }
+}
+</style>
+
+<script id="rdzx-remover-texto-repetido">
+document.addEventListener("DOMContentLoaded",function(){
+  var header=document.querySelector("header");
+  if(!header)return;
+
+  var titulo=header.querySelector("h1");
+  var textos=header.querySelectorAll("p");
+
+  textos.forEach(function(texto){
+    if(
+      titulo &&
+      texto.textContent.trim().toLowerCase()==
+      titulo.textContent.trim().toLowerCase()
+    ){
+      texto.remove();
+    }
+  });
+});
+</script>
