@@ -1016,6 +1016,54 @@ body.claro .rdzx-entrada-status{
   }
 }
 </style>
+
+<style id="rdzx-qr-site-css">
+.rdzx-qr-area{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  width:min(850px,calc(100% - 24px));
+  margin:35px auto 25px;
+  padding:22px;
+  border:1px solid #c9edf5;
+  border-radius:22px;
+  background:linear-gradient(145deg,#405b66,#0b141a);
+  box-shadow:inset 2px 2px 5px #ffffff25,0 5px 0 #172830,0 18px 30px #000b;
+}
+
+.rdzx-qr-area img{
+  width:150px;
+  height:150px;
+  padding:8px;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 5px 15px #000b;
+}
+
+.rdzx-qr-kicker{
+  color:#bcebf5;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.rdzx-qr-texto h2{
+  margin:7px 0;
+  color:#f3fcff;
+}
+
+.rdzx-qr-texto p{
+  color:#c4dce3;
+}
+
+@media(max-width:600px){
+  .rdzx-qr-area{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -1380,6 +1428,15 @@ body.claro .rdzx-entrada-status{
 </section>
 <footer>
   RDZX STORE ⚡ — Atendimento direto pelo Telegram
+
+<section id="rdzx-qr-site" class="rdzx-qr-area">
+  <div class="rdzx-qr-texto">
+    <span class="rdzx-qr-kicker">ACESSO RÁPIDO</span>
+    <h2>Abra a RDZX STORE pelo celular</h2>
+    <p>Aponte a câmera para o QR Code e acesse a loja.</p>
+  </div>
+  <img src="imagens/qr-site.png" alt="QR Code para acessar a RDZX STORE">
+</section>
 </footer>
 
 <script>
