@@ -6547,3 +6547,202 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<style id="rdzx-detalhes-produtos-css">
+.rdzx-ver-detalhes{
+  width:100%!important;
+  min-height:42px!important;
+  margin-top:8px!important;
+  padding:10px!important;
+  border:1px solid #b7dce7!important;
+  border-radius:11px!important;
+  color:#dff8ff!important;
+  background:linear-gradient(145deg,#405d68,#172830)!important;
+  box-shadow:0 3px 0 #13232b,0 7px 12px #0008!important;
+  font-weight:800!important;
+}
+
+.rdzx-detalhes-fundo{
+  position:fixed;
+  z-index:10000;
+  inset:0;
+  display:none;
+  place-items:center;
+  padding:15px;
+  background:#020507e8;
+}
+
+.rdzx-detalhes-card{
+  position:relative;
+  width:min(460px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:22px;
+  border:1px solid #c9eff8;
+  border-radius:22px;
+  color:#f3fbff;
+  background:linear-gradient(145deg,#405b66,#0b141a);
+  box-shadow:0 5px 0 #15252d,0 25px 55px #000;
+}
+
+.rdzx-detalhes-fechar{
+  position:absolute!important;
+  top:9px!important;
+  right:10px!important;
+  width:38px!important;
+  min-width:38px!important;
+  height:38px!important;
+  min-height:38px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  background:#172830!important;
+  font-size:25px!important;
+}
+
+.rdzx-detalhes-imagem{
+  display:block;
+  width:100%;
+  max-height:300px;
+  margin:0 auto 16px;
+  object-fit:contain;
+  border-radius:14px;
+  background:#05080b;
+}
+
+.rdzx-detalhes-card h2{
+  margin:8px 0;
+  color:#effbff;
+}
+
+.rdzx-detalhes-preco{
+  display:block;
+  margin:12px 0;
+  color:#c8f4ff;
+  font-size:25px;
+  font-weight:950;
+}
+
+.rdzx-detalhes-descricao{
+  color:#c4dce3;
+  line-height:1.55;
+}
+
+.rdzx-detalhes-status{
+  margin:15px 0;
+  padding:10px;
+  border:1px solid #b8e5ef55;
+  border-radius:10px;
+  color:#c9f2fa;
+  background:#0b171d99;
+  font-size:13px;
+}
+
+.rdzx-detalhes-comprar{
+  width:100%!important;
+  min-height:46px!important;
+  border-radius:12px!important;
+  color:#092027!important;
+  background:linear-gradient(145deg,#dffaff,#78cde8)!important;
+  font-weight:950!important;
+}
+
+body.claro .rdzx-detalhes-card{
+  color:#17252d;
+  background:linear-gradient(145deg,#ffffff,#d8eaf0);
+}
+
+body.claro .rdzx-detalhes-card h2,
+body.claro .rdzx-detalhes-descricao{
+  color:#17252d;
+}
+
+body.claro .rdzx-detalhes-status{
+  color:#27444e;
+  background:#ffffffaa;
+}
+</style>
+
+<script id="rdzx-detalhes-produtos-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var modal=document.createElement("div");
+  modal.className="rdzx-detalhes-fundo";
+  modal.innerHTML=`
+    <div class="rdzx-detalhes-card">
+      <button class="rdzx-detalhes-fechar" type="button">×</button>
+      <img class="rdzx-detalhes-imagem" alt="">
+      <h2 class="rdzx-detalhes-nome"></h2>
+      <strong class="rdzx-detalhes-preco"></strong>
+      <p class="rdzx-detalhes-descricao"></p>
+      <div class="rdzx-detalhes-status">
+        ℹ️ Consulte a disponibilidade antes de confirmar o pagamento.
+      </div>
+      <button class="rdzx-detalhes-comprar" type="button">
+        🛒 Comprar
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  var imagem=modal.querySelector(".rdzx-detalhes-imagem");
+  var nome=modal.querySelector(".rdzx-detalhes-nome");
+  var preco=modal.querySelector(".rdzx-detalhes-preco");
+  var descricao=modal.querySelector(".rdzx-detalhes-descricao");
+  var fechar=modal.querySelector(".rdzx-detalhes-fechar");
+  var comprar=modal.querySelector(".rdzx-detalhes-comprar");
+  var botaoOriginal=null;
+
+  function fecharDetalhes(){
+    modal.style.display="none";
+    botaoOriginal=null;
+  }
+
+  fechar.addEventListener("click",fecharDetalhes);
+
+  modal.addEventListener("click",function(event){
+    if(event.target===modal)fecharDetalhes();
+  });
+
+  document.querySelectorAll(".produto").forEach(function(card){
+
+    var botaoCompra=card.querySelector("button");
+    var titulo=card.querySelector("h3");
+
+    if(!botaoCompra || !titulo)return;
+    if(card.querySelector(".rdzx-ver-detalhes"))return;
+
+    var botao=document.createElement("button");
+    botao.type="button";
+    botao.className="rdzx-ver-detalhes";
+    botao.textContent="ℹ️ Ver detalhes";
+
+    botao.addEventListener("click",function(){
+      var foto=card.querySelector("img");
+      var texto=card.querySelector("p");
+
+      botaoOriginal=botaoCompra;
+      imagem.src=foto?foto.src:"";
+      nome.textContent=titulo.textContent.trim();
+      preco.textContent=botaoCompra.getAttribute("data-preco")||"";
+      descricao.textContent=texto?
+        texto.textContent.trim():
+        "Confira as informações deste produto.";
+
+      modal.style.display="grid";
+    });
+
+    botaoCompra.parentNode.appendChild(botao);
+  });
+
+  comprar.addEventListener("click",function(){
+    if(botaoOriginal){
+      fecharDetalhes();
+      botaoOriginal.click();
+    }
+  });
+
+});
+</script>
