@@ -5606,3 +5606,85 @@ body.claro select{
 
 })();
 </script>
+
+<style id="rdzx-botao-tema-visivel">
+#rdzx-tema-novo{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:min(900px,calc(100% - 24px))!important;
+  min-height:48px!important;
+  margin:10px auto 14px!important;
+  padding:12px 16px!important;
+  border:1px solid #d5f5ff!important;
+  border-radius:14px!important;
+  color:#f4fcff!important;
+  background:linear-gradient(145deg,#607d89,#1b2c35)!important;
+  box-shadow:0 4px 0 #15252d,0 9px 18px #000b!important;
+  font-size:14px!important;
+  font-weight:900!important;
+  cursor:pointer!important;
+}
+
+body.claro #rdzx-tema-novo{
+  color:#17252d!important;
+  background:linear-gradient(145deg,#ffffff,#c9e1e7)!important;
+  border-color:#6e909c!important;
+}
+</style>
+
+<script id="rdzx-botao-tema-visivel-js">
+(function(){
+
+  function criarBotaoTema(){
+
+    if(document.getElementById("rdzx-tema-novo"))return;
+
+    var botao=document.createElement("button");
+    botao.id="rdzx-tema-novo";
+    botao.type="button";
+    botao.textContent="☀️ Modo claro";
+
+    document.body.insertBefore(
+      botao,
+      document.body.firstElementChild
+    );
+
+    var salvo=localStorage.getItem("rdzx-tema-real");
+
+    if(salvo==="claro"){
+      document.body.classList.add("claro");
+    }else{
+      document.body.classList.remove("claro");
+    }
+
+    function atualizar(){
+      botao.textContent=document.body.classList.contains("claro")
+        ?"🌙 Modo escuro"
+        :"☀️ Modo claro";
+    }
+
+    atualizar();
+
+    botao.addEventListener("click",function(){
+      document.body.classList.toggle("claro");
+
+      localStorage.setItem(
+        "rdzx-tema-real",
+        document.body.classList.contains("claro")
+        ?"claro"
+        :"escuro"
+      );
+
+      atualizar();
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",criarBotaoTema);
+  }else{
+    criarBotaoTema();
+  }
+
+})();
+</script>
