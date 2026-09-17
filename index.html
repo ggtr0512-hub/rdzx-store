@@ -3409,3 +3409,145 @@ function abrirSuporte(){
   );
 }
 </script>
+
+<style id="rdzx-temas-3d-final">
+/* Tema escuro 3D */
+body{
+  background:
+    radial-gradient(circle at 50% 0%,#405866 0%,#151f26 40%,#050709 100%)!important;
+  color:#f4fbff!important;
+}
+
+header,
+section,
+.rdzx-info-box,
+.produto{
+  background:
+    linear-gradient(145deg,#536d79 0%,#263842 30%,#0c141a 100%)!important;
+  border-color:#afdbea!important;
+  box-shadow:
+    inset 2px 2px 5px #ffffff35,
+    inset -5px -6px 12px #000b,
+    0 4px 0 #8daab5,
+    0 10px 0 #101b21,
+    0 22px 35px #000c!important;
+}
+
+.produto img{
+  border:1px solid #c8edf7!important;
+  box-shadow:0 4px 0 #627e8a,0 10px 18px #000c!important;
+}
+
+h1,h2,h3,strong{
+  color:#f3fbff!important;
+  text-shadow:0 2px 3px #000!important;
+}
+
+/* Tema claro */
+body.claro{
+  background:
+    linear-gradient(135deg,#f3f8fb,#dceaf0 55%,#c3dce5)!important;
+  color:#17252d!important;
+}
+
+body.claro header,
+body.claro section,
+body.claro .rdzx-info-box,
+body.claro .produto{
+  background:
+    linear-gradient(145deg,#ffffff,#e3eef2 55%,#c3d9e0)!important;
+  border-color:#7295a3!important;
+  color:#17252d!important;
+  box-shadow:
+    inset 2px 2px 5px #ffffff,
+    inset -5px -6px 12px #8ba8b344,
+    0 4px 0 #8aa9b5,
+    0 10px 0 #78939d,
+    0 20px 32px #52717d66!important;
+}
+
+body.claro h1,
+body.claro h2,
+body.claro h3,
+body.claro strong,
+body.claro p,
+body.claro label{
+  color:#17252d!important;
+  text-shadow:none!important;
+}
+
+body.claro .produto img{
+  border-color:#789aa6!important;
+  box-shadow:0 4px 0 #789aa6,0 9px 15px #57727c66!important;
+}
+
+body.claro input,
+body.claro select{
+  color:#17252d!important;
+  background:#fff!important;
+  border-color:#789aa6!important;
+}
+
+body.claro button{
+  color:#10212a!important;
+  background:linear-gradient(145deg,#ffffff,#c3dce5)!important;
+  border-color:#668b99!important;
+  text-shadow:none!important;
+}
+
+/* Botão único de tema */
+#botao-tema{
+  display:none!important;
+}
+
+#rdzx-tema-real{
+  position:relative!important;
+  z-index:20!important;
+  min-width:150px!important;
+  border-radius:12px!important;
+  cursor:pointer!important;
+}
+</style>
+
+<script id="rdzx-tema-claro-escuro-final">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var botao=document.getElementById("rdzx-tema-real");
+
+  if(!botao)return;
+
+  /* Remove eventos antigos para nao alternar duas vezes */
+  var novo=botao.cloneNode(true);
+  botao.parentNode.replaceChild(novo,botao);
+  botao=novo;
+
+  function atualizarTema(){
+    var claro=document.body.classList.contains("claro");
+
+    botao.textContent=claro?
+      "🌙 Tema escuro":
+      "☀️ Tema claro";
+  }
+
+  var salvo=localStorage.getItem("rdzx-tema-real");
+
+  if(salvo==="claro"){
+    document.body.classList.add("claro");
+  }else{
+    document.body.classList.remove("claro");
+  }
+
+  atualizarTema();
+
+  botao.addEventListener("click",function(){
+    document.body.classList.toggle("claro");
+
+    localStorage.setItem(
+      "rdzx-tema-real",
+      document.body.classList.contains("claro")?"claro":"escuro"
+    );
+
+    atualizarTema();
+  });
+});
+</script>
