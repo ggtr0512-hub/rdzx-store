@@ -4112,3 +4112,68 @@ document.addEventListener("DOMContentLoaded",function(){
   font-size:28px!important;
 }
 </style>
+
+<style id="rdzx-desempenho-final">
+/* Renderiza seções somente quando entram na tela */
+.rdzx-comunidade,
+.rdzx-info-box,
+.produto{
+  content-visibility:auto;
+  contain-intrinsic-size:400px;
+}
+
+/* Evita cálculos pesados durante animações */
+.produto,
+.rdzx-feedback,
+.rdzx-galeria{
+  contain:layout paint style;
+}
+
+/* Não anima quando o usuário prefere menos movimento */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+
+<script id="rdzx-desempenho-final">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var imagens=document.querySelectorAll("img");
+
+  imagens.forEach(function(img,index){
+    img.decoding="async";
+
+    if(index<3){
+      img.loading="eager";
+      img.fetchPriority="high";
+    }else{
+      img.loading="lazy";
+      img.fetchPriority="low";
+    }
+  });
+
+  /* Pausa animações quando a página fica escondida */
+  document.addEventListener("visibilitychange",function(){
+    if(document.hidden){
+      document.body.classList.add("rdzx-pagina-pausada");
+    }else{
+      document.body.classList.remove("rdzx-pagina-pausada");
+    }
+  });
+});
+</script>
+
+<style id="rdzx-pausar-animacoes">
+.rdzx-pagina-pausada *,
+.rdzx-pagina-pausada *::before,
+.rdzx-pagina-pausada *::after{
+  animation-play-state:paused!important;
+}
+</style>
