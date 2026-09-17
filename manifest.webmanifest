@@ -1,11 +1,12 @@
 {
   "name": "RDZX STORE",
-  "short_name": "RDZX STORE",
+  "short_name": "RDZX",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#080d11",
   "theme_color": "#17262e",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "imagens/icon-192.jpg",
