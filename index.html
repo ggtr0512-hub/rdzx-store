@@ -6217,3 +6217,56 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<style id="rdzx-animacao-toque-segura">
+.produto.rdzx-produto-pressionado{
+  transform:scale(.975) translateY(3px)!important;
+  filter:brightness(1.12)!important;
+  box-shadow:
+    inset 4px 4px 10px #0008,
+    0 1px 0 #7897a1,
+    0 4px 10px #000b!important;
+  transition:
+    transform .12s ease,
+    filter .12s ease,
+    box-shadow .12s ease!important;
+}
+
+.produto.rdzx-produto-pressionado img{
+  transform:scale(.98)!important;
+  filter:brightness(1.08)!important;
+}
+
+.produto.rdzx-produto-pressionado button{
+  transform:translateY(2px)!important;
+  box-shadow:
+    inset 2px 2px 5px #0008,
+    0 1px 0 #14242c!important;
+}
+</style>
+
+<script id="rdzx-animacao-toque-segura-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll(".produto").forEach(function(card){
+
+    function pressionar(){
+      card.classList.add("rdzx-produto-pressionado");
+    }
+
+    function soltar(){
+      card.classList.remove("rdzx-produto-pressionado");
+    }
+
+    card.addEventListener("pointerdown",pressionar);
+    card.addEventListener("pointerup",soltar);
+    card.addEventListener("pointercancel",soltar);
+    card.addEventListener("pointerleave",soltar);
+
+    card.addEventListener("touchstart",pressionar,{passive:true});
+    card.addEventListener("touchend",soltar,{passive:true});
+    card.addEventListener("touchcancel",soltar,{passive:true});
+  });
+
+});
+</script>
