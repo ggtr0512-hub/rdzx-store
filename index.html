@@ -2563,30 +2563,63 @@ document.addEventListener("input",function(e){
 }
 </style>
 
+
 <script id="rdzx-carrossel-comunidade-js">
 function rdzxMoverGaleria(direcao){
   var galeria=document.getElementById("rdzx-galeria");
-  if(galeria){
-    galeria.scrollBy({
-      left:direcao*300,
-      behavior:"smooth"
-    });
-  }
+  var cards=galeria?galeria.querySelectorAll(".rdzx-feedback"):[];
+  if(!galeria || !cards.length)return;
+
+  var atual=Math.round(galeria.scrollLeft/(cards[0].offsetWidth+16));
+  var proximo=Math.max(0,Math.min(cards.length-1,atual+direcao));
+
+  cards[proximo].scrollIntoView({
+    behavior:"smooth",
+    inline:"center",
+    block:"nearest"
+  });
 }
 
-setInterval(function(){
+(function(){
   var galeria=document.getElementById("rdzx-galeria");
   if(!galeria)return;
 
-  var chegou=
-    galeria.scrollLeft+galeria.clientWidth>=galeria.scrollWidth-10;
+  var cards=galeria.querySelectorAll(".rdzx-feedback");
+  if(cards.length<2)return;
 
-  galeria.scrollBy({
-    left:chegou?-galeria.scrollWidth:300,
-    behavior:"smooth"
-  });
-},5000);
+  var indice=0;
+  var pausado=false;
+
+  function passarFoto(){
+    if(pausado)return;
+
+    indice++;
+
+    if(indice>=cards.length){
+      indice=0;
+    }
+
+    cards[indice].scrollIntoView({
+      behavior:"smooth",
+      inline:"center",
+      block:"nearest"
+    });
+  }
+
+  window.rdzxCarrosselTimer=setInterval(passarFoto,4000);
+
+  galeria.addEventListener("touchstart",function(){
+    pausado=true;
+  },{passive:true});
+
+  galeria.addEventListener("touchend",function(){
+    setTimeout(function(){
+      pausado=false;
+    },2500);
+  },{passive:true});
+})();
 </script>
+
 
 <style id="rdzx-um-feedback">
 #rdzx-carrossel-comunidade .rdzx-feedback:nth-child(n+2),
