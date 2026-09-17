@@ -1379,7 +1379,7 @@ body.claro .rdzx-entrada-status{
   <button type="button" onclick="abrirSuporte()">💬 Falar com suporte</button>
 </section>
 <footer>
-  RDZX STORE ⚡ — Atendimento direto pelo WhatsApp
+  RDZX STORE ⚡ — Atendimento direto pelo Telegram
 </footer>
 
 <script>
@@ -2571,6 +2571,32 @@ window.rdzxAplicarCupomFinal=function(){
     }
   }
 };
+</script>
+
+<script id="rdzx-remover-pix-solto">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll(".checkout-pix").forEach(function(botao){
+
+    /* Mantem o Pix dentro do checkout */
+    if(!botao.closest("#rdzx-checkout-cupons")){
+      botao.remove();
+    }
+  });
+
+  document.querySelectorAll("body *").forEach(function(el){
+    if(
+      el.children.length===0 &&
+      el.textContent.includes("Atendimento direto pelo WhatsApp")
+    ){
+      el.textContent=el.textContent.replace(
+        "Atendimento direto pelo WhatsApp",
+        "Atendimento direto pelo Telegram"
+      );
+    }
+  });
+
+});
 </script>
 </body>
 </html>
