@@ -7125,3 +7125,17 @@ O catálogo pode variar conforme o plano e a disponibilidade do serviço.`
 
 })();
 </script>
+
+<style id="rdzx-remover-aviso-disponibilidade">
+.rdzx-detalhes-status{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-aviso-disponibilidade-js">
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll(".rdzx-detalhes-status").forEach(function(el){
+    el.remove();
+  });
+});
+</script>
