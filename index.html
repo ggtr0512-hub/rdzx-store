@@ -3983,3 +3983,93 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<style id="rdzx-organizar-capas-final">
+/* Área das capas */
+.produto{
+  display:flex!important;
+  flex-direction:column!important;
+  min-width:0!important;
+  height:auto!important;
+  overflow:hidden!important;
+}
+
+/* Imagens sem esticar e sem cortar */
+.produto img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:1 / 1!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#071015!important;
+  transform:none!important;
+  border-radius:14px!important;
+}
+
+/* Área do conteúdo */
+.produto-info{
+  display:flex!important;
+  flex:1!important;
+  flex-direction:column!important;
+  min-width:0!important;
+  padding:13px 10px 11px!important;
+}
+
+/* Nome sempre visível */
+.produto h3{
+  display:block!important;
+  width:100%!important;
+  min-height:42px!important;
+  margin:7px 0 8px!important;
+  overflow:visible!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  line-height:1.25!important;
+  font-size:clamp(14px,2vw,18px)!important;
+  text-overflow:clip!important;
+}
+
+/* Descrição sem quebrar o card */
+.produto p{
+  min-height:0!important;
+  overflow:visible!important;
+  line-height:1.4!important;
+}
+
+/* Preço alinhado */
+.produto strong{
+  display:block!important;
+  min-height:29px!important;
+  margin-top:auto!important;
+  white-space:nowrap!important;
+}
+
+/* Botão sempre embaixo */
+.produto button{
+  width:100%!important;
+  margin-top:12px!important;
+}
+
+/* Grade organizada */
+.produtos,
+.catalogo,
+.grid{
+  align-items:stretch!important;
+}
+
+@media(max-width:600px){
+  .produto img{
+    aspect-ratio:1 / 1!important;
+  }
+
+  .produto h3{
+    min-height:38px!important;
+    font-size:14px!important;
+  }
+
+  .produto-info{
+    padding:10px 7px!important;
+  }
+}
+</style>
