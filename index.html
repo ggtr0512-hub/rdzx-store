@@ -6270,3 +6270,101 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<style id="rdzx-quantidade-css">
+.rdzx-quantidade-controle{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  margin:8px 0 12px!important;
+  gap:10px!important;
+}
+
+.rdzx-quantidade-controle button{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:42px!important;
+  height:42px!important;
+  min-width:42px!important;
+  padding:0!important;
+  border:1px solid #c9edf5!important;
+  border-radius:11px!important;
+  color:#fff!important;
+  background:linear-gradient(145deg,#607d89,#1a2b34)!important;
+  font-size:25px!important;
+  font-weight:900!important;
+  line-height:1!important;
+}
+
+.rdzx-quantidade-controle input{
+  width:70px!important;
+  height:42px!important;
+  margin:0!important;
+  padding:8px!important;
+  text-align:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+}
+
+.rdzx-quantidade-controle input::-webkit-outer-spin-button,
+.rdzx-quantidade-controle input::-webkit-inner-spin-button{
+  -webkit-appearance:none!important;
+  margin:0!important;
+}
+
+.rdzx-quantidade-controle input{
+  -moz-appearance:textfield!important;
+}
+</style>
+
+<script id="rdzx-quantidade-mais-menos">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var input=document.getElementById("checkout-quantidade");
+
+  if(!input || document.querySelector(".rdzx-quantidade-controle")){
+    return;
+  }
+
+  var controle=document.createElement("div");
+  controle.className="rdzx-quantidade-controle";
+
+  var menos=document.createElement("button");
+  menos.type="button";
+  menos.textContent="−";
+  menos.setAttribute("aria-label","Diminuir quantidade");
+
+  var mais=document.createElement("button");
+  mais.type="button";
+  mais.textContent="+";
+  mais.setAttribute("aria-label","Aumentar quantidade");
+
+  input.parentNode.insertBefore(controle,input);
+  controle.appendChild(menos);
+  controle.appendChild(input);
+  controle.appendChild(mais);
+
+  function atualizar(){
+    var valor=Math.max(1,Number(input.value)||1);
+    input.value=valor;
+
+    if(typeof window.atualizarCheckout==="function"){
+      window.atualizarCheckout();
+    }
+  }
+
+  menos.addEventListener("click",function(){
+    input.value=Math.max(1,(Number(input.value)||1)-1);
+    atualizar();
+  });
+
+  mais.addEventListener("click",function(){
+    input.value=(Number(input.value)||1)+1;
+    atualizar();
+  });
+
+  input.addEventListener("change",atualizar);
+});
+</script>
