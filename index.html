@@ -5701,3 +5701,29 @@ document.addEventListener("DOMContentLoaded",function(){
   if(botao)botao.remove();
 });
 </script>
+
+<style id="rdzx-remover-todos-botoes-tema">
+#rdzx-tema-real,
+#rdzx-tema-novo,
+#botao-tema{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-todos-botoes-tema-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll("button").forEach(function(botao){
+
+    var texto=botao.textContent.trim().toLowerCase();
+
+    if(
+      texto.includes("modo claro") ||
+      texto.includes("modo escuro")
+    ){
+      botao.remove();
+    }
+  });
+
+});
+</script>
