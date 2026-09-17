@@ -6136,3 +6136,49 @@ body.claro span{
 
 })();
 </script>
+
+<style id="rdzx-categoria-modo-claro">
+body.claro .rdzx-categoria-clara{
+  color:#17252d!important;
+  background:linear-gradient(145deg,#ffffff,#dcecf1)!important;
+  border-color:#789aa6!important;
+  box-shadow:
+    inset 2px 2px 5px #ffffff,
+    inset -5px -6px 12px #7895a044,
+    0 4px 0 #91adb6,
+    0 13px 25px #7895a155!important;
+}
+
+body.claro .rdzx-categoria-clara *{
+  color:#17252d!important;
+  text-shadow:none!important;
+}
+
+body.claro .rdzx-categoria-clara p,
+body.claro .rdzx-categoria-clara span{
+  color:#405760!important;
+}
+</style>
+
+<script id="rdzx-categoria-modo-claro-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll("body *").forEach(function(el){
+
+    if(
+      el.children.length===0 &&
+      el.textContent.includes("Categoria: Assinaturas")
+    ){
+      var caixa=el.closest("section")||
+                el.closest("article")||
+                el.parentElement;
+
+      if(caixa){
+        caixa.classList.add("rdzx-categoria-clara");
+      }
+    }
+
+  });
+
+});
+</script>
