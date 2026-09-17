@@ -2194,6 +2194,194 @@ function copiarPixFinal(){
   alert("Código Pix copiado.");
 }
 </script>
+
+<div id="rdzx-checkout-cupons" class="checkout-fundo">
+  <div class="checkout-card">
+    <button class="checkout-fechar" onclick="fecharCheckout()">×</button>
+
+    <img id="checkout-imagem" class="checkout-imagem" src="" alt="Produto">
+
+    <h2 id="checkout-produto">Produto</h2>
+
+    <div class="checkout-linha">
+      <span>Preço original:</span>
+      <strong id="checkout-preco-original">R$ 0,00</strong>
+    </div>
+
+    <label>Quantidade</label>
+    <input id="checkout-quantidade" type="number" min="1" value="1">
+
+    <label>🎟️ Cupom</label>
+    <div class="checkout-cupom-linha">
+      <input id="checkout-cupom" placeholder="Digite RDZX6 ou RDZX10">
+      <button onclick="aplicarCupom()">Aplicar</button>
+    </div>
+
+    <div id="checkout-feedback" class="checkout-feedback"></div>
+
+    <div class="checkout-linha">
+      <span>Desconto:</span>
+      <strong id="checkout-desconto">R$ 0,00</strong>
+    </div>
+
+    <div class="checkout-total">
+      <span>Total:</span>
+      <strong id="checkout-total">R$ 0,00</strong>
+    </div>
+
+    <button class="checkout-pix" onclick="abrirPixFinal()">
+      💠 Pagar via Pix
+    </button>
+
+    <button class="checkout-whatsapp" onclick="finalizarCheckout()">
+      📲 Comprar pelo WhatsApp
+    </button>
+  </div>
+</div>
+
+<style id="rdzx-checkout-html-css">
+.checkout-fundo{
+  position:fixed;
+  z-index:5000;
+  inset:0;
+  display:none;
+  place-items:center;
+  padding:16px;
+  background:#000d;
+}
+.checkout-card{
+  position:relative;
+  width:min(450px,100%);
+  max-height:92vh;
+  overflow:auto;
+  padding:24px;
+  border:1px solid #ef233c99;
+  border-radius:20px;
+  color:#fff;
+  background:linear-gradient(145deg,#241017,#09070a);
+  box-shadow:0 0 40px #a7193288,0 25px 70px #000;
+}
+.checkout-fechar{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0!important;
+  color:#fff!important;
+  background:transparent!important;
+  font-size:28px;
+}
+.checkout-imagem{
+  display:block;
+  width:130px;
+  height:130px;
+  margin:0 auto 14px;
+  object-fit:contain;
+  border-radius:12px;
+  background:#08070a;
+}
+.checkout-card h2{
+  text-align:center;
+  color:#ffb0bb;
+}
+.checkout-linha{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 0;
+  color:#cbbbc0;
+}
+.checkout-card label{
+  display:block;
+  margin:10px 0 6px;
+  color:#ddcbd0;
+  font-size:13px;
+}
+.checkout-card input{
+  width:100%;
+  min-height:44px;
+  padding:11px;
+  border:1px solid #ffffff25;
+  border-radius:9px;
+  color:#fff;
+  background:#160d11;
+}
+.checkout-cupom-linha{
+  display:flex;
+  gap:8px;
+}
+.checkout-cupom-linha input{
+  flex:1;
+  min-width:0;
+}
+.checkout-cupom-linha button{
+  width:95px;
+  padding:8px;
+}
+.checkout-feedback{
+  min-height:22px;
+  margin-top:7px;
+  color:#baffc8;
+  font-size:13px;
+}
+.checkout-total{
+  margin-top:10px;
+  border-top:1px solid #ffffff22;
+  font-size:20px;
+}
+.checkout-total strong{
+  color:#baffc8;
+}
+.checkout-pix,
+.checkout-whatsapp{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border-radius:11px;
+  font-weight:900;
+}
+.checkout-pix{
+  color:#06130b!important;
+  background:#42d681!important;
+}
+.checkout-whatsapp{
+  color:#fff!important;
+  background:#159447!important;
+}
+</style>
+
+<script id="rdzx-checkout-html-js">
+function fecharCheckout(){
+  var modal=document.getElementById("rdzx-checkout-cupons");
+  if(modal)modal.style.display="none";
+}
+
+function dinheiro(valor){
+  return "R$ "+Number(valor).toFixed(2).replace(".",",");
+}
+
+function atualizarCheckout(){
+  var qtd=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*qtd;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+
+  document.getElementById("checkout-desconto").textContent=
+    "-"+dinheiro(desconto);
+
+  document.getElementById("checkout-total").textContent=
+    dinheiro(total);
+}
+
+document.addEventListener("input",function(e){
+  if(e.target.id==="checkout-quantidade"){
+    atualizarCheckout();
+  }
+});
+</script>
 </body>
 </html>
 
