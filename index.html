@@ -4566,3 +4566,54 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 });
 </script>
+
+<style id="rdzx-avatar-canto-superior">
+header{
+  position:relative!important;
+  padding-top:30px!important;
+  padding-right:125px!important;
+}
+
+header .rdzx-avatar-categoria{
+  position:absolute!important;
+  top:15px!important;
+  right:18px!important;
+  z-index:20!important;
+  width:78px!important;
+  height:78px!important;
+  margin:0!important;
+  border:3px solid #e5fbff!important;
+  border-radius:50%!important;
+  object-fit:cover!important;
+  box-shadow:
+    0 0 0 5px #7da9b555,
+    0 5px 0 #172832,
+    0 12px 25px #000d,
+    0 0 22px #a9eaff66!important;
+}
+
+@media(max-width:600px){
+  header{
+    padding-top:25px!important;
+    padding-right:92px!important;
+  }
+
+  header .rdzx-avatar-categoria{
+    top:12px!important;
+    right:12px!important;
+    width:58px!important;
+    height:58px!important;
+  }
+}
+</style>
+
+<script id="rdzx-mover-avatar-canto">
+document.addEventListener("DOMContentLoaded",function(){
+  var avatar=document.querySelector(".rdzx-avatar-categoria");
+  var header=document.querySelector("header");
+
+  if(avatar && header){
+    header.appendChild(avatar);
+  }
+});
+</script>
