@@ -6880,3 +6880,248 @@ body.claro .rdzx-detalhes-status{
   background:#ffffff99!important;
 }
 </style>
+
+<style id="rdzx-descricoes-completas">
+.rdzx-detalhes-descricao{
+  white-space:pre-line!important;
+  text-align:left!important;
+  line-height:1.65!important;
+  max-height:360px!important;
+  overflow-y:auto!important;
+}
+</style>
+
+<script id="rdzx-descricoes-completas-js">
+(function(){
+
+  var textos={
+
+    "Netflix":
+`A Netflix oferece filmes, séries e produções para assistir online.
+
+Como funciona:
+Após escolher o produto, confira a quantidade e o valor final no checkout. O pagamento é feito via Pix e a confirmação é manual.
+
+Como receber:
+Depois da confirmação do pagamento, o atendimento envia pelo Telegram o login e a senha ou um link/convite, conforme a disponibilidade do acesso.
+
+Importante:
+Confira o nome do beneficiário antes de pagar e envie o comprovante pelo Telegram. A disponibilidade, o prazo e a forma de acesso devem ser confirmados pelo atendimento.`,
+
+    "IPTV":
+`O IPTV oferece acesso a conteúdos de televisão e canais conforme o plano e a disponibilidade do serviço.
+
+Como funciona:
+Escolha o produto, confira o total e faça o pagamento via Pix. A confirmação é realizada manualmente.
+
+Como receber:
+Após a confirmação, você recebe pelo Telegram os dados de acesso ou um link de convite, conforme a forma disponível para o serviço.
+
+Importante:
+A qualidade e a disponibilidade podem depender do plano, do aplicativo utilizado e da conexão de internet.`,
+
+    "Spotify Premium":
+`O Spotify Premium é voltado para músicas, playlists, podcasts e conteúdos de áudio online.
+
+Como funciona:
+Selecione o produto, confira o valor e realize o pagamento via Pix. Depois, envie o comprovante pelo Telegram.
+
+Como receber:
+O atendimento envia login e senha ou um link/convite, conforme a modalidade disponível.
+
+Importante:
+É necessário conferir corretamente os dados de acesso recebidos e seguir as orientações do atendimento.`,
+
+    "Disney+":
+`O Disney+ reúne filmes, séries e conteúdos de entretenimento disponíveis na plataforma.
+
+Como funciona:
+Escolha o produto, confira quantidade e valor final, faça o Pix e envie o comprovante pelo Telegram.
+
+Como receber:
+Após a confirmação manual, o acesso pode ser enviado por login e senha ou por link/convite, conforme a disponibilidade.
+
+Importante:
+A disponibilidade do conteúdo depende do plano e da região do serviço.`,
+
+    "Prime Video":
+`O Prime Video oferece filmes, séries e outros conteúdos disponíveis para assistir online.
+
+Como funciona:
+Faça o pedido pelo checkout, confira o valor e conclua o pagamento via Pix.
+
+Como receber:
+Depois da confirmação, o atendimento envia os dados de acesso ou um convite pelo Telegram.
+
+Importante:
+A forma de acesso e o prazo de entrega devem ser confirmados antes da compra.`,
+
+    "HBO Max":
+`O HBO Max oferece filmes, séries e produções disponíveis na plataforma.
+
+Como funciona:
+Escolha o produto, confira as informações e realize o pagamento via Pix.
+
+Como receber:
+Após a confirmação manual, o acesso é encaminhado pelo Telegram por login e senha ou link/convite.
+
+Importante:
+O conteúdo disponível pode variar conforme o plano e a região.`,
+
+    "YouTube Premium":
+`O YouTube Premium oferece uma experiência diferenciada para assistir vídeos e acessar conteúdos online.
+
+Como funciona:
+Selecione o produto, confira o total e pague via Pix.
+
+Como receber:
+O atendimento envia pelo Telegram os dados de acesso ou um link/convite conforme a modalidade disponível.
+
+Importante:
+Siga as instruções recebidas para ativar ou utilizar o acesso corretamente.`,
+
+    "Apple TV":
+`A Apple TV oferece filmes, séries e produções disponíveis no serviço.
+
+Como funciona:
+Escolha o produto, confira o pedido e faça o pagamento via Pix.
+
+Como receber:
+Depois da confirmação manual, o atendimento envia login e senha ou link/convite pelo Telegram.
+
+Importante:
+A disponibilidade do conteúdo depende do plano e da região.`,
+
+    "CapCut Pro":
+`O CapCut Pro reúne ferramentas para edição de vídeos, efeitos e criação de conteúdo.
+
+Como funciona:
+Faça o pedido pelo checkout e conclua o pagamento via Pix.
+
+Como receber:
+O acesso pode ser enviado por login e senha ou por convite/link pelo Telegram.
+
+Importante:
+Use o acesso conforme as instruções enviadas pelo atendimento.`,
+
+    "ChatGPT":
+`O ChatGPT é uma ferramenta para ideias, textos, estudos e criação de conteúdo.
+
+Como funciona:
+Escolha o produto, confira o valor e realize o pagamento via Pix.
+
+Como receber:
+O atendimento envia os dados de acesso ou um convite/link pelo Telegram, conforme a modalidade disponível.
+
+Importante:
+A disponibilidade dos recursos depende do tipo de acesso e do plano.`,
+
+    "Crunchyroll":
+`A Crunchyroll é voltada para animes, mangás e conteúdos de animação japonesa.
+
+Como funciona:
+Selecione o produto, confira o total e faça o pagamento via Pix.
+
+Como receber:
+Depois da confirmação, você recebe login e senha ou link/convite pelo Telegram.
+
+Importante:
+O catálogo e a disponibilidade podem variar conforme o plano e a região.`,
+
+    "Deezer":
+`A Deezer oferece músicas, playlists e conteúdos de áudio para ouvir online.
+
+Como funciona:
+Escolha o produto, confira o pedido e pague via Pix.
+
+Como receber:
+O acesso é enviado pelo Telegram por login e senha ou link/convite, conforme a disponibilidade.
+
+Importante:
+Confira todos os dados recebidos antes de entrar na conta.`,
+
+    "Viki Rakuten":
+`A Viki Rakuten reúne dramas, séries e conteúdos asiáticos legendados.
+
+Como funciona:
+Faça o pedido, confira o valor e realize o pagamento via Pix.
+
+Como receber:
+Após a confirmação manual, o atendimento envia login e senha ou link/convite pelo Telegram.
+
+Importante:
+A disponibilidade de legendas e conteúdos depende do catálogo e do plano.`,
+
+    "TNT Sports":
+`A TNT Sports oferece conteúdos esportivos e transmissões conforme a disponibilidade do serviço.
+
+Como funciona:
+Escolha o produto, confira as condições e pague via Pix.
+
+Como receber:
+O acesso pode ser enviado por login e senha ou link/convite pelo Telegram.
+
+Importante:
+Transmissões e eventos dependem da programação e da disponibilidade da plataforma.`,
+
+    "Privacy":
+`A Privacy é uma plataforma de conteúdo digital voltada para criadores e assinantes.
+
+Como funciona:
+Selecione o produto, confira o valor e conclua o pagamento via Pix.
+
+Como receber:
+O atendimento envia login e senha ou link/convite pelo Telegram conforme o acesso disponível.
+
+Importante:
+O conteúdo e a disponibilidade dependem do perfil e do plano contratado.`,
+
+    "Google Veo 3":
+`O Google Veo 3 é voltado para criação e experimentação com vídeos por inteligência artificial.
+
+Como funciona:
+Faça o pedido, confira o valor e realize o pagamento via Pix.
+
+Como receber:
+O acesso pode ser encaminhado por login e senha ou convite/link pelo Telegram.
+
+Importante:
+Os recursos disponíveis dependem do plano, da conta e da disponibilidade do serviço.`,
+
+    "Grobo Play":
+`O Grobo Play reúne programas, séries e conteúdos de entretenimento online.
+
+Como funciona:
+Escolha o produto, confira o total e faça o pagamento via Pix.
+
+Como receber:
+Após a confirmação, o atendimento envia login e senha ou link/convite pelo Telegram.
+
+Importante:
+O catálogo pode variar conforme o plano e a disponibilidade do serviço.`
+  };
+
+  function aplicarDescricao(){
+
+    var nome=document.querySelector(".rdzx-detalhes-nome");
+    var campo=document.querySelector(".rdzx-detalhes-descricao");
+
+    if(!nome || !campo)return;
+
+    var texto=textos[nome.textContent.trim()];
+
+    if(texto){
+      campo.textContent=texto;
+    }
+  }
+
+  document.addEventListener("click",function(event){
+
+    if(event.target.closest(".rdzx-ver-detalhes")){
+      setTimeout(aplicarDescricao,30);
+    }
+
+  },true);
+
+})();
+</script>
