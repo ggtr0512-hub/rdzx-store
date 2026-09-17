@@ -2969,3 +2969,117 @@ button{
   transition:transform .18s ease,box-shadow .18s ease!important;
 }
 </style>
+
+<style id="rdzx-animacoes-3d-final">
+@keyframes rdzxEntrada3D{
+  from{
+    opacity:0;
+    transform:translateY(28px) rotateX(10deg) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) rotateX(0) scale(1);
+  }
+}
+
+@keyframes rdzxFlutuar3D{
+  0%,100%{
+    transform:translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+  50%{
+    transform:translateY(-5px) rotateX(1deg) rotateY(-1deg);
+  }
+}
+
+@keyframes rdzxBrilho3D{
+  0%{
+    left:-130%;
+  }
+  45%,100%{
+    left:140%;
+  }
+}
+
+@keyframes rdzxFundo3D{
+  0%,100%{
+    background-position:0% 0%;
+  }
+  50%{
+    background-position:100% 60%;
+  }
+}
+
+body{
+  background:
+    radial-gradient(circle at 20% 0%,#3b5360 0,#111a20 35%,#050709 100%)!important;
+  background-size:180% 180%!important;
+  animation:rdzxFundo3D 18s ease-in-out infinite!important;
+}
+
+.produto{
+  opacity:0;
+  animation:
+    rdzxEntrada3D .7s ease forwards,
+    rdzxFlutuar3D 5s ease-in-out infinite 1s!important;
+}
+
+.produto:nth-child(2){animation-delay:.08s,1.2s!important}
+.produto:nth-child(3){animation-delay:.16s,1.4s!important}
+.produto:nth-child(4){animation-delay:.24s,1.6s!important}
+.produto:nth-child(5){animation-delay:.32s,1.8s!important}
+.produto:nth-child(6){animation-delay:.40s,2s!important}
+.produto:nth-child(7){animation-delay:.48s,2.2s!important}
+.produto:nth-child(8){animation-delay:.56s,2.4s!important}
+.produto:nth-child(9){animation-delay:.64s,2.6s!important}
+.produto:nth-child(10){animation-delay:.72s,2.8s!important}
+
+.produto::after{
+  content:""!important;
+  position:absolute!important;
+  z-index:5!important;
+  top:0!important;
+  left:-130%!important;
+  width:55%!important;
+  height:100%!important;
+  pointer-events:none!important;
+  transform:skewX(-20deg)!important;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #dff8ff22,
+    transparent
+  )!important;
+  animation:rdzxBrilho3D 6s ease-in-out infinite!important;
+}
+
+.produto:hover{
+  animation-play-state:paused!important;
+  transform:translateY(-13px) rotateX(5deg) rotateY(-4deg) scale(1.025)!important;
+}
+
+button{
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease!important;
+}
+
+button:hover{
+  filter:brightness(1.18)!important;
+}
+
+.checkout-card,
+.pix-card,
+.pix-final-card{
+  animation:rdzxEntrada3D .35s ease-out both!important;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
