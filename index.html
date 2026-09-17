@@ -6489,3 +6489,61 @@ document.addEventListener("click",function(event){
 
 },true);
 </script>
+
+<style id="rdzx-botao-colar-cupom">
+.rdzx-colar-cupom{
+  width:100%!important;
+  min-height:42px!important;
+  margin-top:8px!important;
+  padding:10px!important;
+  border:1px solid #bdebf5!important;
+  border-radius:10px!important;
+  color:#f4fcff!important;
+  background:linear-gradient(145deg,#587783,#172830)!important;
+  box-shadow:0 3px 0 #14242c,0 7px 12px #0008!important;
+  font-weight:900!important;
+}
+
+.rdzx-colar-cupom:active{
+  transform:translateY(2px)!important;
+}
+</style>
+
+<script id="rdzx-botao-colar-cupom">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var campo=document.getElementById("checkout-cupom");
+  if(!campo || document.querySelector(".rdzx-colar-cupom"))return;
+
+  var botao=document.createElement("button");
+  botao.type="button";
+  botao.className="rdzx-colar-cupom";
+  botao.textContent="📋 Colar cupom";
+
+  campo.parentNode.parentNode.appendChild(botao);
+
+  botao.addEventListener("click",async function(){
+
+    try{
+      var texto=await navigator.clipboard.readText();
+
+      if(!texto){
+        alert("Nenhum cupom copiado.");
+        return;
+      }
+
+      campo.value=texto.trim();
+
+      var aplicar=campo.parentNode.querySelector("button");
+
+      if(aplicar){
+        aplicar.click();
+      }
+
+    }catch(erro){
+      alert("Permita o acesso à área de transferência para colar o cupom.");
+    }
+  });
+
+});
+</script>
