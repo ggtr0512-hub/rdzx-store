@@ -4349,3 +4349,70 @@ body{
 
 })();
 </script>
+
+<style id="rdzx-setas-carrossel-final">
+.rdzx-carrossel-area{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+}
+
+.rdzx-carrossel-area .rdzx-seta{
+  display:flex!important;
+  flex:0 0 42px!important;
+  width:42px!important;
+  height:48px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0!important;
+  border:1px solid #d7f5ff!important;
+  border-radius:14px!important;
+  color:#fff!important;
+  background:linear-gradient(145deg,#688692,#17262e)!important;
+  box-shadow:0 3px 0 #0a141a,0 8px 14px #000b!important;
+  font-size:32px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+  z-index:5!important;
+}
+
+.rdzx-carrossel-area .rdzx-seta:hover{
+  background:linear-gradient(145deg,#dffaff,#76cde9)!important;
+  color:#071117!important;
+  transform:translateY(-2px)!important;
+}
+
+.rdzx-carrossel-area .rdzx-seta:active{
+  transform:translateY(2px)!important;
+}
+
+@media(max-width:600px){
+  .rdzx-carrossel-area{
+    gap:5px!important;
+  }
+
+  .rdzx-carrossel-area .rdzx-seta{
+    flex:0 0 36px!important;
+    width:36px!important;
+    height:44px!important;
+    font-size:27px!important;
+    border-radius:12px!important;
+  }
+
+  .rdzx-galeria{
+    min-width:0!important;
+  }
+}
+</style>
+
+<script id="rdzx-legenda-setas">
+document.addEventListener("DOMContentLoaded",function(){
+  var setas=document.querySelectorAll(
+    "#rdzx-carrossel-comunidade .rdzx-seta"
+  );
+
+  if(setas[0])setas[0].setAttribute("aria-label","Foto anterior");
+  if(setas[1])setas[1].setAttribute("aria-label","Próxima foto");
+});
+</script>
