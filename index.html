@@ -3324,3 +3324,54 @@ section::after{
   }
 }
 </style>
+
+<style id="rdzx-corrigir-clique-mobile">
+/* No celular, impede o hover travado e as rotações bugadas */
+@media (hover:none), (pointer:coarse){
+
+  html,
+  body,
+  main{
+    perspective:none!important;
+  }
+
+  .produto,
+  .produto:hover,
+  .produto:active,
+  .produto:focus{
+    transform:none!important;
+    animation:none!important;
+    transition:none!important;
+    position:relative!important;
+    z-index:1!important;
+  }
+
+  .produto:hover img,
+  .produto:active img,
+  .produto:focus img,
+  .produto button:hover,
+  .produto button:active,
+  .produto button:focus{
+    transform:none!important;
+  }
+
+  .produto::before,
+  .produto::after{
+    display:none!important;
+    content:none!important;
+  }
+
+  .produto button{
+    transform:none!important;
+    position:relative!important;
+    z-index:5!important;
+  }
+}
+
+/* 3D seguro para computador */
+@media (hover:hover) and (pointer:fine){
+  .produto:hover{
+    transform:translateY(-8px) rotateX(2deg) rotateY(-2deg)!important;
+  }
+}
+</style>
