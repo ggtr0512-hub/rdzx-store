@@ -4652,3 +4652,96 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 }
 </style>
+
+<style id="rdzx-reorganizar-catalogo-final">
+/* Remove a foto redonda adicionada no topo */
+.rdzx-avatar-categoria{
+  display:none!important;
+}
+
+/* Nova faixa compacta de produtos */
+.rdzx-catalogo-novo{
+  width:min(900px,calc(100% - 24px));
+  margin:20px auto 15px;
+  padding:18px 20px;
+  border:1px solid #bde8f3;
+  border-radius:18px;
+  background:linear-gradient(145deg,#3e5964,#142129);
+  box-shadow:
+    inset 2px 2px 5px #ffffff25,
+    inset -5px -6px 12px #000a,
+    0 4px 0 #7897a2,
+    0 12px 24px #000a;
+}
+
+.rdzx-catalogo-novo strong{
+  display:block;
+  color:#f1fbff!important;
+  font-size:20px;
+  text-shadow:0 2px 3px #000;
+}
+
+.rdzx-catalogo-novo span{
+  display:block;
+  margin-top:5px;
+  color:#c5e1e8;
+  font-size:13px;
+}
+
+body.claro .rdzx-catalogo-novo{
+  background:linear-gradient(145deg,#ffffff,#d7e9ee);
+}
+
+body.claro .rdzx-catalogo-novo strong{
+  color:#17252d!important;
+  text-shadow:none;
+}
+
+body.claro .rdzx-catalogo-novo span{
+  color:#38535e;
+}
+</style>
+
+<script id="rdzx-reorganizar-catalogo-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  /* Remove avatar mesmo que ele tenha sido movido para o header */
+  document.querySelectorAll(".rdzx-avatar-categoria").forEach(function(el){
+    el.remove();
+  });
+
+  /* Remove somente o antigo bloco do Catalogo */
+  document.querySelectorAll("body *").forEach(function(el){
+    if(
+      el.children.length===0 &&
+      el.textContent.trim().toLowerCase()==="catálogo de assinaturas"
+    ){
+      var bloco=el.closest("section")||el.parentElement;
+
+      if(
+        bloco &&
+        !bloco.querySelector(".produto") &&
+        !bloco.querySelector("#rdzx-galeria") &&
+        !bloco.querySelector("input")
+      ){
+        bloco.remove();
+      }
+    }
+  });
+
+  /* Cria uma faixa nova antes do primeiro produto */
+  if(document.querySelector(".rdzx-catalogo-novo"))return;
+
+  var primeiro=document.querySelector(".produto");
+
+  if(primeiro){
+    var faixa=document.createElement("section");
+    faixa.className="rdzx-catalogo-novo";
+    faixa.innerHTML=
+      "<strong>💎 Escolha uma assinatura</strong>"+
+      "<span>Confira as opções disponíveis na RDZX STORE.</span>";
+
+    primeiro.parentNode.insertBefore(faixa,primeiro);
+  }
+});
+</script>
