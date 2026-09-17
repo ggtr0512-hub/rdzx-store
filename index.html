@@ -5049,3 +5049,71 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<script id="rdzx-cupons-funcionando">
+window.aplicarCupom=function(){
+
+  var campo=document.getElementById("checkout-cupom");
+  var feedback=document.getElementById("checkout-feedback");
+
+  if(!campo || !window.rdzxCheckout)return;
+
+  var codigo=campo.value.trim().toUpperCase();
+  var desconto=0;
+
+  if(codigo==="RDZX6"){
+    desconto=6;
+  }else if(codigo==="RDZX10"){
+    desconto=10;
+  }
+
+  rdzxCheckout.cupom=codigo;
+  rdzxCheckout.descontoPercentual=desconto;
+
+  if(feedback){
+    if(desconto>0){
+      feedback.textContent=
+        "Cupom aplicado: "+codigo+" — "+desconto+"% de desconto.";
+      feedback.style.color="#baffc8";
+    }else if(codigo){
+      feedback.textContent="Cupom inválido.";
+      feedback.style.color="#ffd0d0";
+      rdzxCheckout.cupom="";
+    }else{
+      feedback.textContent="";
+    }
+  }
+
+  atualizarCheckout();
+};
+
+window.atualizarCheckout=function(){
+
+  if(!window.rdzxCheckout)return;
+
+  var campo=document.getElementById("checkout-quantidade");
+  var quantidade=Math.max(
+    1,
+    Number(campo?campo.value:1)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var percentual=Number(rdzxCheckout.descontoPercentual)||0;
+  var valorDesconto=original*(percentual/100);
+  var total=original-valorDesconto;
+
+  var preco=document.getElementById("checkout-preco-original");
+  var desconto=document.getElementById("checkout-desconto");
+  var totalEl=document.getElementById("checkout-total");
+
+  if(preco)preco.textContent=dinheiro(original);
+  if(desconto)desconto.textContent="-"+dinheiro(valorDesconto);
+  if(totalEl)totalEl.textContent=dinheiro(total);
+};
+
+document.addEventListener("input",function(event){
+  if(event.target.id==="checkout-quantidade"){
+    atualizarCheckout();
+  }
+});
+</script>
