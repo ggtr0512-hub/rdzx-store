@@ -4184,3 +4184,81 @@ document.addEventListener("DOMContentLoaded",function(){
   animation-play-state:paused!important;
 }
 </style>
+
+<style id="rdzx-botao-instalar-css">
+#rdzx-instalar-app{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  z-index:9000;
+  display:none;
+  padding:13px 17px;
+  border:1px solid #d8f6ff;
+  border-radius:14px;
+  color:#071117;
+  background:linear-gradient(145deg,#dffaff,#76cde9);
+  box-shadow:
+    0 4px 0 #507987,
+    0 10px 22px #000b;
+  font-weight:900;
+  cursor:pointer;
+}
+
+#rdzx-instalar-app:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+
+@media(max-width:600px){
+  #rdzx-instalar-app{
+    right:12px;
+    bottom:14px;
+    font-size:13px;
+  }
+}
+</style>
+
+<script id="rdzx-botao-instalar">
+(function(){
+
+  var eventoInstalacao=null;
+
+  var botao=document.createElement("button");
+  botao.id="rdzx-instalar-app";
+  botao.type="button";
+  botao.textContent="📲 Instalar aplicativo";
+  document.body.appendChild(botao);
+
+  window.addEventListener("beforeinstallprompt",function(event){
+    event.preventDefault();
+    eventoInstalacao=event;
+    botao.style.display="block";
+  });
+
+  botao.addEventListener("click",async function(){
+
+    if(eventoInstalacao){
+      eventoInstalacao.prompt();
+
+      var resultado=await eventoInstalacao.userChoice;
+
+      if(resultado.outcome==="accepted"){
+        botao.style.display="none";
+      }
+
+      eventoInstalacao=null;
+      return;
+    }
+
+    alert(
+      "Para instalar: toque nos tres pontinhos do Chrome e escolha "+
+      "'Adicionar a tela inicial' ou 'Instalar aplicativo'."
+    );
+  });
+
+  window.addEventListener("appinstalled",function(){
+    botao.style.display="none";
+  });
+
+})();
+</script>
