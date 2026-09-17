@@ -963,6 +963,59 @@ body.claro .rdzx-entrada-status{
   }
 }
 </style>
+
+<style id="rdzx-avatar-categoria-css">
+.rdzx-avatar-categoria{
+  display:block!important;
+  width:92px!important;
+  height:92px!important;
+  margin:0 auto 16px!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border:3px solid #e7fbff!important;
+  border-radius:50%!important;
+  background:#05080b!important;
+  box-shadow:
+    0 0 0 5px #7da9b555,
+    0 5px 0 #172832,
+    0 12px 25px #000d,
+    0 0 25px #a9eaff66!important;
+  animation:
+    rdzxAvatarFlutuar 3.5s ease-in-out infinite,
+    rdzxAvatarBrilho 4s ease-in-out infinite alternate!important;
+}
+
+@keyframes rdzxAvatarFlutuar{
+  0%,100%{
+    transform:translateY(0) rotate(-2deg);
+  }
+  50%{
+    transform:translateY(-7px) rotate(2deg);
+  }
+}
+
+@keyframes rdzxAvatarBrilho{
+  from{
+    filter:brightness(.95) saturate(.9);
+  }
+  to{
+    filter:brightness(1.18) saturate(1.1);
+  }
+}
+
+@media(max-width:600px){
+  .rdzx-avatar-categoria{
+    width:78px!important;
+    height:78px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .rdzx-avatar-categoria{
+    animation:none!important;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -1032,7 +1085,7 @@ body.claro .rdzx-entrada-status{
   <div class="faixa-simbolo"></div>
   <div>
     <small>CATÁLOGO RDZX // ACESSO DIGITAL</small>
-    <h2>Catálogo de assinaturas</h2>
+    <img class="rdzx-avatar-categoria" src="imagens/categoria-rdzx.jpg" alt="RDZX STORE"><h2>Catálogo de assinaturas</h2>
     <p>Escolha seu serviço, confira o valor e fale diretamente com a RDZX STORE.</p>
   </div>
   <div class="faixa-status">● LOJA ONLINE</div>
