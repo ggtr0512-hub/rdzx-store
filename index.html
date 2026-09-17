@@ -1234,7 +1234,49 @@ body.claro footer{
   display:none!important;
 }
 </style>
-<script src="pix-config.js"></script></head>
+<script src="pix-config.js"></script>
+<style id="rdzx-corrigir-modal-pix">
+/* Esconde o modal Pix antigo duplicado */
+#rdzx-pix-checkout-real{
+  display:none!important;
+}
+
+/* Corrige o X do modal atual */
+.pix-final-fechar{
+  position:absolute!important;
+  top:8px!important;
+  right:10px!important;
+  width:36px!important;
+  min-width:36px!important;
+  height:36px!important;
+  min-height:36px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  font-size:28px!important;
+  line-height:34px!important;
+}
+
+.pix-final-fechar:hover{
+  color:#ff9aaa!important;
+  background:#ffffff12!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+#pix-final-modal{
+  z-index:7000!important;
+}
+
+.pix-final-card{
+  overflow:hidden!important;
+}
+</style>
+</head>
 
 <body>
 <button id="rdzx-tema-real" type="button">☀️ Modo claro</button>
