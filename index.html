@@ -2619,3 +2619,145 @@ button:active,
   color:#d8f4ff!important;
 }
 </style>
+
+<script id="rdzx-remover-terror-real">
+document.addEventListener("DOMContentLoaded",function(){
+
+  /* Remove estilos antigos de terror */
+  document.querySelectorAll(
+    'style[id*="horror"],style[id*="terror"],style[id*="visual-pesado"],style[id*="acabamento"],style[id*="visual-extra"]'
+  ).forEach(function(style){
+    style.remove();
+  });
+
+  /* Troca textos com linguagem de terror */
+  document.querySelectorAll("body *").forEach(function(el){
+    if(el.children.length===0 && el.textContent){
+      el.textContent=el.textContent
+        .replace(/☠/g,"")
+        .replace(/ARQUIVO SOMBRIO/gi,"CATÁLOGO RDZX")
+        .replace(/SIGNAL DETECTED/gi,"RDZX STORE ONLINE")
+        .replace(/SISTEMA ONLINE/gi,"LOJA ONLINE");
+    }
+  });
+
+  /* Esconde o botão de tema duplicado */
+  var temaAntigo=document.getElementById("botao-tema");
+  if(temaAntigo)temaAntigo.style.display="none";
+});
+</script>
+
+<style id="rdzx-3d-limpo-final">
+/* Base 3D moderna */
+html,body{
+  background:
+    radial-gradient(circle at 50% 0%,#344653 0%,#151d24 38%,#070a0d 100%)!important;
+  color:#f1f7fa!important;
+}
+
+/* Retira linhas, brilhos e fundos vermelhos */
+body::before,
+body::after,
+header::before,
+header::after,
+main::before,
+main::after{
+  display:none!important;
+  background:none!important;
+  box-shadow:none!important;
+  border-color:transparent!important;
+}
+
+/* Cabecalho moderno */
+header{
+  background:
+    linear-gradient(145deg,#334650,#111920 70%)!important;
+  border-bottom:1px solid #a9d3e5!important;
+  box-shadow:
+    0 5px 0 #080d11,
+    0 15px 35px #000!important;
+}
+
+/* Titulo sem brilho vermelho */
+h1,h2,h3{
+  color:#f3faff!important;
+  text-shadow:0 3px 3px #000!important;
+}
+
+/* Blocos com efeito 3D */
+section,
+.rdzx-info-box,
+.produto{
+  border:1px solid #7894a3!important;
+  border-radius:20px!important;
+  background:
+    linear-gradient(145deg,#293a45 0%,#151f27 48%,#090d11 100%)!important;
+  box-shadow:
+    0 4px 0 #718793,
+    0 9px 0 #070b0e,
+    0 22px 35px #000c!important;
+}
+
+/* Remove qualquer halo vermelho */
+section::before,
+section::after,
+.rdzx-info-box::before,
+.rdzx-info-box::after,
+.produto::before,
+.produto::after{
+  background:transparent!important;
+  border-color:#9ed8ef33!important;
+  box-shadow:none!important;
+}
+
+/* Ícones decorativos vermelhos */
+section img[src*="horror"],
+section img[src*="skull"],
+.horror-mini,
+.horror-core,
+.horror-tela{
+  display:none!important;
+}
+
+/* Botões em estilo 3D */
+button,
+.produto button{
+  border:1px solid #b5d7e5!important;
+  border-radius:11px!important;
+  color:#f5fbff!important;
+  background:
+    linear-gradient(145deg,#536b78,#18262f)!important;
+  box-shadow:
+    0 4px 0 #071016,
+    0 9px 16px #000b!important;
+  text-shadow:0 2px 2px #000!important;
+}
+
+button:hover,
+.produto button:hover{
+  color:#071016!important;
+  background:
+    linear-gradient(145deg,#e2f8ff,#80cbe8)!important;
+  transform:translateY(-2px)!important;
+}
+
+button:active,
+.produto button:active{
+  transform:translateY(2px)!important;
+  box-shadow:0 1px 0 #071016!important;
+}
+
+/* Campo de busca e seletor */
+input,
+select{
+  border:1px solid #7894a3!important;
+  color:#fff!important;
+  background:#101920!important;
+  box-shadow:inset 0 3px 8px #000!important;
+}
+
+/* Remove linha vermelha entre as seções */
+hr{
+  border-color:#7894a355!important;
+}
+</style>
