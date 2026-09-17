@@ -4013,3 +4013,102 @@ document.addEventListener("DOMContentLoaded",function(){
   font-size:28px!important;
 }
 </style>
+
+<style id="rdzx-qualidade-fotos-site">
+.rdzx-feedback{
+  background:#05080b!important;
+}
+
+.rdzx-feedback img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:240px!important;
+  max-height:620px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  image-rendering:auto!important;
+  filter:none!important;
+  transform:translateZ(0)!important;
+  backface-visibility:hidden!important;
+  -webkit-font-smoothing:antialiased!important;
+  cursor:zoom-in!important;
+}
+
+.rdzx-feedback img:hover{
+  filter:brightness(1.06) contrast(1.03)!important;
+}
+
+@media(max-width:600px){
+  .rdzx-feedback img{
+    min-height:0!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+}
+</style>
+
+<script id="rdzx-ampliar-fotos-feedback">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll(".rdzx-feedback img").forEach(function(img){
+
+    img.loading="eager";
+    img.decoding="async";
+
+    img.addEventListener("click",function(){
+
+      var fundo=document.createElement("div");
+      fundo.id="rdzx-foto-ampliada";
+      fundo.innerHTML=
+        '<button class="rdzx-fechar-foto">×</button>'+
+        '<img src="'+img.src+'" alt="'+img.alt+'">';
+
+      document.body.appendChild(fundo);
+
+      fundo.addEventListener("click",function(){
+        fundo.remove();
+      });
+    });
+  });
+});
+</script>
+
+<style id="rdzx-foto-ampliada-css">
+#rdzx-foto-ampliada{
+  position:fixed;
+  z-index:9999;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:#020507ee;
+  cursor:zoom-out;
+}
+
+#rdzx-foto-ampliada img{
+  display:block;
+  width:auto;
+  max-width:96vw;
+  max-height:92vh;
+  object-fit:contain;
+  border:1px solid #d5f5ff;
+  border-radius:14px;
+  box-shadow:0 12px 50px #000;
+}
+
+.rdzx-fechar-foto{
+  position:fixed;
+  top:14px;
+  right:16px;
+  z-index:2;
+  width:42px!important;
+  height:42px!important;
+  padding:0!important;
+  border:1px solid #d5f5ff!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  background:#172730!important;
+  font-size:28px!important;
+}
+</style>
