@@ -1771,6 +1771,236 @@ function comprarProduto(botao){
   };
 })();
 </script>
+
+<div id="rdzx-pix-checkout-real" class="pix-fundo">
+  <div class="pix-card">
+    <button class="pix-fechar" onclick="fecharPixCheckout()">×</button>
+    <div class="pix-icone">💠</div>
+    <h2>Pagamento via Pix</h2>
+    <p id="pix-produto"></p>
+    <strong id="pix-valor"></strong>
+
+    <label>Chave Pix</label>
+    <div class="pix-linha">
+      <input id="pix-chave" readonly>
+      <button onclick="copiarPixChave()">Copiar</button>
+    </div>
+
+    <label>Pix copia e cola</label>
+    <textarea id="pix-copia-cola" readonly></textarea>
+    <button class="pix-copiar" onclick="copiarPixCodigo()">
+      📋 Copiar Pix copia e cola
+    </button>
+
+    <p class="pix-aviso">
+      Confira o nome do beneficiário no aplicativo do banco antes de confirmar.
+      Depois envie o comprovante pelo Telegram.
+    </p>
+  </div>
+</div>
+
+<style id="rdzx-pix-checkout-css">
+.checkout-pix{
+  width:100%;
+  margin-top:10px;
+  padding:13px;
+  border:1px solid #6effb088!important;
+  border-radius:12px;
+  color:#06130b!important;
+  background:linear-gradient(120deg,#63f59b,#32c879)!important;
+  font-weight:900;
+}
+.pix-fundo{
+  position:fixed;
+  z-index:5000;
+  inset:0;
+  display:none;
+  place-items:center;
+  padding:16px;
+  background:#020102dd;
+}
+.pix-card{
+  position:relative;
+  width:min(480px,100%);
+  padding:25px;
+  border:1px solid #65e99a88;
+  border-radius:20px;
+  color:#fff;
+  background:#0c1510;
+  box-shadow:0 0 40px #32c87966,0 25px 65px #000;
+}
+.pix-fechar{
+  position:absolute;
+  top:7px;
+  right:12px;
+  border:0!important;
+  color:#fff!important;
+  background:transparent!important;
+  font-size:27px;
+}
+.pix-icone{
+  text-align:center;
+  font-size:45px;
+}
+.pix-card h2{
+  text-align:center;
+  color:#9dffc0;
+}
+.pix-card>strong{
+  display:block;
+  margin:10px 0 18px;
+  text-align:center;
+  color:#baffc8;
+  font-size:22px;
+}
+.pix-card label{
+  display:block;
+  margin:12px 0 6px;
+  color:#c4d9ca;
+  font-size:13px;
+}
+.pix-linha{
+  display:flex;
+  gap:7px;
+}
+.pix-linha input,
+.pix-card textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #ffffff22;
+  border-radius:9px;
+  color:#fff;
+  background:#142119;
+}
+.pix-linha input{
+  min-width:0;
+  flex:1;
+}
+.pix-linha button,
+.pix-copiar{
+  padding:10px;
+  border:0;
+  border-radius:9px;
+  color:#06130b;
+  background:#65e99a;
+  font-weight:bold;
+}
+.pix-card textarea{
+  min-height:105px;
+  resize:none;
+  font-size:11px;
+}
+.pix-copiar{
+  width:100%;
+  margin-top:8px;
+}
+.pix-aviso{
+  color:#a9b8ad;
+  font-size:12px;
+  line-height:1.5;
+}
+</style>
+
+<script id="rdzx-pix-checkout-js">
+function pixCampo(id,tamanho,valor){
+  var texto=String(valor);
+  var bytes=new TextEncoder().encode(texto).length;
+  return id+tamanho.toString().padStart(2,"0")+texto;
+}
+
+function crc16Pix(texto){
+  var crc=0xFFFF;
+
+  for(var i=0;i<texto.length;i++){
+    crc^=texto.charCodeAt(i)<<8;
+
+    for(var j=0;j<8;j++){
+      crc=(crc&0x8000)?
+        ((crc<<1)^0x1021)&0xFFFF:
+        (crc<<1)&0xFFFF;
+    }
+  }
+
+  return crc.toString(16).toUpperCase().padStart(4,"0");
+}
+
+function criarPix(valor){
+  var pix=window.RDZX_PIX;
+
+  if(!pix || !pix.chave || pix.chave.indexOf("COLE_AQUI")>=0){
+    alert("A chave Pix ainda nao foi configurada.");
+    return "";
+  }
+
+  var valorFormatado=Number(valor).toFixed(2);
+  var nome=(pix.beneficiario||"RDZX STORE")
+    .normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+    .slice(0,25).toUpperCase();
+
+  var cidade="RDZX STORE"
+    .normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+    .slice(0,15).toUpperCase();
+
+  var conta=
+    pixCampo("00", "BR.GOV.BCB.PIX".length, "BR.GOV.BCB.PIX")+
+    pixCampo("01", pix.chave.length, pix.chave);
+
+  var payload=
+    pixCampo("00",2,"01")+
+    pixCampo("26",conta.length,conta)+
+    pixCampo("52",4,"0000")+
+    pixCampo("53",3,"986")+
+    pixCampo("54",valorFormatado)+
+    pixCampo("58",2,"BR")+
+    pixCampo("59",nome.length,nome)+
+    pixCampo("60",cidade.length,cidade)+
+    pixCampo("62",2,"05")+"***";
+
+  return payload+"6304"+crc16Pix(payload+"6304");
+}
+
+function abrirPixCheckout(){
+  var qtd=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*qtd;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+  var codigo=criarPix(total);
+
+  if(!codigo)return;
+
+  document.getElementById("pix-produto").textContent=
+    rdzxCheckout.produto+" — Quantidade: "+qtd;
+
+  document.getElementById("pix-valor").textContent=
+    dinheiro(total);
+
+  document.getElementById("pix-chave").value=window.RDZX_PIX.chave;
+  document.getElementById("pix-copia-cola").value=codigo;
+  document.getElementById("rdzx-pix-checkout-real").style.display="grid";
+}
+
+function fecharPixCheckout(){
+  document.getElementById("rdzx-pix-checkout-real").style.display="none";
+}
+
+function copiarPixChave(){
+  navigator.clipboard.writeText(
+    document.getElementById("pix-chave").value
+  );
+  alert("Chave Pix copiada.");
+}
+
+function copiarPixCodigo(){
+  navigator.clipboard.writeText(
+    document.getElementById("pix-copia-cola").value
+  );
+  alert("Pix copia e cola copiado.");
+}
+</script>
 </body>
 </html>
 
