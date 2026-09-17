@@ -1491,6 +1491,46 @@ body.claro footer{
 
 
 
+
+<section id="rdzx-carrossel-comunidade" class="rdzx-comunidade">
+  <div class="rdzx-comunidade-topo">
+    <span class="rdzx-kicker">COMUNIDADE RDZX</span>
+    <h2>Experiências compartilhadas</h2>
+    <p>Confira momentos enviados pela comunidade da loja.</p>
+  </div>
+
+  <div class="rdzx-carrossel-area">
+    <button class="rdzx-seta" onclick="rdzxMoverGaleria(-1)">‹</button>
+
+    <div class="rdzx-galeria" id="rdzx-galeria">
+      <article class="rdzx-feedback">
+        <img src="imagens/depoimentos/feedback-1.jpg" alt="Imagem enviada pela comunidade">
+        <div>
+          <strong>Comunidade RDZX</strong>
+          <span>Experiência compartilhada</span>
+        </div>
+      </article>
+
+      <article class="rdzx-feedback">
+        <img src="imagens/depoimentos/feedback-2.jpg" alt="Imagem enviada pela comunidade">
+        <div>
+          <strong>Comunidade RDZX</strong>
+          <span>Momento compartilhado</span>
+        </div>
+      </article>
+
+      <article class="rdzx-feedback">
+        <img src="imagens/depoimentos/feedback-3.jpg" alt="Imagem enviada pela comunidade">
+        <div>
+          <strong>Comunidade RDZX</strong>
+          <span>Feedback enviado</span>
+        </div>
+      </article>
+    </div>
+
+    <button class="rdzx-seta" onclick="rdzxMoverGaleria(1)">›</button>
+  </div>
+</section>
 </main>
 
 
@@ -2423,6 +2463,129 @@ document.addEventListener("input",function(e){
     atualizarCheckout();
   }
 });
+</script>
+
+<style id="rdzx-carrossel-comunidade-css">
+.rdzx-comunidade{
+  width:min(1100px,calc(100% - 24px));
+  margin:45px auto 30px;
+  padding:25px 15px;
+  border:1px solid #9fd8e8;
+  border-radius:25px;
+  background:linear-gradient(145deg,#304650,#101a20);
+  box-shadow:inset 2px 2px 5px #ffffff25,0 5px 0 #17262e,0 22px 38px #000b;
+  overflow:hidden;
+}
+.rdzx-comunidade-topo{
+  margin-bottom:18px;
+  text-align:center;
+}
+.rdzx-kicker{
+  color:#a9e4f4;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.rdzx-comunidade h2{
+  margin:7px 0;
+  color:#f5fcff;
+}
+.rdzx-comunidade p{
+  color:#c2d9e0;
+}
+.rdzx-carrossel-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.rdzx-galeria{
+  display:flex;
+  flex:1;
+  gap:16px;
+  overflow-x:auto;
+  padding:12px 5px 18px;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+}
+.rdzx-galeria::-webkit-scrollbar{
+  display:none;
+}
+.rdzx-feedback{
+  flex:0 0 min(280px,82vw);
+  overflow:hidden;
+  scroll-snap-align:center;
+  border:1px solid #c4ebf5;
+  border-radius:19px;
+  background:linear-gradient(145deg,#5b7884,#18272f);
+  box-shadow:0 4px 0 #abcbd5,0 9px 0 #0c151b,0 16px 25px #000c;
+  transform:translateZ(0);
+}
+.rdzx-feedback img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  background:#0a1014;
+}
+.rdzx-feedback div{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:13px;
+}
+.rdzx-feedback strong{
+  color:#fff;
+}
+.rdzx-feedback span{
+  color:#c3dce4;
+  font-size:12px;
+}
+.rdzx-seta{
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:1px solid #c5ebf5;
+  border-radius:50%;
+  color:#fff;
+  background:linear-gradient(145deg,#6b8995,#1b2b34);
+  font-size:30px;
+  line-height:30px;
+}
+@media(max-width:600px){
+  .rdzx-seta{
+    display:none;
+  }
+  .rdzx-comunidade{
+    padding:22px 8px;
+  }
+}
+</style>
+
+<script id="rdzx-carrossel-comunidade-js">
+function rdzxMoverGaleria(direcao){
+  var galeria=document.getElementById("rdzx-galeria");
+  if(galeria){
+    galeria.scrollBy({
+      left:direcao*300,
+      behavior:"smooth"
+    });
+  }
+}
+
+setInterval(function(){
+  var galeria=document.getElementById("rdzx-galeria");
+  if(!galeria)return;
+
+  var chegou=
+    galeria.scrollLeft+galeria.clientWidth>=galeria.scrollWidth-10;
+
+  galeria.scrollBy({
+    left:chegou?-galeria.scrollWidth:300,
+    behavior:"smooth"
+  });
+},5000);
 </script>
 </body>
 </html>
