@@ -4617,3 +4617,38 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 });
 </script>
+
+<style id="rdzx-fotos-preenchidas">
+#rdzx-carrossel-comunidade .rdzx-feedback{
+  overflow:hidden!important;
+  background:#071015!important;
+}
+
+#rdzx-carrossel-comunidade .rdzx-feedback img{
+  display:block!important;
+  width:100%!important;
+  height:430px!important;
+  aspect-ratio:4 / 5!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  background:#071015!important;
+  border:0!important;
+  border-radius:0!important;
+  transform:none!important;
+  filter:none!important;
+}
+
+@media(max-width:600px){
+  #rdzx-carrossel-comunidade .rdzx-feedback{
+    flex-basis:88vw!important;
+  }
+
+  #rdzx-carrossel-comunidade .rdzx-feedback img{
+    height:calc(88vw * 1.25)!important;
+    min-height:0!important;
+    max-height:none!important;
+    object-fit:cover!important;
+    object-position:center!important;
+  }
+}
+</style>
