@@ -1504,7 +1504,7 @@ body.claro footer{
 
     <div class="rdzx-galeria" id="rdzx-galeria">
       <article class="rdzx-feedback">
-        <img src="imagens/depoimentos/feedback-1.jpg" alt="Imagem enviada pela comunidade">
+        <img src="imagens/depoimentos/feedback-1.png" alt="Imagem enviada pela comunidade">
         <div>
           <strong>Comunidade RDZX</strong>
           <span>Experiência compartilhada</span>
@@ -1512,7 +1512,7 @@ body.claro footer{
       </article>
 
       <article class="rdzx-feedback">
-        <img src="imagens/depoimentos/feedback-2.jpg" alt="Imagem enviada pela comunidade">
+        <img src="imagens/depoimentos/feedback-2.png" alt="Imagem enviada pela comunidade">
         <div>
           <strong>Comunidade RDZX</strong>
           <span>Momento compartilhado</span>
@@ -1520,7 +1520,7 @@ body.claro footer{
       </article>
 
       <article class="rdzx-feedback">
-        <img src="imagens/depoimentos/feedback-3.jpg" alt="Imagem enviada pela comunidade">
+        <img src="imagens/depoimentos/feedback-3.png" alt="Imagem enviada pela comunidade">
         <div>
           <strong>Comunidade RDZX</strong>
           <span>Feedback enviado</span>
@@ -2587,6 +2587,21 @@ setInterval(function(){
   });
 },5000);
 </script>
+
+<style id="rdzx-um-feedback">
+#rdzx-carrossel-comunidade .rdzx-feedback:nth-child(n+2),
+#rdzx-carrossel-comunidade .rdzx-seta{
+  display:none!important;
+}
+#rdzx-carrossel-comunidade .rdzx-galeria{
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+#rdzx-carrossel-comunidade .rdzx-feedback{
+  width:min(430px,100%)!important;
+  flex-basis:min(430px,100%)!important;
+}
+</style>
 </body>
 </html>
 
