@@ -4993,3 +4993,59 @@ document.addEventListener("click",function(event){
   }
 }
 </style>
+
+<style id="rdzx-precos-especiais">
+.produto{
+  position:relative!important;
+}
+
+.rdzx-preco-especial{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  margin:4px 0 7px!important;
+  padding:5px 9px!important;
+  border:1px solid #c8eff8!important;
+  border-radius:20px!important;
+  color:#e9fbff!important;
+  background:linear-gradient(145deg,#587582,#172830)!important;
+  box-shadow:0 3px 0 #14242c,0 6px 12px #0009!important;
+  font-size:10px!important;
+  font-weight:950!important;
+  letter-spacing:.7px!important;
+}
+
+.produto strong{
+  display:block!important;
+  margin-top:2px!important;
+  color:#d9f8ff!important;
+  font-size:23px!important;
+  font-weight:950!important;
+}
+
+body.claro .rdzx-preco-especial{
+  color:#17303a!important;
+  background:linear-gradient(145deg,#ffffff,#c6e0e6)!important;
+  border-color:#789ba7!important;
+}
+</style>
+
+<script id="rdzx-precos-especiais-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll(".produto").forEach(function(card){
+
+    if(card.querySelector(".rdzx-preco-especial"))return;
+
+    var preco=card.querySelector("strong");
+    if(!preco)return;
+
+    var selo=document.createElement("span");
+    selo.className="rdzx-preco-especial";
+    selo.textContent="PREÇO ESPECIAL RDZX";
+
+    preco.parentNode.insertBefore(selo,preco);
+  });
+
+});
+</script>
