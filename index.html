@@ -1469,7 +1469,7 @@ body.claro footer{
   <div class="rdzx-info-box">
     <h2>Precisa de ajuda?</h2>
     <p>Fale diretamente com o suporte da RDZX STORE.</p>
-    <button type="button" onclick="abrirSuporte()">💬 Falar com o suporte</button>
+    <button type="button" onclick="abrirSuporte()">💬 Falar pelo Telegram</button>
   </div>
 
   <div class="rdzx-info-box">
@@ -3375,3 +3375,37 @@ section::after{
   }
 }
 </style>
+
+<script id="rdzx-telegram-final">
+function abrirTelegramRDZX(mensagem){
+  var texto=encodeURIComponent(mensagem||"Olá! Quero falar com a RDZX STORE.");
+  var link="https://t.me/rdzxsuporte?text="+texto;
+  window.open(link,"_blank");
+}
+
+function finalizarCheckout(){
+  var quantidade=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+
+  var mensagem=
+    "🛒 NOVO PEDIDO — RDZX STORE\n\n"+
+    "📦 Produto: "+rdzxCheckout.produto+"\n"+
+    "🔢 Quantidade: "+quantidade+"\n"+
+    "💵 Total: "+dinheiro(total)+"\n\n"+
+    "Olá! Quero comprar este produto.";
+
+  abrirTelegramRDZX(mensagem);
+}
+
+function abrirSuporte(){
+  abrirTelegramRDZX(
+    "Olá! Preciso de ajuda com a RDZX STORE."
+  );
+}
+</script>
