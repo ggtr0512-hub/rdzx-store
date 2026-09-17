@@ -5263,3 +5263,70 @@ document.addEventListener("DOMContentLoaded",function(){
   letter-spacing:.6px!important;
 }
 </style>
+
+<style id="rdzx-descricoes-produtos">
+.produto .rdzx-descricao-final{
+  display:block!important;
+  min-height:42px!important;
+  margin:5px 0 10px!important;
+  color:#c3d9e0!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+
+body.claro .produto .rdzx-descricao-final{
+  color:#38535e!important;
+}
+</style>
+
+<script id="rdzx-descricoes-todas-categorias">
+document.addEventListener("DOMContentLoaded",function(){
+
+  var descricoes={
+    "Viki Rakuten":"Dramas, séries e conteúdos asiáticos legendados.",
+    "Apple TV":"Filmes, séries e produções da Apple TV.",
+    "TNT Sports":"Conteúdos esportivos e transmissões disponíveis no serviço.",
+    "Privacy":"Serviço digital voltado para privacidade durante a navegação.",
+    "Deezer":"Músicas, playlists e conteúdos de áudio online.",
+    "Grobo Play":"Programas, séries e conteúdos de entretenimento online.",
+    "Google Veo 3":"Ferramenta de criação e experimentação com vídeos por IA.",
+    "ChatGPT":"Assistente inteligente para ideias, textos, estudos e criação.",
+    "CapCut Pro":"Ferramentas para edição de vídeos e criação de conteúdo.",
+    "Crunchyroll":"Animes, mangás e conteúdos para fãs de animação japonesa.",
+    "Spotify Premium":"Músicas, playlists e podcasts para ouvir online.",
+    "IPTV":"Acesso a conteúdos de televisão conforme o plano e a disponibilidade.",
+    "Netflix":"Filmes, séries e produções disponíveis para assistir online.",
+    "Disney+":"Filmes, séries e conteúdos de entretenimento do serviço.",
+    "HBO Max":"Filmes, séries e produções disponíveis na plataforma.",
+    "Prime Video":"Filmes, séries e conteúdos disponíveis no serviço.",
+    "YouTube Premium":"Vídeos e conteúdos online conforme a disponibilidade do serviço."
+  };
+
+  document.querySelectorAll(".produto").forEach(function(card){
+
+    var titulo=card.querySelector("h3");
+    if(!titulo)return;
+
+    var nome=titulo.textContent.trim();
+    var texto=descricoes[nome];
+    if(!texto)return;
+
+    var descricao=card.querySelector(".rdzx-descricao-final");
+
+    if(!descricao){
+      descricao=document.createElement("p");
+      descricao.className="rdzx-descricao-final";
+
+      var botao=card.querySelector("button");
+
+      if(botao){
+        botao.parentNode.insertBefore(descricao,botao);
+      }else{
+        card.appendChild(descricao);
+      }
+    }
+
+    descricao.textContent=texto;
+  });
+});
+</script>
