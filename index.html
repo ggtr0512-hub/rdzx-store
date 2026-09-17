@@ -440,471 +440,13 @@ body.claro .produto img{
 
 
 
-<style id="rdzx-horror-visual-final">
-:root{
-  --terror-preto:#050507;
-  --terror-card:#0d0b0f;
-  --terror-vermelho:#a71932;
-  --terror-vermelho-forte:#e32646;
-  --terror-cinza:#b9adb1;
-}
 
-html{
-  background:var(--terror-preto);
-}
 
-body{
-  position:relative;
-  overflow-x:hidden;
-  color:#eee!important;
-  background:
-    radial-gradient(circle at 50% -10%,#6e142622,transparent 36%),
-    linear-gradient(180deg,#050507,#0b080b 55%,#050507)!important;
-}
 
-body::before{
-  content:"";
-  position:fixed;
-  z-index:-3;
-  inset:0;
-  pointer-events:none;
-  opacity:.42;
-  background:
-    radial-gradient(ellipse at 20% 35%,#7d253322,transparent 28%),
-    radial-gradient(ellipse at 80% 70%,#32142133,transparent 30%);
-  filter:blur(25px);
-  animation:nevoaRDZX 16s ease-in-out infinite alternate;
-}
 
-body::after{
-  content:"";
-  position:fixed;
-  z-index:-2;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,#0008,transparent 18%,transparent 82%,#0008),
-    radial-gradient(ellipse at center,transparent 48%,#000b 100%);
-}
 
-@keyframes nevoaRDZX{
-  from{transform:translate(-3%,1%) scale(1)}
-  to{transform:translate(3%,-2%) scale(1.08)}
-}
 
-header{
-  position:relative;
-  overflow:hidden;
-  padding:55px 18px 45px!important;
-  border-bottom:1px solid #8e203666!important;
-  background:
-    linear-gradient(180deg,#180b10dd,#080609e8),
-    radial-gradient(circle at 50% 0,#a7193233,transparent 58%)!important;
-  box-shadow:0 10px 35px #0009;
-}
 
-header::before{
-  content:"👁  //  RDZX SIGNAL DETECTED  //  👁";
-  display:block;
-  margin-bottom:17px;
-  color:#a95c69;
-  font:10px monospace;
-  letter-spacing:3px;
-  opacity:.7;
-}
-
-header::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:2px;
-  background:linear-gradient(90deg,transparent,#ef233c,transparent);
-  box-shadow:0 0 16px #ef233c;
-}
-
-.logo{
-  color:#ff5268!important;
-  text-shadow:0 0 16px #a71932!important;
-}
-
-h1,h2{
-  color:#f4e9ec!important;
-  text-shadow:0 0 18px #a7193277;
-}
-
-h1{
-  letter-spacing:1px;
-}
-
-header p{
-  color:#c4b5ba!important;
-}
-
-main{
-  position:relative;
-  z-index:1;
-}
-
-.categoria{
-  border-color:#7c203355!important;
-  background:linear-gradient(135deg,#160b10e8,#0d0a0eeb)!important;
-  box-shadow:0 14px 35px #0008!important;
-}
-
-.produto{
-  position:relative;
-  overflow:hidden;
-  border:1px solid #681d2e88!important;
-  border-radius:17px!important;
-  background:
-    linear-gradient(145deg,#171016,#09080b)!important;
-  box-shadow:0 15px 35px #000b!important;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease!important;
-}
-
-.produto::before{
-  content:"";
-  position:absolute;
-  z-index:1;
-  inset:0;
-  pointer-events:none;
-  border-radius:inherit;
-  background:linear-gradient(120deg,transparent 25%,#ef233c14 50%,transparent 75%);
-  transform:translateX(-100%);
-  transition:transform .6s ease;
-}
-
-.produto:hover{
-  transform:translateY(-5px);
-  border-color:#d02a4788!important;
-  box-shadow:0 0 22px #8e203955,0 20px 40px #000c!important;
-}
-
-.produto:hover::before{
-  transform:translateX(100%);
-}
-
-.produto img{
-  position:relative;
-  z-index:0;
-  background:#08070a!important;
-  filter:saturate(.9) contrast(1.05);
-  transition:transform .35s ease,filter .35s ease!important;
-}
-
-.produto:hover img{
-  transform:scale(1.035);
-  filter:saturate(1.1) contrast(1.08);
-}
-
-.produto h3{
-  color:#f1e7e9!important;
-}
-
-.produto strong,
-.precos-promocionais strong{
-  color:#ff9aaa!important;
-  text-shadow:0 0 10px #a7193266;
-}
-
-button,
-.produto button,
-.checkout-whatsapp{
-  border-color:#b7294388!important;
-  background:linear-gradient(120deg,#681526,#a71932)!important;
-  box-shadow:0 7px 18px #5d142844!important;
-  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease!important;
-}
-
-button:hover,
-.produto button:hover,
-.checkout-whatsapp:hover{
-  filter:brightness(1.18);
-  box-shadow:0 0 20px #d3264888!important;
-  transform:translateY(-2px);
-}
-
-button:active,
-.produto button:active{
-  transform:scale(.97)!important;
-}
-
-.rdzx-ferramentas input,
-.rdzx-ferramentas select,
-.checkout-card,
-.form-avaliacao,
-.rdzx-info-box{
-  border-color:#681d2e88!important;
-  background:#0d0a0eee!important;
-}
-
-.rdzx-mini-particula{
-  position:fixed;
-  z-index:0;
-  width:2px;
-  height:2px;
-  pointer-events:none;
-  border-radius:50%;
-  background:#d95c6e;
-  box-shadow:0 0 7px #ef233c;
-  animation:poeiraRDZX var(--tempo) linear infinite;
-}
-
-@keyframes poeiraRDZX{
-  from{transform:translate3d(0,110vh,0);opacity:0}
-  15%{opacity:.7}
-  85%{opacity:.35}
-  to{transform:translate3d(var(--desvio),-10vh,0);opacity:0}
-}
-
-.rdzx-silhueta{
-  position:fixed;
-  z-index:0;
-  right:2%;
-  bottom:12%;
-  pointer-events:none;
-  color:#40121e;
-  opacity:.12;
-  font-size:90px;
-  filter:blur(2px);
-  animation:aparicaoRDZX 12s ease-in-out infinite;
-}
-
-@keyframes aparicaoRDZX{
-  0%,72%,100%{opacity:0;transform:translateX(25px)}
-  78%,87%{opacity:.18;transform:translateX(0)}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    transition:none!important;
-  }
-}
-
-@media(max-width:600px){
-  header{
-    padding:38px 15px 32px!important;
-  }
-  .produto:hover{
-    transform:none;
-  }
-  .rdzx-silhueta{
-    font-size:60px;
-  }
-}
-</style>
-
-<style id="rdzx-terror-visual-extra">
-.categoria{
-  position:relative;
-  overflow:hidden;
-}
-.categoria::before{
-  content:"☠  ARQUIVO SOMBRIO  //  ASSINATURAS";
-  display:block;
-  margin-bottom:10px;
-  color:#8e5260;
-  font:10px monospace;
-  letter-spacing:2px;
-  opacity:.8;
-}
-.categoria::after{
-  content:"👁";
-  position:absolute;
-  right:18px;
-  top:13px;
-  color:#ef233c44;
-  font-size:25px;
-  text-shadow:0 0 15px #ef233c;
-  animation:olhoOculto 5s ease-in-out infinite;
-}
-@keyframes olhoOculto{
-  0%,70%,100%{opacity:.08;transform:scale(.8)}
-  78%,88%{opacity:.7;transform:scale(1)}
-}
-.titulo-terror-glitch{
-  animation:glitchTitulo .25s steps(2);
-}
-@keyframes glitchTitulo{
-  20%{transform:translateX(-3px);text-shadow:3px 0 #ef233c}
-  40%{transform:translateX(3px);text-shadow:-3px 0 #6d5cff}
-  70%{transform:translateX(-1px)}
-}
-.gota-terror{
-  position:fixed;
-  z-index:0;
-  top:-8px;
-  width:3px;
-  height:var(--altura);
-  pointer-events:none;
-  border-radius:0 0 5px 5px;
-  background:linear-gradient(#8e172c,#ef233c66);
-  box-shadow:0 0 8px #a7193277;
-  animation:gotaCaindo var(--tempo) ease-in forwards;
-}
-@keyframes gotaCaindo{
-  from{transform:scaleY(.2);opacity:0}
-  18%{opacity:.75}
-  85%{opacity:.5}
-  to{transform:scaleY(1);opacity:0}
-}
-.sombra-passando{
-  position:fixed;
-  z-index:0;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(90deg,transparent,#000b,transparent);
-  transform:translateX(-120%);
-  animation:sombraPassa 1.2s ease-in-out forwards;
-}
-@keyframes sombraPassa{
-  to{transform:translateX(120%)}
-}
-@media(max-width:700px){
-  .categoria::after{right:12px;font-size:20px}
-}
-</style>
-
-<style id="produto-descricao-terror-css">
-.produto-descricao-terror{
-  min-height:48px;
-  margin:8px 0 13px;
-  padding-left:10px;
-  border-left:2px solid #a71932;
-  color:#aa9ba1;
-  font-size:12px;
-  line-height:1.5;
-}
-.produto:hover .produto-descricao-terror{
-  color:#d1bec4;
-  border-left-color:#ef233c;
-}
-body.claro .produto-descricao-terror{
-  color:#756872;
-  border-left-color:#8d2940;
-}
-</style>
-
-<style id="rdzx-visual-pesado-final">
-body{
-  background:
-    radial-gradient(circle at 50% -15%,#a7193238,transparent 35%),
-    radial-gradient(circle at 0% 70%,#40152b25,transparent 30%),
-    #050507!important;
-}
-header{
-  min-height:330px;
-  display:grid;
-  place-items:center;
-  align-content:center;
-  overflow:hidden;
-  isolation:isolate;
-}
-header h1{
-  max-width:850px;
-  font-size:clamp(36px,8vw,76px)!important;
-  line-height:.98!important;
-  letter-spacing:-2px;
-  text-shadow:
-    0 0 8px #fff4,
-    0 0 25px #a71932,
-    0 0 55px #a7193277!important;
-  animation:entradaPremium .8s ease-out both;
-}
-header p{
-  max-width:650px;
-  font-size:16px!important;
-}
-@keyframes entradaPremium{
-  from{opacity:0;transform:translateY(22px);filter:blur(8px)}
-  to{opacity:1;transform:translateY(0);filter:blur(0)}
-}
-main{
-  width:min(1180px,100%);
-  margin:auto;
-}
-.produto{
-  transform:translateZ(0);
-  backdrop-filter:blur(8px);
-}
-.produto::after{
-  content:"";
-  position:absolute;
-  z-index:2;
-  top:0;
-  left:-80%;
-  width:45%;
-  height:100%;
-  pointer-events:none;
-  background:linear-gradient(90deg,transparent,#fff2,transparent);
-  transform:skewX(-18deg);
-  transition:left .8s ease;
-}
-.produto:hover::after{
-  left:135%;
-}
-.produto-info{
-  position:relative;
-  z-index:3;
-}
-.produto h3{
-  letter-spacing:.2px;
-}
-.produto button{
-  min-height:44px;
-  font-size:13px;
-  letter-spacing:.3px;
-}
-.categoria{
-  box-shadow:
-    inset 0 1px #ffffff10,
-    0 14px 40px #000b,
-    0 0 25px #a7193222!important;
-}
-.rdzx-ponto-visual{
-  position:fixed;
-  z-index:0;
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  pointer-events:none;
-  background:#ef526b;
-  box-shadow:0 0 12px #ef233c;
-  animation:subirPonto var(--duracao) linear infinite;
-}
-@keyframes subirPonto{
-  from{transform:translateY(110vh) translateX(0);opacity:0}
-  15%{opacity:.65}
-  85%{opacity:.2}
-  to{transform:translateY(-10vh) translateX(var(--lado));opacity:0}
-}
-.rdzx-foco-terror{
-  position:fixed;
-  z-index:0;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  pointer-events:none;
-  background:#8e203522;
-  filter:blur(40px);
-  animation:focoMover 14s ease-in-out infinite alternate;
-}
-@keyframes focoMover{
-  from{left:-5%;top:25%}
-  to{left:82%;top:65%}
-}
-@media(max-width:700px){
-  header{min-height:285px}
-  header h1{font-size:clamp(32px,10vw,50px)!important}
-  .rdzx-ponto-visual{opacity:.45}
-}
-</style>
 
 <style id="rdzx-entrada-itens">
 .rdzx-entrada-item{
@@ -979,7 +521,7 @@ header p{
   font-size:17px!important;
 }
 
-.produto-descricao-terror{
+.produto-descricao-RDZX{
   color:#bcaab0!important;
   border-left-color:#ef233c!important;
 }
@@ -1205,7 +747,7 @@ body.claro h3{
 }
 body.claro header p,
 body.claro p,
-body.claro .produto-descricao-terror{
+body.claro .produto-descricao-RDZX{
   color:#65586b!important;
 }
 body.claro .produto,
@@ -1223,7 +765,7 @@ body.claro .precos-promocionais strong{
   color:#6428a8!important;
   text-shadow:none!important;
 }
-body.claro .produto-descricao-terror{
+body.claro .produto-descricao-RDZX{
   border-left-color:#7836a8!important;
 }
 body.claro footer{
@@ -1306,13 +848,13 @@ body.claro footer{
   
 
 <section id="rdzx-destaques-visuais" class="rdzx-faixa-destaque">
-  <div class="faixa-simbolo">☠</div>
+  <div class="faixa-simbolo"></div>
   <div>
     <small>CATÁLOGO RDZX // ACESSO DIGITAL</small>
     <h2>Encontre sua próxima assinatura</h2>
     <p>Escolha seu serviço, confira o valor e fale diretamente com a RDZX STORE.</p>
   </div>
-  <div class="faixa-status">● SISTEMA ONLINE</div>
+  <div class="faixa-status">● LOJA ONLINE</div>
 </section>
 <section class="rdzx-ferramentas">
   <input id="rdzx-busca" type="search" placeholder="🔍 Buscar assinatura...">
@@ -1329,7 +871,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/viki.jpg" alt="Viki Rakuten">
   <div class="produto-info">
-    <h3>Viki Rakuten</h3><p class="produto-descricao-terror">☠ Dramas, séries e conteúdos asiáticos legendados.</p>
+    <h3>Viki Rakuten</h3>
     <div class="precos-promocionais"><del>R$ 39,90</del><strong>R$ 12,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Viki Rakuten" data-preco="R$ 12,00">
       🛒 Comprar
@@ -1340,7 +882,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/apple-tv.jpg" alt="Apple TV">
   <div class="produto-info">
-    <h3>Apple TV</h3><p class="produto-descricao-terror">☠ Filmes, séries e produções exclusivas para assistir online.</p>
+    <h3>Apple TV</h3>
     <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 10,90</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Apple TV" data-preco="R$ 10,90">
       🛒 Comprar
@@ -1351,7 +893,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/tnt-sports.jpg" alt="TNT Sports">
   <div class="produto-info">
-    <h3>TNT Sports</h3><p class="produto-descricao-terror">☠ Conteúdos esportivos e transmissões conforme a disponibilidade do serviço.</p>
+    <h3>TNT Sports</h3>
     <div class="precos-promocionais"><del>R$ 34,90</del><strong>R$ 11,50</strong></div>
     <button onclick="comprarProduto(this)" data-produto="TNT Sports" data-preco="R$ 11,50">
       🛒 Comprar
@@ -1362,7 +904,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/privacy.jpg" alt="Privacy">
   <div class="produto-info">
-    <h3>Privacy</h3><p class="produto-descricao-terror">☠ Serviço digital voltado para privacidade e proteção durante a navegação.</p>
+    <h3>Privacy</h3>
     <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Privacy" data-preco="R$ 9,00">
       🛒 Comprar
@@ -1373,7 +915,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/deezer.jpg" alt="Deezer">
   <div class="produto-info">
-    <h3>Deezer</h3><p class="produto-descricao-terror">☠ Músicas, playlists e conteúdos de áudio para ouvir quando quiser.</p>
+    <h3>Deezer</h3>
     <div class="precos-promocionais"><del>R$ 19,90</del><strong>R$ 9,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Deezer" data-preco="R$ 9,00">
       🛒 Comprar
@@ -1384,7 +926,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/grobo-play.jpg" alt="Grobo Play">
   <div class="produto-info">
-    <h3>Grobo Play</h3><p class="produto-descricao-terror">☠ Conteúdos de entretenimento, séries e programas online.</p>
+    <h3>Grobo Play</h3>
     <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 9,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Grobo Play" data-preco="R$ 9,00">
       🛒 Comprar
@@ -1395,7 +937,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/google-veo.jpg" alt="Google Veo 3">
   <div class="produto-info">
-    <h3>Google Veo 3</h3><p class="produto-descricao-terror">☠ Ferramentas de criação e experimentação com vídeos por inteligência artificial.</p>
+    <h3>Google Veo 3</h3>
     <div class="precos-promocionais"><del>R$ 99,90</del><strong>R$ 45,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Google Veo 3" data-preco="R$ 45,00">
       🛒 Comprar
@@ -1406,7 +948,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/chatgpt.jpg" alt="ChatGPT">
   <div class="produto-info">
-    <h3>ChatGPT</h3><p class="produto-descricao-terror">☠ Assistente inteligente para ideias, textos, estudos e criação.</p>
+    <h3>ChatGPT</h3>
     <div class="precos-promocionais"><del>R$ 79,90</del><strong>R$ 36,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="ChatGPT" data-preco="R$ 36,00">
       🛒 Comprar
@@ -1417,7 +959,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/capcut.jpg" alt="CapCut Pro">
   <div class="produto-info">
-    <h3>CapCut Pro</h3><p class="produto-descricao-terror">☠ Ferramentas para edição de vídeos, efeitos e criação de conteúdo.</p>
+    <h3>CapCut Pro</h3>
     <div class="precos-promocionais"><del>R$ 49,90</del><strong>R$ 22,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="CapCut Pro" data-preco="R$ 22,00">
       🛒 Comprar
@@ -1428,7 +970,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/crunchyroll.jpg" alt="Crunchyroll">
   <div class="produto-info">
-    <h3>Crunchyroll</h3><p class="produto-descricao-terror">☠ Anime, mangás e conteúdos voltados para fãs de animação japonesa.</p>
+    <h3>Crunchyroll</h3>
     <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Crunchyroll" data-preco="R$ 8,00">
       🛒 Comprar
@@ -1439,7 +981,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/spotify.jpg" alt="Spotify Premium">
   <div class="produto-info">
-    <h3>Spotify Premium</h3><p class="produto-descricao-terror">☠ Músicas, playlists e podcasts para ouvir online.</p>
+    <h3>Spotify Premium</h3>
     <div class="precos-promocionais"><del>R$ 24,90</del><strong>R$ 8,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="Spotify Premium" data-preco="R$ 8,00">
       🛒 Comprar
@@ -1450,7 +992,7 @@ body.claro footer{
 <article class="produto">
   <img src="imagens/assinaturas/iptv.jpg" alt="IPTV">
   <div class="produto-info">
-    <h3>IPTV</h3><p class="produto-descricao-terror">☠ Acesso a conteúdos de televisão conforme o plano e a disponibilidade.</p>
+    <h3>IPTV</h3>
     <div class="precos-promocionais"><del>R$ 29,90</del><strong>R$ 12,00</strong></div>
     <button onclick="comprarProduto(this)" data-produto="IPTV" data-preco="R$ 12,00">
       🛒 Comprar
@@ -1667,101 +1209,9 @@ function comprarProduto(botao){
 
 
 
-<script id="rdzx-horror-visual-final-js">
-(function(){
-  var pequeno=window.matchMedia("(max-width:700px)").matches;
-  var reduzido=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if(!reduzido){
-    var quantidade=pequeno?8:18;
 
-    for(var i=0;i<quantidade;i++){
-      var particula=document.createElement("i");
-      particula.className="rdzx-mini-particula";
-      particula.style.left=(Math.random()*100)+"vw";
-      particula.style.setProperty("--tempo",(8+Math.random()*13)+"s");
-      particula.style.setProperty("--desvio",((Math.random()-.5)*150)+"px");
-      particula.style.animationDelay=(-Math.random()*15)+"s";
-      document.body.appendChild(particula);
-    }
 
-    var silhueta=document.createElement("div");
-    silhueta.className="rdzx-silhueta";
-    silhueta.textContent="👁";
-    document.body.appendChild(silhueta);
-  }
-
-  var observador=new IntersectionObserver(function(lista){
-    lista.forEach(function(item){
-      if(item.isIntersecting){
-        item.target.style.opacity="1";
-        item.target.style.transform="translateY(0)";
-      }
-    });
-  },{threshold:.08});
-
-  document.querySelectorAll(".produto,.categoria,.rdzx-info-box").forEach(function(el){
-    el.style.opacity="0";
-    el.style.transform="translateY(12px)";
-    el.style.transition="opacity .5s ease,transform .5s ease";
-    observador.observe(el);
-  });
-})();
-</script>
-
-<script id="rdzx-terror-visual-extra-js">
-(function(){
-  var reduzido=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var celular=window.matchMedia("(max-width:700px)").matches;
-
-  if(reduzido)return;
-
-  function gota(){
-    var el=document.createElement("i");
-    el.className="gota-terror";
-    el.style.left=(Math.random()*100)+"vw";
-    el.style.setProperty("--altura",(10+Math.random()*35)+"px");
-    el.style.setProperty("--tempo",(3+Math.random()*5)+"s");
-    document.body.appendChild(el);
-    setTimeout(function(){el.remove()},9000);
-  }
-
-  function sombra(){
-    var el=document.createElement("div");
-    el.className="sombra-passando";
-    document.body.appendChild(el);
-    setTimeout(function(){el.remove()},1400);
-  }
-
-  function glitch(){
-    var titulos=document.querySelectorAll("h1,h2,.logo");
-    if(!titulos.length)return;
-
-    var alvo=titulos[Math.floor(Math.random()*titulos.length)];
-    alvo.classList.add("titulo-terror-glitch");
-
-    setTimeout(function(){
-      alvo.classList.remove("titulo-terror-glitch");
-    },300);
-  }
-
-  for(var i=0;i<(celular?3:6);i++){
-    setTimeout(gota,Math.random()*5000);
-  }
-
-  setInterval(function(){
-    gota();
-  },celular?9000:6000);
-
-  setInterval(function(){
-    if(Math.random()<.65)sombra();
-  },celular?15000:10000);
-
-  setInterval(function(){
-    glitch();
-  },11000+Math.random()*7000);
-})();
-</script>
 
 <script id="rdzx-visual-pesado-final-js">
 (function(){
@@ -1771,7 +1221,7 @@ function comprarProduto(botao){
   if(reduzido)return;
 
   var foco=document.createElement("div");
-  foco.className="rdzx-foco-terror";
+  foco.className="rdzx-foco-RDZX";
   document.body.appendChild(foco);
 
   var quantidade=celular?7:16;
@@ -2642,6 +2092,100 @@ if("serviceWorker" in navigator){
   });
 }
 </script>
+
+<style id="rdzx-limpeza-total-final">
+/* Remove qualquer elemento antigo de terror */
+[id*="horror"],
+[class*="horror"],
+[id*="terror"],
+[class*="terror"]{
+  display:none!important;
+}
+
+/* Remove caveiras e efeitos decorativos antigos */
+.produto::before,
+.produto::after,
+header::before,
+header::after,
+main::before,
+main::after,
+section::before,
+section::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  box-shadow:none!important;
+}
+
+/* Visual limpo 3D */
+html,body{
+  background:
+    linear-gradient(145deg,#edf7fa 0%,#b9d3dc 42%,#7895a1 100%)!important;
+  color:#17252d!important;
+}
+
+body:not(.claro){
+  background:
+    radial-gradient(circle at 50% 0%,#405966 0%,#17252d 45%,#05080a 100%)!important;
+  color:#f3fbff!important;
+}
+
+header,
+section,
+.rdzx-info-box,
+.produto,
+.checkout-card,
+.pix-card,
+.pix-final-card{
+  border:1px solid #bfe5ef!important;
+  background:
+    linear-gradient(145deg,#566f7b 0%,#293d47 38%,#0c1419 100%)!important;
+  box-shadow:
+    inset 2px 2px 6px #ffffff30,
+    inset -6px -7px 13px #000b,
+    0 4px 0 #9ab8c2,
+    0 10px 0 #15242b,
+    0 22px 35px #000b!important;
+}
+
+body.claro header,
+body.claro section,
+body.claro .rdzx-info-box,
+body.claro .produto,
+body.claro .checkout-card,
+body.claro .pix-card,
+body.claro .pix-final-card{
+  background:
+    linear-gradient(145deg,#ffffff,#e3f0f3 55%,#bfd7de)!important;
+  color:#17252d!important;
+  box-shadow:
+    inset 2px 2px 6px #ffffff,
+    inset -6px -7px 13px #7895a044,
+    0 4px 0 #9bbac3,
+    0 10px 0 #78949e,
+    0 22px 35px #52717d66!important;
+}
+
+button,
+.produto button,
+.checkout-pix,
+.checkout-whatsapp{
+  border:1px solid #c9edf5!important;
+  color:#f5fcff!important;
+  background:linear-gradient(145deg,#607d89,#1a2a33)!important;
+  box-shadow:
+    inset 2px 2px 4px #ffffff35,
+    0 4px 0 #14242c,
+    0 9px 15px #000b!important;
+}
+
+body.claro button,
+body.claro .produto button{
+  color:#17252d!important;
+  background:linear-gradient(145deg,#ffffff,#c9e0e6)!important;
+  text-shadow:none!important;
+}
+</style>
 </body>
 </html>
 
@@ -2838,32 +2382,7 @@ button:active,
 }
 </style>
 
-<script id="rdzx-remover-terror-real">
-document.addEventListener("DOMContentLoaded",function(){
 
-  /* Remove estilos antigos de terror */
-  document.querySelectorAll(
-    'style[id*="horror"],style[id*="terror"],style[id*="visual-pesado"],style[id*="acabamento"],style[id*="visual-extra"]'
-  ).forEach(function(style){
-    style.remove();
-  });
-
-  /* Troca textos com linguagem de terror */
-  document.querySelectorAll("body *").forEach(function(el){
-    if(el.children.length===0 && el.textContent){
-      el.textContent=el.textContent
-        .replace(/☠/g,"")
-        .replace(/ARQUIVO SOMBRIO/gi,"CATÁLOGO RDZX")
-        .replace(/SIGNAL DETECTED/gi,"RDZX STORE ONLINE")
-        .replace(/SISTEMA ONLINE/gi,"LOJA ONLINE");
-    }
-  });
-
-  /* Esconde o botão de tema duplicado */
-  var temaAntigo=document.getElementById("botao-tema");
-  if(temaAntigo)temaAntigo.style.display="none";
-});
-</script>
 
 <style id="rdzx-3d-limpo-final">
 /* Base 3D moderna */
@@ -2929,11 +2448,11 @@ section::after,
 }
 
 /* Ícones decorativos vermelhos */
-section img[src*="horror"],
+section img[src*="RDZX"],
 section img[src*="skull"],
-.horror-mini,
-.horror-core,
-.horror-tela{
+.RDZX-mini,
+.RDZX-core,
+.RDZX-tela{
   display:none!important;
 }
 
