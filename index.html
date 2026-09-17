@@ -5221,3 +5221,45 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 });
 </script>
+
+<script id="rdzx-remover-selos-duplicados">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll(".produto").forEach(function(card){
+
+    var selos=card.querySelectorAll(
+      ".rdzx-preco-especial, .rdzx-preco-todos"
+    );
+
+    var primeiro=null;
+
+    selos.forEach(function(selo){
+      if(!primeiro){
+        primeiro=selo;
+        selo.className="rdzx-preco-unico";
+        selo.textContent="PREÇO ESPECIAL RDZX";
+      }else{
+        selo.remove();
+      }
+    });
+
+  });
+});
+</script>
+
+<style id="rdzx-selo-unico">
+.rdzx-preco-unico{
+  display:inline-flex!important;
+  width:max-content!important;
+  margin:5px 0 7px!important;
+  padding:5px 9px!important;
+  border:1px solid #bdebf5!important;
+  border-radius:20px!important;
+  color:#e9fbff!important;
+  background:linear-gradient(145deg,#5c7d89,#182a33)!important;
+  box-shadow:0 3px 0 #12232b,0 6px 12px #0009!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  letter-spacing:.6px!important;
+}
+</style>
