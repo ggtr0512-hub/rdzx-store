@@ -4073,3 +4073,40 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 }
 </style>
+
+<style id="rdzx-remover-barras-pretas">
+/* Remove barras pretas das capas */
+.produto img{
+  background:transparent!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  box-shadow:none!important;
+}
+
+/* Fundo contínuo do card */
+.produto{
+  background:
+    linear-gradient(145deg,#536d79 0%,#263842 38%,#0c1419 100%)!important;
+}
+
+.produto-info{
+  background:transparent!important;
+}
+
+/* Evita bloco preto separado ao redor da imagem */
+.produto img,
+.produto img::before,
+.produto img::after{
+  border-color:#bfe5ef!important;
+}
+
+/* Mantém o tema claro sem barras */
+body.claro .produto{
+  background:
+    linear-gradient(145deg,#ffffff,#e3f0f3 55%,#bfd7de)!important;
+}
+
+body.claro .produto img{
+  background:transparent!important;
+}
+</style>
