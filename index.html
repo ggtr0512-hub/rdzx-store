@@ -5824,3 +5824,91 @@ body.claro #rdzx-tema-estavel{
 
 })();
 </script>
+
+<style id="rdzx-animacao-subir-descer">
+@keyframes rdzxEntradaScroll3D{
+  0%{
+    opacity:.25;
+    transform:translateY(28px) scale(.96) rotateX(5deg);
+    filter:brightness(.72);
+  }
+  60%{
+    opacity:1;
+    transform:translateY(-4px) scale(1.01) rotateX(-1deg);
+    filter:brightness(1.08);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1) rotateX(0);
+    filter:brightness(1);
+  }
+}
+
+.produto.rdzx-scroll-visivel{
+  animation:rdzxEntradaScroll3D .7s cubic-bezier(.2,.8,.2,1) both!important;
+  transform-origin:center bottom!important;
+}
+
+@media(max-width:600px){
+  .produto.rdzx-scroll-visivel{
+    animation:rdzxEntradaScroll3D .55s ease-out both!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .produto.rdzx-scroll-visivel{
+    animation:none!important;
+  }
+}
+</style>
+
+<script id="rdzx-animacao-subir-descer-js">
+(function(){
+
+  function iniciarAnimacaoScroll(){
+
+    var produtos=document.querySelectorAll(".produto");
+
+    if(!produtos.length)return;
+
+    var observador=new IntersectionObserver(function(entradas){
+
+      entradas.forEach(function(entrada){
+
+        if(entrada.isIntersecting){
+
+          var card=entrada.target;
+
+          /* Reinicia a animacao toda vez que entra na tela */
+          card.classList.remove("rdzx-scroll-visivel");
+
+          void card.offsetWidth;
+
+          card.classList.add("rdzx-scroll-visivel");
+
+        }else{
+
+          /* Permite animar novamente ao subir ou descer */
+          entrada.target.classList.remove("rdzx-scroll-visivel");
+        }
+
+      });
+
+    },{
+      threshold:.16,
+      rootMargin:"-25px 0px -25px 0px"
+    });
+
+    produtos.forEach(function(card){
+      observador.observe(card);
+    });
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",iniciarAnimacaoScroll);
+  }else{
+    iniciarAnimacaoScroll();
+  }
+
+})();
+</script>
