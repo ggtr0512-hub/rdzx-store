@@ -1276,7 +1276,7 @@ body.claro footer{
   overflow:hidden!important;
 }
 </style>
-</head>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#17262e"></head>
 
 <body>
 <button id="rdzx-tema-real" type="button">☀️ Modo claro</button>
@@ -2635,6 +2635,13 @@ function rdzxMoverGaleria(direcao){
   flex-basis:min(430px,100%)!important;
 }
 </style>
+<script id="rdzx-service-worker">
+if("serviceWorker" in navigator){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+</script>
 </body>
 </html>
 
