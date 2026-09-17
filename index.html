@@ -5688,3 +5688,16 @@ body.claro #rdzx-tema-novo{
 
 })();
 </script>
+
+<style id="rdzx-remover-botao-topo">
+#rdzx-tema-novo{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-botao-topo-js">
+document.addEventListener("DOMContentLoaded",function(){
+  var botao=document.getElementById("rdzx-tema-novo");
+  if(botao)botao.remove();
+});
+</script>
