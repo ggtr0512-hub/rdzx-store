@@ -2040,7 +2040,7 @@ function copiarPixFinal(){
     <label>🎟️ Cupom</label>
     <div class="checkout-cupom-linha">
       <input id="checkout-cupom" placeholder="Digite RDZX6 ou RDZX10">
-      <button onclick="aplicarCupom()">Aplicar</button>
+      <button onclick="rdzxAplicarCupomFinal()">Aplicar</button>
     </div>
 
     <div id="checkout-feedback" class="checkout-feedback"></div>
@@ -2508,6 +2508,69 @@ document.addEventListener("DOMContentLoaded",function(){
     }
   });
 });
+</script>
+
+<script id="rdzx-cupom-final-real">
+window.rdzxAplicarCupomFinal=function(){
+
+  var campo=document.getElementById("checkout-cupom");
+  var feedback=document.getElementById("checkout-feedback");
+  var qtdCampo=document.getElementById("checkout-quantidade");
+  var descontoEl=document.getElementById("checkout-desconto");
+  var totalEl=document.getElementById("checkout-total");
+
+  var checkout=window.rdzxCheckout;
+
+  if(!campo || !checkout){
+    return;
+  }
+
+  var codigo=campo.value.trim().toUpperCase();
+  var percentual=0;
+
+  if(codigo==="RDZX6"){
+    percentual=6;
+  }
+
+  if(codigo==="RDZX10"){
+    percentual=10;
+  }
+
+  checkout.cupom=codigo;
+  checkout.descontoPercentual=percentual;
+
+  var quantidade=Math.max(
+    1,
+    Number(qtdCampo?qtdCampo.value:1)||1
+  );
+
+  var original=Number(checkout.preco)*quantidade;
+  var desconto=original*(percentual/100);
+  var total=original-desconto;
+
+  function moeda(valor){
+    return "R$ "+Number(valor).toFixed(2).replace(".",",");
+  }
+
+  if(descontoEl){
+    descontoEl.textContent="-"+moeda(desconto);
+  }
+
+  if(totalEl){
+    totalEl.textContent=moeda(total);
+  }
+
+  if(feedback){
+    if(percentual>0){
+      feedback.textContent=
+        "Cupom "+codigo+" aplicado: "+percentual+"% de desconto.";
+      feedback.style.color="#baffc8";
+    }else{
+      feedback.textContent="Cupom inválido. Use RDZX6 ou RDZX10.";
+      feedback.style.color="#ffd0d0";
+    }
+  }
+};
 </script>
 </body>
 </html>
