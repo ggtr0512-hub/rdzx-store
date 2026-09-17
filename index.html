@@ -3083,3 +3083,174 @@ button:hover{
   }
 }
 </style>
+
+<style id="rdzx-acabamento-bonito-final">
+/* Acabamento geral */
+*{
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh!important;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  letter-spacing:.15px!important;
+}
+
+header{
+  position:relative!important;
+  width:min(1180px,calc(100% - 28px))!important;
+  margin:18px auto 25px!important;
+  padding:28px 22px!important;
+  border:1px solid #a9d6e5!important;
+  border-radius:24px!important;
+  text-align:center!important;
+  background:
+    linear-gradient(145deg,#536d79 0%,#263842 35%,#0d151b 100%)!important;
+  box-shadow:
+    inset 0 2px 3px #ffffff35,
+    0 4px 0 #8daab5,
+    0 10px 0 #101b21,
+    0 22px 38px #000c!important;
+}
+
+header h1{
+  margin:4px 0 8px!important;
+  font-size:clamp(28px,5vw,52px)!important;
+  font-weight:950!important;
+  letter-spacing:-1px!important;
+}
+
+header p{
+  max-width:650px!important;
+  margin:0 auto!important;
+  color:#cce5ee!important;
+  line-height:1.6!important;
+}
+
+/* Conteúdo */
+main{
+  width:min(1180px,calc(100% - 28px))!important;
+  margin:auto!important;
+}
+
+main h2{
+  margin:30px 0 18px!important;
+  font-size:clamp(22px,4vw,34px)!important;
+  text-align:center!important;
+}
+
+main>p{
+  max-width:680px!important;
+  margin:0 auto 25px!important;
+  color:#c4d4da!important;
+  line-height:1.65!important;
+  text-align:center!important;
+}
+
+/* Grade dos produtos */
+.produtos,
+.catalogo,
+.grid,
+main>div{
+  gap:22px!important;
+}
+
+.produto{
+  min-height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  padding:12px!important;
+  border-radius:22px!important;
+}
+
+.produto img{
+  width:100%!important;
+  aspect-ratio:1/1!important;
+  object-fit:cover!important;
+  background:#080c0f!important;
+}
+
+.produto-info{
+  display:flex!important;
+  flex:1!important;
+  flex-direction:column!important;
+  padding:15px 10px 10px!important;
+}
+
+.produto h3{
+  margin:5px 0 9px!important;
+  font-size:18px!important;
+  line-height:1.25!important;
+}
+
+.produto strong{
+  display:block!important;
+  margin:4px 0 12px!important;
+  color:#c8f2ff!important;
+  font-size:22px!important;
+  font-weight:950!important;
+}
+
+.produto p{
+  flex:1!important;
+  color:#bfd0d6!important;
+  line-height:1.5!important;
+}
+
+/* Botão principal */
+.produto button{
+  width:100%!important;
+  min-height:46px!important;
+  margin-top:12px!important;
+  font-size:15px!important;
+  font-weight:900!important;
+}
+
+/* Caixas informativas */
+.rdzx-info-box{
+  max-width:900px!important;
+  margin:28px auto!important;
+  padding:22px!important;
+  color:#d4e5eb!important;
+  line-height:1.65!important;
+}
+
+/* Rodapé */
+footer{
+  width:min(1180px,calc(100% - 28px))!important;
+  margin:40px auto 20px!important;
+  padding:22px!important;
+  border-top:1px solid #7894a366!important;
+  color:#a9bec7!important;
+  text-align:center!important;
+}
+
+/* Remove botão de tema repetido */
+#botao-tema{
+  display:none!important;
+}
+
+/* Mobile */
+@media(max-width:600px){
+  header{
+    margin-top:10px!important;
+    padding:23px 16px!important;
+  }
+
+  main{
+    width:calc(100% - 20px)!important;
+  }
+
+  .produto{
+    border-radius:18px!important;
+  }
+
+  .produto h3{
+    font-size:16px!important;
+  }
+
+  .produto strong{
+    font-size:20px!important;
+  }
+}
+</style>
