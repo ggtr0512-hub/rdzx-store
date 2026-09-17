@@ -2001,6 +2001,199 @@ function copiarPixCodigo(){
   alert("Pix copia e cola copiado.");
 }
 </script>
+
+<button id="rdzx-pix-final" class="checkout-pix" onclick="abrirPixFinal()">
+  💠 Pagar via Pix
+</button>
+
+<div id="pix-final-modal" class="pix-final-fundo">
+  <div class="pix-final-card">
+    <button class="pix-final-fechar" onclick="fecharPixFinal()">×</button>
+    <h2>💠 Pagamento via Pix</h2>
+    <p id="pix-final-produto"></p>
+    <strong id="pix-final-valor"></strong>
+
+    <label>Pix copia e cola</label>
+    <textarea id="pix-final-codigo" readonly></textarea>
+
+    <button onclick="copiarPixFinal()">📋 Copiar código Pix</button>
+
+    <p class="pix-final-aviso">
+      Confira o nome do beneficiário no aplicativo do banco antes de confirmar.
+      Depois envie o comprovante pelo Telegram.
+    </p>
+  </div>
+</div>
+
+<style id="rdzx-pix-final-css">
+.checkout-pix{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border:1px solid #62e89b!important;
+  border-radius:12px;
+  color:#06130b!important;
+  background:#42d681!important;
+  font-weight:900;
+}
+.pix-final-fundo{
+  position:fixed;
+  z-index:6000;
+  inset:0;
+  display:none;
+  place-items:center;
+  padding:16px;
+  background:#000d;
+}
+.pix-final-card{
+  position:relative;
+  width:min(440px,100%);
+  padding:25px;
+  border:1px solid #62e89b;
+  border-radius:20px;
+  color:#fff;
+  background:#0b1510;
+  box-shadow:0 0 40px #42d68166,0 20px 60px #000;
+}
+.pix-final-card h2{
+  color:#baffcf;
+  text-align:center;
+}
+.pix-final-card strong{
+  display:block;
+  margin:14px 0;
+  color:#baffcf;
+  font-size:23px;
+  text-align:center;
+}
+.pix-final-card label{
+  display:block;
+  margin-bottom:6px;
+  color:#c8dacf;
+}
+.pix-final-card textarea{
+  width:100%;
+  min-height:105px;
+  padding:11px;
+  border:1px solid #ffffff22;
+  border-radius:9px;
+  color:#fff;
+  background:#142119;
+  font-size:11px;
+}
+.pix-final-card button:not(.pix-final-fechar){
+  width:100%;
+  margin-top:10px;
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  color:#06130b;
+  background:#62e89b;
+  font-weight:bold;
+}
+.pix-final-fechar{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  color:#fff;
+  background:transparent;
+  font-size:28px;
+}
+.pix-final-aviso{
+  color:#a9b8ad;
+  font-size:12px;
+  line-height:1.5;
+}
+</style>
+
+<script id="rdzx-pix-final-js">
+function pixCrc(texto){
+  var crc=0xFFFF;
+
+  for(var i=0;i<texto.length;i++){
+    crc^=texto.charCodeAt(i)<<8;
+
+    for(var j=0;j<8;j++){
+      crc=(crc&0x8000)?
+        ((crc<<1)^0x1021)&0xFFFF:
+        (crc<<1)&0xFFFF;
+    }
+  }
+
+  return crc.toString(16).toUpperCase().padStart(4,"0");
+}
+
+function pixCampo(id,valor){
+  var bytes=new TextEncoder().encode(valor).length;
+  return id+String(bytes).padStart(2,"0")+valor;
+}
+
+function gerarPixFinal(valor){
+  var chave=window.RDZX_PIX.chave;
+  var nome=(window.RDZX_PIX.beneficiario||"RDZX STORE")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    .slice(0,25).toUpperCase();
+
+  var cidade="RDZX STORE".slice(0,15).toUpperCase();
+  var valorPix=Number(valor).toFixed(2);
+
+  var conta=
+    pixCampo("00","BR.GOV.BCB.PIX")+
+    pixCampo("01",chave);
+
+  var dados=
+    pixCampo("00","01")+
+    pixCampo("26",conta)+
+    pixCampo("52","0000")+
+    pixCampo("53","986")+
+    pixCampo("54",valorPix)+
+    pixCampo("58","BR")+
+    pixCampo("59",nome)+
+    pixCampo("60",cidade)+
+    pixCampo("62",pixCampo("05","***"));
+
+  return dados+"6304"+pixCrc(dados+"6304");
+}
+
+function abrirPixFinal(){
+  if(!window.RDZX_PIX || !window.RDZX_PIX.chave){
+    alert("A chave Pix nao foi configurada.");
+    return;
+  }
+
+  var quantidade=Math.max(
+    1,
+    Number(document.getElementById("checkout-quantidade").value)||1
+  );
+
+  var original=rdzxCheckout.preco*quantidade;
+  var desconto=original*(rdzxCheckout.descontoPercentual/100);
+  var total=Math.max(0,original-desconto);
+
+  document.getElementById("pix-final-produto").textContent=
+    rdzxCheckout.produto+" — Quantidade: "+quantidade;
+
+  document.getElementById("pix-final-valor").textContent=
+    dinheiro(total);
+
+  document.getElementById("pix-final-codigo").value=
+    gerarPixFinal(total);
+
+  document.getElementById("pix-final-modal").style.display="grid";
+}
+
+function fecharPixFinal(){
+  document.getElementById("pix-final-modal").style.display="none";
+}
+
+function copiarPixFinal(){
+  navigator.clipboard.writeText(
+    document.getElementById("pix-final-codigo").value
+  );
+  alert("Código Pix copiado.");
+}
+</script>
 </body>
 </html>
 
