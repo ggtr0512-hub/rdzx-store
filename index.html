@@ -883,6 +883,86 @@ body.claro .rdzx-entrada-status{
   background:#ffffffaa;
 }
 </style>
+
+<style id="rdzx-seguranca-css">
+.rdzx-seguranca{
+  width:min(900px,calc(100% - 24px));
+  margin:25px auto;
+  padding:20px;
+  border:1px solid #bfe7f2;
+  border-radius:20px;
+  background:linear-gradient(145deg,#344c57,#10191f);
+  box-shadow:
+    inset 2px 2px 5px #ffffff25,
+    inset -5px -6px 12px #000b,
+    0 4px 0 #7896a1,
+    0 13px 25px #000b;
+}
+
+.rdzx-seguranca-titulo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+  color:#effbff;
+}
+
+.rdzx-seguranca-titulo>span{
+  font-size:30px;
+}
+
+.rdzx-seguranca-titulo strong,
+.rdzx-seguranca-titulo small{
+  display:block;
+}
+
+.rdzx-seguranca-titulo small{
+  margin-top:3px;
+  color:#b9dce6;
+}
+
+.rdzx-seguranca-itens{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.rdzx-seguranca-itens div{
+  padding:13px;
+  border:1px solid #b8dfea55;
+  border-radius:13px;
+  background:#0d171d99;
+}
+
+.rdzx-seguranca-itens b,
+.rdzx-seguranca-itens span{
+  display:block;
+}
+
+.rdzx-seguranca-itens b{
+  color:#eafaff;
+  margin-bottom:5px;
+}
+
+.rdzx-seguranca-itens span{
+  color:#b8d0d8;
+  font-size:12px;
+  line-height:1.45;
+}
+
+.rdzx-seguranca-aviso{
+  margin:16px 0 0;
+  color:#c9e7ee;
+  font-size:12px;
+  line-height:1.5;
+}
+
+@media(max-width:600px){
+  .rdzx-seguranca-itens{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -904,6 +984,42 @@ body.claro .rdzx-entrada-status{
 
 </header>
 
+
+<section id="rdzx-seguranca-loja" class="rdzx-seguranca">
+  <div class="rdzx-seguranca-titulo">
+    <span>🔒</span>
+    <div>
+      <strong>Compra com mais segurança</strong>
+      <small>Transparência em cada etapa</small>
+    </div>
+  </div>
+
+  <div class="rdzx-seguranca-itens">
+    <div>
+      <b>🌐 Conexão protegida</b>
+      <span>A loja utiliza conexão HTTPS no acesso.</span>
+    </div>
+
+    <div>
+      <b>🛡️ Sem senha bancária</b>
+      <span>Nunca informe senha, token ou código bancário na loja.</span>
+    </div>
+
+    <div>
+      <b>💠 Conferência manual</b>
+      <span>O pagamento Pix é confirmado somente após a conferência no banco.</span>
+    </div>
+
+    <div>
+      <b>📩 Atendimento</b>
+      <span>Envie o comprovante pelo Telegram após realizar o pagamento.</span>
+    </div>
+  </div>
+
+  <p class="rdzx-seguranca-aviso">
+    Antes de confirmar o Pix, confira o nome do beneficiário no aplicativo do seu banco.
+  </p>
+</section>
 <main>
   <div class="categoria">
     <strong>💎 Categoria: Assinaturas</strong><br>
