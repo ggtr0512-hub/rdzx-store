@@ -6182,3 +6182,38 @@ document.addEventListener("DOMContentLoaded",function(){
 
 });
 </script>
+
+<style id="rdzx-remover-animacao-scroll">
+/* Desativa animacao acionada pela rolagem */
+.produto.rdzx-scroll-visivel,
+.rdzx-secao-scroll-visivel{
+  animation:none!important;
+  transform:none!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+/* Mantem os elementos estaveis durante a rolagem */
+.produto,
+.rdzx-seguranca,
+.rdzx-info-box,
+.rdzx-comunidade,
+main > section{
+  will-change:auto!important;
+}
+</style>
+
+<script id="rdzx-remover-animacao-scroll-js">
+document.addEventListener("DOMContentLoaded",function(){
+
+  document.querySelectorAll(
+    ".produto.rdzx-scroll-visivel, .rdzx-secao-scroll-visivel"
+  ).forEach(function(el){
+    el.classList.remove(
+      "rdzx-scroll-visivel",
+      "rdzx-secao-scroll-visivel"
+    );
+  });
+
+});
+</script>
