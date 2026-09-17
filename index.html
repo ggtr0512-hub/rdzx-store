@@ -3729,3 +3729,48 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 });
 </script>
+
+<style id="rdzx-corrigir-tres-fotos">
+/* Mostra novamente as 3 fotos */
+#rdzx-carrossel-comunidade .rdzx-feedback:nth-child(n+2){
+  display:block!important;
+}
+
+/* Mostra as setas no computador */
+#rdzx-carrossel-comunidade .rdzx-seta{
+  display:block!important;
+}
+
+/* Mantém a foto inteira, sem corte */
+#rdzx-carrossel-comunidade .rdzx-feedback img{
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  display:block!important;
+  background:#05080b!important;
+}
+
+/* Cards horizontais completos */
+#rdzx-carrossel-comunidade .rdzx-feedback{
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+/* No celular, passa para o lado pelo toque */
+@media(max-width:600px){
+  #rdzx-carrossel-comunidade .rdzx-galeria{
+    justify-content:flex-start!important;
+    overflow-x:auto!important;
+  }
+
+  #rdzx-carrossel-comunidade .rdzx-seta{
+    display:none!important;
+  }
+
+  #rdzx-carrossel-comunidade .rdzx-feedback{
+    flex:0 0 88vw!important;
+  }
+}
+</style>
