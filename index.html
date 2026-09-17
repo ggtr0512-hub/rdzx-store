@@ -4745,3 +4745,142 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 });
 </script>
+
+<style id="rdzx-carrossel-story-final">
+.rdzx-galeria{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  scroll-behavior:smooth!important;
+  scroll-snap-type:x mandatory!important;
+}
+
+.rdzx-feedback{
+  flex:0 0 100%!important;
+  width:100%!important;
+  scroll-snap-align:center!important;
+  overflow:hidden!important;
+}
+
+.rdzx-feedback img{
+  display:block!important;
+  width:100%!important;
+  height:520px!important;
+  max-height:70vh!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#05080b!important;
+  border:0!important;
+  cursor:pointer!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  -webkit-touch-callout:none!important;
+}
+
+.rdzx-carrossel-area .rdzx-seta{
+  display:flex!important;
+  position:relative!important;
+  z-index:10!important;
+  flex:0 0 42px!important;
+  width:42px!important;
+  height:48px!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+@media(max-width:600px){
+  .rdzx-feedback{
+    flex-basis:100%!important;
+  }
+
+  .rdzx-feedback img{
+    height:68vh!important;
+    max-height:620px!important;
+    object-fit:contain!important;
+  }
+
+  .rdzx-carrossel-area .rdzx-seta{
+    flex:0 0 36px!important;
+    width:36px!important;
+    height:44px!important;
+  }
+}
+</style>
+
+<script id="rdzx-carrossel-story-js">
+(function(){
+
+  if(window.rdzxCarrosselTimer){
+    clearInterval(window.rdzxCarrosselTimer);
+  }
+
+  var galeria=document.getElementById("rdzx-galeria");
+  if(!galeria)return;
+
+  var cards=galeria.querySelectorAll(".rdzx-feedback");
+  if(!cards.length)return;
+
+  var indice=0;
+  var pausado=false;
+  var segurando=false;
+
+  function irParaFoto(numero){
+    indice=(numero+cards.length)%cards.length;
+
+    galeria.scrollTo({
+      left:cards[indice].offsetLeft-galeria.offsetLeft,
+      top:0,
+      behavior:"smooth"
+    });
+  }
+
+  window.rdzxMoverGaleria=function(direcao){
+    pausado=true;
+    irParaFoto(indice+direcao);
+
+    clearTimeout(window.rdzxRetomarCarrossel);
+
+    window.rdzxRetomarCarrossel=setTimeout(function(){
+      pausado=false;
+    },2500);
+  };
+
+  function proximaFoto(){
+    if(!pausado && !segurando){
+      irParaFoto(indice+1);
+    }
+  }
+
+  window.rdzxCarrosselTimer=setInterval(proximaFoto,5000);
+
+  cards.forEach(function(card){
+
+    function pausar(){
+      segurando=true;
+      pausado=true;
+    }
+
+    function continuar(){
+      segurando=false;
+
+      clearTimeout(window.rdzxRetomarCarrossel);
+
+      window.rdzxRetomarCarrossel=setTimeout(function(){
+        pausado=false;
+      },1200);
+    }
+
+    card.addEventListener("pointerdown",pausar);
+    card.addEventListener("pointerup",continuar);
+    card.addEventListener("pointercancel",continuar);
+    card.addEventListener("pointerleave",continuar);
+
+    card.addEventListener("touchstart",pausar,{passive:true});
+    card.addEventListener("touchend",continuar,{passive:true});
+  });
+
+})();
+</script>
