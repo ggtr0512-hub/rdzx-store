@@ -7267,3 +7267,91 @@ document.addEventListener("DOMContentLoaded",function(){
   });
 });
 </script>
+
+<script id="rdzx-cupons-funcao-final">
+window.addEventListener("click",function(event){
+
+  var botao=event.target.closest(
+    "#checkout-cupom + button, .checkout-cupom-linha button"
+  );
+
+  if(!botao)return;
+
+  event.preventDefault();
+  event.stopImmediatePropagation();
+
+  var campo=document.getElementById("checkout-cupom");
+  var feedback=document.getElementById("checkout-feedback");
+  var descontoEl=document.getElementById("checkout-desconto");
+  var totalEl=document.getElementById("checkout-total");
+  var qtdEl=document.getElementById("checkout-quantidade");
+  var checkout=window.rdzxCheckout;
+
+  if(!campo || !checkout)return;
+
+  var digitado=campo.value.trim().toUpperCase();
+  var codigo=digitado.replace(/[\s-]/g,"");
+
+  var quantidade=Math.max(
+    1,
+    Number(qtdEl?qtdEl.value:1)||1
+  );
+
+  var original=Number(checkout.preco)*quantidade;
+  var desconto=0;
+  var total=original;
+  var percentual=0;
+
+  if(codigo==="RDZX6"){
+    percentual=6;
+    desconto=original*.06;
+    total=original-desconto;
+  }else if(codigo==="RDZX10"){
+    percentual=10;
+    desconto=original*.10;
+    total=original-desconto;
+  }else if(codigo==="V9XQ4K7MP2ZR"){
+    percentual=100;
+    desconto=original;
+    total=0;
+  }else if(codigo==="RDZX7KQ4M9XP"){
+    total=1;
+    desconto=Math.max(0,original-1);
+    percentual=original>0?(desconto/original)*100:0;
+  }else if(codigo==="K9QXMZRX4VTP"){
+    total=.09;
+    desconto=Math.max(0,original-total);
+    percentual=original>0?(desconto/original)*100:0;
+  }else{
+    checkout.cupom="";
+    checkout.descontoPercentual=0;
+
+    if(feedback){
+      feedback.textContent="Cupom inválido.";
+      feedback.style.color="#ffd0d0";
+    }
+
+    if(descontoEl)descontoEl.textContent="-R$ 0,00";
+    if(totalEl)totalEl.textContent=
+      "R$ "+original.toFixed(2).replace(".",",");
+
+    return;
+  }
+
+  checkout.cupom=digitado;
+  checkout.descontoPercentual=percentual;
+
+  function moeda(valor){
+    return "R$ "+Number(valor).toFixed(2).replace(".",",");
+  }
+
+  if(descontoEl)descontoEl.textContent="-"+moeda(desconto);
+  if(totalEl)totalEl.textContent=moeda(total);
+
+  if(feedback){
+    feedback.textContent="Cupom aplicado.";
+    feedback.style.color="#baffc8";
+  }
+
+},true);
+</script>
