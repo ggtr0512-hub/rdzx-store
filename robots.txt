@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ggtr0512-hub.github.io/rdzx-store/sitemap.xml
