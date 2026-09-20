@@ -532,7 +532,11 @@ function render(){
   "Spotify Premium":["6.327","9.541"],
   "IPTV":["4.892","8.216"],
   "Disney+":["3.716","6.483"],
-  "HBO Max":["4.275","7.692"]
+  "HBO Max":["4.275","7.692"],
+  "Netflix":["","31.371"],
+  "YouTube Premium":["","147K"],
+  "Prime Video":["","6.391"],
+  "ChatGPT":["","73.916"]
 };
 
   var q=buscaEl.value.toLowerCase();
@@ -577,7 +581,7 @@ function render(){
       if(estoque[p[0]]){
         var indicador=document.createElement("div");
         indicador.className="rdzx-indicadores-populares-confirmados";
-        indicador.innerHTML="<span>🟢 Disponível: "+estoque[p[0]][0]+"</span><b>🔥 Vendido: "+estoque[p[0]][1]+"</b>";
+        indicador.innerHTML="<span>🟢 Disponível"+(estoque[p[0]][0]?": "+estoque[p[0]][0]:"")+"</span><b>🔥 Vendido: "+estoque[p[0]][1]+"</b>";
         info.appendChild(indicador);
       }
 
