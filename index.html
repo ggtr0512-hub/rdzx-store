@@ -4557,6 +4557,167 @@ document.addEventListener("click",function(event){
 }
 </style>
 
+
+<style id="rdzx-botoes-reconstruidos-final">
+.produto-info{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:9px!important;
+  min-height:0!important;
+}
+
+.produto-info>button{
+  position:static!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:100%!important;
+  min-height:46px!important;
+  margin:0!important;
+  order:initial!important;
+}
+
+.rdzx-comprar-reconstruido{
+  order:1!important;
+}
+
+.rdzx-detalhes-reconstruido{
+  order:2!important;
+  color:#eafaff!important;
+  background:#173548!important;
+}
+
+#rdzx-modal-detalhes-reconstruido{
+  position:fixed;
+  inset:0;
+  z-index:100002;
+  display:none;
+  align-items:flex-start;
+  justify-content:center;
+  overflow:auto;
+  padding:15px 9px 90px;
+  background:#000d;
+}
+
+#rdzx-modal-detalhes-reconstruido.aberto{
+  display:flex;
+}
+
+#rdzx-modal-detalhes-reconstruido .caixa{
+  width:min(520px,100%);
+  max-height:calc(100dvh - 28px);
+  overflow:auto;
+  padding:18px;
+  border:1px solid #42ddff66;
+  border-radius:22px;
+  color:#f4fbff;
+  background:#0d1821;
+}
+
+#rdzx-modal-detalhes-reconstruido img{
+  display:block;
+  width:100%;
+  max-height:290px;
+  object-fit:contain!important;
+  background:#050b11;
+  border-radius:15px;
+}
+
+#rdzx-modal-detalhes-reconstruido button{
+  width:100%;
+  margin-top:10px;
+  min-height:44px;
+  border:0;
+  border-radius:12px;
+  color:#fff;
+  background:#167ec1;
+  font-weight:800;
+}
+</style>
+
+<div id="rdzx-modal-detalhes-reconstruido">
+  <div class="caixa">
+    <button id="rdzx-fechar-detalhes-reconstruido" type="button">Fechar ×</button>
+    <img id="rdzx-foto-detalhes-reconstruido" alt="">
+    <h2 id="rdzx-nome-detalhes-reconstruido"></h2>
+    <strong id="rdzx-preco-detalhes-reconstruido"></strong>
+    <p id="rdzx-texto-detalhes-reconstruido"></p>
+    <button id="rdzx-comprar-detalhes-reconstruido" type="button">🛒 Comprar</button>
+  </div>
+</div>
+
+<script id="rdzx-botoes-reconstruidos-final-js">
+(function(){
+  function montar(){
+    document.querySelectorAll(".produto").forEach(function(card){
+      var info=card.querySelector(".produto-info");
+      var titulo=card.querySelector("h3");
+      if(!info || !titulo)return;
+      if(card.dataset.rdzxReconstruido==="1")return;
+
+      var antigo=card.querySelector("button[data-produto]");
+      var nome=antigo ? antigo.getAttribute("data-produto") : titulo.textContent.trim();
+      var preco=antigo ? antigo.getAttribute("data-preco") : "";
+      var foto=card.querySelector("img");
+      var descricao=card.querySelector("p");
+
+      info.querySelectorAll("button").forEach(function(btn){btn.remove()});
+
+      var comprar=document.createElement("button");
+      comprar.type="button";
+      comprar.className="rdzx-comprar-reconstruido";
+      comprar.textContent="🛒 Comprar";
+      comprar.setAttribute("data-produto",nome);
+      comprar.setAttribute("data-preco",preco);
+
+      var detalhes=document.createElement("button");
+      detalhes.type="button";
+      detalhes.className="rdzx-detalhes-reconstruido";
+      detalhes.textContent="ℹ️ Ver detalhes";
+
+      info.appendChild(comprar);
+      info.appendChild(detalhes);
+      card.dataset.rdzxReconstruido="1";
+
+      comprar.addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if(typeof window.comprarProduto==="function"){
+          window.comprarProduto(comprar);
+        }
+      });
+
+      detalhes.addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        document.getElementById("rdzx-foto-detalhes-reconstruido").src=
+          foto ? foto.src : "";
+        document.getElementById("rdzx-nome-detalhes-reconstruido").textContent=nome;
+        document.getElementById("rdzx-preco-detalhes-reconstruido").textContent=preco;
+        document.getElementById("rdzx-texto-detalhes-reconstruido").textContent=
+          descricao ? descricao.textContent.trim() :
+          "Confira as informações e a disponibilidade deste produto.";
+
+        document.getElementById("rdzx-modal-detalhes-reconstruido")
+          .classList.add("aberto");
+
+        document.getElementById("rdzx-comprar-detalhes-reconstruido")
+          .onclick=function(){
+            document.getElementById("rdzx-modal-detalhes-reconstruido")
+              .classList.remove("aberto");
+            comprar.click();
+          };
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded",montar);
+  setTimeout(montar,900);
+})();
+</script>
+
 </body>
 </html>
 
