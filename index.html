@@ -555,6 +555,54 @@ summary::first-letter{
 }
 </style>
 
+
+<style id="rdzx-carrinho-flutuante-produto">
+.card{
+  position:relative!important;
+}
+
+.rdzx-card-cart{
+  position:absolute!important;
+  top:12px!important;
+  right:12px!important;
+  z-index:15!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:46px!important;
+  height:46px!important;
+  padding:0!important;
+  border:2px solid rgba(255,255,255,.75)!important;
+  border-radius:50%!important;
+  color:#fff!important;
+  background:linear-gradient(145deg,#168cff,#075a9b)!important;
+  box-shadow:0 7px 18px #000b,0 0 18px #168cff66!important;
+  font-size:21px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+  transition:transform .2s ease,background .2s ease,box-shadow .2s ease!important;
+}
+
+.rdzx-card-cart:hover{
+  transform:scale(1.1)!important;
+  background:linear-gradient(145deg,#42ddff,#0873c7)!important;
+  box-shadow:0 9px 25px #000c,0 0 25px #42ddff88!important;
+}
+
+.rdzx-card-cart:active{
+  transform:scale(.92)!important;
+}
+
+@media(max-width:600px){
+  .rdzx-card-cart{
+    top:10px!important;
+    right:10px!important;
+    width:43px!important;
+    height:43px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo">RDZX <b>STORE</b></div><nav><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#suporte">Suporte</a></nav><div class="actions"><button class="icon" id="tema">☾</button></div></div></header>
@@ -1462,6 +1510,45 @@ let categorias=[...new Set(produtos.map(p=>p[1]))];window.render=render;categori
   if(grid){
     new MutationObserver(function(){
       decorate();
+    }).observe(grid,{childList:true});
+  }
+})();
+</script>
+
+
+<script id="rdzx-carrinho-flutuante-produto-js">
+(function(){
+  function adicionarBotoesCarrinho(){
+    document.querySelectorAll("#produtos-grid .card").forEach(function(card){
+      if(card.querySelector(".rdzx-card-cart"))return;
+
+      var comprar=card.querySelector(".buy");
+      var adicionar=card.querySelector(".rdzx-add-cart");
+      if(!comprar || !adicionar)return;
+
+      var botao=document.createElement("button");
+      botao.type="button";
+      botao.className="rdzx-card-cart";
+      botao.title="Adicionar este produto ao carrinho";
+      botao.setAttribute("aria-label","Adicionar este produto ao carrinho");
+      botao.textContent="🛒";
+
+      botao.onclick=function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        adicionar.click();
+      };
+
+      card.appendChild(botao);
+    });
+  }
+
+  adicionarBotoesCarrinho();
+
+  var grid=document.getElementById("produtos-grid");
+  if(grid){
+    new MutationObserver(function(){
+      adicionarBotoesCarrinho();
     }).observe(grid,{childList:true});
   }
 })();
