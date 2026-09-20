@@ -4238,6 +4238,40 @@ document.addEventListener("DOMContentLoaded",function(){
 }
 </style>
 
+
+<style id="rdzx-descricao-apenas-no-detalhes-final">
+/* Descrição completa aparece somente em Ver detalhes */
+.produto .rdzx-descricao-completa{
+  display:none!important;
+}
+
+.rdzx-detalhes-descricao{
+  display:block!important;
+  white-space:pre-line!important;
+  line-height:1.7!important;
+  font-size:15px!important;
+  color:#d8e9f0!important;
+}
+</style>
+
+<script id="rdzx-descricao-apenas-no-detalhes-final-js">
+document.addEventListener("click",function(event){
+  var botao=event.target.closest(".rdzx-ver-detalhes");
+  if(!botao)return;
+
+  var card=botao.closest(".produto");
+  if(!card)return;
+
+  var texto=card.getAttribute("data-rdzx-descricao");
+  if(!texto)return;
+
+  setTimeout(function(){
+    var campo=document.querySelector(".rdzx-detalhes-descricao");
+    if(campo)campo.textContent=texto;
+  },100);
+},true);
+</script>
+
 </body>
 </html>
 
