@@ -4403,6 +4403,106 @@ document.addEventListener("click",function(event){
 })();
 </script>
 
+
+<style id="rdzx-botoes-consultar-copiar-final">
+.rdzx-acoes-extras-detalhes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin:9px 0;
+}
+
+.rdzx-acoes-extras-detalhes button{
+  width:100%!important;
+  padding:11px 7px!important;
+  border:1px solid #42ddff55!important;
+  border-radius:12px!important;
+  color:#eafaff!important;
+  background:#123043!important;
+  font-weight:800!important;
+}
+</style>
+
+<script id="rdzx-botoes-consultar-copiar-final">
+(function(){
+  function nome(modal){
+    var el=modal.querySelector(
+      ".rdzx-detalhes-nome,#rdzx-detalhes-nome-estavel"
+    );
+    return el ? el.textContent.trim() : "Produto";
+  }
+
+  function preco(modal){
+    var el=modal.querySelector(
+      ".rdzx-detalhes-preco,#rdzx-detalhes-preco-estavel"
+    );
+    return el ? el.textContent.trim() : "";
+  }
+
+  function adicionar(modal){
+    if(modal.querySelector(".rdzx-acoes-extras-detalhes"))return;
+
+    var caixa=modal.querySelector(
+      ".rdzx-detalhes-card,.caixa"
+    );
+    if(!caixa)return;
+
+    var grupo=document.createElement("div");
+    grupo.className="rdzx-acoes-extras-detalhes";
+    grupo.innerHTML=
+      '<button type="button" class="rdzx-consultar-disponibilidade">💬 Consultar disponibilidade</button>'+
+      '<button type="button" class="rdzx-copiar-produto-preco">📋 Copiar produto e preço</button>';
+
+    var comprar=caixa.querySelector(
+      ".rdzx-detalhes-comprar,#rdzx-detalhes-comprar-estavel"
+    );
+
+    if(comprar)caixa.insertBefore(grupo,comprar);
+    else caixa.appendChild(grupo);
+
+    grupo.querySelector(".rdzx-consultar-disponibilidade").onclick=function(){
+      var produto=nome(modal);
+      var valor=preco(modal);
+      var mensagem="Olá! Gostaria de consultar a disponibilidade de "+produto+
+        (valor ? " — "+valor : "")+".";
+      window.open(
+        "https://t.me/rdzxsuporte?text="+encodeURIComponent(mensagem),
+        "_blank"
+      );
+    };
+
+    grupo.querySelector(".rdzx-copiar-produto-preco").onclick=function(){
+      var texto=nome(modal)+(preco(modal)?" — "+preco(modal):"");
+
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(texto).then(function(){
+          alert("Produto e preço copiados.");
+        });
+      }else{
+        prompt("Copie as informações:",texto);
+      }
+    };
+  }
+
+  function verificar(){
+    document.querySelectorAll(
+      ".rdzx-detalhes-fundo,#rdzx-detalhes-estavel"
+    ).forEach(adicionar);
+  }
+
+  document.addEventListener("click",function(){
+    setTimeout(verificar,120);
+  },true);
+
+  new MutationObserver(verificar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+
+  setTimeout(verificar,800);
+})();
+</script>
+
 </body>
 </html>
 
