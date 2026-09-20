@@ -4753,6 +4753,43 @@ document.addEventListener("click",function(event){
 })();
 </script>
 
+
+<style id="rdzx-remover-todos-detalhes-final">
+.rdzx-ver-detalhes,
+.rdzx-detalhes-reconstruido,
+.rdzx-detalhes-comprar,
+#rdzx-modal-detalhes-reconstruido,
+.rdzx-detalhes-fundo{
+  display:none!important;
+}
+</style>
+
+<script id="rdzx-remover-todos-detalhes-final">
+(function(){
+  function remover(){
+    document.querySelectorAll(
+      ".rdzx-ver-detalhes,"+
+      ".rdzx-detalhes-reconstruido,"+
+      ".rdzx-detalhes-comprar,"+
+      "#rdzx-modal-detalhes-reconstruido,"+
+      ".rdzx-detalhes-fundo"
+    ).forEach(function(el){
+      el.remove();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded",remover);
+  setTimeout(remover,300);
+  setTimeout(remover,900);
+  setTimeout(remover,1800);
+
+  new MutationObserver(remover).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
 </body>
 </html>
 
