@@ -103,6 +103,195 @@ section{padding:35px 0}.head{display:flex;align-items:end;justify-content:space-
 }
 </style>
 
+
+<style id="rdzx-home-3d-premium">
+/* Visual 3D exclusivo da Home e dos cards */
+:root{
+  --rdzx-cyan:#42ddff;
+  --rdzx-blue:#168cff;
+  --rdzx-bg:#050b11;
+  --rdzx-card:#0d1b26;
+  --rdzx-line:rgba(66,221,255,.22);
+}
+
+body{
+  background:
+    radial-gradient(circle at 10% 5%,rgba(0,180,255,.16),transparent 28rem),
+    radial-gradient(circle at 90% 20%,rgba(0,100,255,.12),transparent 26rem),
+    linear-gradient(145deg,#03070b,#08131d 48%,#04080d)!important;
+  color:#f2fbff!important;
+}
+
+header{
+  position:sticky!important;
+  top:10px!important;
+  z-index:100!important;
+  margin:10px auto!important;
+  width:min(1180px,calc(100% - 20px))!important;
+  border:1px solid var(--rdzx-line)!important;
+  border-radius:22px!important;
+  background:rgba(7,18,28,.78)!important;
+  backdrop-filter:blur(18px)!important;
+  box-shadow:0 15px 45px #0008, inset 0 1px #ffffff12!important;
+}
+
+header a,
+header button{
+  transition:.25s ease!important;
+}
+
+header a:hover,
+header button:hover{
+  color:var(--rdzx-cyan)!important;
+  transform:translateY(-2px)!important;
+}
+
+main>section:first-child,
+main>div:first-child{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid var(--rdzx-line)!important;
+  border-radius:30px!important;
+  background:
+    linear-gradient(135deg,rgba(19,62,84,.8),rgba(5,15,24,.9) 58%),
+    radial-gradient(circle at 80% 20%,#168cff44,transparent 20rem)!important;
+  box-shadow:0 25px 80px #0009,inset 0 1px #ffffff16!important;
+  transform:translateZ(0)!important;
+}
+
+main>section:first-child:after,
+main>div:first-child:after{
+  content:""!important;
+  position:absolute!important;
+  inset:-40%!important;
+  pointer-events:none!important;
+  background:linear-gradient(110deg,transparent 42%,#ffffff0d 50%,transparent 58%)!important;
+  transform:rotate(10deg)!important;
+  animation:rdzx-brilho 8s linear infinite!important;
+}
+
+@keyframes rdzx-brilho{
+  from{transform:translateX(-35%) rotate(10deg)}
+  to{transform:translateX(35%) rotate(10deg)}
+}
+
+article,
+#produtos-grid>div,
+#produtos-grid>article{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid var(--rdzx-line)!important;
+  border-radius:22px!important;
+  background:linear-gradient(145deg,#132735,#09131c)!important;
+  box-shadow:
+    0 18px 35px #0008,
+    inset 0 1px #ffffff12,
+    inset 0 -1px #0008!important;
+  transform:translateY(0) perspective(900px) rotateX(0)!important;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease!important;
+}
+
+article:hover,
+#produtos-grid>div:hover,
+#produtos-grid>article:hover{
+  transform:translateY(-8px) perspective(900px) rotateX(2deg)!important;
+  border-color:#42ddff88!important;
+  box-shadow:
+    0 28px 55px #000b,
+    0 0 28px #168cff22,
+    inset 0 1px #ffffff20!important;
+}
+
+article img,
+#produtos-grid img{
+  display:block!important;
+  width:100%!important;
+  aspect-ratio:16/10!important;
+  object-fit:cover!important;
+  border-radius:16px!important;
+  filter:saturate(1.08) contrast(1.04)!important;
+  transition:transform .35s ease,filter .35s ease!important;
+}
+
+article:hover img,
+#produtos-grid>div:hover img,
+#produtos-grid>article:hover img{
+  transform:scale(1.045)!important;
+  filter:saturate(1.2) contrast(1.08)!important;
+}
+
+article button,
+#produtos-grid button,
+#categorias-grid button{
+  border:1px solid #42ddff66!important;
+  border-radius:12px!important;
+  background:linear-gradient(135deg,#168cff,#075a9b)!important;
+  color:#fff!important;
+  font-weight:900!important;
+  box-shadow:0 8px 18px #006dba44,inset 0 1px #ffffff33!important;
+  transition:.22s ease!important;
+}
+
+article button:hover,
+#produtos-grid button:hover,
+#categorias-grid button:hover{
+  transform:translateY(-3px)!important;
+  box-shadow:0 12px 25px #008dff66,inset 0 1px #ffffff55!important;
+}
+
+#categorias-grid button{
+  min-height:82px!important;
+  background:linear-gradient(145deg,#122f42,#0b1822)!important;
+  text-align:left!important;
+}
+
+input,
+select{
+  border:1px solid #315565!important;
+  border-radius:13px!important;
+  background:#091722!important;
+  color:#effcff!important;
+  box-shadow:inset 0 2px 8px #0008!important;
+}
+
+input:focus,
+select:focus{
+  outline:none!important;
+  border-color:var(--rdzx-cyan)!important;
+  box-shadow:0 0 0 3px #42ddff22,inset 0 2px 8px #0008!important;
+}
+
+@media(max-width:600px){
+  header{
+    top:5px!important;
+    margin:5px auto!important;
+    border-radius:17px!important;
+  }
+
+  main>section:first-child,
+  main>div:first-child{
+    border-radius:22px!important;
+  }
+
+  article,
+  #produtos-grid>div,
+  #produtos-grid>article{
+    border-radius:18px!important;
+  }
+
+  article:hover,
+  #produtos-grid>div:hover,
+  #produtos-grid>article:hover{
+    transform:translateY(-3px)!important;
+  }
+
+  article img,
+  #produtos-grid img{
+    aspect-ratio:15/10!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo">RDZX <b>STORE</b></div><nav><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#suporte">Suporte</a></nav><div class="actions"><button class="icon" id="tema">☾</button></div></div></header>
