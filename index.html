@@ -4927,6 +4927,41 @@ document.addEventListener("click",function(event){
 })();
 </script>
 
+
+<style id="rdzx-remover-camada-invisivel-final">
+.produto,
+.produto::before,
+.produto::after,
+.produto-info,
+.produto-info::before,
+.produto-info::after{
+  pointer-events:none!important;
+}
+
+.produto-info,
+.produto-info button,
+.produto-info button *{
+  pointer-events:auto!important;
+}
+
+.produto-info button{
+  position:relative!important;
+  z-index:99999!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  transform:none!important;
+  width:100%!important;
+  min-height:48px!important;
+  margin:10px 0 0!important;
+}
+
+.produto-info button::before,
+.produto-info button::after{
+  pointer-events:none!important;
+}
+</style>
+
 </body>
 </html>
 
