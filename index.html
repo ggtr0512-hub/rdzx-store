@@ -4718,6 +4718,41 @@ document.addEventListener("click",function(event){
 })();
 </script>
 
+
+<script id="rdzx-remover-detalhes-duplicado-final">
+(function(){
+  function limpar(){
+    document.querySelectorAll(".produto").forEach(function(card){
+      var lista=[].slice.call(card.querySelectorAll("button")).filter(function(btn){
+        return btn.classList.contains("rdzx-ver-detalhes") ||
+               btn.classList.contains("rdzx-detalhes-reconstruido");
+      });
+
+      if(lista.length>1){
+        var manter=lista.find(function(btn){
+          return btn.classList.contains("rdzx-detalhes-reconstruido");
+        }) || lista[0];
+
+        manter.classList.add("rdzx-ver-detalhes");
+
+        lista.forEach(function(btn){
+          if(btn!==manter)btn.remove();
+        });
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded",limpar);
+  setTimeout(limpar,500);
+  setTimeout(limpar,1200);
+
+  new MutationObserver(limpar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
 </body>
 </html>
 
