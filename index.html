@@ -3344,6 +3344,51 @@ window.abrirPixFinal=function(){
 })();
 </script>
 
+
+<style id="rdzx-fotos-completas-final-real">
+/* Regra final: capas inteiras sem cortes */
+article.produto > img,
+.produto > img{
+  display:block!important;
+  width:100%!important;
+  height:225px!important;
+  min-height:225px!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  padding:12px!important;
+  background:#0a1118!important;
+  border-radius:0!important;
+}
+
+article.produto > img:hover,
+.produto > img:hover{
+  object-fit:contain!important;
+  transform:scale(1.03)!important;
+}
+
+.checkout-imagem{
+  object-fit:contain!important;
+  object-position:center!important;
+}
+
+@media(max-width:700px){
+  article.produto > img,
+  .produto > img{
+    height:185px!important;
+    min-height:185px!important;
+    padding:8px!important;
+  }
+}
+
+@media(max-width:420px){
+  article.produto > img,
+  .produto > img{
+    height:165px!important;
+    min-height:165px!important;
+  }
+}
+</style>
+
 </body>
 </html>
 
