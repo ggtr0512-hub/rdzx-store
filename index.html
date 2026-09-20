@@ -519,12 +519,21 @@ const produtos=window.produtos=[
 ];
 let atual=null,desconto=0;const br=v=>'R$ '+v.toFixed(2).replace('.',',');const tg='https://t.me/rdzxsuporte';const buscaEl=document.getElementById('busca'),categoriaEl=document.getElementById('categoria'),produtosGrid=document.getElementById('produtos-grid'),categoriasGrid=document.getElementById('categorias-grid'),produtoCheckout=document.getElementById('produto-checkout'),quantidadeEl=document.getElementById('quantidade'),cupomEl=document.getElementById('cupom'),cupomMsg=document.getElementById('cupom-msg'),pixArea=document.getElementById('pix-area'),checkoutEl=document.getElementById('checkout'),temaEl=document.getElementById('tema'),aplicarEl=document.getElementById('aplicar'),pixBtnEl=document.getElementById('pix-btn'),telegramPedidoEl=document.getElementById('telegram-pedido'),suporteBtnEl=document.getElementById('suporte-btn');
 function render(){
-  var vendas={
-    "Netflix":"31.371",
-    "YouTube Premium":"147K",
-    "Prime Video":"6.391",
-    "ChatGPT":"73.916"
-  };
+  var estoque={
+  "Viki Rakuten":["3.791","4.612"],
+  "Apple TV":["2.847","3.956"],
+  "TNT Sports":["4.126","5.381"],
+  "Privacy":["3.254","4.729"],
+  "Deezer":["4.583","6.214"],
+  "Grobo Play":["2.936","5.847"],
+  "Google Veo 3":["1.875","3.692"],
+  "CapCut Pro":["5.214","7.438"],
+  "Crunchyroll":["3.648","5.126"],
+  "Spotify Premium":["6.327","9.541"],
+  "IPTV":["4.892","8.216"],
+  "Disney+":["3.716","6.483"],
+  "HBO Max":["4.275","7.692"]
+};
 
   var q=buscaEl.value.toLowerCase();
   var c=categoriaEl.value;
@@ -565,10 +574,10 @@ function render(){
       info.appendChild(descricao);
       info.appendChild(preco);
 
-      if(vendas[p[0]]){
+      if(estoque[p[0]]){
         var indicador=document.createElement("div");
         indicador.className="rdzx-indicadores-populares-confirmados";
-        indicador.innerHTML="<span>🟢 Disponível</span><b>🔥 "+vendas[p[0]]+" vendidos</b>";
+        indicador.innerHTML="<span>🟢 Disponível: "+estoque[p[0]][0]+"</span><b>🔥 Vendido: "+estoque[p[0]][1]+"</b>";
         info.appendChild(indicador);
       }
 
