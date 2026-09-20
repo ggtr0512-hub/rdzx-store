@@ -1097,6 +1097,69 @@ body.claro .rdzx-entrada-status{
 <meta property="og:description" content="Conheça as opções digitais disponíveis na RDZX STORE.">
 <meta property="og:url" content="https://ggtr0512-hub.github.io/rdzx-store/">
 <meta property="og:type" content="website">
+
+<style id="rdzx-fix-scroll-modal-pix">
+/* Corrige o scroll interno do checkout/Pix no celular */
+.modal,
+.pix-modal,
+.modal-pix,
+.rdzx-pix-modal,
+.pix-overlay,
+.rdzx-pix-overlay,
+#pix-modal,
+#modal-pix {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding: max(18px, env(safe-area-inset-top)) 12px 90px !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y !important;
+}
+
+.modal > div,
+.pix-modal > div,
+.modal-pix > div,
+.rdzx-pix-modal > div,
+.pix-box,
+.pix-modal-content,
+.modal-content,
+.rdzx-pix-box {
+  width: min(100%, 620px) !important;
+  max-height: calc(100dvh - 36px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior: contain !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 600px) {
+  .modal,
+  .pix-modal,
+  .modal-pix,
+  .rdzx-pix-modal,
+  .pix-overlay,
+  .rdzx-pix-overlay {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-bottom: 100px !important;
+  }
+
+  .modal > div,
+  .pix-modal > div,
+  .modal-pix > div,
+  .rdzx-pix-modal > div,
+  .pix-box,
+  .pix-modal-content,
+  .modal-content,
+  .rdzx-pix-box {
+    max-height: calc(100dvh - 24px) !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -2737,6 +2800,35 @@ window.abrirPixFinal=function(){
   document.getElementById("pix-final-modal").style.display="grid";
 };
 </script>
+
+<script id="rdzx-fix-scroll-modal-pix-js">
+(function(){
+  function corrigirModalPix(){
+    document.querySelectorAll(
+      '.modal, .pix-modal, .modal-pix, .rdzx-pix-modal, ' +
+      '.pix-overlay, .rdzx-pix-overlay, #pix-modal, #modal-pix'
+    ).forEach(function(el){
+      var visivel = getComputedStyle(el).display !== 'none' &&
+                    getComputedStyle(el).visibility !== 'hidden';
+      if (visivel) {
+        el.style.overflowY = 'auto';
+        el.style.overflowX = 'hidden';
+        el.style.alignItems = 'flex-start';
+        el.style.touchAction = 'pan-y';
+      }
+    });
+  }
+
+  document.addEventListener('click', corrigirModalPix, true);
+  document.addEventListener('touchstart', corrigirModalPix, {passive:true});
+  new MutationObserver(corrigirModalPix).observe(document.body, {
+    attributes:true,
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
 </body>
 </html>
 
