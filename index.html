@@ -1396,6 +1396,165 @@ input:focus,select:focus,textarea:focus{
 })();
 </script>
 
+
+<style id="rdzx-3d-futuro-v2">
+/* RDZX STORE — profundidade 3D leve e responsiva */
+:root{
+  --rdzx-3d-cyan:#42ddff;
+  --rdzx-3d-blue:#317dff;
+  --rdzx-3d-shadow:rgba(0,0,0,.42);
+}
+
+main,
+section,
+.produtos,
+.catalogo,
+.grid{
+  perspective:1200px;
+}
+
+.produto,
+.produto-card,
+.card{
+  transform-style:preserve-3d!important;
+  will-change:transform!important;
+  position:relative!important;
+  isolation:isolate!important;
+}
+
+.produto:after,
+.produto-card:after,
+.card:after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:-1;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.12),
+    transparent 24%,
+    transparent 68%,
+    rgba(66,221,255,.08)
+  );
+  opacity:.7;
+}
+
+.produto:before,
+.produto-card:before,
+.card:before{
+  content:"";
+  position:absolute;
+  width:55%;
+  height:55%;
+  left:22%;
+  top:18%;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+  background:rgba(66,221,255,.12);
+  filter:blur(35px);
+  transform:translateZ(-18px);
+  opacity:.45;
+}
+
+.produto img,
+.produto-card img,
+.card img{
+  transform:translateZ(18px);
+  filter:drop-shadow(0 15px 16px rgba(0,0,0,.32));
+}
+
+.produto h2,
+.produto h3,
+.produto-card h2,
+.produto-card h3,
+.card h2,
+.card h3{
+  transform:translateZ(10px);
+}
+
+.produto button,
+.produto-card button,
+.card button{
+  transform:translateZ(16px);
+}
+
+.rdzx-3d-orb{
+  position:absolute;
+  width:230px;
+  height:230px;
+  right:7%;
+  top:20%;
+  border-radius:50%;
+  pointer-events:none;
+  opacity:.5;
+  background:
+    radial-gradient(circle at 30% 25%,#fff8,transparent 8%),
+    radial-gradient(circle at 40% 35%,#38dbff55,transparent 35%),
+    radial-gradient(circle,#217cff44,transparent 68%);
+  border:1px solid #5edfff33;
+  box-shadow:
+    inset -25px -25px 55px #050b1488,
+    inset 18px 15px 35px #c7f7ff18,
+    0 0 75px #35d9ff26;
+  animation:rdzxOrbFloat 8s ease-in-out infinite;
+}
+@keyframes rdzxOrbFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(0,-16px,0) rotate(8deg)}
+}
+
+.rdzx-3d-light{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+  opacity:.07;
+  background:radial-gradient(circle,#42ddff,transparent 68%);
+  filter:blur(20px);
+  transform:translate(-50%,-50%);
+  transition:left .25s ease,top .25s ease;
+}
+
+@media(hover:hover) and (pointer:fine){
+  .produto,
+  .produto-card,
+  .card{
+    transition:
+      transform .18s ease,
+      box-shadow .25s ease,
+      border-color .25s ease!important;
+  }
+}
+
+@media(max-width:700px){
+  .rdzx-3d-orb{
+    width:150px;
+    height:150px;
+    right:-35px;
+    top:15%;
+    opacity:.35;
+  }
+
+  .produto:active,
+  .produto-card:active,
+  .card:active{
+    transform:scale(.985) translateY(-2px)!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .rdzx-3d-orb,
+  .rdzx-3d-light{
+    display:none!important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -3087,6 +3246,47 @@ window.abrirPixFinal=function(){
   new MutationObserver(ajustarModais).observe(document.body,{
     attributes:true,childList:true,subtree:true
   });
+})();
+</script>
+
+
+<script id="rdzx-3d-futuro-v2-js">
+(function(){
+  var cards=document.querySelectorAll('.produto,.produto-card,.card');
+
+  cards.forEach(function(card){
+    card.addEventListener('pointermove',function(e){
+      if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+
+      var r=card.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-.5;
+      var y=(e.clientY-r.top)/r.height-.5;
+
+      card.style.transform=
+        'perspective(900px) rotateX('+(-y*5)+'deg) rotateY('+(x*6)+'deg) translateY(-5px)';
+    });
+
+    card.addEventListener('pointerleave',function(){
+      card.style.transform='';
+    });
+  });
+
+  var light=document.createElement('div');
+  light.className='rdzx-3d-light';
+  document.body.appendChild(light);
+
+  document.addEventListener('pointermove',function(e){
+    if(!window.matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+    light.style.left=e.clientX+'px';
+    light.style.top=e.clientY+'px';
+  },{passive:true});
+
+  var hero=document.querySelector('.hero');
+  if(hero && !hero.querySelector('.rdzx-3d-orb')){
+    var orb=document.createElement('div');
+    orb.className='rdzx-3d-orb';
+    hero.appendChild(orb);
+  }
 })();
 </script>
 
