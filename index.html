@@ -1160,6 +1160,145 @@ body.claro .rdzx-entrada-status{
 }
 </style>
 
+
+<style id="rdzx-store-futuro-v2">
+/* RDZX STORE 2.0 — acabamento futurista consolidado */
+:root{
+  --rdzx-cyan:#35d9ff;
+  --rdzx-blue:#3987ff;
+  --rdzx-graphite:#0b1118;
+  --rdzx-panel:rgba(18,29,40,.78);
+  --rdzx-border:rgba(111,220,255,.18);
+  --rdzx-glow:0 0 34px rgba(53,217,255,.16);
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:
+    radial-gradient(800px 500px at 8% -10%,rgba(41,112,180,.22),transparent 65%),
+    radial-gradient(700px 500px at 96% 8%,rgba(0,214,255,.14),transparent 62%),
+    linear-gradient(145deg,#060b10,#0b1118 52%,#080d13)!important;
+  color:#f5fbff!important;
+  overflow-x:hidden!important;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.28;
+  background-image:
+    linear-gradient(rgba(91,211,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(91,211,255,.04) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+header{
+  background:rgba(5,12,18,.78)!important;
+  border-bottom:1px solid rgba(111,220,255,.15)!important;
+  box-shadow:0 12px 40px rgba(0,0,0,.28)!important;
+  backdrop-filter:blur(22px)!important;
+}
+
+.logo{
+  color:#f4fbff!important;
+  text-shadow:0 0 24px rgba(53,217,255,.28)!important;
+}
+.logo b{color:var(--rdzx-cyan)!important}
+
+nav a{
+  transition:color .2s ease,background .2s ease,transform .2s ease!important;
+}
+nav a:hover{
+  color:var(--rdzx-cyan)!important;
+  background:rgba(53,217,255,.08)!important;
+  transform:translateY(-2px)!important;
+}
+
+button,.btn{
+  -webkit-tap-highlight-color:transparent;
+}
+.btn{
+  background:linear-gradient(110deg,#126b9e,#197ee0,var(--rdzx-cyan))!important;
+  background-size:180% 100%!important;
+  border:1px solid rgba(160,239,255,.28)!important;
+  box-shadow:0 12px 30px rgba(0,141,202,.22)!important;
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease!important;
+}
+.btn:hover{
+  transform:translateY(-3px)!important;
+  filter:brightness(1.1)!important;
+  box-shadow:0 18px 42px rgba(0,190,255,.28)!important;
+}
+
+.produto,.produto-card,.card{
+  background:linear-gradient(145deg,rgba(20,35,48,.88),rgba(9,17,25,.92))!important;
+  border:1px solid var(--rdzx-border)!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.06)!important;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease!important;
+}
+.produto:hover,.produto-card:hover,.card:hover{
+  transform:translateY(-6px)!important;
+  border-color:rgba(53,217,255,.42)!important;
+  box-shadow:0 24px 60px rgba(0,0,0,.42),var(--rdzx-glow)!important;
+}
+
+.produto img,.produto-card img,.card img{
+  transition:transform .35s ease,filter .35s ease!important;
+}
+.produto:hover img,.produto-card:hover img,.card:hover img{
+  transform:scale(1.045)!important;
+  filter:saturate(1.08) brightness(1.06)!important;
+}
+
+input,select,textarea{
+  background:rgba(8,18,27,.78)!important;
+  color:#f4fbff!important;
+  border-color:rgba(111,220,255,.2)!important;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none!important;
+  border-color:var(--rdzx-cyan)!important;
+  box-shadow:0 0 0 3px rgba(53,217,255,.11),var(--rdzx-glow)!important;
+}
+
+.modal,.pix-modal,.modal-pix,.rdzx-pix-modal,.pix-overlay,.rdzx-pix-overlay,#pix-modal,#modal-pix{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  align-items:flex-start!important;
+  padding:18px 10px 100px!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+  touch-action:pan-y!important;
+}
+
+.modal>div,.pix-modal>div,.modal-pix>div,.rdzx-pix-modal>div,
+.pix-box,.pix-modal-content,.modal-content,.rdzx-pix-box{
+  max-height:calc(100dvh - 32px)!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+}
+
+@media(max-width:700px){
+  header{position:sticky!important;top:0!important}
+  .produto,.produto-card,.card{border-radius:18px!important}
+  .modal,.pix-modal,.modal-pix,.rdzx-pix-modal,.pix-overlay,.rdzx-pix-overlay{
+    padding:12px 7px 105px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -2825,6 +2964,31 @@ window.abrirPixFinal=function(){
     attributes:true,
     childList:true,
     subtree:true
+  });
+})();
+</script>
+
+
+<script id="rdzx-store-futuro-v2-js">
+(function(){
+  function ajustarModais(){
+    document.querySelectorAll(
+      '.modal,.pix-modal,.modal-pix,.rdzx-pix-modal,'+
+      '.pix-overlay,.rdzx-pix-overlay,#pix-modal,#modal-pix'
+    ).forEach(function(el){
+      var st=getComputedStyle(el);
+      if(st.display!=='none' && st.visibility!=='hidden'){
+        el.style.overflowY='auto';
+        el.style.overflowX='hidden';
+        el.style.alignItems='flex-start';
+        el.style.touchAction='pan-y';
+      }
+    });
+  }
+  document.addEventListener('click',ajustarModais,true);
+  document.addEventListener('touchstart',ajustarModais,{passive:true});
+  new MutationObserver(ajustarModais).observe(document.body,{
+    attributes:true,childList:true,subtree:true
   });
 })();
 </script>
