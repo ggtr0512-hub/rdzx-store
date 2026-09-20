@@ -4820,6 +4820,113 @@ document.addEventListener("click",function(event){
 }
 </style>
 
+
+<style id="rdzx-comprar-direto-estavel">
+.produto-info{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:0!important;
+  height:auto!important;
+}
+
+.produto-info button{
+  position:static!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:100%!important;
+  margin:10px 0 0!important;
+}
+</style>
+
+<script id="rdzx-comprar-direto-estavel-js">
+(function(){
+  function dinheiro(v){
+    return "R$ "+Number(v).toFixed(2).replace(".",",");
+  }
+
+  function abrirCompraDireta(botao){
+    var card=botao.closest(".produto");
+    if(!card)return;
+
+    var nome=botao.getAttribute("data-produto")||
+      card.querySelector("h3").textContent.trim();
+
+    var texto=botao.getAttribute("data-preco")||"R$ 0,00";
+    var preco=Number(texto.replace(/[^0-9,]/g,"").replace(",","."));
+    var imagem=card.querySelector("img");
+
+    window.rdzxCheckout=window.rdzxCheckout||{};
+    window.rdzxCheckout.produto=nome;
+    window.rdzxCheckout.preco=preco;
+    window.rdzxCheckout.imagem=imagem?imagem.src:"";
+    window.rdzxCheckout.cupom="";
+    window.rdzxCheckout.descontoPercentual=0;
+
+    var modal=document.getElementById("rdzx-checkout-cupons");
+    if(!modal){
+      alert("Checkout indisponível. Fale com o suporte pelo Telegram.");
+      return;
+    }
+
+    var produto=document.getElementById("checkout-produto");
+    var foto=document.getElementById("checkout-imagem");
+    var valor=document.getElementById("checkout-preco-original");
+    var quantidade=document.getElementById("checkout-quantidade");
+    var cupom=document.getElementById("checkout-cupom");
+    var feedback=document.getElementById("checkout-feedback");
+
+    if(produto)produto.textContent=nome;
+    if(foto)foto.src=imagem?imagem.src:"";
+    if(valor)valor.textContent=dinheiro(preco);
+    if(quantidade)quantidade.value=1;
+    if(cupom)cupom.value="";
+    if(feedback)feedback.textContent="";
+
+    if(typeof atualizarCheckout==="function")atualizarCheckout();
+
+    modal.style.display="grid";
+  }
+
+  function corrigir(){
+    document.querySelectorAll(".produto").forEach(function(card){
+      var info=card.querySelector(".produto-info");
+      if(!info || card.dataset.comprarDireto==="1")return;
+
+      var original=card.querySelector("button[data-produto]");
+      if(!original)return;
+
+      var botao=original.cloneNode(true);
+      botao.removeAttribute("onclick");
+      botao.className="";
+      botao.textContent="🛒 Comprar";
+      botao.dataset.comprarDireto="1";
+
+      info.querySelectorAll("button").forEach(function(btn){
+        btn.remove();
+      });
+
+      info.appendChild(botao);
+
+      botao.addEventListener("click",function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        abrirCompraDireta(botao);
+      },true);
+
+      card.dataset.comprarDireto="1";
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded",function(){
+    setTimeout(corrigir,1000);
+  });
+
+  setTimeout(corrigir,1800);
+})();
+</script>
+
 </body>
 </html>
 
