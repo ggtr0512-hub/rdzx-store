@@ -1299,6 +1299,103 @@ input:focus,select:focus,textarea:focus{
 }
 </style>
 
+
+<style id="rdzx-pix-scroll-exato-v2">
+/* Correção exata do modal Pix no celular */
+.pix-fundo,
+.pix-final-fundo{
+  position:fixed!important;
+  inset:0!important;
+  z-index:99999!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:14px 9px 105px!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+  touch-action:pan-y!important;
+}
+
+.pix-card,
+.pix-final-card{
+  position:relative!important;
+  width:min(100%,620px)!important;
+  max-height:calc(100dvh - 28px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  margin:0 auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+  touch-action:pan-y!important;
+}
+
+.pix-fechar,
+.pix-final-fechar{
+  position:sticky!important;
+  top:0!important;
+  float:right!important;
+  z-index:20!important;
+  cursor:pointer!important;
+  font-size:25px!important;
+  line-height:1!important;
+}
+
+@media(max-width:600px){
+  .pix-fundo,
+  .pix-final-fundo{
+    padding:8px 6px 110px!important;
+  }
+
+  .pix-card,
+  .pix-final-card{
+    max-height:calc(100dvh - 16px)!important;
+    border-radius:18px!important;
+  }
+}
+</style>
+
+<script id="rdzx-pix-scroll-exato-v2-js">
+(function(){
+  function corrigirPix(){
+    ['rdzx-pix-checkout-real','pix-final-modal'].forEach(function(id){
+      var fundo=document.getElementById(id);
+      if(!fundo) return;
+
+      var estilo=getComputedStyle(fundo);
+      var visivel=estilo.display!=='none' &&
+                  estilo.visibility!=='hidden';
+
+      if(visivel){
+        fundo.style.overflowY='auto';
+        fundo.style.overflowX='hidden';
+        fundo.style.alignItems='flex-start';
+        fundo.style.touchAction='pan-y';
+
+        var card=fundo.querySelector('.pix-card,.pix-final-card');
+        if(card){
+          card.style.maxHeight='calc(100dvh - 28px)';
+          card.style.overflowY='auto';
+          card.style.overflowX='hidden';
+          card.style.webkitOverflowScrolling='touch';
+        }
+      }
+    });
+  }
+
+  document.addEventListener('click',function(){
+    setTimeout(corrigirPix,50);
+  },true);
+
+  document.addEventListener('touchstart',corrigirPix,{passive:true});
+  new MutationObserver(corrigirPix).observe(document.body,{
+    attributes:true,
+    childList:true,
+    subtree:true
+  });
+})();
+</script>
+
 </head>
 
 <body>
