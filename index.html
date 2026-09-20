@@ -3389,6 +3389,69 @@ article.produto > img:hover,
 }
 </style>
 
+
+<style id="rdzx-depoimentos-inteiros-final">
+/* Depoimentos completos e legíveis */
+#rdzx-carrossel-comunidade .rdzx-galeria{
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+
+#rdzx-carrossel-comunidade .rdzx-feedback{
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+
+#rdzx-carrossel-comunidade .rdzx-feedback img,
+.rdzx-feedback img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:78vh!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#050a10!important;
+}
+
+#rdzx-foto-ampliada{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  align-items:flex-start!important;
+  padding:14px 8px 90px!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+#rdzx-foto-ampliada img{
+  display:block!important;
+  width:auto!important;
+  max-width:96vw!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  margin:0 auto!important;
+}
+
+@media(max-width:600px){
+  #rdzx-carrossel-comunidade .rdzx-feedback img,
+  .rdzx-feedback img{
+    max-height:72vh!important;
+  }
+
+  #rdzx-foto-ampliada img{
+    width:auto!important;
+    max-width:98vw!important;
+  }
+}
+</style>
+
 </body>
 </html>
 
