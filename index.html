@@ -518,7 +518,44 @@ const produtos=window.produtos=[
 ['Viki Rakuten','Entretenimento','imagens/assinaturas/viki.jpg',12,'Dramas e produções asiáticas conforme disponibilidade.'],['Apple TV','Filmes e séries','imagens/assinaturas/apple-tv.jpg',10.90,'Filmes, séries e produções para assistir online.'],['TNT Sports','Esportes','imagens/assinaturas/tnt-sports.jpg',11.50,'Conteúdos esportivos conforme plano e disponibilidade.'],['Privacy','Privacidade','imagens/assinaturas/privacy.jpg',9,'Serviço digital de privacidade conforme plano anunciado.'],['Deezer','Música','imagens/assinaturas/deezer.jpg',9,'Músicas, playlists e conteúdos de áudio conforme plano.'],['Grobo Play','Entretenimento','imagens/assinaturas/grobo-play.jpg',9,'Filmes, séries e programação online conforme disponibilidade.'],['Google Veo 3','Inteligência artificial','imagens/assinaturas/google-veo.jpg',45,'Ferramenta de criação de vídeos por inteligência artificial.'],['ChatGPT','Inteligência artificial','imagens/assinaturas/chatgpt.jpg',36,'Assistente digital para estudos, textos e ideias conforme plano.'],['CapCut Pro','Edição de vídeo','imagens/assinaturas/capcut.jpg',22,'Recursos digitais para edição de vídeos conforme plano.'],['Crunchyroll','Animes','imagens/assinaturas/crunchyroll.jpg',8,'Animes e conteúdos relacionados conforme catálogo.'],['Spotify Premium','Música','imagens/assinaturas/spotify.jpg',8,'Músicas, playlists e podcasts conforme plano disponível.'],['IPTV','TV online','imagens/assinaturas/iptv.jpg',12,'Conteúdo depende do plano e da disponibilidade anunciada.'],['Netflix','Filmes e séries','imagens/assinaturas/netflix.jpg',9.90,'Filmes, séries e produções para assistir online.'],['Disney+','Filmes e séries','imagens/assinaturas/disney-plus.jpg',9.99,'Filmes, séries e entretenimento conforme catálogo.'],['HBO Max','Filmes e séries','imagens/assinaturas/hbo-max.jpg',8.49,'Filmes, séries e produções conforme plano disponível.'],['Prime Video','Filmes e séries','imagens/assinaturas/prime-video.jpg',6.99,'Filmes, séries e conteúdos online conforme plano.'],['YouTube Premium','Vídeos e entretenimento','imagens/assinaturas/youtube-premium.jpg',7.99,'Experiência Premium do YouTube conforme plano disponível.']
 ];
 let atual=null,desconto=0;const br=v=>'R$ '+v.toFixed(2).replace('.',',');const tg='https://t.me/rdzxsuporte';const buscaEl=document.getElementById('busca'),categoriaEl=document.getElementById('categoria'),produtosGrid=document.getElementById('produtos-grid'),categoriasGrid=document.getElementById('categorias-grid'),produtoCheckout=document.getElementById('produto-checkout'),quantidadeEl=document.getElementById('quantidade'),cupomEl=document.getElementById('cupom'),cupomMsg=document.getElementById('cupom-msg'),pixArea=document.getElementById('pix-area'),checkoutEl=document.getElementById('checkout'),temaEl=document.getElementById('tema'),aplicarEl=document.getElementById('aplicar'),pixBtnEl=document.getElementById('pix-btn'),telegramPedidoEl=document.getElementById('telegram-pedido'),suporteBtnEl=document.getElementById('suporte-btn');
-function render(){let vendas={'Netflix':'31.371','YouTube Premium':'147K','Prime Video':'6.391','ChatGPT':'73.916'};let q=buscaEl.value.toLowerCase(),c=categoriaEl.value;let a=produtos.filter(p=>(!q||(p[0]+' '+p[1]+' '+p[4]).toLowerCase().includes(q))&&(!c||p[1]===c));produtosGrid.innerHTML=a.length?a.map((p,i)=>`<article class="card"><img src="${p[2]}" alt="${p[0]}"><div class="info"><h3>${p[0]}</h3><div class="desc">${p[4]}</div><div class="price">\({br(p[3])}</div>\){vendas[p[0]]?'<div class="rdzx-indicadores-populares-confirmados"><span>🟢 Disponível</span><b>🔥 '+vendas[p[0]]+' vendidos</b></div>':''}<button class="buy" data-i="${produtos.indexOf(p)}">🛒 Comprar</button></div></article>`).join(''):'<div class="empty">Nenhum produto encontrado.</div>';document.querySelectorAll('.buy').forEach(b=>b.onclick=()=>abrir(+b.dataset.i))}
+function render(){
+  let vendas={
+    "Netflix":"31.371",
+    "YouTube Premium":"147K",
+    "Prime Video":"6.391",
+    "ChatGPT":"73.916"
+  };
+
+  let q=buscaEl.value.toLowerCase();
+  let c=categoriaEl.value;
+
+  let a=produtos.filter(function(p){
+    return (!q || (p[0]+" "+p[1]+" "+p[4]).toLowerCase().includes(q))
+      && (!c || p[1]===c);
+  });
+
+  produtosGrid.innerHTML=a.length ? a.map(function(p){
+    let indicador=vendas[p[0]]
+      ? '<div class="rdzx-indicadores-populares-confirmados"><span>🟢 Disponível</span><b>🔥 '+vendas[p[0]]+' vendidos</b></div>'
+      : '';
+
+    return '<article class="card">'
+      + '<img src="'+p[2]+'" alt="'+p[0]+'">'
+      + '<div class="info">'
+      + '<h3>'+p[0]+'</h3>'
+      + '<div class="desc">'+p[4]+'</div>'
+      + '<div class="price">'+br(p[3])+'</div>'
+      + indicador
+      + '<button class="buy" data-i="'+produtos.indexOf(p)+'">🛒 Comprar</button>'
+      + '</div></article>';
+  }).join('') : '<div class="empty">Nenhum produto encontrado.</div>';
+
+  document.querySelectorAll('.buy').forEach(function(b){
+    b.onclick=function(){
+      abrir(+b.dataset.i);
+    };
+  });
+}
 function abrir(i){atual=produtos[i];desconto=0;produtoCheckout.textContent=atual[0]+' — '+br(atual[3]);quantidadeEl.value=1;cupomEl.value='';cupomMsg.textContent='';pixArea.style.display='none';atualizar();checkoutEl.classList.add('open')}
 function atualizar(){let total=atual[3]*Math.max(1,+quantidadeEl.value||1);total*=1-desconto/100;document.getElementById('total').textContent='Total: '+br(total)}
 function crc(t){let c=0xFFFF;for(let i=0;i<t.length;i++){c^=t.charCodeAt(i)<<8;for(let j=0;j<8;j++)c=(c&0x8000)?(c<<1)^0x1021:c<<1;c&=0xFFFF}return c.toString(16).toUpperCase().padStart(4,'0')}function campo(id,v){return id+String(v.length).padStart(2,'0')+v}function pixPayload(v){let x=window.RDZX_PIX||{};if(!x.chave)return '';let nome=(x.beneficiario||'RDZX STORE').normalize('NFD').replace(/[\u0300-\u036f]/g,'').slice(0,25),cidade=(x.cidade||'BELEM').normalize('NFD').replace(/[\u0300-\u036f]/g,'').slice(0,15),valor=Number(v).toFixed(2),merchant=campo('00','BR.GOV.BCB.PIX')+campo('01',x.chave),base=campo('00','01')+campo('26',merchant)+campo('52','0000')+campo('53','986')+campo('54',valor)+campo('58','BR')+campo('59',nome)+campo('60',cidade)+campo('62',campo('05','***'));return base+'6304'+crc(base+'6304')}
