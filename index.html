@@ -18,7 +18,92 @@ section{padding:35px 0}.head{display:flex;align-items:end;justify-content:space-
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel),var(--panel2));box-shadow:0 16px 40px #0004}.card img{display:block;width:100%;height:205px;object-fit:contain;background:#09151d;padding:10px}.card .info{display:flex;flex-direction:column;flex:1;padding:14px}.card h3{margin:0 0 8px;font-size:16px}.desc{min-height:42px;color:var(--muted);font-size:12px;line-height:1.45}.price{margin:10px 0;font-size:20px;font-weight:950;color:var(--cyan)}.buy{width:100%;margin-top:auto;padding:12px;border:0;border-radius:11px;color:#fff;background:linear-gradient(110deg,#17688e,#237ee0);font-weight:900}.empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}.category{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--panel);cursor:pointer;color:var(--text);text-align:left}.category small{color:var(--muted)}
 .modal{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:14px 10px 80px;background:#000c}.modal.open{display:flex}.box{width:min(560px,100%);max-height:calc(100dvh - 28px);overflow:auto;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--text)}.close{float:right;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:var(--panel2);color:var(--text)}.box h2{clear:both}.box input,.box textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text)}.total{font-size:20px;font-weight:900;color:var(--cyan);margin:12px 0}.qr{display:flex;justify-content:center;margin:15px auto}.note{color:var(--muted);font-size:13px;line-height:1.6}footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line)}
 @media(max-width:850px){nav{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card img{height:180px}}@media(max-width:520px){.grid{grid-template-columns:1fr}.card img{height:225px}.tools{display:grid;grid-template-columns:1fr 1fr}.hero{padding-top:55px}.hero h1{letter-spacing:-2px}}
-</style></head>
+</style>
+<style id="rdzx-checkout-produto-v2">
+#rdzx-checkout-produto-v2{
+  margin:12px 0 18px;
+  padding:12px;
+  border:1px solid #315565;
+  border-radius:18px;
+  background:linear-gradient(145deg,#102b38,#0b1821);
+}
+
+#rdzx-checkout-banner-v2{
+  display:block;
+  width:100%;
+  height:210px;
+  object-fit:contain;
+  border-radius:13px;
+  background:#061017;
+}
+
+.rdzx-checkout-info-v2 span{
+  display:inline-block;
+  margin-top:12px;
+  color:#9ebbc6;
+  font-size:12px;
+}
+
+.rdzx-checkout-info-v2 h3{
+  margin:7px 0;
+  font-size:22px;
+}
+
+.rdzx-checkout-status-v2{
+  color:#8ff0ae;
+  font-size:13px;
+}
+
+#rdzx-checkout-preco-v2{
+  display:block;
+  margin:10px 0;
+  color:#42ddff;
+  font-size:25px;
+}
+
+#rdzx-checkout-descricao-v2{
+  color:#b8cbd4;
+  line-height:1.55;
+  font-size:14px;
+}
+
+.rdzx-checkout-detalhes-v2{
+  margin:12px 0;
+  padding:12px;
+  border:1px solid #315565;
+  border-radius:12px;
+  color:#dffaff;
+  background:#0c1d27;
+}
+
+.rdzx-checkout-detalhes-v2 summary{
+  cursor:pointer;
+  font-weight:800;
+}
+
+.rdzx-checkout-detalhes-v2 p{
+  color:#b8cbd4;
+  line-height:1.6;
+}
+
+.rdzx-checkout-acoes-v2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:12px 0;
+}
+
+.rdzx-checkout-acoes-v2 button{
+  min-height:44px;
+  border:1px solid #42ddff66;
+  border-radius:11px;
+  color:#eafaff;
+  background:#173548;
+  font-weight:800;
+}
+</style>
+
+</head>
 <body>
 <header><div class="wrap nav"><div class="logo">RDZX <b>STORE</b></div><nav><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#suporte">Suporte</a></nav><div class="actions"><button class="icon" id="tema">☾</button></div></div></header>
 <main><div class="wrap hero"><h1>Seu digital.<br><span class="grad">Seu próximo nível.</span></h1><p>Catálogo de assinaturas e serviços digitais. Escolha um produto, confira o valor e toque em comprar para abrir o checkout.</p><a class="btn" href="#produtos">Ver produtos</a></div>
@@ -26,7 +111,30 @@ section{padding:35px 0}.head{display:flex;align-items:end;justify-content:space-
 <section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2></div><div id="categorias-grid" class="grid"></div></div></section>
 <section id="suporte"><div class="wrap"><div class="box"><h2>Precisa de ajuda?</h2><p class="note">Consulte disponibilidade, forma de entrega e dúvidas antes de pagar.</p><button class="btn" id="suporte-btn">💬 Falar no Telegram</button></div></div></section>
 </main><footer><div class="wrap">RDZX STORE — Atendimento e confirmação manual pelo Telegram.</div></footer>
-<div id="checkout" class="modal"><div class="box"><button class="close" data-close="checkout">×</button><h2>Finalizar compra</h2><p id="produto-checkout"></p><label>Quantidade</label><div id="rdzx-controle-quantidade">
+<div id="checkout" class="modal"><div class="box"><button class="close" data-close="checkout">×</button><h2>Finalizar compra</h2>
+<div id="rdzx-checkout-produto-v2">
+  <img id="rdzx-checkout-banner-v2" alt="Produto">
+  <div class="rdzx-checkout-info-v2">
+    <span id="rdzx-checkout-categoria-v2">Produto digital</span>
+    <h3 id="rdzx-checkout-nome-v2"></h3>
+    <div class="rdzx-checkout-status-v2">🟢 Disponível para compra</div>
+    <strong id="rdzx-checkout-preco-v2"></strong>
+    <p id="rdzx-checkout-descricao-v2"></p>
+  </div>
+
+  <details class="rdzx-checkout-detalhes-v2">
+    <summary>📋 O que você recebe</summary>
+    <p id="rdzx-checkout-recebe-v2">
+      Acesso ou instruções do produto conforme disponibilidade, enviados após a confirmação manual do pedido.
+    </p>
+  </details>
+
+  <div class="rdzx-checkout-acoes-v2">
+    <button type="button" id="rdzx-carrinho-v2">🛒 Adicionar ao carrinho</button>
+    <button type="button" id="rdzx-favorito-v2">♡ Favoritar</button>
+  </div>
+</div>
+<p id="produto-checkout"></p><label>Quantidade</label><div id="rdzx-controle-quantidade">
       <button type="button" id="rdzx-menos">−</button>
       <input id="quantidade" type="number" min="1" value="1">
       <button type="button" id="rdzx-mais">+</button>
@@ -278,5 +386,60 @@ let categorias=[...new Set(produtos.map(p=>p[1]))];window.render=render;categori
   }
 }
 </style>
+
+
+<script id="rdzx-checkout-produto-v2-js">
+(function(){
+  function atualizarProduto(){
+    var campo=document.getElementById("produto-checkout");
+    if(!campo)return;
+
+    var nome=campo.textContent.split(" — ")[0].trim();
+    var produto=(window.produtos||[]).find(function(p){
+      return p[0]===nome;
+    });
+
+    if(!produto)return;
+
+    document.getElementById("rdzx-checkout-banner-v2").src=produto[2];
+    document.getElementById("rdzx-checkout-nome-v2").textContent=produto[0];
+    document.getElementById("rdzx-checkout-categoria-v2").textContent=produto[1];
+    document.getElementById("rdzx-checkout-preco-v2").textContent=
+      "R$ "+Number(produto[3]).toFixed(2).replace(".",",");
+    document.getElementById("rdzx-checkout-descricao-v2").textContent=produto[4];
+
+    var favoritos=JSON.parse(localStorage.getItem("rdzx_favoritos")||"[]");
+    document.getElementById("rdzx-favorito-v2").textContent=
+      favoritos.includes(nome)?"♥ Remover dos favoritos":"♡ Favoritar";
+
+    document.getElementById("rdzx-favorito-v2").onclick=function(){
+      var lista=JSON.parse(localStorage.getItem("rdzx_favoritos")||"[]");
+      lista=lista.includes(nome)
+        ?lista.filter(function(x){return x!==nome})
+        :lista.concat(nome);
+      localStorage.setItem("rdzx_favoritos",JSON.stringify(lista));
+      atualizarProduto();
+    };
+
+    document.getElementById("rdzx-carrinho-v2").onclick=function(){
+      var carrinho=JSON.parse(localStorage.getItem("rdzx_carrinho")||"[]");
+      carrinho.push({nome:nome,preco:produto[3],imagem:produto[2],quantidade:1});
+      localStorage.setItem("rdzx_carrinho",JSON.stringify(carrinho));
+      alert("🛒 Produto adicionado ao carrinho!");
+    };
+  }
+
+  var checkout=document.getElementById("checkout");
+  if(checkout){
+    new MutationObserver(atualizarProduto).observe(checkout,{
+      attributes:true,
+      subtree:true,
+      characterData:true
+    });
+  }
+
+  setTimeout(atualizarProduto,700);
+})();
+</script>
 
 </body></html>
