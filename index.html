@@ -4503,6 +4503,60 @@ document.addEventListener("click",function(event){
 })();
 </script>
 
+
+<style id="rdzx-ordem-botoes-final">
+.produto-info{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  width:100%!important;
+  min-width:0!important;
+  overflow:visible!important;
+}
+
+.produto-info>button{
+  position:static!important;
+  visibility:visible!important;
+  opacity:1!important;
+  display:block!important;
+  float:none!important;
+  clear:both!important;
+  transform:none!important;
+  order:5!important;
+  width:100%!important;
+  min-height:44px!important;
+  margin:9px 0 0!important;
+  z-index:5!important;
+}
+
+.produto-info>button:not(.rdzx-ver-detalhes){
+  order:1!important;
+}
+
+.produto-info>.rdzx-ver-detalhes{
+  order:2!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:static!important;
+  background:#173548!important;
+  border:1px solid #42ddff66!important;
+  color:#eafaff!important;
+}
+
+.produto-info>button:hover{
+  transform:translateY(-2px)!important;
+}
+
+@media(max-width:700px){
+  .produto-info>button{
+    width:100%!important;
+    min-height:46px!important;
+    font-size:14px!important;
+  }
+}
+</style>
+
 </body>
 </html>
 
