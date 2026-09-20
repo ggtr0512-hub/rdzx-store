@@ -188,4 +188,95 @@ let categorias=[...new Set(produtos.map(p=>p[1]))];window.render=render;categori
 })();
 </script>
 
+
+<style id="rdzx-checkout-base-profissional">
+/* Base visual exclusiva do checkout */
+#checkout,
+#rdzx-checkout-cupons{
+  position:fixed!important;
+  inset:0!important;
+  z-index:99990!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:14px 9px 90px!important;
+  -webkit-overflow-scrolling:touch!important;
+  background:rgba(0,5,9,.86)!important;
+}
+
+#checkout.open,
+#rdzx-checkout-cupons[style*="grid"],
+#rdzx-checkout-cupons[style*="flex"]{
+  display:flex!important;
+}
+
+#checkout .box,
+#rdzx-checkout-cupons .checkout-card{
+  position:relative!important;
+  width:min(560px,100%)!important;
+  max-height:calc(100dvh - 28px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  margin:0 auto!important;
+  padding:18px!important;
+  border:1px solid rgba(66,221,255,.28)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,#102531,#09131b)!important;
+  box-shadow:0 25px 80px #000b!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+#checkout h2,
+#rdzx-checkout-cupons h2{
+  margin-top:4px!important;
+  color:#f4fcff!important;
+}
+
+#checkout label,
+#rdzx-checkout-cupons label{
+  display:block!important;
+  margin-top:13px!important;
+  color:#b8cbd4!important;
+  font-size:13px!important;
+  font-weight:800!important;
+}
+
+#checkout input,
+#checkout textarea,
+#rdzx-checkout-cupons input,
+#rdzx-checkout-cupons textarea{
+  width:100%!important;
+  min-height:44px!important;
+  margin:6px 0!important;
+  padding:11px!important;
+  border:1px solid #315565!important;
+  border-radius:11px!important;
+  background:#0b1821!important;
+  color:#f5fcff!important;
+}
+
+#checkout .close,
+#rdzx-checkout-cupons .checkout-fechar{
+  position:sticky!important;
+  top:0!important;
+  z-index:20!important;
+  float:right!important;
+}
+
+@media(max-width:600px){
+  #checkout,
+  #rdzx-checkout-cupons{
+    padding:7px 5px 100px!important;
+  }
+
+  #checkout .box,
+  #rdzx-checkout-cupons .checkout-card{
+    max-height:calc(100dvh - 14px)!important;
+    border-radius:18px!important;
+    padding:14px!important;
+  }
+}
+</style>
+
 </body></html>
