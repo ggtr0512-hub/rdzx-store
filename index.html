@@ -3913,6 +3913,66 @@ article.produto > img:hover,
 }
 </style>
 
+
+<script id="rdzx-botoes-funcionais-final">
+document.addEventListener("DOMContentLoaded",function(){
+  setTimeout(function(){
+    document.querySelectorAll(".produto").forEach(function(card){
+      var comprar=card.querySelector("button:not(.rdzx-ver-detalhes)");
+      if(comprar && !comprar.dataset.rdzxReparado){
+        comprar.dataset.rdzxReparado="1";
+        comprar.removeAttribute("onclick");
+        comprar.addEventListener("click",function(event){
+          event.preventDefault();
+          event.stopPropagation();
+          if(typeof window.comprarProduto==="function"){
+            window.comprarProduto(comprar);
+          }else if(typeof window.abrirCheckout==="function"){
+            window.abrirCheckout(comprar);
+          }else{
+            alert("O checkout ainda está carregando. Tente novamente.");
+          }
+        });
+      }
+
+      var detalhes=card.querySelector(".rdzx-ver-detalhes");
+      if(detalhes && !detalhes.dataset.rdzxReparado){
+        detalhes.dataset.rdzxReparado="1";
+        detalhes.onclick=function(event){
+          event.preventDefault();
+          event.stopPropagation();
+
+          var modal=document.querySelector(".rdzx-detalhes-fundo");
+          var foto=card.querySelector("img");
+          var titulo=card.querySelector("h3");
+          var preco=comprar ? comprar.getAttribute("data-preco") : "";
+          var descricao=card.querySelector("p");
+
+          if(!modal){
+            alert("A janela de detalhes ainda está carregando. Tente novamente.");
+            return;
+          }
+
+          var imagem=modal.querySelector(".rdzx-detalhes-imagem");
+          var nome=modal.querySelector(".rdzx-detalhes-nome");
+          var valor=modal.querySelector(".rdzx-detalhes-preco");
+          var texto=modal.querySelector(".rdzx-detalhes-descricao");
+
+          if(imagem)imagem.src=foto ? foto.src : "";
+          if(nome)nome.textContent=titulo ? titulo.textContent.trim() : "";
+          if(valor)valor.textContent=preco || "";
+          if(texto)texto.textContent=descricao
+            ? descricao.textContent.trim()
+            : "Confira as informações deste produto.";
+
+          modal.style.display="grid";
+        };
+      }
+    });
+  },700);
+});
+</script>
+
 </body>
 </html>
 
