@@ -1555,6 +1555,60 @@ section,
 }
 </style>
 
+
+<style id="rdzx-fotos-completas-v2">
+/* Mostrar as capas inteiras, sem cortar textos ou logotipos */
+.produto{
+  overflow:hidden!important;
+}
+
+.produto>img{
+  display:block!important;
+  width:100%!important;
+  height:225px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:12px!important;
+  background:
+    radial-gradient(circle at center,rgba(52,216,255,.12),transparent 68%),
+    #0a1118!important;
+  image-rendering:auto!important;
+}
+
+.produto>img:hover{
+  transform:scale(1.035)!important;
+}
+
+.checkout-imagem{
+  width:100%!important;
+  max-height:300px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#0a1118!important;
+}
+
+.rdzx-feedback img,
+#rdzx-carrossel-comunidade img{
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#080e14!important;
+}
+
+@media(max-width:700px){
+  .produto>img{
+    height:180px!important;
+    padding:9px!important;
+  }
+}
+
+@media(max-width:420px){
+  .produto>img{
+    height:155px!important;
+    padding:7px!important;
+  }
+}
+</style>
+
 </head>
 
 <body>
