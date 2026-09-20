@@ -603,6 +603,26 @@ summary::first-letter{
 }
 </style>
 
+
+<style id="rdzx-remover-zoom-iphone">
+/* Impede o zoom automatico do Safari/iPhone nos campos */
+@media screen and (max-width:600px){
+  input,
+  select,
+  textarea,
+  button{
+    font-size:16px!important;
+  }
+
+  input,
+  select,
+  textarea{
+    transform:none!important;
+    zoom:1!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo">RDZX <b>STORE</b></div><nav><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#suporte">Suporte</a></nav><div class="actions"><button class="icon" id="tema">☾</button></div></div></header>
