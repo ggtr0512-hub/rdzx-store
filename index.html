@@ -472,6 +472,89 @@ select:focus{
 }
 </style>
 
+
+<style id="rdzx-emojis-sistema-2026">
+/* Emojis usando a fonte nativa disponível em cada dispositivo */
+:root{
+  --rdzx-emoji-font:
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Noto Color Emoji",
+    "Android Emoji",
+    "EmojiSymbols",
+    sans-serif;
+}
+
+body,
+button,
+a,
+input,
+select,
+textarea,
+summary{
+  font-variant-emoji:emoji;
+}
+
+button,
+a,
+summary{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+button,
+#rdzx-cart-button,
+#tema,
+.rdzx-add-cart,
+.rdzx-cart-qty button,
+.rdzx-cart-remove{
+  text-align:center;
+  vertical-align:middle;
+  white-space:nowrap;
+  line-height:1.25;
+}
+
+button::first-letter,
+a::first-letter,
+summary::first-letter{
+  font-family:var(--rdzx-emoji-font);
+  font-variant-emoji:emoji;
+}
+
+.rdzx-cart-head h2,
+.rdzx-cart-empty div,
+.rdzx-cart-total,
+.rdzx-cart-item,
+.rdzx-cart-item button,
+.rdzx-cart-box button,
+.rdzx-add-cart,
+#rdzx-cart-button,
+#tema{
+  font-variant-emoji:emoji;
+}
+
+#rdzx-cart-button,
+#tema{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1!important;
+}
+
+#rdzx-cart-count{
+  font-family:system-ui,sans-serif!important;
+  font-variant-emoji:text!important;
+}
+
+@media(max-width:600px){
+  button,
+  a,
+  summary{
+    -webkit-tap-highlight-color:transparent;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo">RDZX <b>STORE</b></div><nav><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#suporte">Suporte</a></nav><div class="actions"><button class="icon" id="tema">☾</button></div></div></header>
