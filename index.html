@@ -26,7 +26,11 @@ section{padding:35px 0}.head{display:flex;align-items:end;justify-content:space-
 <section id="categorias"><div class="wrap"><div class="head"><h2>Categorias</h2></div><div id="categorias-grid" class="grid"></div></div></section>
 <section id="suporte"><div class="wrap"><div class="box"><h2>Precisa de ajuda?</h2><p class="note">Consulte disponibilidade, forma de entrega e dúvidas antes de pagar.</p><button class="btn" id="suporte-btn">💬 Falar no Telegram</button></div></div></section>
 </main><footer><div class="wrap">RDZX STORE — Atendimento e confirmação manual pelo Telegram.</div></footer>
-<div id="checkout" class="modal"><div class="box"><button class="close" data-close="checkout">×</button><h2>Finalizar compra</h2><p id="produto-checkout"></p><label>Quantidade</label><input id="quantidade" type="number" min="1" value="1"><label>Cupom</label><input id="cupom" placeholder="Digite seu cupom"><button class="btn" id="aplicar">Aplicar cupom</button><p id="cupom-msg" class="note"></p><div id="total" class="total"></div><button class="btn" id="pix-btn">💠 Gerar Pix</button><div id="pix-area" style="display:none"><div id="qr" class="qr"></div><textarea id="pix-copia" rows="4" readonly></textarea><p class="note">Pague pelo aplicativo do banco e envie o comprovante pelo Telegram. A confirmação é manual.</p><button class="btn" id="telegram-pedido">Enviar pedido no Telegram</button></div></div></div>
+<div id="checkout" class="modal"><div class="box"><button class="close" data-close="checkout">×</button><h2>Finalizar compra</h2><p id="produto-checkout"></p><label>Quantidade</label><div id="rdzx-controle-quantidade">
+      <button type="button" id="rdzx-menos">−</button>
+      <input id="quantidade" type="number" min="1" value="1">
+      <button type="button" id="rdzx-mais">+</button>
+    </div><label>Cupom</label><input id="cupom" placeholder="Digite seu cupom"><button class="btn" id="aplicar">Aplicar cupom</button><p id="cupom-msg" class="note"></p><div id="total" class="total"></div><button class="btn" id="pix-btn">💠 Gerar Pix</button><div id="pix-area" style="display:none"><div id="qr" class="qr"></div><textarea id="pix-copia" rows="4" readonly></textarea><p class="note">Pague pelo aplicativo do banco e envie o comprovante pelo Telegram. A confirmação é manual.</p><button class="btn" id="telegram-pedido">Enviar pedido no Telegram</button></div></div></div>
 <script>
 const produtos=[
 ['Viki Rakuten','Entretenimento','imagens/assinaturas/viki.jpg',12,'Dramas e produções asiáticas conforme disponibilidade.'],['Apple TV','Filmes e séries','imagens/assinaturas/apple-tv.jpg',10.90,'Filmes, séries e produções para assistir online.'],['TNT Sports','Esportes','imagens/assinaturas/tnt-sports.jpg',11.50,'Conteúdos esportivos conforme plano e disponibilidade.'],['Privacy','Privacidade','imagens/assinaturas/privacy.jpg',9,'Serviço digital de privacidade conforme plano anunciado.'],['Deezer','Música','imagens/assinaturas/deezer.jpg',9,'Músicas, playlists e conteúdos de áudio conforme plano.'],['Grobo Play','Entretenimento','imagens/assinaturas/grobo-play.jpg',9,'Filmes, séries e programação online conforme disponibilidade.'],['Google Veo 3','Inteligência artificial','imagens/assinaturas/google-veo.jpg',45,'Ferramenta de criação de vídeos por inteligência artificial.'],['ChatGPT','Inteligência artificial','imagens/assinaturas/chatgpt.jpg',36,'Assistente digital para estudos, textos e ideias conforme plano.'],['CapCut Pro','Edição de vídeo','imagens/assinaturas/capcut.jpg',22,'Recursos digitais para edição de vídeos conforme plano.'],['Crunchyroll','Animes','imagens/assinaturas/crunchyroll.jpg',8,'Animes e conteúdos relacionados conforme catálogo.'],['Spotify Premium','Música','imagens/assinaturas/spotify.jpg',8,'Músicas, playlists e podcasts conforme plano disponível.'],['IPTV','TV online','imagens/assinaturas/iptv.jpg',12,'Conteúdo depende do plano e da disponibilidade anunciada.'],['Netflix','Filmes e séries','imagens/assinaturas/netflix.jpg',9.90,'Filmes, séries e produções para assistir online.'],['Disney+','Filmes e séries','imagens/assinaturas/disney-plus.jpg',9.99,'Filmes, séries e entretenimento conforme catálogo.'],['HBO Max','Filmes e séries','imagens/assinaturas/hbo-max.jpg',8.49,'Filmes, séries e produções conforme plano disponível.'],['Prime Video','Filmes e séries','imagens/assinaturas/prime-video.jpg',6.99,'Filmes, séries e conteúdos online conforme plano.'],['YouTube Premium','Vídeos e entretenimento','imagens/assinaturas/youtube-premium.jpg',7.99,'Experiência Premium do YouTube conforme plano disponível.']
@@ -41,4 +45,63 @@ aplicarEl.onclick=()=>{let c=cupomEl.value.trim().toUpperCase();desconto=c==='RD
 pixBtnEl.onclick=()=>{let total=atual[3]*Math.max(1,+quantidadeEl.value||1)*(1-desconto/100),pix=window.RDZX_PIX||{};if(!pix.chave){alert('Pix ainda não configurado.');return}let area=document.getElementById('qr');area.innerHTML='';let texto=pixPayload(total);document.getElementById('pix-copia').value=texto;if(window.QRCode)new QRCode(area,{text:texto,width:210,height:210});pixArea.style.display='block'};
 telegramPedidoEl.onclick=()=>window.open(tg+'?text='+encodeURIComponent('Olá! Quero comprar '+atual[0]+' — '+br(atual[3]*Math.max(1,+quantidadeEl.value||1))), '_blank');suporteBtnEl.onclick=()=>window.open(tg,'_blank');
 let categorias=[...new Set(produtos.map(p=>p[1]))];window.render=render;categorias.forEach(c=>{categoriaEl.innerHTML+=`<option>${c}</option>`;categoriasGrid.innerHTML+=`<button class="category" onclick="categoriaEl.value='${c}';location.hash='produtos';render()">${c}<br><small>Ver produtos</small></button>`});render();
-</script></body></html>
+</script>
+<style id="rdzx-controle-quantidade-final">
+#rdzx-controle-quantidade{
+  display:grid;
+  grid-template-columns:48px 1fr 48px;
+  gap:8px;
+  align-items:center;
+  margin:8px 0 14px;
+}
+
+#rdzx-controle-quantidade button{
+  width:48px!important;
+  height:44px;
+  padding:0!important;
+  border:1px solid #42ddff66!important;
+  border-radius:11px!important;
+  color:#fff!important;
+  background:#173548!important;
+  font-size:25px;
+  font-weight:900;
+}
+
+#rdzx-controle-quantidade input{
+  width:100%!important;
+  height:44px;
+  margin:0!important;
+  text-align:center;
+  font-size:18px;
+  font-weight:900;
+}
+</style>
+
+<script id="rdzx-controle-quantidade-final-js">
+(function(){
+  var campo=document.getElementById("quantidade");
+  var menos=document.getElementById("rdzx-menos");
+  var mais=document.getElementById("rdzx-mais");
+
+  if(!campo||!menos||!mais)return;
+
+  function atualizarQuantidade(valor){
+    campo.value=Math.max(1,Number(valor)||1);
+    if(typeof window.atualizar==="function")window.atualizar();
+  }
+
+  menos.onclick=function(){
+    atualizarQuantidade(Number(campo.value)-1);
+  };
+
+  mais.onclick=function(){
+    atualizarQuantidade(Number(campo.value)+1);
+  };
+
+  campo.addEventListener("change",function(){
+    atualizarQuantidade(campo.value);
+  });
+})();
+</script>
+
+</body></html>
