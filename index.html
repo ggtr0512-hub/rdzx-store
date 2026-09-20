@@ -1609,6 +1609,170 @@ section,
 }
 </style>
 
+
+<style id="rdzx-carrossel-novo-limpo">
+/* Carrossel novo: três imagens completas */
+#rdzx-carrossel-novo-limpo{
+  width:min(1050px,calc(100% - 28px));
+  margin:46px auto;
+  padding:24px 0 30px;
+  color:#f5fbff;
+  text-align:center;
+}
+
+#rdzx-carrossel-novo-limpo h2{
+  margin:8px 0;
+  font-size:clamp(24px,5vw,38px);
+}
+
+#rdzx-carrossel-novo-limpo p{
+  color:#aebdca;
+  margin:0 0 20px;
+}
+
+.rdzx-galeria-nova{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.rdzx-galeria-janela{
+  flex:1;
+  min-width:0;
+  overflow:hidden;
+  border:1px solid rgba(66,221,255,.25);
+  border-radius:22px;
+  background:#071019;
+  box-shadow:0 20px 55px rgba(0,0,0,.38);
+}
+
+.rdzx-galeria-faixa{
+  display:flex;
+  transform:translateX(0);
+  transition:transform .28s ease;
+}
+
+.rdzx-foto-nova{
+  flex:0 0 100%;
+  width:100%;
+  height:min(68vh,560px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#050b11;
+  cursor:zoom-in;
+}
+
+.rdzx-foto-nova img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:10px;
+  background:#050b11;
+}
+
+.rdzx-seta-nova{
+  flex:0 0 44px;
+  width:44px!important;
+  height:44px;
+  padding:0!important;
+  border:1px solid rgba(66,221,255,.35)!important;
+  border-radius:50%!important;
+  color:#fff;
+  background:linear-gradient(135deg,#12638b,#197ee0)!important;
+  font-size:30px;
+  line-height:1;
+}
+
+.rdzx-pontos-nova{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:15px;
+}
+
+.rdzx-ponto-nova{
+  width:9px;
+  height:9px;
+  padding:0!important;
+  border-radius:50%!important;
+  background:#607080!important;
+}
+
+.rdzx-ponto-nova.ativo{
+  background:#42ddff!important;
+  box-shadow:0 0 14px #42ddff!important;
+}
+
+#rdzx-zoom-novo{
+  position:fixed;
+  inset:0;
+  z-index:100000;
+  display:none;
+  align-items:flex-start;
+  justify-content:center;
+  overflow:auto;
+  padding:14px 8px 80px;
+  background:rgba(0,0,0,.92);
+  -webkit-overflow-scrolling:touch;
+}
+
+#rdzx-zoom-novo.aberto{
+  display:flex;
+}
+
+#rdzx-zoom-novo img{
+  width:auto;
+  max-width:98vw;
+  height:auto;
+  object-fit:contain!important;
+  margin:auto;
+}
+
+#rdzx-zoom-fechar{
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:2;
+  width:44px!important;
+  height:44px;
+  padding:0!important;
+  border-radius:50%!important;
+  color:#fff;
+  background:#132535!important;
+  border:1px solid #42ddff66!important;
+  font-size:24px;
+}
+
+@media(max-width:650px){
+  #rdzx-carrossel-novo-limpo{
+    width:calc(100% - 16px);
+    padding-top:25px;
+  }
+
+  .rdzx-galeria-nova{
+    gap:5px;
+  }
+
+  .rdzx-seta-nova{
+    flex-basis:36px;
+    width:36px!important;
+    height:36px;
+    font-size:24px;
+  }
+
+  .rdzx-foto-nova{
+    height:68vh;
+  }
+
+  .rdzx-foto-nova img{
+    padding:5px;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -1960,6 +2124,43 @@ section,
     <button class="rdzx-seta" onclick="rdzxMoverGaleria(1)">›</button>
   </div>
 </section>
+
+<section id="rdzx-carrossel-novo-limpo" aria-label="Fotos da comunidade RDZX">
+  <h2>Experiências da comunidade</h2>
+  <p>Veja as três imagens compartilhadas com a RDZX STORE.</p>
+
+  <div class="rdzx-galeria-nova">
+    <button class="rdzx-seta-nova" type="button" id="rdzx-voltar-novo" aria-label="Foto anterior">‹</button>
+
+    <div class="rdzx-galeria-janela">
+      <div class="rdzx-galeria-faixa" id="rdzx-faixa-nova">
+        <div class="rdzx-foto-nova">
+          <img src="imagens/depoimentos/feedback-1.png" alt="Imagem da comunidade 1">
+        </div>
+        <div class="rdzx-foto-nova">
+          <img src="imagens/depoimentos/feedback-2.png" alt="Imagem da comunidade 2">
+        </div>
+        <div class="rdzx-foto-nova">
+          <img src="imagens/depoimentos/feedback-3.png" alt="Imagem da comunidade 3">
+        </div>
+      </div>
+    </div>
+
+    <button class="rdzx-seta-nova" type="button" id="rdzx-avancar-novo" aria-label="Próxima foto">›</button>
+  </div>
+
+  <div class="rdzx-pontos-nova" aria-label="Selecionar foto">
+    <button class="rdzx-ponto-nova ativo" type="button" data-foto="0"></button>
+    <button class="rdzx-ponto-nova" type="button" data-foto="1"></button>
+    <button class="rdzx-ponto-nova" type="button" data-foto="2"></button>
+  </div>
+</section>
+
+<div id="rdzx-zoom-novo" role="dialog" aria-label="Imagem ampliada">
+  <button id="rdzx-zoom-fechar" type="button" aria-label="Fechar imagem">×</button>
+  <img id="rdzx-zoom-imagem" src="" alt="Imagem ampliada">
+</div>
+
 </main>
 
 
@@ -3499,6 +3700,54 @@ article.produto > img:hover,
   display:none!important;
 }
 </style>
+
+
+<script id="rdzx-carrossel-novo-limpo-js">
+(function(){
+  var faixa=document.getElementById('rdzx-faixa-nova');
+  var voltar=document.getElementById('rdzx-voltar-novo');
+  var avancar=document.getElementById('rdzx-avancar-novo');
+  var pontos=[].slice.call(document.querySelectorAll('.rdzx-ponto-nova'));
+  var fotos=[].slice.call(document.querySelectorAll('.rdzx-foto-nova img'));
+  var zoom=document.getElementById('rdzx-zoom-novo');
+  var zoomImg=document.getElementById('rdzx-zoom-imagem');
+  var fechar=document.getElementById('rdzx-zoom-fechar');
+  var atual=0;
+
+  function mostrar(n){
+    atual=(n+3)%3;
+    faixa.style.transform='translateX(-'+(atual*100)+'%)';
+    pontos.forEach(function(p,i){p.classList.toggle('ativo',i===atual)});
+  }
+
+  voltar.addEventListener('click',function(){mostrar(atual-1)});
+  avancar.addEventListener('click',function(){mostrar(atual+1)});
+
+  pontos.forEach(function(p){
+    p.addEventListener('click',function(){mostrar(Number(p.dataset.foto))});
+  });
+
+  fotos.forEach(function(img){
+    img.addEventListener('click',function(){
+      zoomImg.src=img.src;
+      zoomImg.alt=img.alt;
+      zoom.classList.add('aberto');
+      document.body.style.overflow='hidden';
+    });
+  });
+
+  function fecharZoom(){
+    zoom.classList.remove('aberto');
+    zoomImg.src='';
+    document.body.style.overflow='';
+  }
+
+  fechar.addEventListener('click',fecharZoom);
+  zoom.addEventListener('click',function(e){
+    if(e.target===zoom)fecharZoom();
+  });
+})();
+</script>
 
 </body>
 </html>
