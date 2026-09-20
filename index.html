@@ -2128,6 +2128,7 @@ section,
 <section id="rdzx-carrossel-novo-limpo" aria-label="Fotos da comunidade RDZX">
   <h2>Experiências da comunidade</h2>
   <p>Veja as três imagens compartilhadas com a RDZX STORE.</p>
+        <div id="rdzx-aviso-zoom-imagem">🔍 Toque na imagem para ampliar e ler melhor</div>
 
   <div class="rdzx-galeria-nova">
     <button class="rdzx-seta-nova" type="button" id="rdzx-voltar-novo" aria-label="Foto anterior">‹</button>
@@ -3877,6 +3878,37 @@ article.produto > img:hover,
   section.grid{
     padding-left:0!important;
     padding-right:0!important;
+  }
+}
+</style>
+
+
+<style id="rdzx-aviso-zoom-imagem">
+#rdzx-aviso-zoom-imagem{
+  display:inline-block;
+  margin:0 auto 18px;
+  padding:9px 14px;
+  border:1px solid rgba(66,221,255,.35);
+  border-radius:999px;
+  color:#dffaff;
+  background:rgba(30,110,145,.25);
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 0 20px rgba(66,221,255,.12);
+}
+
+.rdzx-foto-nova{
+  cursor:zoom-in!important;
+}
+
+.rdzx-foto-nova:active{
+  transform:scale(.99);
+}
+
+@media(max-width:600px){
+  #rdzx-aviso-zoom-imagem{
+    font-size:12px;
+    padding:8px 11px;
   }
 }
 </style>
