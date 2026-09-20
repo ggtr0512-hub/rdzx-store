@@ -4272,6 +4272,137 @@ document.addEventListener("click",function(event){
 },true);
 </script>
 
+
+<style id="rdzx-botoes-favoritar-compartilhar-final">
+.rdzx-acoes-detalhes{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin:14px 0;
+}
+
+.rdzx-acoes-detalhes button{
+  width:100%!important;
+  margin:0!important;
+  padding:11px 8px!important;
+  border:1px solid #42ddff55!important;
+  border-radius:12px!important;
+  color:#eafaff!important;
+  background:#123043!important;
+  font-weight:800!important;
+}
+
+.rdzx-acoes-detalhes button:active{
+  transform:scale(.97);
+}
+</style>
+
+<script id="rdzx-botoes-favoritar-compartilhar-final">
+(function(){
+  function nomeDoModal(modal){
+    var el=modal.querySelector(
+      ".rdzx-detalhes-nome,#rdzx-detalhes-nome-estavel"
+    );
+    return el ? el.textContent.trim() : "";
+  }
+
+  function cardDoNome(nome){
+    var encontrado=null;
+    document.querySelectorAll(".produto").forEach(function(card){
+      var h=card.querySelector("h3");
+      if(h && h.textContent.trim()===nome)encontrado=card;
+    });
+    return encontrado;
+  }
+
+  function criarAcoes(modal){
+    if(modal.querySelector(".rdzx-acoes-detalhes"))return;
+
+    var caixa=modal.querySelector(
+      ".rdzx-detalhes-card,.caixa"
+    );
+    if(!caixa)return;
+
+    var acoes=document.createElement("div");
+    acoes.className="rdzx-acoes-detalhes";
+    acoes.innerHTML=
+      '<button type="button" class="rdzx-favoritar">♡ Favoritar</button>'+
+      '<button type="button" class="rdzx-compartilhar">↗ Compartilhar</button>';
+
+    var comprar=caixa.querySelector(
+      ".rdzx-detalhes-comprar,#rdzx-detalhes-comprar-estavel"
+    );
+
+    if(comprar)caixa.insertBefore(acoes,comprar);
+    else caixa.appendChild(acoes);
+
+    var fav=acoes.querySelector(".rdzx-favoritar");
+    var share=acoes.querySelector(".rdzx-compartilhar");
+
+    function atualizar(){
+      var nome=nomeDoModal(modal);
+      var lista=JSON.parse(localStorage.getItem("rdzx_favoritos")||"[]");
+      fav.textContent=lista.includes(nome)
+        ?"♥ Favoritado"
+        :"♡ Favoritar";
+    }
+
+    fav.onclick=function(){
+      var nome=nomeDoModal(modal);
+      var lista=JSON.parse(localStorage.getItem("rdzx_favoritos")||"[]");
+
+      if(lista.includes(nome)){
+        lista=lista.filter(function(item){return item!==nome});
+      }else{
+        lista.push(nome);
+      }
+
+      localStorage.setItem("rdzx_favoritos",JSON.stringify(lista));
+      atualizar();
+    };
+
+    share.onclick=function(){
+      var nome=nomeDoModal(modal);
+      var link=location.href.split("?")[0]+"#produto="+
+        encodeURIComponent(nome);
+
+      if(navigator.share){
+        navigator.share({
+          title:"RDZX STORE — "+nome,
+          text:"Confira este produto na RDZX STORE: "+nome,
+          url:link
+        }).catch(function(){});
+      }else if(navigator.clipboard){
+        navigator.clipboard.writeText(link).then(function(){
+          alert("Link do produto copiado.");
+        });
+      }else{
+        prompt("Copie o link do produto:",link);
+      }
+    };
+
+    atualizar();
+  }
+
+  function observar(){
+    document.querySelectorAll(
+      ".rdzx-detalhes-fundo,#rdzx-detalhes-estavel"
+    ).forEach(criarAcoes);
+  }
+
+  document.addEventListener("click",function(){
+    setTimeout(observar,120);
+  },true);
+
+  new MutationObserver(observar).observe(document.body,{
+    childList:true,
+    subtree:true
+  });
+
+  setTimeout(observar,800);
+})();
+</script>
+
 </body>
 </html>
 
