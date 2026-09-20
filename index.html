@@ -1595,12 +1595,17 @@ let categorias=[...new Set(produtos.map(p=>p[1]))];window.render=render;categori
       botao.className="rdzx-card-cart";
       botao.title="Adicionar este produto ao carrinho";
       botao.setAttribute("aria-label","Adicionar este produto ao carrinho");
-      botao.textContent="+";
+      botao.textContent="🛒";
 
       botao.onclick=function(event){
         event.preventDefault();
         event.stopPropagation();
         adicionar.click();
+
+        setTimeout(function(){
+          var abrirCarrinho=document.getElementById("rdzx-cart-button");
+          if(abrirCarrinho) abrirCarrinho.click();
+        },180);
       };
 
       card.appendChild(botao);
