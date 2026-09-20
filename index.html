@@ -4170,6 +4170,74 @@ document.addEventListener("DOMContentLoaded",function(){
 })();
 </script>
 
+
+<script id="rdzx-descricoes-completas-todos-final">
+(function(){
+  var descricoes={"Viki Rakuten": "Categoria: dramas e entretenimento asiático. Serviço voltado para assistir conteúdos como dramas, séries e produções asiáticas, conforme o plano disponível. Após a confirmação do pedido, o acesso é enviado por login, senha ou link/convite pelo Telegram, conforme a disponibilidade.", "Apple TV": "Categoria: filmes e séries. Plataforma de entretenimento com produções, filmes e séries para assistir online. A forma de acesso depende do produto disponível no catálogo. Após a confirmação, as instruções são enviadas pelo Telegram.", "TNT Sports": "Categoria: esportes. Serviço voltado para conteúdos e transmissões esportivas conforme a modalidade e o plano disponível. Consulte a disponibilidade antes de finalizar. O acesso é enviado pelo Telegram após a confirmação.", "Privacy": "Categoria: privacidade e segurança digital. Produto destinado a recursos digitais de privacidade conforme o plano anunciado. Os recursos podem variar. Consulte os detalhes e a disponibilidade antes da compra.", "Deezer": "Categoria: música. Serviço para ouvir músicas, playlists e conteúdos de áudio online, conforme o plano disponível. Após a confirmação do pedido, o acesso é enviado pelo Telegram.", "Grobo Play": "Categoria: entretenimento. Produto voltado para conteúdos de filmes, séries e programação online conforme a disponibilidade anunciada pela loja. O acesso é enviado por login, senha ou link/convite pelo Telegram.", "Google Veo 3": "Categoria: inteligência artificial e criação de vídeos. Ferramenta voltada para criação de vídeos a partir de instruções e ideias, conforme o plano disponível. O acesso e as condições são confirmados pelo Telegram antes da entrega.", "ChatGPT": "Categoria: inteligência artificial. Assistente digital para conversar, estudar, escrever, organizar ideias e apoiar tarefas, conforme o plano contratado. O acesso é enviado pelo Telegram após a confirmação.", "CapCut Pro": "Categoria: edição de vídeo. Recursos para editar vídeos, aplicar efeitos, trabalhar com modelos e criar conteúdos, conforme o plano disponível. Após a confirmação, o acesso é enviado pelo Telegram.", "Crunchyroll": "Categoria: animes. Serviço voltado para assistir animes, episódios e conteúdos relacionados, conforme o catálogo e o plano disponível. O acesso é enviado pelo Telegram após a confirmação.", "Spotify Premium": "Categoria: música. Serviço para ouvir músicas, playlists e podcasts com os recursos do plano disponível. A disponibilidade e a forma de entrega são confirmadas pelo Telegram antes da conclusão.", "IPTV": "Categoria: televisão e entretenimento online. O conteúdo depende do plano, da lista e da disponibilidade anunciada no momento da compra. Consulte antes de pagar; a entrega é feita pelo Telegram após a confirmação.", "Netflix": "Categoria: filmes e séries. Serviço de entretenimento com filmes, séries e produções para assistir online, conforme o plano disponível. Após a confirmação do pedido, as instruções de acesso são enviadas pelo Telegram.", "Disney+": "Categoria: filmes, séries e entretenimento. Serviço com conteúdos de entretenimento conforme o catálogo e o plano disponível. O acesso é enviado por login, senha ou link/convite pelo Telegram após a confirmação.", "HBO Max": "Categoria: filmes e séries. Plataforma de entretenimento com filmes, séries e produções online conforme o plano disponível. A entrega é feita pelo Telegram após a confirmação manual.", "Prime Video": "Categoria: filmes e séries. Serviço de entretenimento com filmes, séries e conteúdos online conforme a disponibilidade do plano. O acesso é confirmado e enviado pelo Telegram.", "YouTube Premium": "Categoria: vídeos e entretenimento. Serviço voltado para uma experiência Premium no YouTube, conforme o plano disponível. A forma de acesso e a disponibilidade são confirmadas pelo Telegram."};
+
+  function aplicarDescricoes(){
+    document.querySelectorAll(".produto").forEach(function(card){
+      var titulo=card.querySelector("h3");
+      if(!titulo)return;
+
+      var nome=titulo.textContent.trim();
+      var texto=descricoes[nome];
+      if(!texto)return;
+
+      card.setAttribute("data-rdzx-descricao",texto);
+
+      var p=card.querySelector("p");
+      if(!p){
+        p=document.createElement("p");
+        card.querySelector(".produto-info").appendChild(p);
+      }
+
+      p.textContent=texto;
+      p.classList.add("rdzx-descricao-completa");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded",aplicarDescricoes);
+  setTimeout(aplicarDescricoes,1000);
+
+  document.addEventListener("click",function(event){
+    var botao=event.target.closest(".rdzx-ver-detalhes");
+    if(!botao)return;
+
+    var card=botao.closest(".produto");
+    if(!card)return;
+
+    var texto=card.getAttribute("data-rdzx-descricao");
+    if(!texto)return;
+
+    setTimeout(function(){
+      var campo=document.querySelector(".rdzx-detalhes-descricao");
+      if(campo)campo.textContent=texto;
+    },80);
+  },true);
+})();
+</script>
+
+<style id="rdzx-descricoes-completas-estilo">
+.produto .rdzx-descricao-completa{
+  display:-webkit-box!important;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden!important;
+  color:#b9c9d4!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+  margin:9px 0!important;
+}
+
+.rdzx-detalhes-descricao{
+  white-space:pre-line!important;
+  line-height:1.7!important;
+  font-size:15px!important;
+  color:#d8e9f0!important;
+}
+</style>
+
 </body>
 </html>
 
