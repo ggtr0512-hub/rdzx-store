@@ -292,6 +292,156 @@ select:focus{
 }
 </style>
 
+
+<style id="rdzx-home-3d-real-elements">
+/* 3D aplicado aos elementos reais da Home */
+.hero{
+  position:relative!important;
+  isolation:isolate!important;
+  padding:clamp(70px,10vw,130px) 28px!important;
+  border:1px solid rgba(66,221,255,.28)!important;
+  border-radius:32px!important;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(30,152,255,.28),transparent 240px),
+    linear-gradient(135deg,#102e42,#07131e 65%,#050b11)!important;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.65),
+    inset 0 1px rgba(255,255,255,.14),
+    inset 0 -20px 50px rgba(0,0,0,.2)!important;
+  overflow:hidden!important;
+}
+
+.hero:before{
+  content:""!important;
+  position:absolute!important;
+  width:260px!important;
+  height:260px!important;
+  right:-80px!important;
+  top:-80px!important;
+  border:1px solid rgba(66,221,255,.45)!important;
+  border-radius:50%!important;
+  box-shadow:0 0 0 25px rgba(66,221,255,.05),0 0 70px rgba(66,221,255,.2)!important;
+  transform:rotate(20deg)!important;
+  pointer-events:none!important;
+}
+
+.hero h1{
+  position:relative!important;
+  z-index:1!important;
+  text-shadow:0 8px 30px rgba(0,0,0,.6)!important;
+}
+
+.hero p{
+  position:relative!important;
+  z-index:1!important;
+}
+
+.hero .btn{
+  position:relative!important;
+  z-index:2!important;
+  box-shadow:0 12px 28px rgba(0,130,255,.35),inset 0 1px rgba(255,255,255,.4)!important;
+}
+
+.card{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(66,221,255,.3)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,#142f40 0%,#0b1924 60%,#071018 100%)!important;
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.58),
+    inset 0 1px rgba(255,255,255,.15),
+    inset 0 -1px rgba(0,0,0,.8)!important;
+  transform:translateY(0) perspective(900px) rotateX(0deg)!important;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease!important;
+}
+
+.card:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.08) 50%,transparent 75%)!important;
+  transform:translateX(-120%)!important;
+  transition:transform .6s ease!important;
+}
+
+.card:hover{
+  transform:translateY(-10px) perspective(900px) rotateX(3deg)!important;
+  border-color:rgba(66,221,255,.85)!important;
+  box-shadow:
+    0 30px 55px rgba(0,0,0,.75),
+    0 0 30px rgba(0,145,255,.22),
+    inset 0 1px rgba(255,255,255,.25)!important;
+}
+
+.card:hover:after{
+  transform:translateX(120%)!important;
+}
+
+.card img{
+  filter:saturate(1.12) contrast(1.06)!important;
+  transition:transform .35s ease,filter .35s ease!important;
+}
+
+.card:hover img{
+  transform:scale(1.06)!important;
+  filter:saturate(1.28) contrast(1.1)!important;
+}
+
+.card .btn,
+.card button{
+  box-shadow:0 9px 20px rgba(0,105,190,.32),inset 0 1px rgba(255,255,255,.3)!important;
+  transition:transform .2s ease,box-shadow .2s ease!important;
+}
+
+.card .btn:hover,
+.card button:hover{
+  transform:translateY(-3px)!important;
+  box-shadow:0 14px 28px rgba(0,145,255,.5),inset 0 1px rgba(255,255,255,.5)!important;
+}
+
+#categorias .grid>div,
+#categorias-grid>div,
+#categorias-grid button{
+  border:1px solid rgba(66,221,255,.25)!important;
+  border-radius:20px!important;
+  background:linear-gradient(145deg,#123044,#091722)!important;
+  box-shadow:0 14px 30px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.12)!important;
+  transition:transform .25s ease,box-shadow .25s ease!important;
+}
+
+#categorias .grid>div:hover,
+#categorias-grid>div:hover,
+#categorias-grid button:hover{
+  transform:translateY(-6px)!important;
+  box-shadow:0 22px 40px rgba(0,0,0,.7),0 0 22px rgba(0,145,255,.2)!important;
+}
+
+#suporte .box,
+.box{
+  border:1px solid rgba(66,221,255,.25)!important;
+  border-radius:24px!important;
+  background:linear-gradient(145deg,#112b3a,#08141e)!important;
+  box-shadow:0 20px 45px rgba(0,0,0,.6),inset 0 1px rgba(255,255,255,.12)!important;
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:58px 18px!important;
+    border-radius:24px!important;
+  }
+
+  .card{
+    border-radius:19px!important;
+  }
+
+  .card:hover{
+    transform:translateY(-4px)!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header><div class="wrap nav"><div class="logo">RDZX <b>STORE</b></div><nav><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#suporte">Suporte</a></nav><div class="actions"><button class="icon" id="tema">☾</button></div></div></header>
