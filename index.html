@@ -432,9 +432,7 @@ let categorias=[...new Set(produtos.map(p=>p[1]))];window.render=render;categori
   var checkout=document.getElementById("checkout");
   if(checkout){
     new MutationObserver(atualizarProduto).observe(checkout,{
-      attributes:true,
-      subtree:true,
-      characterData:true
+      attributes:true
     });
   }
 
